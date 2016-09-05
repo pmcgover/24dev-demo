@@ -34,7 +34,7 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
 
-## High level process to create your own 24dev Digital Portfolio 
+## Create your own 24dev Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
 * Clone the 24dev-demo repo to yours: *git clone --bare git@github.com:pmcgover/24dev-demo.git*
