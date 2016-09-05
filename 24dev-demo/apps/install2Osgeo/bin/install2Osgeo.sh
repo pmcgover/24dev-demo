@@ -30,13 +30,6 @@ echo "Source the 24dev profile and display the global variables..."
 . ${BASE}/.24dev.profile 
 chkerr "$?" "1" "The ${BASE}/.24dev.profile file was not available."
 
-echo "Display profile Global variables:"
-echo "BASE=$BASE"
-echo "APPS=$APPS"
-echo "DOCS=$DOCS"
-echo "MYDEV_NAME=$MYDEV_NAME"
-echo
-
 echo "Make sure all files are executable..." 
 chmod -R 755 ${BASE}
 chkerr "$?" "1" "The following command failed: chmod -R 755 ${BASE}" 
@@ -48,16 +41,6 @@ Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
 EOF
-echo
-
-echo "Display the associated License file header:"
-head -4 ../../../../LICENSE 
-chkerr "$?" "1" "The following command failed: head -4 ../../../../LICENSE"   
-echo
-
-echo "Display the associated README.md file:"
-cat  ../../../../README.md
-chkerr "$?" "1" "The following command failed: head -4 ../../../../LICENSE"   
 echo
 
 echo

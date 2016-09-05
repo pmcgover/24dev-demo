@@ -13,21 +13,12 @@ else
    echo "Failure: The profile is not readable: ${BASE}/.24dev.profile"
    exit 1   
 fi
-echo "Display profile Global variables:"
-echo "BASE=$BASE"
-echo "APPS=$APPS"
-echo "DOCS=$DOCS"
-echo "MYDEV_NAME=$MYDEV_NAME"
 
 cat <<-EOF 
 Usage: r4st-loader.sh 
 This program will execute the pgsql commands to create and load r4st database objects 
 EOF
 echo 
-
-echo "Display the associated License file header:"
-head -4 ../../../../LICENSE
-echo
 
 echo
 echo  "INFO: Drop and Load the TST Test tables..."   

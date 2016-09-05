@@ -1,3 +1,7 @@
-Proposed enhancements:
-* Update all README docs to be READM.md (markdown) for each application and reference from the application
-* Create a regression test process and separate from the install process. 
+# Proposed Enhancements
+[ ] Update/verify/spellcheck the primary README.md doc.
+[ ] Update/rename all application README docs to: README-<appName>.md (markdown) format and reference from the application.
+[x] Move all shared script processes to the .24devShared.profile.
+[ ] Investigate how RScripts should access the profile. 
+[ ] Create a regression test process and separate from the install process. 
+

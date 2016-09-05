@@ -10,7 +10,6 @@
 COMMENT_OUT
 
 echo "Starting script on:" $(date)
-echo "#######################################"
 echo
 echo "Source the 24dev profile and display the global variables..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
@@ -19,16 +18,7 @@ else
    echo "Failure: The profile is not readable: ${BASE}/.24dev.profile"
    exit 1   
 fi
-echo "Display profile Global variables:"
-echo "BASE=$BASE"
-echo "APPS=$APPS"
-echo "DOCS=$DOCS"
-echo "MYDEV_NAME=$MYDEV_NAME"
-
-echo "Display the associated License file header:"
-head -4 ../../../../LICENSE
-chkerr "$?" "1" "The following command failed: head -4 ../../../../LICENSE"
-echo
+echo 
 
 read -r -d '' usage <<-'EOF'
 Usage: competitionIndexerCLI.sh -f [inputFile.csv] 
