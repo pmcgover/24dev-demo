@@ -31,18 +31,18 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 * Type "apps" to navigate to the available applications. 
 * Note that each application has a similar folder structure for binary programs (bin), 
   input/ouput files, logs, docs, etc. 
-* Navigate to the desired apps **doc** folder and view the related docs/README-<appName>.md file. 
+* Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
 
-## Creating your own 24dev version
+## High level process to create your own 24dev Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
 * Clone the 24dev-demo repo to yours: *git clone --bare git@github.com:pmcgover/24dev-demo.git*
-* Rename the repo as needed: *mv 24dev-demo 24dev-<yourRepo>*  
+* Rename the repo as needed: *mv 24dev-demo 24dev-\<yourRepo\>*  
 * Add your new changes: *git add -A*
-* Commit your changes: git commit -m 'Add working directory'
+* Commit your changes: git commit -m 'Initial 24dev addition'
 * Push your changes to the remote repository: *git push origin*
-* Update your 24dev instance with your own applications and custome settings. 
+* Update your 24dev instance with your own applications and custom settings. 
 * Create tags to mark important change sets and push them : *git tag v.N.N.N*; git push --tags origin  
 * Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 
