@@ -1,0 +1,3 @@
+Proposed enhancements:
+* Update all README docs to be READM.md (markdown) for each application and reference from the application
+* Create a regression test process and separate from the install process. 

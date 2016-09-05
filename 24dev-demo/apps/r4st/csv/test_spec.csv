@@ -1,0 +1,18 @@
+test_spec_key|id|notes|activity_type|test_type|research_hypothesis|null_hypothesis|reject_null_hypothesis|web_protocol|web_url|web_photos|test_start_date|id_site
+2008-bell-nursery|3|2008-bell-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2008-04-04|3
+2008-costa-nursery|4|2008-costa-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2008-04-04|4
+2009-bell-nursery|5|2009-bell-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2009-04-04|3
+2009-costa-nursery|6|2009-costa-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2009-04-04|4
+2010-bell-nursery|7|2010-bell-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2010-03-25|3
+2010-dykema-nursery|8|2010-dykema-nursery results|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2010-03-25|5
+2011-bell-nursery|13|2011-bell-nursery|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2011-04-08|3
+2012-bell-nursery|14|2012-bell-nursery|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2012-04-06|3
+2012-2xCAG12-Cross|15|2012-2xCAG12-Cross|EVENT|breeding|The 2xCAG12 cross will have selections that yield more biomass than CAG204, root from cuttings, have straighter form and be fertile or infertile.|0|0|0|0|0|2012-02-12|3
+2011-1xCAGW-Cross|16|2011-1xCAGW-Cross|EVENT|breeding|The 1xCAGW cross will have similar aspen to alba like seedling ratios as the CAG204 x AE42 cross.|0|0|0|0|0|2012-03-14|3
+2011-RNE-PolePlanting|17|2011-RNE-PolePlanting|TRIAL|field-planting|The rootable aspen materials may have similar survival rates as poles planted on good field sites as the same stock in nursery as with 6 cuttings.|0|0|0|0|0|2011-11-05|7
+WASP-2013-A|18|WASP-2013-A|TRIAL|propagation|The Willow and Water Soak treatments will show an increase in rooting compared to the No Soak control.|0|0|0|0|0|2013-01-12|6
+2013-breeding|19|2013-breeding|EVENT|breeding|The 2013 aspen crosses will meet the expectations set within the POC breeding strategy.|0|0|0|0|0|2013-03-19|6
+2013-bell-nursery|20|2013-bell-nursery|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2013-04-20|3
+2014-breeding|21|2014-breeding|EVENT|breeding|The 2014 aspen crosses will meet the expectations set within the POC breeding strategy.|0|0|0|0|0|2014-03-19|6
+2014-bell-nursery|22|2014-bell-nursery|EVENT|nursery|The control clones indicate that the nursery results are consistent.|The control clones indicate that the nursery results are NOT consistent.|0|0|0|0|2014-04-20|3
+2005-MI-FieldTrial|23|2005-MI-FieldTrial|TRIAL|field-trial|0|0|0|0|0|0|2005-05-15|8

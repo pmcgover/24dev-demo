@@ -1,0 +1,7 @@
+site_key|id|location_code|name_long|notes|address|loc_lat|loc_long|elevation_ft|aspen_site_index|usda_soil_texture|drainage_class_usda|mean_annual_precip_in|mean_annual_temp_f|frost_free_period_days|depth_to_water_table_in|usda_map_url|web_url|web_photos|contact
+Bell-Nursery|3|BELLN|0|MBP|0|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+Costa-Nursery|4|COSTN|0|MBP|0|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+Dykema-Nursery|5|DYKEN|0|MBP|0|0|0|900|0|sand|ED|34|48|170|1000|0|0|0|0
+Bell-Indoor|6|BELLI|0|MBP|0|0|0|900|0|0|U|-1|-1|-1|-1|0|0|0|0
+Rockford-NE|7|RNE|0|MBP|0|0|0|900|0|0|WD|0|0|0|-1|0|0|0|0
+MFUPTIC|8|MF|0|MFUPTIC|0|0|0|0|0|0|U|-1|-1|-1|-1|0|0|0|0
