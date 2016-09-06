@@ -21,7 +21,17 @@ echo "Starting script on:" $(date)
 echo
 
 echo "Update the 24dev profile with the base pathname, all scripts should source this profile..."
-BASE=$(readlink -f ../../..)
+# Extract the base path from the 24dev profile location and match a single entry against this pwd:
+# Test and fail if there are more than one instance of the profile
+countProfiles=$(find ~/Desktop -name .24dev.profile|grep -v backup|wc -l)
+if [[ $countProfiles -ne 1 ]]; then
+   echo "FAILURE: There can be only one instance of the .24dev.profile file on the Desktop"
+   echo "Below are the multiple profiles that were found:"
+   find ~/Desktop -name .24dev.profile
+   exit 1
+fi
+BASE=$(dirname $(find ~/Desktop -name .24dev.profile)|grep -v backup)
+
 echo BASE=$BASE
 sed -i.bak "s%BASE=.*$%BASE=$BASE%" ${BASE}/.24dev.profile 
 chkerr "$?" "1" "The ${BASE}/.24dev.profile file was not available or the sed command failed."
