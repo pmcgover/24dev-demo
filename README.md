@@ -21,7 +21,7 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 * Copy the tar file to the OSGeo Desktop.
 * Right click on the tar file and select "Extact Here".
 * Navigate to the extracted folder, open a terminal window and run the following commands:
-*  chmod -R 755 *; ./24dev-demo/apps/install2Osgeo/bin/install2Osgeo.sh 
+**  chmod -R 755 *; cd 24dev-demo; ./apps/install2Osgeo/bin/install2Osgeo.sh 
 * The above command will create databases, install and test the required programs.
 * The program documentation is located online at:  https://github.com/pmcgover/24dev-demo  
 

@@ -15,3 +15,19 @@ head -3 ${MYDEV_NAME_PATH}/README.md
 echo
 echo
 
+# Check error  function to validate or fail after command completion:
+chkerr()
+{
+if [[ ${1} -gt 0 ]] ; then
+   ###  Error message in lines below, do not change spacing: ###
+   errMsg="`date`
+   FAILURE: UnixExitCode=${1}, ScriptExitCode=${2}
+   ${3}"
+   ###  Error message in lines Above, do not change spacing: ###
+   echo
+   echo "${errMsg}"
+   echo
+   exit ${2}
+fi
+}
+

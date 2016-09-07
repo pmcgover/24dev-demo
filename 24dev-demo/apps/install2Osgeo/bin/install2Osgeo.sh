@@ -1,27 +1,13 @@
 #!/bin/bash
 # File: install2Osgeo.sh
 
-# Check function to validate succesful process completion: 
-chkerr()
-{
-if [[ ${1} -gt 0 ]] ; then
-   ###  Error message in lines below, do not change spacing: ###
-   errMsg="`date`
-   FAILURE: UnixExitCode=${1}, ScriptExitCode=${2}
-   ${3}"
-   ###  Error message in lines Above, do not change spacing: ###
-   echo
-   echo "${errMsg}"
-   echo
-   exit ${2}
-fi
-}
-
 echo "Starting script on:" $(date)
 echo
 
 echo "Update the 24dev profile with the base pathname, all scripts should source this profile..."
 BASE=$(pwd|cut -d"/" -f-6)
+chkerr "$?" "1" "Setting the BASE variable failed."
+
 
 echo BASE=$BASE
 sed -i.bak "s%BASE=.*$%BASE=$BASE%" ${BASE}/.24dev.profile 
