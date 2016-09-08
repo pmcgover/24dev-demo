@@ -1,17 +1,11 @@
 #!/bin/bash
 # File: competitionIndexerCLI.sh
 <<COMMENT_OUT
-############################  TERMS  ################################################
-# The tree of interest is called the subject tree or: sub or s 
-# The neighbor trees are called competitors or: c
-# Referencing the competitors relative from the subject is via 8 diirectional positions or: N NE E SE S SW W NW 
-# The input data file contains 4 columns, ID, Row, Col, DBH, Name.  
-####################################################################################
 COMMENT_OUT
 
 echo "Starting script on:" $(date)
 echo
-echo "Source the 24dev profile and display the global variables..."
+echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
 else 

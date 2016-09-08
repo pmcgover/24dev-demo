@@ -1,12 +1,10 @@
 #!/bin/bash
-# File: r4st-loader.sh 
-
-<<COMMENT_OUT
-COMMENT_OUT
+# File: r4st-loader.sh
+# Usage: Execute r.sh which calls this script, creates a log file and displays errors to stdout.
 
 echo "Starting script on:" $(date)
 echo
-echo "Source the 24dev profile and display the global variables..."
+echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
 else 
@@ -14,9 +12,13 @@ else
    exit 1   
 fi
 
+<<COMMENT_OUT
+COMMENT_OUT
+
 cat <<-EOF 
-Usage: r4st-loader.sh 
+Usage: r4st-loader.sh  
 This program will execute the pgsql commands to create and load r4st database objects 
+Run the r.sh script to create a log file and display errors to stdout.
 EOF
 echo 
 

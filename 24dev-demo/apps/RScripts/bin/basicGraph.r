@@ -1,7 +1,7 @@
 #!/usr/bin/Rscript
 print("Usage: ./sriptName.r")
 print("R batch mode file for Linux. Write a basic Hello World graph to: ../output/basicGraph.png")
-print("See ../docs/README.sh for release and license details")
+print("See ../docs/README-RScripts.md for usage license details")
 
 print("Hello World")
 x<-1:10
