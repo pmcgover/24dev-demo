@@ -6,16 +6,18 @@ echo
 
 echo "Update the 24dev profile with the base pathname, all scripts should source this profile..."
 BASE=$(pwd|cut -d"/" -f-6)
-chkerr "$?" "1" "Setting the BASE variable failed."
-
-
 echo BASE=$BASE
 sed -i.bak "s%BASE=.*$%BASE=$BASE%" ${BASE}/.24dev.profile 
-chkerr "$?" "1" "The ${BASE}/.24dev.profile file was not available or the sed command failed."
 
-echo "Source the 24dev profile and display the global variables..."
-. ${BASE}/.24dev.profile 
-chkerr "$?" "1" "The ${BASE}/.24dev.profile file was not available."
+echo
+echo "Source the 24dev profile to set variables and display license/program details..."
+if [[  -r ${BASE}/.24dev.profile ]]; then
+   . ${BASE}/.24dev.profile
+else 
+   echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
+   exit 1   
+fi
+echo 
 
 echo "Make sure all files are executable..." 
 chmod -R 755 ${BASE}
@@ -66,7 +68,8 @@ alias ll='ls -ltra'
 alias sql='cd ${APPS}/r4st/sql'
 alias csv='cd ${APPS}/r4st/csv'
 alias rr='cd ${APPS}/r4st/bin'
-alias rrr='cd ${APPS}/r4st/bin;./r.sh '
+alias rrr='cd ${APPS}/r4st/bin;./r4st-wraper.sh '
+alias rlog='cd ${APPS}/r4st/logs'
 alias RSC='cd ${APPS}/RScripts/'
 alias ins='cd ${APPS}/install2Osgeo/bin'
 alias base='cd ${BASE}'
@@ -100,33 +103,6 @@ echo
 echo "The .bashrc and .vimrc profiles were updated..." 
 echo
 
-echo "Install the dbkiss database viewer application..."
-sudo cp -rf ${APPS}/r4st/files/r4stdb /var/www/html
-sudo chmod 777 /var/www/html/r4stdb/dbkiss_sql
-ls -ltr /var/www/html/r4stdb|grep '^drwxrwxrwx'
-chkerr "$?" "1" "The dbkiss file copy and/or chmod process failed" 
-echo
-
-echo "Test primary r4st database processes..."
-echo "Run the r4st prgram to load the r4st r4p database..."
-ls -ltr ${APPS}/r4st/bin/r.sh
-cd ${APPS}/r4st/bin
-./r.sh >/dev/null 2>&1
-
-chkdberr=$(egrep -i 'error|fatal|hint' ${APPS}/r4st/bin/r.log ) 
-if [[ -n $chkdberr ]]; then
-   echo "FAILURE: Database load Errors found in ${APPS}/r4st/bin/r.log" 
-   echo "Fix the errors and re-run this process. Exiting now..."
-   exit 1
-fi
-
-echo
-grep DONE  ${APPS}/r4st/bin/r.log 
-chkerr "$?" "1" "The r4st database process and log file did not complete"  
-echo "You can view the r4st PRD datbase at: http://localhost/r4stdb/dbkiss.php" 
-
-
-echo
 echo "Create a backup tar file, stored under ${BASE}/backup..."
 datestamp=$(date +%Y%m%d_%H%M)
 tar -cpf ${BASE}/backup/${MYDEV_NAME}.${datestamp}.tar -C ~/Desktop ${MYDEV_NAME} 
@@ -135,3 +111,4 @@ chkerr "$?" "1" "The backup tar file process failed..."
 echo
 echo "Success! Your $MYDEV_NAME system has been installed."
 echo
+

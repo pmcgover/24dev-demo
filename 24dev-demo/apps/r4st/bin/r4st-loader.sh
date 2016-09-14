@@ -1,24 +1,25 @@
 #!/bin/bash
 # File: r4st-loader.sh
-# Usage: Execute r.sh which calls this script, creates a log file and displays errors to stdout.
+# Usage: Execute r4st-wraper.sh which calls this script, creates a log file and displays errors to stdout.
 
 echo "Starting script on:" $(date)
-echo
+echo BASE=$(pwd|cut -d"/" -f-6)
+echo BASE=$BASE
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
 else 
-   echo "Failure: The profile is not readable: ${BASE}/.24dev.profile"
+   echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
    exit 1   
 fi
+echo 
 
 <<COMMENT_OUT
 COMMENT_OUT
 
 cat <<-EOF 
 Usage: r4st-loader.sh  
-This program will execute the pgsql commands to create and load r4st database objects 
-Run the r.sh script to create a log file and display errors to stdout.
+This program will execute the pgsql commands to create and load r4st plant database objects 
 EOF
 echo 
 
@@ -66,7 +67,7 @@ echo
 
 echo 
 echo "Create a dump of the master PRD database, then load it into an existing but empty SIT database... "
- pg_dump r4p > r4p.dump.sql
+ pg_dump r4p > ../output/r4p.dump.sql
 echo
 
 echo  "INFO: Drop all existing tables and views from the SIT database..."
@@ -74,7 +75,7 @@ echo  "INFO: Drop all existing tables and views from the SIT database..."
 echo
 echo "Load the PRD data into the SIT database... "
 echo "... Only works on an empty database so only run once - Need to add repeatability..."  
-  psql r4s < r4p.dump.sql 
+  psql r4s < ../output/r4p.dump.sql 
 echo
 echo
 
@@ -107,3 +108,5 @@ fi
 echo "The r4st database process is: DONE"
 psql --version
 
+echo
+echo "You can view the r4st PRD database at: http://localhost/r4stdb/dbkiss.php"

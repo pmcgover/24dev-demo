@@ -11,4 +11,3 @@ plot(x,y)
 plot(x,y,type="o") 	
 plot(x,y,type="o",pch=19,lty=1,lwd=1) 
 
-

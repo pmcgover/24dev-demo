@@ -1,5 +1,5 @@
 #!/usr/bin/Rscript
-print("Usage: ./sriptName.r")
+print("Usage: ./scriptName.r")
 print("R batch mode file for Linux. A conventional Bar chart with straight X axis labels") 
 print("See ../docs/README-RScripts.md for usage license details")
 

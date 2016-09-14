@@ -5,11 +5,13 @@ COMMENT_OUT
 
 echo "Starting script on:" $(date)
 echo
+BASE=$(pwd|cut -d"/" -f-6)
+echo BASE=$BASE
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
 else 
-   echo "Failure: The profile is not readable: ${BASE}/.24dev.profile"
+   echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
    exit 1   
 fi
 echo 
@@ -85,11 +87,8 @@ else
   optionalHeaderText="" 
 fi
 
-# The import command does not like the header so copy the input file without the header: 
-inputFileNoHeader=${inputFile}.NoHeader
-more +1 $inputFile > $inputFileNoHeader 
-
 # Put the output file in the directory listed below: 
+echo
 echo "Extract the basename of the input file..."
 baseInputFileName=$(basename $inputFile)
 echo "The Base input file name is: baseInputFileName=$baseInputFileName" 
@@ -130,14 +129,9 @@ SQL
 
 echo "Load the input CSV file into the CI1 table..."
 $RUN_ON_MYDB <<SQL
-\copy CI1 from '$inputFileNoHeader' delimiter ',' CSV HEADER
+\copy CI1 from '$inputFile' delimiter ',' CSV HEADER
 commit;
 SQL
-
-# Remove the NoHeader file:
-rm $inputFileNoHeader 
-echo
-
 
 echo "Display first record of the CI1 Table..."
 $RUN_ON_MYDB <<SQL
