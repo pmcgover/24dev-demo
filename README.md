@@ -12,7 +12,7 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 * Users can install 24dev applications to a live OSGeo DVD, flash drive  or VM by running one script.
 * Users can re-run the install script to update profiles and accept different 24dev-* programs.  
 * Users can test programs with the **regressionTester** application with results published to the: 
-  [Project-Sumary.md](../blob/master/Project-Summary.md)
+  [Project-Sumary.md](master/Project-Summary.md)
 * The install script creates a backup tar file and tests for command success.
 * OSD user scripts can display applicable license and README.md files.
 * OSD users are encouraged to fork customized releases via github renamed as: 24dev-[myForkName]. 
