@@ -23,7 +23,7 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 * Copy the tar file to the OSGeo Desktop.
 * Right click on the tar file and select "Extact Here".
 * Navigate to the extracted folder, open a terminal window there and run the following commands:
-Quote **chmod -R 755 *; cd 24dev-demo; ./apps/install2Osgeo/bin/install2Osgeo.sh** 
+> >  **chmod -R 755 *; cd 24dev-demo; ./apps/install2Osgeo/bin/install2Osgeo.sh** 
 * The above command will create databases, install and test the required programs.
 * The program is documented and located at:  https://github.com/pmcgover/24dev-demo  
 
@@ -47,8 +47,8 @@ Quote **chmod -R 755 *; cd 24dev-demo; ./apps/install2Osgeo/bin/install2Osgeo.sh
 * Push your changes to the remote repository: *git push origin*
 * Update your 24dev instance with your own applications, custom settings and license. 
 * If using the MIT license, append your copyright details below existing copyright entries. See example below:
-Quote **Original work Copyright (c) 2015 Patrick Noel McGovern** 
-Quote **Modified work Copyright 2016 John David Doe**  
+> > **Original work Copyright (c) 2015 Patrick Noel McGovern** 
+> > **Modified work Copyright 2016 John David Doe**  
 * Create tags to mark important change sets and push them : *git tag v.N.N.N*; git push --tags origin  
 * Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 
