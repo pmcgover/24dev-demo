@@ -27,15 +27,23 @@ fi
 
 sed '1d' ${APPS}/regressionTester/input/inputRegressionTests.csv > ${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 inputRegTests=${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
-outputRegTests=${APPS}/regressionTester/output/outputRegressionTests.csv
-logsRegTests=${APPS}/regressionTester/logs/outputRegressionTests.csv
+outputRegTests=${APPS}/regressionTester/output/regressionTestSummary.csv
+logsRegTests=${APPS}/regressionTester/logs/regressionTests.log
 RegTesterDir=${APPS}/regressionTester/bin
+ProjectSummaryFile=$MYDEV_NAME_PATH/Project-Summary.md
 cd $RegTesterDir
+
+#Create a new output .csv file for summary report details:
+echo "Regression Test Nbr|Application Name|Test Name|Nbr Of Checks|Run Time Seconds|Pass or Fail" > $outputRegTests
 
 cnt=1
 echo "Load input regression tests for each application..."
 # for testrun in $(cat "${inputRegTests}"); do 
 while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
+   # Declare an associative array to store/display regression test checkItems with their itemStatus exit number (0=Success)
+   startTime=$(date +'%s')
+   declare -A REGCHECK  
+
   testApp=$(echo  "$testrun"|cut -d"|" -f1)    #Application Name:  eg.  RScripts 
   testName=$(echo "$testrun"|cut -d"|" -f2)    #Input filename or script name:  eg. basicGraph, u07m-6yrStacks-Input
   getCommand=$(echo  "$testrun"|cut -d"|" -f3) #Command: egs. ./r4st-wrapper.sh, ./basicGraph.r ./competitionIndexerCLI.sh -f ../../u07m-1yrDataSet-Input.csv
@@ -72,8 +80,12 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo "#######################" 
   echo "Running regression test: nbr: $cnt, TestApp=$testApp, TestName=$testName..."
   ${exCommand} > ${logFile}  2>&1
-  commandStatus=$(echo $?)
-  echo "The post COMMAND exit status is: $commandStatus..."
+  # Load output results into the Array 
+  status=$(echo $?)
+  echo "The post COMMAND exit status is: $status"
+  REGCHECK[commandExitStatus]=$status
+  echo "Display the command array exit status ${REGCHECK[commandExitStatus]} "
+
   echo
   echo "Change back to the regressionTester working directory: $RegTesterDir..." 
   cd $RegTesterDir
@@ -82,33 +94,38 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo
   if [[ -r ${appOutput}/${outputFileName} && -r ${appGoodTest}/${outputFileName} ]]; then
      echo "The Applicaiton output and good test files are available..."
-     outputFileTest=0
+     status=0
   else
      echo "FAILURE: The Applicaiton output and good test files are NOT available..."   
-     outputFileTest=1
+     status=1
      echo "The expected aplication and good file paths are listed below..." 
      ls -ltr ${appOutput}/${outputFileName}
      ls -ltr ${appGoodTest}/${outputFileName} 
   fi
- 
+  # Load output results into the Array 
+  echo "The output file availability test exit value is: $status"
+  REGCHECK[outputFileTest]=$status
+  echo "Display the command array exit status ${REGCHECK[outputFileTest]} "
+
   echo "Comparing this test run with previous good files..."  
   echo "Using cksum command to compare the output file to the known good test file..."
   appCksum=$(cksum ${appOutput}/${outputFileName})    
   goodCksum=$(cksum ${appGoodTest}/${outputFileName})    
-  echo "Compare the Application and Good test cksum command details below (cksum, file size, output files:"
-  echo "$appCksum" 
-  echo "$goodCksum"
-  echo
+  echo "Compare the application and good test cksum command details below (cksum, file size, output files:"
    
   appCksumValue=$(echo $appCksum|awk '{print $1}')  
   goodCksumValue=$(echo $goodCksum|awk '{print $1}')  
   if [[ $appCksumValue -eq $goodCksumValue ]]; then
      echo "The output chksum is the same as the good test file."
-     cksumStatus=0
+     status=0
+     echo "Display the application and good test file cksum file outputs below..."
+     echo "$appCksum"
+     echo "$goodCksum"
+     echo
   else 
      echo "FAILURE: The output file is not the same as the good test file, using diff command to compare differences..."
      echo 
-     cksumStatus=1
+     status=1
      echo 
      diff ${appOutput}/${outputFileName} ${appGoodTest}/${outputFileName}    
      getdiff=$(diff ${appOutput}/${outputFileName} ${appGoodTest}/${outputFileName})    
@@ -118,6 +135,10 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
      echo "$getdiff"
      echo
   fi   
+  # Load output results into the Array 
+  echo "The output file cksumStatus test exit value is: $status"
+  REGCHECK[cksumStatus]=$status
+  echo "Display the command array exit status ${REGCHECK[cksumStatus]} "
 
   echo "The $testApp output log file is located at $logFile" 
   echo "Output log file ls details..."
@@ -127,29 +148,74 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo
   echo "Grep the log file for ERROR or FATAL strings and warn if any found..."  
   getErrors=$(egrep -i '(error|fatal)' $logFile)  
-  cntErrors=$(egrep -i '(error|fatal)' $logFile|wc -l)
+  status=$(egrep -i '(error|fatal)' $logFile|wc -l)
   if [[ -n $getErrors ]]; then
      echo "WARNING! Found $cntErrors Error or Fatal stirngs in the log file!"
      echo "Investigate log file: $logFile"
      echo
      echo "Displaying the Error/Fatal strings below..."
      echo "$getErrors" 
- fi      
+  fi      
+  # Load output results into the Array 
+  echo "The output file cntErrors test exit value is: $status"
+  REGCHECK[cntErrors]=$status
+  echo "Display the command array exit status ${REGCHECK[cntErrors]} "
 
-  echo "Create a summary report with: pass/fail, log location, elapsed time, output cksum, file size,..."
-  if [[ $commandStatus -eq 0 && $cksumStatus -eq 0 && $cntErrors -eq 0 && $outputFileTest -eq 0 ]]; then
+  echo "Process, display and report the REGCHECK array values to validate all tests..." 
+  endTime=$(date +'%s')
+  runTime=$((endTime - startTime))
+  sumExitValues=
+  arrayLenght=${#REGCHECK[@]}
+  for key in "${!REGCHECK[@]}"
+  do
+    echo "REGCHECK KEY is: $key and its exit VALUE is ${REGCHECK[$key]}"
+    # echo "Display all array keys: ${!REGCHECK[@]}"
+    # echo "Display the sumExitValues=$sumExitValues"
+    sumExitValues=$((sumExitValues + REGCHECK[$key]))
+    if [[ $key -ne 0 ]]; then
+      echo "WARNING: The Test Nbr $cnt regression test: $key failed with exit code: REGCHECK[$key]"   
+      echo
+    fi
+  done 
+
+  echo "Create a summary report with test run summary details..."
+  if [[ $sumExitValues -eq 0 ]]; then
      echo
      echo "###### SUCESS!!! ############"
-     echo "All regression tests passed for application $testApp, test number: $cnt" 
+     echo "All regression tests PASSED for application $testApp, test number: $cnt" 
      echo "###### SUCESS!!! ############"
      echo
+     echo "Display PASSED results: $cnt|$testApp|$testName|$arrayLenght|$runTime|Pass" 
+     echo "$cnt|$testApp|$testName|$arrayLenght|$runTime|Pass" >> $outputRegTests   
   else
      echo
      echo "###### WARNING - Will Robinson! #################################"
-     echo "Not all regression tests passed for application $testApp, test number: $cnt"
-     echo "###### WARNING - Will Robinson! ##################################"
+     echo "There were $sumExitValues regression tests FAILURES for application $testApp, test number: $cnt"
+     echo "###### WARNING ##################################################"
+     echo 
+     echo "Display FAIlED results: $cnt|$testApp|$testName|$arrayLenght|$runTime|Fail" 
+     echo "$cnt|$testApp|$testName|$arrayLenght|$runTime|Fail" >> $outputRegTests   
   fi
   cnt=$((cnt+1))
-done  <  "${inputRegTests}"
+  unset -v REGCHECK 
+done  <  "${inputRegTests}" > ${logsRegTests} 2>&1 
  
+echo "The 24dev regression test process has completed." 
+echo "Log files at: ${logsRegTests}"
+echo "Regression summary .csv file at: "$outputRegTests"" 
+echo "Project Summary file at: $ProjectSummaryFile"
+echo "Checking log files for failed regression test runs..."
+echo
+grep 'There were 24dev regression tests FAILURES for application' "${logsRegTests}"
+echo 
+echo "Display 24dev regression summary .csv file below:" 
+cat $outputRegTests
+
+# Copy the summary file to the main 24dev folder as a Markdown table file:
+cp $outputRegTests $ProjectSummaryFile 
+# Insert at least 3 dashes per field to display a bold header.
+headerSubLine=$(echo " --- | --- | --- | --- | --- | --- ")
+sed -i "2i $headerSubLine" $ProjectSummaryFile 
+
+
 
