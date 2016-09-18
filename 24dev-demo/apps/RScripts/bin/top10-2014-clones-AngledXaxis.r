@@ -1,7 +1,8 @@
 #!/usr/bin/Rscript
 print("Usage: ./sriptName.r")
 print("R batch mode file for Linux. A conventional Bar chart with angled X axis labels") 
-print("See ../docs/README-RScripts.md for usage license details")
+print("See ../docs/README-RScripts.md for usage details")
+print("This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE")
 
 # Load CSV data file with a header 
 d1 <- read.csv(file="../input/top10_vw_nursery_cuttings_2014.csv",head=T,sep=",")

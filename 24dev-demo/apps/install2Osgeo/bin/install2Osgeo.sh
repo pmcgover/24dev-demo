@@ -3,7 +3,8 @@
 
 echo "Starting script on:" $(date)
 echo
-
+echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
+echo
 echo "Update the 24dev profile with the base pathname, all scripts should source this profile..."
 BASE=$(pwd|cut -d"/" -f-6)
 echo BASE=$BASE

@@ -3,6 +3,8 @@
 # Usage: Execute r4st-wraper.sh which calls this script, creates a log file and displays errors to stdout.
 
 echo "Starting script on:" $(date)
+echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
+echo
 echo BASE=$(pwd|cut -d"/" -f-6)
 echo BASE=$BASE
 echo "Source the 24dev profile to set variables and display license/program details..."

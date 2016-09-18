@@ -7,6 +7,8 @@ echo "Starting script on:" $(date)
 echo
 BASE=$(pwd|cut -d"/" -f-6)
 echo BASE=$BASE
+
+echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile

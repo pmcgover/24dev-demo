@@ -1,7 +1,8 @@
 #!/usr/bin/Rscript
 print("Usage: ./sriptName.r")
 print("R batch mode file for Linux. Write a basic Hello World graph to: ../output/basicGraph.png")
-print("See ../docs/README-RScripts.md for usage license details")
+print("See ../docs/README-RScripts.md for usage details")
+print("This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE")
 
 print("Hello World")
 x<-1:10
