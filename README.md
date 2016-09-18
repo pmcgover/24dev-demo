@@ -9,21 +9,23 @@ applications on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelo
 via the Open Source Community (OSC) and you, the Open Source Developer (OSD). 
 
 ## 24Dev Features
-* Users can install 24dev applications to a live OSGeo DVD or flash drive by running one script.
+* Users can install 24dev applications to a live OSGeo DVD, flash drive  or VM by running one script.
 * Users can re-run the install script to update profiles and accept different 24dev-* programs.  
+* Users can test programs with the **regressionTester** application with results published to the: 
+  [Project-Sumary.md](../blob/master/Project-Summary.md)
 * The install script creates a backup tar file and tests for command success.
 * OSD user scripts can display applicable license and README.md files.
-* OSD users are encouraged to fork new releases via github renamed as: 24dev-[myForkName]. 
+* OSD users are encouraged to fork customized releases via github renamed as: 24dev-[myForkName]. 
 
 ## Installing 24dev-demo to an OSGeo Live DVD system
 * Download the latest version of the 24dev-demo tar file and install on a USB flash drive.
-* Boot your computer with the OSGeo Live DVD.
+* Boot your computer with the OSGeo Live DVD. 
 * Copy the tar file to the OSGeo Desktop.
 * Right click on the tar file and select "Extact Here".
-* Navigate to the extracted folder, open a terminal window and run the following commands:
+* Navigate to the extracted folder, open a terminal window there and run the following commands:
 **  chmod -R 755 *; cd 24dev-demo; ./apps/install2Osgeo/bin/install2Osgeo.sh 
 * The above command will create databases, install and test the required programs.
-* The program documentation is located online at:  https://github.com/pmcgover/24dev-demo  
+* The program is documented and located at:  https://github.com/pmcgover/24dev-demo  
 
 ## Using 24dev-demo on OSGeo
 * Install the 24dev application on OSGeo, open a new terminal window and type "alias" to 
@@ -37,12 +39,16 @@ via the Open Source Community (OSC) and you, the Open Source Developer (OSD).
 ## Create your own 24dev Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
-* Clone the 24dev-demo repo to yours: *git clone --bare git@github.com:pmcgover/24dev-demo.git*
-* Rename the repo as needed: *mv 24dev-demo 24dev-\<yourRepo\>*  
+* Fork the [24dev-demo repository](https://github.com/pmcgover/24dev-demo)
+* Clone the fork: [Fork A Repo](https://help.github.com/articles/fork-a-repo)
+* Rename the new repo as needed: e.g.  *mv 24dev-demo 24dev-\<yourUserName\>*  
 * Add your new changes: *git add -A*
 * Commit your changes: git commit -m 'Initial 24dev addition'
 * Push your changes to the remote repository: *git push origin*
-* Update your 24dev instance with your own applications and custom settings. 
+* Update your 24dev instance with your own applications, custom settings and license. 
+** If using the MIT license, append your copyright details below existing copyright entries. See example below:
+*** **Original work Copyright (c) 2015 Patrick Noel McGovern** 
+*** **Modified work Copyright 2016 John David Doe**  
 * Create tags to mark important change sets and push them : *git tag v.N.N.N*; git push --tags origin  
 * Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 
