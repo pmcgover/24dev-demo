@@ -3,17 +3,23 @@
 
 echo "Starting script on:" $(date)
 echo
-echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
-echo
 echo "Update the 24dev profile with the base pathname, all scripts should source this profile..."
 BASE=$(pwd|cut -d"/" -f-6)
 echo BASE=$BASE
 sed -i.bak "s%BASE=.*$%BASE=$BASE%" ${BASE}/.24dev.profile 
 
 echo
+echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
+   echo
+   echo "Display the associated MIT License file:"
+   cat  ${MYDEV_NAME_PATH}/LICENSE
+   echo
+   echo "Display the associated README.md file header:"
+   head -3 ${MYDEV_NAME_PATH}/README.md
+   echo
 else 
    echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
    exit 1   
@@ -112,5 +118,6 @@ chkerr "$?" "1" "The backup tar file process failed..."
 
 echo
 echo "Success! Your $MYDEV_NAME system has been installed."
+echo "Consider testing your programs with the regressionTester application"
 echo
 

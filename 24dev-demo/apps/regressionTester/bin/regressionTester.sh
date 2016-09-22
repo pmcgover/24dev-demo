@@ -5,14 +5,23 @@ echo "Starting script on:" $(date)
 echo BASE=$(pwd|cut -d"/" -f-6)
 echo
 
+echo
 echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
+   echo
+   echo "Display the associated MIT License file:"
+   cat  ${MYDEV_NAME_PATH}/LICENSE
+   echo
+   echo "Display the associated README.md file header:"
+   head -3 ${MYDEV_NAME_PATH}/README.md
+   echo
 else 
    echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
    exit 1   
 fi
+echo 
 
 cat <<-EOF 
 Usage: regressionTester.sh 
@@ -31,7 +40,6 @@ inputRegTests=${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 outputRegTests=${APPS}/regressionTester/output/regressionTestSummary.csv
 logsRegTests=${APPS}/regressionTester/logs/regressionTests.log
 RegTesterDir=${APPS}/regressionTester/bin
-ProjectSummaryFile=$MYDEV_NAME_PATH/Project-Summary.md
 cd $RegTesterDir
 
 #Create a new output .csv file for summary report details:
@@ -190,7 +198,7 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
      echo "$cnt|$testApp|$testName|$arrayLenght|$runTime|Pass" >> $outputRegTests   
   else
      echo
-     echo "###### WARNING - Will Robinson! #################################"
+     echo "###### Danger, Will Robinson! #################################"
      echo "There were $sumExitValues regression tests FAILURES for application $testApp, test number: $cnt"
      echo "###### WARNING ##################################################"
      echo 
@@ -212,11 +220,27 @@ echo
 echo "Display 24dev regression summary .csv file below:" 
 cat $outputRegTests
 
+
+echo 
+echo "Creating the 24dev Project-Summary.md file based on the above results..." 
+ProjectSummaryFile=$MYDEV_NAME_PATH/Project-Summary.md
+appCount=$(ls -ltr $APPS|grep -v 'total 0'|wc -l)
+
+  datestamp=$(date +%Y%m%d_%H%M)
+cat <<-EOF > b.txt
+# $MYDEV_NAME Project Summary 
+Welcome to the $MYDEV_NAME Digital Portfolio. Created on $datestamp with the followig details:
+* Total number of applications: $appCount
+* Total regression test run time:  TBD
+* Total regression test runs: $cnt  
+* Number of Passed tests= N
+* Number of Failed tests= N
+EOF
+  
 # Copy the summary file to the main 24dev folder as a Markdown table file:
 cp $outputRegTests $ProjectSummaryFile 
 # Insert at least 3 dashes per field to display a bold header.
 headerSubLine=$(echo " --- | --- | --- | --- | --- | --- ")
 sed -i "2i $headerSubLine" $ProjectSummaryFile 
-
 
 

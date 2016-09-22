@@ -12,6 +12,13 @@ echo "This program is copyrighted under the MIT license.  See: https://github.co
 echo "Source the 24dev profile to set variables and display license/program details..."
 if [[  -r ${BASE}/.24dev.profile ]]; then
    . ${BASE}/.24dev.profile
+   echo
+   echo "Display the associated MIT License file:"
+   cat  ${MYDEV_NAME_PATH}/LICENSE
+   echo
+   echo "Display the associated README.md file header:"
+   head -3 ${MYDEV_NAME_PATH}/README.md
+   echo
 else 
    echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
    exit 1   

@@ -1,0 +1,5 @@
+[1] "Usage: ./sriptName.r"
+[1] "R batch mode file for Linux. Write a basic Hello World graph to: ../output/basicGraph.png"
+[1] "See ../docs/README-RScripts.md for usage details"
+[1] "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
+[1] "Hello World"
