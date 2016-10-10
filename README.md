@@ -1,25 +1,28 @@
 # 24dev-demo Digital Portfolio
-An unofficial OSGeo addon to demonstrate software and showcase your Digital Portfolio 
+An unofficial OSGeo addon to demonstrate and showcase your Software Digital Portfolio 
 via github.com.
 
 This software is intended to provide users with an easy way to develop, test drive and
-share applications alongside OSGeo and the open source community. Developers, students
-and prospective employers should benefit by viewing the code on github and running the 
-applications on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment",
-via the Open Source Community (OSC) and you, the Open Source Developer (OSD). 
+share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) 
+project and the open source community. Developers, students and prospective employers will 
+benefit by viewing the code and project summary on github and optionally running the applications on OSGeo.  
+The "24dev" name is a play on words for: "Two For DEVelopment", via the Open Source Community (OSC)
+and you, the Open Source Developer (OSD). 
 
 ## 24Dev Features
-* Users can install 24dev applications to a live OSGeo DVD, flash drive  or VM by running one script.
-* Users can re-run the install script to update profiles and accept different 24dev-* programs.  
-* Users can test programs with the **regressionTester** application with results published to the: 
-  [Project-Sumary.md](Project-Summary.md)
-* The install script creates a backup tar file and tests for command success.
+* Users can install 24dev applications to a live OSGeo DVD, flash drive  or virtual machine by 
+running one script.
+* Users can re-run the install script to update profiles, purge log files and accept different 24dev-* programs.  
+* The install script also creates a backup tar file and tests for command success.
+* Users can test their programs with the [regressionTester](24dev-demo/apps/regressionTester) application 
+and have Pass/Fail results published to the: [Project-Sumary.md](Project-Summary.md).
 * OSD user scripts can display applicable license and README.md files.
-* OSD users are encouraged to fork customized releases via github renamed as: 24dev-[myForkName]. 
+* OSD users are encouraged to fork their customized releases via github renamed as: 24dev-[myForkName]. 
 
 ## Installing 24dev-demo to an OSGeo Live DVD system
-* Download the latest version of the 24dev-demo tar file and install on a USB flash drive.
-* Boot your computer with the OSGeo Live DVD. 
+* Download the latest version of the [24dev-demo release](https://github.com/pmcgover/24dev-demo/releases) 
+tar file and install on a USB flash drive.
+* Boot your computer with the [OSGeo Live DVD](https://live.osgeo.org/en/download.html). 
 * Copy the tar file to the OSGeo Desktop.
 * Right click on the tar file and select "Extact Here".
 * Navigate to the extracted folder, open a terminal window there and run the following commands:
