@@ -5,9 +5,9 @@ via github.com.
 This software is intended to provide users with an easy way to develop, test drive and
 share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) 
 project and the open source community. Developers, students and prospective employers will 
-benefit by viewing the code and project summary on github and optionally running the applications on OSGeo.  
-The "24dev" name is a play on words for: "Two For DEVelopment", via the Open Source Community (OSC)
-and you, the Open Source Developer (OSD). 
+benefit by viewing the code and project summary on github and optionally running the applications 
+on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the Open Source 
+Community (OSC) and you, the Open Source Developer (OSD). 
 
 ## 24Dev Features
 * Users can install 24dev applications to a live OSGeo DVD, flash drive  or virtual machine by 
