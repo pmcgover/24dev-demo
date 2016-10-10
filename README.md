@@ -40,6 +40,7 @@ tar file and install on a USB flash drive.
   input/ouput files, logs, docs, etc. 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
+* View the application log files and test results via the [Project-Sumary.md](Project-Summary.md). 
 
 ## Create your own 24dev Software Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
