@@ -35,6 +35,7 @@ if [[ $#  -gt 1 ]] ; then
   exit 1
 fi
 
+totalStartTime=$(date +'%s')
 sed '1d' ${APPS}/regressionTester/input/inputRegressionTests.csv > ${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 inputRegTests=${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 outputRegTests=${APPS}/regressionTester/output/regressionTestSummary.csv
@@ -174,7 +175,7 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   endTime=$(date +'%s')
   runTime=$((endTime - startTime))
   sumExitValues=
-  arrayLenght=${#REGCHECK[@]}
+  arrayLength=${#REGCHECK[@]}
   for key in "${!REGCHECK[@]}"
   do
     echo "REGCHECK KEY is: $key and its exit VALUE is ${REGCHECK[$key]}"
@@ -194,20 +195,30 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
      echo "All regression tests PASSED for application $testApp, test number: $cnt" 
      echo "###### SUCESS!!! ############"
      echo
-     echo "Display PASSED results: $cnt|$testApp|$testName|$arrayLenght|$runTime|Pass" 
-     echo "$cnt|$testApp|$testName|$arrayLenght|$runTime|Pass" >> $outputRegTests   
+     echo "Display PASSED results: $cnt|$testApp|$testName|$arrayLength|$runTime|Pass" 
+     echo "$cnt|$testApp|$testName|$arrayLength|$runTime|Pass" >> $outputRegTests   
   else
      echo
      echo "###### Danger, Will Robinson! #################################"
      echo "There were $sumExitValues regression tests FAILURES for application $testApp, test number: $cnt"
      echo "###### WARNING ##################################################"
      echo 
-     echo "Display FAIlED results: $cnt|$testApp|$testName|$arrayLenght|$runTime|Fail" 
-     echo "$cnt|$testApp|$testName|$arrayLenght|$runTime|Fail" >> $outputRegTests   
+     echo "Display FAIlED results: $cnt|$testApp|$testName|$arrayLength|$runTime|Fail" 
+     echo "$cnt|$testApp|$testName|$arrayLength|$runTime|Fail" >> $outputRegTests   
   fi
   cnt=$((cnt+1))
   unset -v REGCHECK 
 done  <  "${inputRegTests}" > ${logsRegTests} 2>&1 
+
+if [[ $sumExitValues -eq 0 ]]; then
+  testResults="Success! - All regression tests PASSED!"
+  echo "$testResults"
+else
+  testResults="Sorry, there were $sumExitValues regression test failures, please try again..."
+  echo "$testResults"
+fi
+echo
+
  
 echo "The 24dev regression test process has completed." 
 echo "Log files at: ${logsRegTests}"
@@ -225,22 +236,26 @@ echo
 echo "Creating the 24dev Project-Summary.md file based on the above results..." 
 ProjectSummaryFile=$MYDEV_NAME_PATH/Project-Summary.md
 appCount=$(ls -ltr $APPS|grep -v 'total 0'|wc -l)
+totalEndTime=$(date +'%s')
+totalRunTime=$((totalEndTime - totalStartTime))
+# datestamp=$(date +%m/%/d%/Y %H%M)
+datestamp=$(date)
 
-  datestamp=$(date +%Y%m%d_%H%M)
-cat <<-EOF > b.txt
+cat <<-EOF > $ProjectSummaryFile 
 # $MYDEV_NAME Project Summary 
-Welcome to the $MYDEV_NAME Digital Portfolio. Created on $datestamp with the followig details:
+Welcome to the $MYDEV_NAME Digital Portfolio. Created on $datestamp with the following details:
 * Total number of applications: $appCount
-* Total regression test run time:  TBD
+* Total regression test run time in seconds: $totalRunTime 
 * Total regression test runs: $cnt  
-* Number of Passed tests= N
-* Number of Failed tests= N
+* $testResults
+
 EOF
-  
+
 # Copy the summary file to the main 24dev folder as a Markdown table file:
-cp $outputRegTests $ProjectSummaryFile 
+cp $outputRegTests  /var/tmp/outputRegTestsHeader
+
 # Insert at least 3 dashes per field to display a bold header.
 headerSubLine=$(echo " --- | --- | --- | --- | --- | --- ")
-sed -i "2i $headerSubLine" $ProjectSummaryFile 
-
+sed -i "2i $headerSubLine" /var/tmp/outputRegTestsHeader 
+cat /var/tmp/outputRegTestsHeader  >> $ProjectSummaryFile 
 

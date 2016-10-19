@@ -1,12 +1,14 @@
 #!/bin/bash
 #File: .24devShared.profile - Loads shared script processes.  
 
-echo "Display 24dev profile Global variables:"
-echo "BASE=$BASE"
-echo "APPS=$APPS"
-echo "MYDEV_NAME_PATH=$MYDEV_NAME_PATH"
-echo "MYDEV_NAME=$MYDEV_NAME"
+echo "Edit the <BASE>/.24devShared.profile file to display 24dev global variables"
 echo
+# echo "Display 24dev profile Global variables:"
+# echo "BASE=$BASE"
+# echo "APPS=$APPS"
+# echo "MYDEV_NAME_PATH=$MYDEV_NAME_PATH"
+# echo "MYDEV_NAME=$MYDEV_NAME"
+# echo
 
 # Check error  function to validate or fail after command completion:
 chkerr()

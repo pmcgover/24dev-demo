@@ -1,7 +1,0 @@
-# 24dev-demo-0.9.5.1 Project Summary 
-Welcome to the 24dev-demo-0.9.5.1 Digital Portfolio. Created on 20160922_0147 with the followig details:
-* Total number of applications: 5
-* Total regression test run time:  TBD
-* Total regression test runs: 5  
-* Number of Passed tests= N
-* Number of Failed tests= N

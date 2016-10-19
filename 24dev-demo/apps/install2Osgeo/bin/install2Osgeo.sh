@@ -111,6 +111,14 @@ echo
 echo "The .bashrc and .vimrc profiles were updated..." 
 echo
 
+echo "Remove all but the last 2 application log files..."
+for dir in $(dirname $(find ../../*/logs)|grep logs|sort|uniq); do
+  echo "Remove all but the most recent files under: $dir" 
+  find $dir -type f -name "*log" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -2|xargs rm -vf
+done
+echo
+
+
 echo "Create a backup tar file, stored under ${BASE}/backup..."
 datestamp=$(date +%Y%m%d_%H%M)
 tar -cpf ${BASE}/backup/${MYDEV_NAME}.${datestamp}.tar -C ~/Desktop ${MYDEV_NAME} 

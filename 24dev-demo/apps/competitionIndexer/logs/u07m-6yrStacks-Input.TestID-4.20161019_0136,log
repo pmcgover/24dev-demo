@@ -1,13 +1,9 @@
-Starting script on: Thu Sep 22 01:47:32 UTC 2016
+Starting script on: Wed Oct 19 01:36:00 UTC 2016
 
-BASE=/home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
-Display 24dev profile Global variables:
-BASE=/home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo
-APPS=/home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps
-MYDEV_NAME_PATH=/home/user/Desktop/24dev-demo-0.9.5.1
-MYDEV_NAME=24dev-demo-0.9.5.1
+Edit the <BASE>/.24devShared.profile file to display 24dev global variables
 
 
 Display the associated MIT License file:
@@ -36,7 +32,7 @@ SOFTWARE.
 
 Display the associated README.md file header:
 # 24dev-demo Digital Portfolio
-An unofficial OSGeo addon to demonstrate software and showcase your Digital Portfolio 
+An unofficial OSGeo addon to demonstrate and showcase your Software Digital Portfolio 
 via github.com.
 
 

@@ -9,18 +9,18 @@ Test Name= HelloWorld
 Command= basicGraph.r
 Output File Name= basicGraph.png
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20160922_0147,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20161019_0144,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin/basicGraph.r
+The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin/basicGraph.r
 #######################
 Running regression test: nbr: 1, TestApp=RScripts, TestName=HelloWorld...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -31,14 +31,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-2405468881 8543 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/basicGraph.png
-2405468881 8543 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/goodtests/basicGraph.png
+2405468881 8543 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/basicGraph.png
+2405468881 8543 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/goodtests/basicGraph.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20160922_0147,log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20161019_0144,log
 Output log file ls details...
--rw-rw-r-- 1 user user 318 Sep 22 01:47 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20160922_0147,log
+-rw-rw-r-- 1 user user 318 Oct 19 01:44 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-1.20161019_0144,log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -66,18 +66,18 @@ Test Name= top10-2014-clones-AngledXaxis
 Command= top10-2014-clones-AngledXaxis.r
 Output File Name= top10-2014-clones-AngledXaxis.png
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20160922_0147,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20161019_0144,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
+The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
 #######################
 Running regression test: nbr: 2, TestApp=RScripts, TestName=top10-2014-clones-AngledXaxis...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -88,14 +88,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-1082347141 30548 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/top10-2014-clones-AngledXaxis.png
-1082347141 30548 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/goodtests/top10-2014-clones-AngledXaxis.png
+1082347141 30548 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/top10-2014-clones-AngledXaxis.png
+1082347141 30548 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/goodtests/top10-2014-clones-AngledXaxis.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20160922_0147,log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20161019_0144,log
 Output log file ls details...
--rw-rw-r-- 1 user user 290 Sep 22 01:47 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20160922_0147,log
+-rw-rw-r-- 1 user user 290 Oct 19 01:44 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-2.20161019_0144,log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -123,18 +123,18 @@ Test Name= top10-2014-clones-StraightXaxis
 Command= top10-2014-clones-StraightXaxis.r
 Output File Name= top10_vw_nursery_cuttings_2014.png
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20160922_0147,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20161019_0144,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
+The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
 #######################
 Running regression test: nbr: 3, TestApp=RScripts, TestName=top10-2014-clones-StraightXaxis...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -145,14 +145,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-730017327 48577 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/top10_vw_nursery_cuttings_2014.png
-730017327 48577 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/output/goodtests/top10_vw_nursery_cuttings_2014.png
+730017327 48577 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/top10_vw_nursery_cuttings_2014.png
+730017327 48577 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/output/goodtests/top10_vw_nursery_cuttings_2014.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20160922_0147,log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20161019_0144,log
 Output log file ls details...
--rw-rw-r-- 1 user user 319 Sep 22 01:47 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20160922_0147,log
+-rw-rw-r-- 1 user user 319 Oct 19 01:44 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-3.20161019_0144,log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -168,7 +168,7 @@ Create a summary report with test run summary details...
 All regression tests PASSED for application RScripts, test number: 3
 ###### SUCESS!!! ############
 
-Display PASSED results: 3|RScripts|top10-2014-clones-StraightXaxis|4|0|Pass
+Display PASSED results: 3|RScripts|top10-2014-clones-StraightXaxis|4|1|Pass
 
 #################################################
 Processing the application, competitionIndexer regression Test 4 with input details below:
@@ -180,18 +180,18 @@ Test Name= u07m-6yrStacks-Input
 Command= competitionIndexerCLI.sh -f ../../competitionIndexer/input/u07m-1yrDataSet-Input.csv
 Output File Name= Output-u07m-1yrDataSet-Input.csv
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20160922_0147,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20161019_0144,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/bin...
+The current directory is: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/u07m-1yrDataSet-Input.csv
+The executed command will be: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/u07m-1yrDataSet-Input.csv
 #######################
 Running regression test: nbr: 4, TestApp=competitionIndexer, TestName=u07m-6yrStacks-Input...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -202,14 +202,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-937588034 42321 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/output/Output-u07m-1yrDataSet-Input.csv
-937588034 42321 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/output/goodtests/Output-u07m-1yrDataSet-Input.csv
+937588034 42321 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/output/Output-u07m-1yrDataSet-Input.csv
+937588034 42321 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/output/goodtests/Output-u07m-1yrDataSet-Input.csv
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20160922_0147,log
+The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20161019_0144,log
 Output log file ls details...
--rw-rw-r-- 1 user user 8786 Sep 22 01:47 /home/user/Desktop/24dev-demo-0.9.5.1/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20160922_0147,log
+-rw-rw-r-- 1 user user 8625 Oct 19 01:44 /home/user/Desktop/24dev-demo-0.9.5.3/24dev-demo/apps/competitionIndexer/logs/u07m-6yrStacks-Input.TestID-4.20161019_0144,log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
