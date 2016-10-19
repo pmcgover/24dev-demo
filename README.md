@@ -47,6 +47,7 @@ tar file and install on a USB flash drive.
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
 * Fork the [24dev-demo repository](https://github.com/pmcgover/24dev-demo) then clone to your computer: [Fork A Repo](https://help.github.com/articles/fork-a-repo)
 * Rename the new repo as needed: e.g.  *mv 24dev-demo 24dev-\<yourUserName\>*  
+* Add/remove/test applcations to your taste as needed.  
 * Add your new changes: *git add -A*
 * Commit your changes: git commit -m 'Initial 24dev addition'
 * Push your changes to the remote repository: *git push origin*
@@ -54,7 +55,7 @@ tar file and install on a USB flash drive.
 * If using the MIT license, append your copyright details below existing copyright entries. See example below:
 ```
    Original work Copyright (c) 2015 Patrick Noel McGovern
-   Modified work Copyright 2016 John David Doe
+   Modified <appName>, Added <appName> Copyright 2016 Mary Carol Doe
 ```
 * Create tags and releases to mark important change sets and push them to github: *git tag v.N.N.N*; git push --tags origin  
 * Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
