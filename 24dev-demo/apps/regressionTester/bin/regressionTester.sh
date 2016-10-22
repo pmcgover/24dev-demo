@@ -38,13 +38,12 @@ fi
 totalStartTime=$(date +'%s')
 sed '1d' ${APPS}/regressionTester/input/inputRegressionTests.csv > ${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 inputRegTests=${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
-outputRegTests=${APPS}/regressionTester/output/regressionTestSummary.csv
 logsRegTests=${APPS}/regressionTester/logs/regressionTests.log
 RegTesterDir=${APPS}/regressionTester/bin
+outputRegTests=${APPS}/regressionTester/output/regressionTestSummary.csv
+rm -f  $outputRegTests
 cd $RegTesterDir
 
-#Create a new output .csv file for summary report details:
-echo "Regression Test Nbr|Application Name|Test Name|Nbr Of Checks|Run Time Seconds|Pass or Fail" > $outputRegTests
 
 cnt=1
 echo "Load input regression tests for each application..."
@@ -195,16 +194,14 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
      echo "All regression tests PASSED for application $testApp, test number: $cnt" 
      echo "###### SUCESS!!! ############"
      echo
-     echo "Display PASSED results: $cnt|$testApp|$testName|$arrayLength|$runTime|Pass" 
-     echo "$cnt|$testApp|$testName|$arrayLength|$runTime|Pass" >> $outputRegTests   
+     echo "$cnt|$testApp|$testName|$runTime|Pass" >> $outputRegTests   
   else
      echo
      echo "###### Danger, Will Robinson! #################################"
      echo "There were $sumExitValues regression tests FAILURES for application $testApp, test number: $cnt"
      echo "###### WARNING ##################################################"
      echo 
-     echo "Display FAIlED results: $cnt|$testApp|$testName|$arrayLength|$runTime|Fail" 
-     echo "$cnt|$testApp|$testName|$arrayLength|$runTime|Fail" >> $outputRegTests   
+     echo "$cnt|$testApp|$testName|$runTime|Fail" >> $outputRegTests   
   fi
   cnt=$((cnt+1))
   unset -v REGCHECK 
@@ -247,15 +244,14 @@ Welcome to the $MYDEV_NAME Digital Portfolio. Created on $datestamp with the fol
 * Total number of applications: $appCount
 * Total regression test run time in seconds: $totalRunTime 
 * Total regression test runs: $cnt  
+* Number of regression test checks: $arrayLength
 * $testResults
 
+Regression Test Nbr|Application Name|Test Name|Run Time Seconds|Pass or Fail
+ --- | --- | --- | --- | --- 
 EOF
 
-# Copy the summary file to the main 24dev folder as a Markdown table file:
-cp $outputRegTests  /var/tmp/outputRegTestsHeader
+# Append the regression test output details to the Project-Summary.md file: 
+cat $outputRegTests >>  $ProjectSummaryFile 
 
-# Insert at least 3 dashes per field to display a bold header.
-headerSubLine=$(echo " --- | --- | --- | --- | --- | --- ")
-sed -i "2i $headerSubLine" /var/tmp/outputRegTestsHeader 
-cat /var/tmp/outputRegTestsHeader  >> $ProjectSummaryFile 
 
