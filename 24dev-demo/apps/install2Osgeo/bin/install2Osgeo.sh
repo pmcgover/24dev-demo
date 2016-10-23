@@ -39,15 +39,6 @@ Usage: ./install2Osgeo.sh
 EOF
 echo
 
-echo
-echo "Setup postgres database for r4st with 4 environments..."
-echo "  Database username/password credentials are: user/user"
-psql postgres -c  "CREATE DATABASE r4d"
-psql postgres -c  "CREATE DATABASE r4t"
-psql postgres -c  "CREATE DATABASE r4s"
-psql postgres -c  "CREATE DATABASE r4p"
-echo
-
 ##########   Start Profile Updates ############
 echo "Checking if this install script previously updated the .bashrc profile..."
 if [[ -r ~/.bashrc.ORIG ]] ; then
@@ -117,7 +108,6 @@ for dir in $(dirname $(find ../../*/logs)|grep logs|sort|uniq); do
   find $dir -type f -name "*log" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -2|xargs rm -vf
 done
 echo
-
 
 echo "Create a backup tar file, stored under ${BASE}/backup..."
 datestamp=$(date +%Y%m%d_%H%M)

@@ -1,0 +1,438 @@
+Starting script on: Sun Oct 23 01:06:46 UTC 2016
+
+BASE=/home/user/Desktop/24dev-demo-0.9.5.6/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.5.6/24dev-demo
+
+This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
+Source the 24dev profile to set variables and display license/program details...
+Edit the <BASE>/.24devShared.profile file to display 24dev global variables
+
+
+Display the associated MIT License file:
+The MIT License (MIT)
+
+Copyright (c) 2015 Patrick Noel McGovern
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Display the associated README.md file header:
+# 24dev-demo Digital Portfolio
+An unofficial OSGeo addon to demonstrate and showcase your Software Digital Portfolio 
+via github.com.
+
+
+Usage: r4st-loader.sh  
+This program will execute the pgsql commands to create and load r4st plant database objects 
+
+
+INFO: Drop and Load the TST Test tables...
+psql:../sql/TST/r4st-TST-Load-AllTables.sql:1: NOTICE:  drop cascades to constraint plant_id_family_fk on table plant
+DROP TABLE
+DROP TABLE
+DROP TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INFO: Create TST pedigree csv file from the recursive SQL file and load into the pedigree table:
+\copy pedigree(pedigree_key,path) from '../csv/TST/r4st-TST-pedigree.csv' delimiter '|' CSV HEADER
+COPY 16
+
+
+INFO: Drop all existing tables and views from the PRD database...
+psql:../sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
+DETAIL:  drop cascades to constraint plant_id_family_fk on table plant
+drop cascades to constraint test_detail_id_plant_fk on table test_detail
+drop cascades to constraint journal_id_plant_fk on table journal
+drop cascades to view avw_plant
+drop cascades to view avw_family
+drop cascades to view avw_test_detail
+drop cascades to view avw_journal
+drop cascades to view vw_trials
+DROP TABLE
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
+drop cascades to view avw_site
+drop cascades to view avw_test_spec
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to view vw1_master_test_detail
+drop cascades to view vw2_nursery_stocktype_test_detail
+drop cascades to view vw3_nursery_summary_test_detail
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
+DROP VIEW
+
+
+INFO: Load the primary tables with the default initial inserts...
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+
+INFO: Load the primary data for the above tables...
+-- Start Plant tables:
+\copy taxa from '../csv/taxa.csv' delimiter '|' CSV HEADER
+COPY 16
+\copy family from '../csv/family.csv' delimiter '|' CSV HEADER
+COPY 204
+\copy plant from '../csv/plant.csv' delimiter '|' CSV HEADER
+COPY 212
+-- Start Test Tables:
+\copy site from '../csv/site.csv' delimiter '|' CSV HEADER
+COPY 6
+\copy test_spec from '../csv/test_spec.csv' delimiter '|' CSV HEADER
+COPY 17
+\copy test_detail from '../csv/test_detail.csv' delimiter '|' CSV HEADER
+COPY 2955
+\copy journal from '../csv/journal.csv' delimiter '|' CSV HEADER
+COPY 43
+
+
+INFO: Load updates for the above tables...
+UPDATE 142
+
+INFO: Create PRD pedigree csv file from the recursive SQL file and load into the pedigree table:
+\copy pedigree(pedigree_key,path) from '../csv/r4st-pedigree.csv' delimiter '|' CSV
+COPY 221
+
+
+INFO: Load the r4stdb AVW basic table VIEWS with foreign keys...
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+
+
+INFO: Load the r4stdb descriptive table VIEWS...
+CREATE VIEW
+
+
+Create a dump of the master PRD database, then load it into an existing but empty SIT database... 
+
+INFO: Drop all existing tables and views from the SIT database...
+psql:../sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
+DETAIL:  drop cascades to constraint journal_id_plant_fk on table journal
+drop cascades to constraint plant_id_family_fk on table plant
+drop cascades to constraint test_detail_id_plant_fk on table test_detail
+drop cascades to view avw_family
+drop cascades to view avw_journal
+drop cascades to view avw_plant
+drop cascades to view avw_test_detail
+drop cascades to view vw_trials
+DROP TABLE
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
+drop cascades to view avw_site
+drop cascades to view avw_test_spec
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to view vw1_master_test_detail
+drop cascades to view vw2_nursery_stocktype_test_detail
+drop cascades to view vw3_nursery_summary_test_detail
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
+DROP VIEW
+
+Load the PRD data into the SIT database... 
+... Only works on an empty database so only run once - Need to add repeatability...
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE EXTENSION
+COMMENT
+SET
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+COPY 206
+ setval 
+--------
+      1
+(1 row)
+
+COPY 45
+ setval 
+--------
+      1
+(1 row)
+
+COPY 221
+ setval 
+--------
+    221
+(1 row)
+
+COPY 214
+ setval 
+--------
+      1
+(1 row)
+
+COPY 8
+ setval 
+--------
+      1
+(1 row)
+
+COPY 18
+ setval 
+--------
+      1
+(1 row)
+
+COPY 2958
+ setval 
+--------
+      1
+(1 row)
+
+COPY 19
+ setval 
+--------
+      1
+(1 row)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+REVOKE
+REVOKE
+GRANT
+GRANT
+
+
+
+Create a new version of the r4st_DropAll-Objects.sql file...
+
+
+Extract all table description data via pgsql and load into a text file
+
+Check for undesireable characters in the CSV files...
+The r4st database process is: DONE
+psql (PostgreSQL) 9.5.3
+
+You can view the r4st PRD database at: http://localhost/r4stdb/dbkiss.php

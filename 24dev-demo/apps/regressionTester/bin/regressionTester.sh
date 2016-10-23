@@ -75,7 +75,7 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   appOutput=${APPS}/${testApp}/output
   appInput=${APPS}/${testApp}/input 
   datestamp=$(date +%Y%m%d_%H%M)
-  logFile="${appLogs}/${testName}.TestID-${cnt}.${datestamp},log"  
+  logFile="${appLogs}/${testName}.TestID-${cnt}.${datestamp}.log"  
   echo "The logfile will be located at: ${appLogs}/${testName}.TestID-${cnt}.${datestamp},log"
   echo
   echo "Change to the sourced script directory: ${appPath}/bin..."
@@ -240,7 +240,7 @@ datestamp=$(date)
 
 cat <<-EOF > $ProjectSummaryFile 
 # $MYDEV_NAME Project Summary 
-Welcome to the $MYDEV_NAME Digital Portfolio. Created on $datestamp with the following details:
+Welcome to Patrick McGovern's $MYDEV_NAME Software Digital Portfolio. Created on $datestamp with the following details:
 * Total number of applications: $appCount
 * Total regression test run time in seconds: $totalRunTime 
 * Total regression test runs: $cnt  
@@ -254,4 +254,6 @@ EOF
 # Append the regression test output details to the Project-Summary.md file: 
 cat $outputRegTests >>  $ProjectSummaryFile 
 
-
+echo
+echo "The Regression test logs are located at: ${logsRegTests}" 
+echo
