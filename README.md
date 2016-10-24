@@ -15,8 +15,10 @@ running one script.
 * Users can re-run the install script to update profiles, and accept different 24dev-* programs.  
 * The install script also creates backups and purges application log files. 
 * Users can test their programs with the [regressionTester](24dev-demo/apps/regressionTester) application 
-and have Pass/Fail results published to the: [Project-Sumary.md](Project-Summary.md).
+and have statistics and Pass/Fail results published to the: [Project-Sumary.md](Project-Summary.md).
 * Scripts can display applicable license and README.md files.
+* All applications are expected to have a bin, docs, logs, output and output/goodtests folders/files.
+application related files. 
 * Users are encouraged to fork their own customized releases via github renamed as: 24dev-[myForkName]. 
 
 ## Installing 24dev-demo to an OSGeo Live DVD system
