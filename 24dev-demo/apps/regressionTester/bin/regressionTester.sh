@@ -47,7 +47,6 @@ cd $RegTesterDir
 
 cnt=1
 echo "Load input regression tests for each application..."
-# for testrun in $(cat "${inputRegTests}"); do 
 while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
    # Declare an associative array to store/display regression test checkItems with their itemStatus exit number (0=Success)
    startTime=$(date +'%s')
@@ -57,6 +56,8 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   testName=$(echo "$testrun"|cut -d"|" -f2)    #Input filename or script name:  eg. basicGraph, u07m-6yrStacks-Input
   getCommand=$(echo  "$testrun"|cut -d"|" -f3) #Command: egs. ./r4st-wrapper.sh, ./basicGraph.r ./competitionIndexerCLI.sh -f ../../u07m-1yrDataSet-Input.csv
   outputFileName=$(echo "$testrun"|cut -d"|" -f4) #Output filename.  Also needs to be same as the Good output filename. 
+  appLOC=$(cat $APPS/${testApp}/bin/*|wc -l)
+  totalAppLOC=$((totalAppLOC + appLOC))
   echo
   echo "#################################################" 
   echo "Processing the application, $testApp regression Test $cnt with input details below:"
@@ -169,6 +170,21 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo "The output file cntErrors test exit value is: $status"
   REGCHECK[cntErrors]=$status
   echo "Display the command array exit status ${REGCHECK[cntErrors]} "
+ 
+  echo
+  echo "Verify that each application has a README-<appName>.md file..."  
+    if [[ -s ${APPS}/${testApp}/docs/README-${testApp}.md ]]; then
+       status=0
+       echo "The $dir application has a README-<appName>.md file. File listing below:" 
+       ls -ltr ${APPS}/${testApp}/docs/README-${testApp}.md
+    else  
+       echo "WARNING! The required README-<appName>.md file was not found in: ${APPS}/${testApp}/docs/README-${testApp}.md" 
+       status=1
+    fi  
+  # Load output results into the Array 
+  REGCHECK[hasDocs]=$status
+  echo "Display the command array exit status ${REGCHECK[hasDocs]}"
+  echo
 
   echo "Process, display and report the REGCHECK array values to validate all tests..." 
   endTime=$(date +'%s')
@@ -194,14 +210,14 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
      echo "All regression tests PASSED for application $testApp, test number: $cnt" 
      echo "###### SUCESS!!! ############"
      echo
-     echo "$cnt|$testApp|$testName|$runTime|Pass" >> $outputRegTests   
+     echo "$cnt|$testApp|$testName|$runTime|$appLOC|Pass" >> $outputRegTests   
   else
      echo
      echo "###### Danger, Will Robinson! #################################"
      echo "There were $sumExitValues regression tests FAILURES for application $testApp, test number: $cnt"
      echo "###### WARNING ##################################################"
      echo 
-     echo "$cnt|$testApp|$testName|$runTime|Fail" >> $outputRegTests   
+     echo "$cnt|$testApp|$testName|$runTime|$appLOC|Fail" >> $outputRegTests   
   fi
   cnt=$((cnt+1))
   unset -v REGCHECK 
@@ -215,10 +231,9 @@ else
   echo "$testResults"
 fi
 echo
-
  
 echo "The 24dev regression test process has completed." 
-echo "Log files at: ${logsRegTests}"
+echo "The Regression test logs are located at: ${logsRegTests}" 
 echo "Regression summary .csv file at: "$outputRegTests"" 
 echo "Project Summary file at: $ProjectSummaryFile"
 echo "Checking log files for failed regression test runs..."
@@ -226,8 +241,8 @@ echo
 grep 'There were 24dev regression tests FAILURES for application' "${logsRegTests}"
 echo 
 echo "Display 24dev regression summary .csv file below:" 
+echo "Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail"
 cat $outputRegTests
-
 
 echo 
 echo "Creating the 24dev Project-Summary.md file based on the above results..." 
@@ -245,15 +260,16 @@ Welcome to Patrick McGovern's $MYDEV_NAME Software Digital Portfolio. Created on
 * Total regression test run time in seconds: $totalRunTime 
 * Total regression test runs: $cnt  
 * Number of regression test checks: $arrayLength
+* Total Project Lines Of Code: $totalAppLOC
 * $testResults
 
-Regression Test Nbr|Application Name|Test Name|Run Time Seconds|Pass or Fail
- --- | --- | --- | --- | --- 
+Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
+ --- | --- | --- | --- | --- | --- 
 EOF
 
 # Append the regression test output details to the Project-Summary.md file: 
 cat $outputRegTests >>  $ProjectSummaryFile 
 
 echo
-echo "The Regression test logs are located at: ${logsRegTests}" 
+echo "If you have failures - first check the Regression test logs at: ${logsRegTests}" 
 echo

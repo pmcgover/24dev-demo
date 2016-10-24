@@ -1,4 +1,4 @@
-# regressionTester 
+# regressionTester Documentation 
 * An automated regression testing process that loads a list of tests then runs and verifies their output. 
 * Usage: Execute $APPS/regressionTester/bin/regressionTester.sh
 * All applications are expected to have a bin, docs, logs, output and output/goodtests directories 

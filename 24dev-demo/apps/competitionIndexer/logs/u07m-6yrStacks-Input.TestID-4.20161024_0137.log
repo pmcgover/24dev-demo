@@ -1,6 +1,6 @@
-Starting script on: Sun Oct 23 00:58:21 UTC 2016
+Starting script on: Mon Oct 24 01:37:11 UTC 2016
 
-BASE=/home/user/Desktop/24dev-demo-0.9.5.6/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.5.7/24dev-demo
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
 Edit the <BASE>/.24devShared.profile file to display 24dev global variables
