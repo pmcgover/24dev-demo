@@ -56,8 +56,7 @@ view the custom 24dev-demo commands.
 ```
 * Install, run and test your applications on a live OSGeo DVD, flash drive or virtual machine. 
 * Run the install script to clean up the 24dev file system.  Retain the last [backup tar file](24dev-demo/backup).  
-* Copy/push your changes to your local github repository or see:  
-[Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
+* Copy/push your changes to your local github repository or see: [Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
 * Add your new changes to your git repo: *git add -A*
 * Commit your changes: git commit -m 'Updated the ABC application'
 * Push your changes to the remote repository: *git push origin*
