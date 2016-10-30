@@ -891,7 +891,7 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	-1	1111-11-11	1111-11-11	2	0	0
 105xAA	182	Family notes here.	204	19	Seedlings had a 65/100 useable count - ranking third out of the 6 crosses.	U	U	0	500	2	0.7	2013-05-10	2012-04-20	3	0	0
 106xAA	183	Parents: 83AA565 x NFA, Progeny expectations: VDRF, Priority: High. 83AA565 may have VRF, and flowered at 5yrs.	205	19	Fair	U	U	0	1000	2	0.33	2014-06-02	2014-05-12	3	TBD	0
 107xAA	184	Parents: 30AA5MF x 80AA3MF, Progeny expectations: VDRF, Priority: H.  The female flowers were small and weak - bad branches?	141	182	Good. 2014 batch had small green seeds.	U	U	U	400	2	0.61	2014-06-02	2014-05-12	3	TBD	0
-13xGB	188	Parents: gg102 x CAG177, Progeny expectations: VDRF, Priority: Med.  Compare with the U07m GAs with gg102 that did poorly.	48	65	fair	U	U	U	500	2	0.31	2014-06-02	2014-05-12	2	TBD	0
+13xGB	188	Parents: gg102 x CAG177, Progeny expectations: VDRF, Priority: Med.  Compare with the ABZ7M GAs with gg102 that did poorly.	48	65	fair	U	U	U	500	2	0.31	2014-06-02	2014-05-12	2	TBD	0
 15xB	190	Parents: C173 x 9AG105, Progeny expectations: VDRF, Priority: Med. Compare to 3xRR, 9xBr, 5xRB	179	200	good	U	U	U	1200	2	0.24	2014-06-02	2014-05-12	15	TBD	0
 16xAB	191	Parents: 83AA565 x CAG177, Progeny expectations: VDRF, Priority: High. 83AA565 may have VRF, and flowered at 5yrs.	205	65	fair	U	U	U	700	2	0.35	2014-06-02	2014-05-12	2	TBD	0
 17xB	192	Parents: Plaza x 4AE1, Progeny expectations: VDRF, Priority: High.  This B is unrelated to CAG204 or CAG177. Planted 10 seedlings from Rakers.	207	213	very poor, did not seem viable. 	U	U	U	0	2	0.09	2014-06-02	2014-05-12	15	TBD	0
@@ -903,7 +903,7 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	-1	1111-11-11	1111-11-11	2	0	0
 3xRR	200	Parents: Plaza x 9AG105, Progeny expectations: VDRF, Priority: High. How will RR families compare to B families?	207	200	fair	U	U	U	0	2	0.1	2014-06-02	2014-05-12	2	TBD	0
 4xGW	201	Parents: gg102 x Wind, Progeny Expectations: ?.  Priority: High. Seed produced late in 2013, but did not send to Rakers until 2014.  Most are GA types (from RNE), from 2013. Compare to low performing GA/AGs. 	48	163	poor	U	U	U	300	2	0.34	2014-06-02	2014-05-12	2	TBD	0
 5xRB	203	Parents: 9AG105 x CAG177, Progeny Expectations: VDRF, Priority: High.  9AG105 is bisexual, compare to reciprocal 9xBR.	200	65	fair 	U	U	U	300	2	0.35	2014-06-02	2014-05-12	2	TBD	0
-8xBG	206	Parents: CAG204 x gg101, Progeny Expectations: VDRF, Priority: Med.  Compare to AGs with gg101 that did poorly in U07M 	66	49	fair	U	U	U	1200	2	0.37	2014-06-02	2014-05-12	2	TBD	0
+8xBG	206	Parents: CAG204 x gg101, Progeny Expectations: VDRF, Priority: Med.  Compare to AGs with gg101 that did poorly in ABB7M 	66	49	fair	U	U	U	1200	2	0.37	2014-06-02	2014-05-12	2	TBD	0
 9xBR	207	Parents: CAG204 x 9AG105, Progeny Expectations: VDRF, Priority: High.  9AG105 is bisexual, compare to 5xRB	66	200	fair 	U	U	U	0	2	0.04	2014-06-02	2014-05-12	2	TBD	0
 7xBT	205	Parents: CAG204 x ST11, Progeny Expectations: VDRF, Priority: Med.  Compare to BG families.	66	209	good	U	U	Y	200	2	0.88	2014-06-02	2014-05-12	2	TBD	0
 6xBA	204	Parents: CAG204 x NFA, Progeny Expectations: VDR, Priority: Med. NFA is vigorous but in many crosses	66	19	fair	U	U	Y	300	2	0.41	2014-06-02	2014-05-12	2	TBD	0
@@ -1588,12 +1588,12 @@ SELECT pg_catalog.setval('plant_id_seq', 1, false);
 COPY site (site_key, id, location_code, name_long, notes, address, loc_lat, loc_long, elevation_ft, aspen_site_index, usda_soil_texture, drainage_class_usda, mean_annual_precip_in, mean_annual_temp_f, frost_free_period_days, depth_to_water_table_in, usda_map_url, web_url, web_photos, contact) FROM stdin;
 TBD	1	TBD	0	To Be Determined	0	0	0	0	0	0	U	0	0	0	0	0	0	0	0
 NA	2	NA	0	Does Not Apply	0	0	0	0	0	0	U	0	0	0	0	0	0	0	0
-Bell-Nursery	3	BELLN	0	MBP	0	0	0	900	0	sand	WD	34	48	170	1000	0	0	0	0
-Costa-Nursery	4	COSTN	0	MBP	0	0	0	900	0	sand	WD	34	48	170	1000	0	0	0	0
-Dykema-Nursery	5	DYKEN	0	MBP	0	0	0	900	0	sand	ED	34	48	170	1000	0	0	0	0
-Bell-Indoor	6	BELLI	0	MBP	0	0	0	900	0	0	U	-1	-1	-1	-1	0	0	0	0
-Rockford-NE	7	RNE	0	MBP	0	0	0	900	0	0	WD	0	0	0	-1	0	0	0	0
-MFUPTIC	8	MF	0	MFUPTIC	0	0	0	0	0	0	U	-1	-1	-1	-1	0	0	0	0
+River1-Nursery	3	RIVN	0	MBP	0	0	0	900	0	sand	WD	34	48	170	1000	0	0	0	0
+Curve-Nursery	4	CRVN	0	MBP	0	0	0	900	0	sand	WD	34	48	170	1000	0	0	0	0
+Dist-Nursery	5	DISN	0	MBP	0	0	0	900	0	sand	ED	34	48	170	1000	0	0	0	0
+River-Indoor	6	RIVI	0	MBP	0	0	0	900	0	0	U	-1	-1	-1	-1	0	0	0	0
+ROW-NE	7	RNE	0	MBP	0	0	0	900	0	0	WD	0	0	0	-1	0	0	0	0
+MFCTR	8	MF	0	MFUPTIC	0	0	0	0	0	0	U	-1	-1	-1	-1	0	0	0	0
 \.
 
 

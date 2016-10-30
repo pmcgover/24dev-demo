@@ -52,7 +52,7 @@ rm -f  $outputRegTests
 cd $RegTesterDir
 
 
-cnt=1
+cnt=0
 echo "Load input regression tests for each application..."
 while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
    # Declare an associative array to store/display regression test checkItems with their itemStatus exit number (0=Success)

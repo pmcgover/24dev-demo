@@ -1,7 +1,8 @@
 testApp|testName|command|outputFileName
 r4st|r4st-loader|r4st-wrapper.sh|r4p.dump.sql
-competitionIndexer|u07m-1yrDataSet-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/u07m-1yrDataSet-Input.csv|Output-u07m-1yrDataSet-Input.csv
+competitionIndexer|az7m-1yrDataSet-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv|Output-az7m-1yrDataSet-Input.csv
+competitionIndexer|az7m-6yrStacks-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input.csv|Output-az7m-6yrStacks-Input.csv
+competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input-ExtraCols-Input.csv|Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
 RScripts|HelloWorld|basicGraph.r|basicGraph.png
 RScripts|top10-2014-clones-AngledXaxis|top10-2014-clones-AngledXaxis.r|top10-2014-clones-AngledXaxis.png
 RScripts|top10-2014-clones-StraightXaxis|top10-2014-clones-StraightXaxis.r|top10_vw_nursery_cuttings_2014.png
-competitionIndexer|u07m-6yrStacks-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/u07m-6yrStacks-Input.csv|Output-6yrStacks-Input.csv

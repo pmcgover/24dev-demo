@@ -1,39 +1,55 @@
 #!/bin/bash
 # File: competitionIndexerCLI.sh
 <<COMMENT_OUT
+Copyright (C) 2013 Patrick McGovern 
+    This file is part of competitionIndexerCLI.sh
+    competitionIndexerCLI.sh is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    competitionIndexerCLI.sh is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with competitionIndexerCLI.sh.  If not, see <http://www.gnu.org/licenses/>.
+
+To run the competitionIndexer program with the included 9yr 9x9 input data:
+
+############################  TERMS  ################################################
+# The tree of interest is called the subject tree or: sub or s 
+# The neighbor trees are called competitors or: c
+# Referencing the competitors relative from the subject is via 8 diirectional positions or: N NE E SE S SW W NW 
+# The input data file contains 4 columns, ID, Row, Col, DBH, Name.  
+####################################################################################
 COMMENT_OUT
 
-echo "Starting script on:" $(date)
 echo
-BASE=$(pwd|cut -d"/" -f-6)
-echo BASE=$BASE
-
-echo "This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE"
-echo "Source the 24dev profile to set variables and display license/program details..."
-if [[  -r ${BASE}/.24dev.profile ]]; then
-   . ${BASE}/.24dev.profile
-   echo
-   echo "Display the associated MIT License file:"
-   cat  ${MYDEV_NAME_PATH}/LICENSE
-   echo
-   echo "Display the associated README.md file header:"
-   head -3 ${MYDEV_NAME_PATH}/README.md
-   echo
-else 
-   echo "Failure: The profile is not readable or could not be found: ${BASE}/.24dev.profile"
-   exit 1   
-fi
-echo 
-
+echo "Starting script on:" $(date)
+echo "#######################################"
+echo
 read -r -d '' usage <<-'EOF'
 Usage: competitionIndexerCLI.sh -f [inputFile.csv] 
-       Example: competitionIndexerCLI.sh -f ../input/u07m-1yrDataSet-Input.csv 
-       Please read the documentation under: ../docs  
 
+Requirements: 
+- input.csv file fields: id,setid,long_ft,short_ft,row,col,block,dbh,year,site,name,optCol1,optCol2,...] 
+- Bash shell 
+- Postgresql database
+- The program requires a comma separated file (CSV) (eg. competitionIndexerCLI.sh -f inputFile.csv) 
+- The first input CSV fields must include:  id,setid,long_ft,short_ft,row,col,block,dbh,year,site,name 
+-- You can add other optional columns that will be installed as text fields 
+- The ID field should have integers and be in ascending order.
+- The name field should  list the clone/family name. 
+- The input CSV file should not have any blank spaces.
+* Formula Document: http://treesearch.fs.fed.us/pubs/7354
+
+Common Problems: TBD
 EOF
 
 if [[ $#  -ne 2 ]] ; then
-  echo "Error: Requires a comma delimited CSV file" 
+  echo "Error: Requires a comma delimited CSV file (eg. competitionIndexerCLI.sh -f input.csv)" 
   echo "$usage"
   echo
   exit 1
@@ -96,12 +112,12 @@ else
   optionalHeaderText="" 
 fi
 
+
 # Put the output file in the directory listed below: 
-echo
 echo "Extract the basename of the input file..."
 baseInputFileName=$(basename $inputFile)
 echo "The Base input file name is: baseInputFileName=$baseInputFileName" 
-outFileName="../output/Output-${baseInputFileName}"
+outFileName="$APPS/competitionIndexer/output/Output-${baseInputFileName}"
 
 set -e
 set -u
@@ -136,11 +152,26 @@ CONSTRAINT CI1_pk PRIMARY KEY (id)
 commit;
 SQL
 
+echo "Display the CI1 table details..."
+$RUN_ON_MYDB <<SQL
+\d CI1
+SQL
+
+###########################################################################3
+#   \copy CI1 from '$inputFileNoHeader' delimiter ',' CSV HEADER
+# The import command does not like the header so copy the input file without the header: 
+# inputFileNoHeader=${inputFile}.NoHeader
+# sed  '1d' ${inputFile} > $inputFileNoHeader 
+# Remove the NoHeader file:
+# rm $inputFileNoHeader 
+###########################################################################3
+
 echo "Load the input CSV file into the CI1 table..."
 $RUN_ON_MYDB <<SQL
 \copy CI1 from '$inputFile' delimiter ',' CSV HEADER
 commit;
 SQL
+echo
 
 echo "Display first record of the CI1 Table..."
 $RUN_ON_MYDB <<SQL
