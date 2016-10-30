@@ -35,6 +35,13 @@ if [[ $#  -gt 1 ]] ; then
   exit 1
 fi
 
+echo "Load and display App Lines Of Code (LOC) stats..."
+totalAppLOC=$( (find $APPS/*/bin -type f -print0|xargs -0 cat)|wc -l)
+echo "totalAppLOC=$totalAppLOC"
+echo
+find $APPS/*/bin -type f| xargs wc -l  
+
+
 totalStartTime=$(date +'%s')
 sed '1d' ${APPS}/regressionTester/input/inputRegressionTests.csv > ${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
 inputRegTests=${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
@@ -56,11 +63,12 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   testName=$(echo "$testrun"|cut -d"|" -f2)    #Input filename or script name:  eg. basicGraph, u07m-6yrStacks-Input
   getCommand=$(echo  "$testrun"|cut -d"|" -f3) #Command: egs. ./r4st-wrapper.sh, ./basicGraph.r ./competitionIndexerCLI.sh -f ../../u07m-1yrDataSet-Input.csv
   outputFileName=$(echo "$testrun"|cut -d"|" -f4) #Output filename.  Also needs to be same as the Good output filename. 
-  appLOC=$(cat $APPS/${testApp}/bin/*|wc -l)
-  totalAppLOC=$((totalAppLOC + appLOC))
   echo
+  echo
+  echo
+  echo 
   echo "#################################################" 
-  echo "Processing the application, $testApp regression Test $cnt with input details below:"
+  echo "STARTING he application, $testApp regression Test $cnt with test input details below:"
   echo "${testrun}"
   echo "#################################################" 
   echo
@@ -68,6 +76,7 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo "Test Name= $testName"
   echo "Command= $getCommand"
   echo "Output File Name= $outputFileName"
+  echo
   echo
 
   appPath=${APPS}/${testApp}  
@@ -186,6 +195,7 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   echo "Display the command array exit status ${REGCHECK[hasDocs]}"
   echo
 
+  appLOC=$( (find $APPS/${testApp}/bin -type f -print0|xargs -0 cat)|wc -l)
   echo "Process, display and report the REGCHECK array values to validate all tests..." 
   endTime=$(date +'%s')
   runTime=$((endTime - startTime))
@@ -228,6 +238,7 @@ if [[ $sumExitValues -eq 0 ]]; then
   echo "$testResults"
 else
   testResults="Sorry, there were $sumExitValues regression test failures, please try again..."
+  echo "Sum of Exit values is: $sumExitValues"
   echo "$testResults"
 fi
 echo

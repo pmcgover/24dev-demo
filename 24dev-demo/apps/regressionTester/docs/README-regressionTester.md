@@ -7,3 +7,4 @@
 * The "testName" column contains the input filename (which may have variable data) or script name. 
 * The "command" column contains the full command with any necessary options.
 * The "outputFileName" must be the same as the application output AND output/goodtests filename (for cksum comparison). 
+* If you encounter regression test issues, first check the [regression log file]($APPS/regressionTester/logs/regressionTests.log).

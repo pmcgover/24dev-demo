@@ -36,44 +36,44 @@ echo
 
 echo
 echo  "INFO: Drop and Load the TST Test tables..."   
-psql r4t -f ../sql/TST/r4st-TST-Load-AllTables.sql
+psql r4t -f $APPS/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql
 echo  "INFO: Create TST pedigree csv file from the recursive SQL file and load into the pedigree table:"     
-psql r4t -F "|" -t -f ../sql/TST/r4st-TST-pedigree.sql|grep . > ../csv/TST/r4st-TST-pedigree.csv
-psql r4t -f ../sql/TST/r4st-TST-Copy.filelist -a
+psql r4t -F "|" -t -f $APPS/r4st/bin/sql/TST/r4st-TST-pedigree.sql|grep . > ../csv/TST/r4st-TST-pedigree.csv
+psql r4t -f $APPS/r4st/bin/sql/TST/r4st-TST-Copy.filelist -a
 echo
 
 echo
 echo  "INFO: Drop all existing tables and views from the PRD database..."
-psql r4p -f ../sql/r4st_DropAll-Objects.sql
+psql r4p -f $APPS/r4st/bin/sql/r4st_DropAll-Objects.sql
 echo
 
 echo
 echo  "INFO: Load the primary tables with the default initial inserts..."
-psql r4p -f ../sql/r4st-Load-AllTables.sql
+psql r4p -f $APPS/r4st/bin/sql/r4st-Load-AllTables.sql
 
 echo
 echo  "INFO: Load the primary data for the above tables..." 
-psql r4p -f  ../sql/r4st-Copy.filelist -a
+psql r4p -f  $APPS/r4st/bin/sql/r4st-Copy.filelist -a
 echo
 
 echo
 echo  "INFO: Load updates for the above tables..." 
-psql r4p -f  ../sql/r4st_Updates.sql
+psql r4p -f  $APPS/r4st/bin/sql/r4st_Updates.sql
 echo
 
 echo  "INFO: Create PRD pedigree csv file from the recursive SQL file and load into the pedigree table:"     
-psql r4p -F "|" -t -f ../sql/r4st-pedigree.sql|grep . > ../csv/r4st-pedigree.csv
-psql r4p -f  ../sql/r4st-Copy-PostLoad.filelist  -a
+psql r4p -F "|" -t -f $APPS/r4st/bin/sql/r4st-pedigree.sql|grep . > ../csv/r4st-pedigree.csv
+psql r4p -f  $APPS/r4st/bin/sql/r4st-Copy-PostLoad.filelist  -a
 echo
 
 echo
 echo  "INFO: Load the r4stdb AVW basic table VIEWS with foreign keys..." 
-psql r4p -f  ../sql/r4st_Views-avw-baseTables.sql
+psql r4p -f  $APPS/r4st/bin/sql/r4st_Views-avw-baseTables.sql
 echo
 
 echo
 echo  "INFO: Load the r4stdb descriptive table VIEWS..." 
-psql r4p -f  ../sql/r4st_Views-vw-TrialOrEvents.sql
+psql r4p -f  $APPS/r4st/bin/sql/r4st_Views-vw-TrialOrEvents.sql
 echo
 
 echo 
@@ -82,7 +82,7 @@ echo "Create a dump of the master PRD database, then load it into an existing bu
 echo
 
 echo  "INFO: Drop all existing tables and views from the SIT database..."
- psql r4s -f ../sql/r4st_DropAll-Objects.sql
+ psql r4s -f $APPS/r4st/bin/sql/r4st_DropAll-Objects.sql
 echo
 echo "Load the PRD data into the SIT database... "
 echo "... Only works on an empty database so only run once - Need to add repeatability..."  
@@ -92,8 +92,8 @@ echo
 
 echo 
 echo "Create a new version of the r4st_DropAll-Objects.sql file..."
-psql r4p -c "\dt" |grep table|cut -f2 -d"|"|awk '{print "DROP TABLE if exists " $1 " CASCADE;"}' > ../sql/r4st_DropAll-Objects.sql 
-psql r4p -c "\dv" |grep view|cut -f2 -d"|"|awk '{print "DROP VIEW if exists " $1";"}' >> ../sql/r4st_DropAll-Objects.sql 
+psql r4p -c "\dt" |grep table|cut -f2 -d"|"|awk '{print "DROP TABLE if exists " $1 " CASCADE;"}' > $APPS/r4st/bin/sql/r4st_DropAll-Objects.sql 
+psql r4p -c "\dv" |grep view|cut -f2 -d"|"|awk '{print "DROP VIEW if exists " $1";"}' >> $APPS/r4st/bin/sql/r4st_DropAll-Objects.sql 
 echo
 
 echo
