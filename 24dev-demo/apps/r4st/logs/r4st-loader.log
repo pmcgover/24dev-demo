@@ -1,7 +1,7 @@
-Starting script on: Sun Oct 30 22:50:28 UTC 2016
+Starting script on: Mon Oct 31 00:36:37 UTC 2016
 
-BASE=/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo
-BASE=/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -43,7 +43,7 @@ This program will execute the pgsql commands to create and load r4st plant datab
 
 
 INFO: Drop and Load the TST Test tables...
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql:1: NOTICE:  drop cascades to constraint plant_id_family_fk on table plant
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql:1: NOTICE:  drop cascades to constraint plant_id_family_fk on table plant
 DROP TABLE
 DROP TABLE
 DROP TABLE
@@ -89,7 +89,7 @@ COPY 16
 
 
 INFO: Drop all existing tables and views from the PRD database...
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
 DETAIL:  drop cascades to constraint plant_id_family_fk on table plant
 drop cascades to constraint test_detail_id_plant_fk on table test_detail
 drop cascades to constraint journal_id_plant_fk on table journal
@@ -101,42 +101,42 @@ drop cascades to view vw_trials
 DROP TABLE
 DROP TABLE
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
 drop cascades to view avw_site
 drop cascades to view avw_test_spec
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to view vw1_master_test_detail
 drop cascades to view vw2_nursery_stocktype_test_detail
 drop cascades to view vw3_nursery_summary_test_detail
 DROP TABLE
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
 DROP VIEW
 
 
@@ -212,7 +212,7 @@ CREATE VIEW
 Create a dump of the master PRD database, then load it into an existing but empty SIT database... 
 
 INFO: Drop all existing tables and views from the SIT database...
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 8 other objects
 DETAIL:  drop cascades to constraint journal_id_plant_fk on table journal
 drop cascades to constraint plant_id_family_fk on table plant
 drop cascades to constraint test_detail_id_plant_fk on table test_detail
@@ -224,42 +224,42 @@ drop cascades to view vw_trials
 DROP TABLE
 DROP TABLE
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:4: NOTICE:  drop cascades to constraint test_detail_id_family_fk on table test_detail
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:5: NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
 drop cascades to view avw_site
 drop cascades to view avw_test_spec
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:6: NOTICE:  drop cascades to view avw_taxa
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
 DETAIL:  drop cascades to view vw1_master_test_detail
 drop cascades to view vw2_nursery_stocktype_test_detail
 drop cascades to view vw3_nursery_summary_test_detail
 DROP TABLE
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:9: NOTICE:  view "avw_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:10: NOTICE:  view "avw_journal" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:11: NOTICE:  view "avw_plant" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:12: NOTICE:  view "avw_site" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_taxa" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_test_spec" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "vw1_master_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "vw2_nursery_stocktype_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "vw3_nursery_summary_test_detail" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-0.9.5.10-Final/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-0.9.6.1/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "vw_trials" does not exist, skipping
 DROP VIEW
 
 Load the PRD data into the SIT database... 

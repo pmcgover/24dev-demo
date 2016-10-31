@@ -109,8 +109,8 @@ for dir in $(dirname $(find $APPS/*/logs)|grep logs|sort|uniq); do
 done
 echo
 
-echo "Remove all but the 2 most recent backup tar files..."
-find $BASE/backup -type f -name "*.tar" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -2|xargs rm -vf
+echo "Remove all but the most recent backup tar files..."
+find $BASE/backup -type f -name "*.tar" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -1|xargs rm -vf
 echo
 
 echo "Create a backup tar file, stored under ${BASE}/backup..."
