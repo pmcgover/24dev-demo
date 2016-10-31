@@ -23,6 +23,20 @@ else
 fi
 echo 
 
+echo "Verify that the Postgres server is alive, restart if needed..."
+chkpg=$(/etc/init.d/postgresql status|grep 'active (exited)')
+if [[ -z $chkpg ]];then
+   echo "WARNING: The Postgres service is down, restarting now..."
+   service postgresql restart
+   chkerr "$?" "1" "The Postgres restart process failed"
+   echo "Restarted Postgres, checking status below..."
+   /etc/init.d/postgresql status
+   echo
+else
+   echo "Postgres server is active"
+fi 
+
+
 echo
 echo "Setup postgres database for r4st with 4 environments..."
 echo "  Database username/password credentials are: user/user"
