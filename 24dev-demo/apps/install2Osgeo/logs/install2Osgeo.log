@@ -1,7 +1,7 @@
-Starting script on: Mon Oct 31 20:58:52 UTC 2016
+Starting script on: Mon Oct 31 22:06:22 UTC 2016
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -41,7 +41,7 @@ via github.com.
 Display the system platform details via the command: uname -a
 Linux osgeolive 4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:06:14 UTC 2016 i686 i686 i686 GNU/Linux
 
-Display the system platform details via the command: lsb_release -a
+Display the Linux distribution release details via the command: lsb_release -a
 Distributor ID:	Ubuntu
 Description:	Ubuntu 16.04.1 LTS
 Release:	16.04
@@ -49,7 +49,7 @@ Codename:	xenial
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-0.9.6.2 addon to OSGeo.
+This script will install the 24dev-demo-0.9.6.4 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
@@ -60,23 +60,23 @@ Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Oct 31 20:58 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Oct 31 22:06 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 2 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/competitionIndexer/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/r4st/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/regressionTester/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/RScripts/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/competitionIndexer/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/r4st/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/RScripts/logs
 
-Remove all but the most recent backup tar files...
+Remove previous backup tar files...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/backup...
 
-Success! Your 24dev-demo-0.9.6.2 system has been installed.
+Success! Your 24dev-demo-0.9.6.4 system has been installed.
 Consider testing your programs with the regressionTester application
 
-The installation log files are located at: /home/user/Desktop/24dev-demo-0.9.6.2/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
+The installation log files are located at: /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
 
