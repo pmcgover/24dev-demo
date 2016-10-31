@@ -35,6 +35,14 @@ if [[ $#  -gt 1 ]] ; then
   exit 1
 fi
 
+echo "Display the system platform details via the command: uname -a"
+uname -a
+echo
+echo "Display the Linux distribution release details via the command: lsb_release -a" 
+lsb_release -a
+echo
+
+
 echo "Load and display App Lines Of Code (LOC) stats..."
 totalAppLOC=$( (find $APPS/*/bin -type f -print0|xargs -0 cat)|wc -l)
 echo "totalAppLOC=$totalAppLOC"

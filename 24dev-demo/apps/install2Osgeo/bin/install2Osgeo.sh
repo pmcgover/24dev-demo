@@ -26,6 +26,13 @@ else
 fi
 echo 
 
+echo "Display the system platform details via the command: uname -a"
+uname -a
+echo
+echo "Display the Linux distribution release details via the command: lsb_release -a" 
+lsb_release -a
+echo
+
 echo "Make sure all files are executable..." 
 chmod -R 755 ${BASE}
 chkerr "$?" "1" "The following command failed: chmod -R 755 ${BASE}" 
@@ -109,8 +116,8 @@ for dir in $(dirname $(find $APPS/*/logs)|grep logs|sort|uniq); do
 done
 echo
 
-echo "Remove all but the most recent backup tar files..."
-find $BASE/backup -type f -name "*.tar" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -1|xargs rm -vf
+echo "Remove previous backup tar files..."
+rm -f $BASE/backup/*.tar 
 echo
 
 echo "Create a backup tar file, stored under ${BASE}/backup..."
