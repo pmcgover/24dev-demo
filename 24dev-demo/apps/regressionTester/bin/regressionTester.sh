@@ -35,12 +35,6 @@ if [[ $#  -gt 1 ]] ; then
   exit 1
 fi
 
-echo "Display the system platform details via the command: uname -a"
-uname -a
-echo
-echo "Display the Linux distribution release details via the command: lsb_release -a" 
-lsb_release -a
-echo
 
 
 echo "Load and display App Lines Of Code (LOC) stats..."
@@ -72,19 +66,21 @@ while IFS='' read -r testrun || [[ -n "$testrun" ]]; do
   getCommand=$(echo  "$testrun"|cut -d"|" -f3) #Command: egs. ./r4st-wrapper.sh, ./basicGraph.r ./competitionIndexerCLI.sh -f ../../u07m-1yrDataSet-Input.csv
   outputFileName=$(echo "$testrun"|cut -d"|" -f4) #Output filename.  Also needs to be same as the Good output filename. 
   echo
-  echo
-  echo
   echo 
   echo "#################################################" 
-  echo "STARTING he application, $testApp regression Test $cnt with test input details below:"
+  echo "STARTING the application, $testApp regression Test $cnt with test input details below:"
   echo "${testrun}"
   echo "#################################################" 
-  echo
   echo "Application Name= $testApp"
   echo "Test Name= $testName"
   echo "Command= $getCommand"
   echo "Output File Name= $outputFileName"
   echo
+  echo "Display the system platform details via the command: uname -a"
+       uname -a
+  echo
+  echo "Display the Linux distribution release details via the command: lsb_release -a" 
+       lsb_release -a
   echo
 
   appPath=${APPS}/${testApp}  
