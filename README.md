@@ -1,6 +1,5 @@
-# 24dev-demo Digital Portfolio
-An unofficial OSGeo addon to demonstrate and showcase your Software Digital Portfolio 
-via github.com.
+# 24dev-demo Software Digital Portfolio
+An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio via github.com.
 
 This software is intended to provide users with an smart way to develop, test drive and
 share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) 
@@ -13,12 +12,12 @@ Community and the Open Source developer.
 * Users can install 24dev applications to a live OSGeo DVD, flash drive or virtual machine by 
 running one administrative installation script.
 * Users can re-run the install script to update profiles, and accept different 24dev-* programs.  
-The install script also creates backups and purges application log files. 
+The install script also creates a backup and purges application log files. 
 * Users can test their programs with the [regressionTester](24dev-demo/apps/regressionTester) application 
 and have statistics and Pass/Fail results published to the: [Project-Sumary.md](Project-Summary.md).
 * Scripts can display applicable license and README.md files.
 * All user applications are expected to have a bin, docs, logs, output and output/goodtests folders/files.
-* Users are encouraged to fork their own customized releases via github renamed as: 24dev-[myForkName]. 
+* Users are encouraged to create their own customized releases via github renamed as: 24dev-[myForkName]. 
 
 ## Installing 24dev-demo to an OSGeo Live DVD system
 * Download the latest version of the [24dev-demo release](https://github.com/pmcgover/24dev-demo/releases) 
@@ -31,12 +30,12 @@ tar file and install on a USB flash drive.
    chmod -R 755 *; cd 24dev-demo; ./install.sh
 ```
 * The above command sets up the environment and runs the installation script. 
-* This 24dev program is documented online at:  https://github.com/pmcgover/24dev-demo  
+* This 24dev program is documented online at: https://github.com/pmcgover/24dev-demo  
 
 ## Using 24dev-demo on OSGeo
 * Install the 24dev application on OSGeo, open a new terminal window and type "alias" to 
 view the custom 24dev-demo commands.
-* Type "apps" to navigate to the available applications. 
+* Enter the "apps" alias and browse through the available applications. 
 * Note that each application has a similar folder structure for programs (bin), input/ouput files, logs, docs, etc. 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
@@ -48,17 +47,18 @@ view the custom 24dev-demo commands.
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
 * Fork the [24dev-demo repository](https://github.com/pmcgover/24dev-demo) then clone to your computer: [Fork A Repo](https://help.github.com/articles/fork-a-repo)
 * Rename the new repo as needed (e.g.  *mv 24dev-demo 24dev-\<yourUserName\>* )
-* Update your 24dev instance with your own applications, custom settings, documentation and license. 
+* Update your new 24dev instance with your applications, custom settings, documentation and license. 
 * If using the MIT license, append your copyright details below existing copyright entries. See example below:
 ```
    Original work Copyright (c) 2015 Patrick Noel McGovern
    Modified <appName>, Added <appName> Copyright 2016 Mary Carol Doe
 ```
 * Install, run and test your applications on a live OSGeo DVD, flash drive or virtual machine. 
-* Run the install script to clean up the 24dev file system.  Retain the last [backup tar file](24dev-demo/backup).  
+* Run the install script to clean up the 24dev file system.  Optionaly, retain the last [backup tar file](24dev-demo/backup).  
 * Copy/push your changes to your local github repository or see: [Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
 * Add your new changes to your git repo: *git add -A*
 * Commit your changes: git commit -m 'Updated the ABC application'
 * Push your changes to the remote repository: *git push origin*
 * Create tags and releases to mark important change sets and push them to github: *git tag v.N.N.N*; git push --tags origin  
 * Rinse and Repeat: Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
+* Update your resume with a link to your github 24dev repository. 
