@@ -1,5 +1,5 @@
 
-Starting script on: Mon Oct 31 22:09:16 UTC 2016
+Starting script on: Fri Nov 4 00:23:51 UTC 2016
 #######################################
 
 Input File Name= ../../competitionIndexer/input/az7m-6yrStacks-Input-ExtraCols-Input.csv
@@ -108,7 +108,7 @@ Display first few records of the vw_ci3 view...
 COMMIT
 
 
-Write contents of the vw_ci3 view to output CSV file /home/user/Desktop/24dev-demo-0.9.6.4/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
+Write contents of the vw_ci3 view to output CSV file /home/user/Desktop/24dev-demo-0.9.6.6/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
 
 
 Check if the OUTPUT file has the same number of rows ase the input file...

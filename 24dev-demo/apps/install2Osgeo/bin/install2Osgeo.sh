@@ -109,14 +109,14 @@ echo
 echo "The .bashrc and .vimrc profiles were updated..." 
 echo
 
-echo "Remove all but the 2 most recent application log files..."
+echo "Remove all but the 3 most recent application log files..."
 for dir in $(dirname $(find $APPS/*/logs)|grep logs|sort|uniq); do
   echo "Remove all but the most recent files under: $dir" 
-  find $dir -type f -name "*log" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -2|xargs rm -vf
+  find $dir -type f -name "*log" -printf '%T@ %p\n'|sort -n|cut -d' ' -f2-|head -n -3|xargs rm -vf
 done
 echo
 
-echo "Remove previous backup tar files..."
+echo "Remove previous backup tar file..."
 rm -f $BASE/backup/*.tar 
 echo
 

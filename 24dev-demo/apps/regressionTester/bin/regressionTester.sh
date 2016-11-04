@@ -35,13 +35,17 @@ if [[ $#  -gt 1 ]] ; then
   exit 1
 fi
 
-
-
 echo "Load and display App Lines Of Code (LOC) stats..."
 totalAppLOC=$( (find $APPS/*/bin -type f -print0|xargs -0 cat)|wc -l)
 echo "totalAppLOC=$totalAppLOC"
 echo
 find $APPS/*/bin -type f| xargs wc -l  
+
+echo  "Load and display program file name extensions..."
+# See: https://en.wikipedia.org/wiki/List_of_file_formats
+binExtensions=$(find $APPS/*/bin -type f|sed 's/.*\././' | sort | uniq -c)
+echo "$binExtensions"
+
 
 
 totalStartTime=$(date +'%s')
@@ -277,6 +281,8 @@ Welcome to Patrick McGovern's $MYDEV_NAME Software Digital Portfolio. Created on
 * Number of regression test checks: $arrayLength
 * Total Project Lines Of Code: $totalAppLOC
 * $testResults
+* List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
+$binExtensions
 
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 

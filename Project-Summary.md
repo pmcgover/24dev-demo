@@ -1,11 +1,16 @@
-# 24dev-demo-0.9.6.4 Project Summary 
-Welcome to Patrick McGovern's 24dev-demo-0.9.6.4 Software Digital Portfolio. Created on Mon Oct 31 22:09:18 UTC 2016 with the following details:
+# 24dev-demo-0.9.6.6 Project Summary 
+Welcome to Patrick McGovern's 24dev-demo-0.9.6.6 Software Digital Portfolio. Created on Fri Nov  4 00:23:53 UTC 2016 with the following details:
 * Total number of applications: 5
 * Total regression test run time in seconds: 8 
 * Total regression test runs: 7  
 * Number of regression test checks: 5
-* Total Project Lines Of Code: 1812
+* Total Project Lines Of Code: 1818
 * Success! - All regression tests PASSED!
+* List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
+      3 .filelist
+      3 .r
+      5 .sh
+      8 .sql
 
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 
