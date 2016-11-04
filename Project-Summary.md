@@ -7,11 +7,12 @@ Welcome to Patrick McGovern's 24dev-demo-0.9.6.6 Software Digital Portfolio. Cre
 * Total Project Lines Of Code: 1818
 * Success! - All regression tests PASSED!
 * List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
+```
       3 .filelist
       3 .r
       5 .sh
       8 .sql
-
+```
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 
 0|r4st|r4st-loader|3|914|Pass
