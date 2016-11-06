@@ -43,7 +43,7 @@ find $APPS/*/bin -type f| xargs wc -l
 
 echo  "Load and display program file name extensions..."
 # See: https://en.wikipedia.org/wiki/List_of_file_formats
-binExtensions=$(find $APPS/*/bin -type f|sed 's/.*\././' | sort | uniq -c|sed 's/^./⋅⋅*/g')
+binExtensions=$(find $APPS/*/bin -type f|sed 's/.*\././' | sort | uniq -c|sed 's/^./   * /g')
 echo "$binExtensions"
 
 totalStartTime=$(date +'%s')

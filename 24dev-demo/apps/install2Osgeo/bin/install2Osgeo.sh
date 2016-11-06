@@ -132,7 +132,7 @@ if [[ -r $BASE/backup/screen.png ]]; then
   mv ${BASE}/backup/screen.png  ${BASE}/backup/${fileName}
   if [[ -r ${MYDEV_NAME_PATH}/Project-Summary.md ]]; then
     echo "Posting the new screenshot file name to the Project-Summary.md..." 
-    echo "24dev Verification screenshot|[$fileName]($BASE/backup/${fileName})" >> $MYDEV_NAME_PATH/Project-Summary.md
+    echo "24dev Verification screenshot|[$fileName](24dev-demo/backup/${fileName})" >> $MYDEV_NAME_PATH/Project-Summary.md
   else
     echo "Warning: The Project-Summary.md file is not available to post your screenshot"
   fi
