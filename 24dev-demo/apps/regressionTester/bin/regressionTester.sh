@@ -43,10 +43,8 @@ find $APPS/*/bin -type f| xargs wc -l
 
 echo  "Load and display program file name extensions..."
 # See: https://en.wikipedia.org/wiki/List_of_file_formats
-binExtensions=$(find $APPS/*/bin -type f|sed 's/.*\././' | sort | uniq -c)
+binExtensions=$(find $APPS/*/bin -type f|sed 's/.*\././' | sort | uniq -c|sed 's/^./⋅⋅*/g')
 echo "$binExtensions"
-
-
 
 totalStartTime=$(date +'%s')
 sed '1d' ${APPS}/regressionTester/input/inputRegressionTests.csv > ${APPS}/regressionTester/input/inputRegressionTests.csv.noHeader
@@ -269,8 +267,7 @@ ProjectSummaryFile=$MYDEV_NAME_PATH/Project-Summary.md
 appCount=$(ls -ltr $APPS|grep -v 'total 0'|wc -l)
 totalEndTime=$(date +'%s')
 totalRunTime=$((totalEndTime - totalStartTime))
-# datestamp=$(date +%m/%/d%/Y %H%M)
-datestamp=$(date)
+datestamp=$(date +%F\ %r)
 
 cat <<-EOF > $ProjectSummaryFile 
 # $MYDEV_NAME Project Summary 
@@ -284,12 +281,29 @@ Welcome to Patrick McGovern's $MYDEV_NAME Software Digital Portfolio. Created on
 * List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
 $binExtensions
 
+## Regression Test Results 
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 
 EOF
 
 # Append the regression test output details to the Project-Summary.md file: 
 cat $outputRegTests >>  $ProjectSummaryFile 
+
+# Append the Verification process details to the Project-Summary.md file:  
+cat <<-EOF >> $ProjectSummaryFile
+
+## Verification Details
+* Below are system verification details generated on the computer that ran this process. 
+* You can optionally include a verification screenshot as described in the [README-regressionTester.md Doc](24dev-demo/apps/regressionTester/docs/README-regressionTester.md). 
+
+Verification Name|Details  
+ --- | --- 
+[date](https://en.wikipedia.org/wiki/System_time)|$(date)
+[uname -a](https://en.wikipedia.org/wiki/Uname)|$(uname -a)
+[lsb_release -d](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/lsbrelease.html)|$(lsb_release -d)
+[hostname](https://en.wikipedia.org/wiki/Hostname)|$(hostname)
+[cat /etc/machine-id](https://www.freedesktop.org/software/systemd/man/machine-id.html)|$(cat /etc/machine-id) 
+EOF
 
 echo
 echo "If you have failures - first check the Regression test logs at: ${logsRegTests}" 

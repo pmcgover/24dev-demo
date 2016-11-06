@@ -23,17 +23,18 @@ else
 fi
 echo 
 
-echo "Verify that the Postgres server is alive, restart if needed..."
-chkpg=$(/etc/init.d/postgresql status|grep 'active (exited)')
-if [[ -z $chkpg ]];then
-   echo "WARNING: The Postgres service is down, restarting now..."
-   service postgresql restart
-   chkerr "$?" "1" "The Postgres restart process failed"
-   echo "Restarted Postgres, checking status below..."
-   /etc/init.d/postgresql status
-   echo
+echo "Verify that the Postgres server is alive by creating a database, test against it, restart if needed..."
+psql postgres -c  "CREATE DATABASE r4d" 2>/dev/null
+psql r4d -c "\d" 2>/dev/null
+dbErr=$(echo $?)
+if [[ $dbErr -ne 0 ]]; then
+  echo "WARNING: The Postgres service is likely down, restarting now..."
+  service postgresql restart
+  echo "Restarted Postgres, checking status below..."
+  /etc/init.d/postgresql status
+  echo
 else
-   echo "Postgres server is active"
+   echo "Postgres server should be active..."
 fi 
 
 

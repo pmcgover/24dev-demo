@@ -17,6 +17,7 @@ The install script also creates a backup and purges application log files.
 and have statistics and Pass/Fail results published to the: [Project-Sumary.md](Project-Summary.md).
 * Scripts can display applicable license and README.md files.
 * All user applications are expected to have a bin, docs, logs, output and output/goodtests folders/files.
+* Users can optionally include a verification screenshot of their 24dev program and github account. 
 * Users are encouraged to create their own customized releases via github renamed as: 24dev-[myForkName]. 
 
 ## Installing 24dev-demo to an OSGeo Live DVD system
@@ -54,7 +55,8 @@ view the custom 24dev-demo commands.
    Modified <appName>, Added <appName> Copyright 2016 Mary Carol Doe
 ```
 * Install, run and test your applications on a live OSGeo DVD, flash drive or virtual machine. 
-* Run the install script to clean up the 24dev file system.  Optionaly, retain the last [backup tar file](24dev-demo/backup).  
+* Run the install script to clean up the 24dev file system.  Retain the last [backup tar file](24dev-demo/backup).  
+* Optionally include a verification screenshot of your 24dev program and github account. 
 * Copy/push your changes to your local github repository or see: [Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
 * Add your new changes to your git repo: *git add -A*
 * Commit your changes: git commit -m 'Updated the ABC application'

@@ -116,14 +116,46 @@ for dir in $(dirname $(find $APPS/*/logs)|grep logs|sort|uniq); do
 done
 echo
 
+
+echo "List and Remove any previous screenshot files..."
+ls -ltr ${BASE}/backup/24dev-screenshot*
+rm -f ${BASE}/backup/24dev-screenshot* 
+
+echo
+echo "Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md..."
+datestamp=$(date +%Y%m%d-%H%M)
+hostName=$(hostname)
+fileName="24dev-screenshot_${hostName}_${datestamp}.png"
+if [[ -r $BASE/backup/screen.png ]]; then
+  echo "Renaming ${BASE}/backup/screen.png file to: $fileName"
+  ls -ltr ${BASE}/backup
+  mv ${BASE}/backup/screen.png  ${BASE}/backup/${fileName}
+  if [[ -r ${MYDEV_NAME_PATH}/Project-Summary.md ]]; then
+    echo "Posting the new screenshot file name to the Project-Summary.md..." 
+    echo "24dev Verification screenshot|[$fileName]($BASE/backup/${fileName})" >> $MYDEV_NAME_PATH/Project-Summary.md
+  else
+    echo "Warning: The Project-Summary.md file is not available to post your screenshot"
+  fi
+fi
+
 echo "Remove previous backup tar file..."
 rm -f $BASE/backup/*.tar 
 echo
 
 echo "Create a backup tar file, stored under ${BASE}/backup..."
-datestamp=$(date +%Y%m%d_%H%M)
 tar -cpf ${BASE}/backup/${MYDEV_NAME}.${datestamp}.tar -C ~/Desktop ${MYDEV_NAME} 
 chkerr "$?" "1" "The backup tar file process failed..."
+
+echo
+echo "Check and install the screengrab program to take screenshots..." 
+dpkg-query -l screengrab
+checkStatus=$(echo $?)
+if [[ $checkStatus -ne 0 ]]; then
+  echo "The screengrab program is not installed, lets add it..."
+  sudo apt install screengrab
+  # Sleep for a bit to allow the above program to install.
+  sleep 5
+fi
 
 echo
 echo "Success! Your $MYDEV_NAME system has been installed."
@@ -131,5 +163,3 @@ echo "Consider testing your programs with the regressionTester application"
 echo
 echo "The installation log files are located at: $APPS/install2Osgeo/logs/install2Osgeo.log "
 echo
-
-
