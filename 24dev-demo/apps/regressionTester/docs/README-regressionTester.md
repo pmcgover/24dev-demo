@@ -18,3 +18,4 @@ You can optionally include a verification screenshot with these steps:
 * Position the terminal and browser windows then execute the "screengrab" command.
 * Save the image as "screen.png" into the [backup directory](24dev-demo/backup).
 * Run the [install.sh](24dev-demo/install.sh) command, which will post your screenshot to the Project-Summary.md page. 
+* View this sample screenshot image: [24dev-screenshot_osgeolive_20161106-2117.png](http://pmcgovern.us/files/myf/24dev-screenshot_osgeolive_20161106-2117.png).

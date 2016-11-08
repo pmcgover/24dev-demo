@@ -8,6 +8,13 @@ benefit by viewing the code and project summary on github and verify the user's 
 on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the Open Source 
 Community and the Open Source developer. 
 
+## 24dev High Level Use Cases
+The 24dev process involves 3 [Use Case Actors](https://en.wikipedia.org/wiki/Actor_(UML)): student, teacher and 
+employer. The list below describes how the 24dev system should interact with these users:
+* As a student, I would like to learn marketable [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) skills which can be accessed online by teachers and potential employers.
+* As a teacher, I would like my students to learn marketable [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) skills and showcase them on github.
+* As an employer, I would like to hire [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) employees with an impressive online portfolio where I can view code, documentation and test drive applications.
+
 ## 24Dev Features
 * Users can install 24dev applications to a live OSGeo DVD, flash drive or virtual machine by 
 running one administrative installation script.
