@@ -1,3 +1,4 @@
+
 -- Update family.is_root with Y for each root level pedigree: 
 UPDATE FAMILY SET is_root = 'Y' WHERE ID IN
 (SELECT DISTINCT ON (f.id) f.id

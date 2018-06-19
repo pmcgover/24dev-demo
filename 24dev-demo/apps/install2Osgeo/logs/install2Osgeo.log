@@ -1,7 +1,7 @@
-Starting script on: Sun Nov 6 21:03:40 UTC 2016
+Starting script on: Mon Jun 18 23:31:03 UTC 2018
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -39,96 +39,53 @@ An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio vi
 
 
 Display the system platform details via the command: uname -a
-Linux osgeolive 4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:06:14 UTC 2016 i686 i686 i686 GNU/Linux
+Linux osgeolive 4.8.0-36-generic #36~16.04.1-Ubuntu SMP Sun Feb 5 09:39:41 UTC 2017 i686 i686 i686 GNU/Linux
 
 Display the Linux distribution release details via the command: lsb_release -a
 Distributor ID:	Ubuntu
-Description:	Ubuntu 16.04.1 LTS
+Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-0.9.6.9 addon to OSGeo.
+This script will install the 24dev-demo-0.9.8.2 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
 
 Checking if this install script previously updated the .bashrc profile...
-The .bashrc was NOT previously updated...
+The .bashrc was previously updated...
 Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Nov  6 21:03 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jun 18 23:31 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/competitionIndexer/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/r4st/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/regressionTester/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/RScripts/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs
 
 List and Remove any previous screenshot files...
--rwxr-xr-x 1 user user 694215 Nov  6 20:41 /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/backup/24dev-screenshot_osgeolive_20161106-2030.png
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
 Remove previous backup tar file...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/backup...
 
 Check and install the screengrab program to take screenshots...
-The screengrab program is not installed, lets add it...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  libkf5windowsystem-data libkf5windowsystem5 libqt5x11extras5 libqt5xdg1
-Recommended packages:
-  kwayland-integration qtwayland5
-The following NEW packages will be installed:
-  libkf5windowsystem-data libkf5windowsystem5 libqt5x11extras5 libqt5xdg1
-  screengrab
-0 upgraded, 5 newly installed, 0 to remove and 5 not upgraded.
-Need to get 466 kB of archives.
-After this operation, 1,975 kB of additional disk space will be used.
-Do you want to continue? [Y/n] Get:1 http://archive.ubuntu.com/ubuntu xenial/universe i386 libkf5windowsystem-data all 5.18.0-0ubuntu1 [10.3 kB]
-Get:2 http://archive.ubuntu.com/ubuntu xenial/universe i386 libqt5x11extras5 i386 5.5.1-3build1 [8,172 B]
-Get:3 http://archive.ubuntu.com/ubuntu xenial/universe i386 libkf5windowsystem5 i386 5.18.0-0ubuntu1 [133 kB]
-Get:4 http://archive.ubuntu.com/ubuntu xenial/universe i386 libqt5xdg1 i386 1.3.0-3 [109 kB]
-Get:5 http://archive.ubuntu.com/ubuntu xenial/universe i386 screengrab i386 1.95+20160128-1 [206 kB]
-Fetched 466 kB in 1s (451 kB/s)
-Selecting previously unselected package libkf5windowsystem-data.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 237784 files and directories currently installed.)
-Preparing to unpack .../libkf5windowsystem-data_5.18.0-0ubuntu1_all.deb ...
-Unpacking libkf5windowsystem-data (5.18.0-0ubuntu1) ...
-Selecting previously unselected package libqt5x11extras5:i386.
-Preparing to unpack .../libqt5x11extras5_5.5.1-3build1_i386.deb ...
-Unpacking libqt5x11extras5:i386 (5.5.1-3build1) ...
-Selecting previously unselected package libkf5windowsystem5:i386.
-Preparing to unpack .../libkf5windowsystem5_5.18.0-0ubuntu1_i386.deb ...
-Unpacking libkf5windowsystem5:i386 (5.18.0-0ubuntu1) ...
-Selecting previously unselected package libqt5xdg1:i386.
-Preparing to unpack .../libqt5xdg1_1.3.0-3_i386.deb ...
-Unpacking libqt5xdg1:i386 (1.3.0-3) ...
-Selecting previously unselected package screengrab.
-Preparing to unpack .../screengrab_1.95+20160128-1_i386.deb ...
-Unpacking screengrab (1.95+20160128-1) ...
-Processing triggers for libc-bin (2.23-0ubuntu3) ...
-Processing triggers for desktop-file-utils (0.22-1ubuntu5) ...
-Processing triggers for mime-support (3.59ubuntu1) ...
-Processing triggers for hicolor-icon-theme (0.15-0ubuntu1) ...
-Setting up libkf5windowsystem-data (5.18.0-0ubuntu1) ...
-Setting up libqt5x11extras5:i386 (5.5.1-3build1) ...
-Setting up libkf5windowsystem5:i386 (5.18.0-0ubuntu1) ...
-Setting up libqt5xdg1:i386 (1.3.0-3) ...
-Setting up screengrab (1.95+20160128-1) ...
-Processing triggers for libc-bin (2.23-0ubuntu3) ...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version         Architecture Description
++++-==============-===============-============-==========================================
+ii  screengrab     1.95+20160128-1 i386         Crossplatform tool for getting screenshots
 
-Success! Your 24dev-demo-0.9.6.9 system has been installed.
+Success! Your 24dev-demo-0.9.8.2 system has been installed.
 Consider testing your programs with the regressionTester application
 
-The installation log files are located at: /home/user/Desktop/24dev-demo-0.9.6.9/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
+The installation log files are located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
 

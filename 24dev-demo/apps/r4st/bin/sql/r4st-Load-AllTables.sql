@@ -7,6 +7,7 @@ CREATE TABLE taxa (
   species_hybrid VARCHAR NOT NULL DEFAULT '0', -- eg. Populus ×rouleauiana Boivin  --cline
   common_name VARCHAR NOT NULL DEFAULT '0', --cline
   binomial_name VARCHAR NOT NULL DEFAULT '0', --cline
+  -- class CHAR(6) NOT NULL DEFAULT 'U' CHECK (class in ('U','AA','AH','H','C','N')), --cline --Moved to the plant table for easier updates. 
   kingdom VARCHAR NOT NULL DEFAULT '0', --cline
   family VARCHAR NOT NULL DEFAULT '0', --cline
   genus VARCHAR NOT NULL DEFAULT '0', --cline
@@ -28,16 +29,17 @@ CREATE TABLE family (
   is_plus CHAR NOT NULL DEFAULT 'U' CHECK (is_plus in ('N','Y','U')), -- eg Yes, No, Unknown --cline
   is_root varCHAR NOT NULL DEFAULT '0',  
   seeds_in_storage NUMERIC NOT NULL DEFAULT -1, --cline
-  ploidy_n INTEGER NOT NULL DEFAULT -1,  --eg 2, 3, 4  --cline
   seed_germ_percent NUMERIC NOT NULL DEFAULT '-1' CHECK (seed_germ_percent < 1),  --cline
   seed_germ_date DATE NOT NULL DEFAULT '1111-11-11',  --cline
   cross_date DATE NOT NULL DEFAULT '1111-11-11',  --cline
+  project_phase NUMERIC NOT NULL DEFAULT '-1', --cline - High Project Phases may span multiple years or be sub-sets (eg. 1.1, 1.2, 2, etc)
   id_taxa INTEGER NOT NULL,  --cline 
   web_photos VARCHAR NOT NULL DEFAULT '0',
   web_url VARCHAR NOT NULL DEFAULT '0',
   CONSTRAINT family_pk PRIMARY KEY (id),
   CONSTRAINT family_id_taxa_fk FOREIGN KEY(id_taxa) REFERENCES taxa(id)
 );
+
 
 CREATE TABLE plant ( 
   --plantTable    tline 
@@ -56,8 +58,10 @@ CREATE TABLE plant (
   is_cultivar CHAR NOT NULL DEFAULT 'U' CHECK (is_cultivar in ('N','Y','U')), --eg Yes, No, Unknown  --cline
   is_variety CHAR NOT NULL DEFAULT 'U' CHECK (is_variety in ('N','Y','U')),  --cline
   is_from_wild CHAR NOT NULL DEFAULT 'U' CHECK (is_from_wild in ('N','Y','U')),  --eg Was the plant found in the wild - Yes, No, Unknown  --cline
-  ploidy_n INTEGER NOT NULL DEFAULT 0,  --eg 2, 3, 4  --cline
+  ploidy_n INTEGER NOT NULL DEFAULT -1,  --eg -1 (Unknown), 2, 3, 4  --cline
   date_aquired DATE NOT NULL DEFAULT '1111-11-11',  --cline
+  --alba_class notes: U=Unknown, A=Alba 100% alba, AH=Alba Hybrid >50% alba, H=Hybrid =50% alba, C=Control (non alba), ASO=Aspen Other, ASA=Aspen American native --cline
+  alba_class VARCHAR(3) NOT NULL DEFAULT 'U' CHECK (alba_class in ('U','A','AH','ASH','ASA','ASO','H','C')), 
   id_taxa INTEGER NOT NULL,  --cline
   id_family INTEGER NOT NULL,  --cline
   web_photos VARCHAR NOT NULL DEFAULT '0',
@@ -74,7 +78,6 @@ pedigree_key VARCHAR NOT NULL,
 path VARCHAR NOT NULL UNIQUE
 );
 
-
 insert into taxa (taxa_key, id, notes, species_hybrid) VALUES ('TBD',1,'To Be Determined','NA');
 insert into taxa (taxa_key, id, notes, species) VALUES ('NA',2,'Does Not Apply - See Taxa table for separate hybrid taxa definitions.','NA');
 
@@ -83,7 +86,6 @@ insert into family (family_key, id, notes, id_taxa) VALUES ('NA',2,'Does Not App
 
 insert into plant (plant_key, id, notes, id_taxa, id_family) VALUES ('TBD',1,'To Be Determined',2,2);
 insert into plant (plant_key, id, notes, id_taxa, id_family) VALUES ('NA',2,'Does Not Apply',2,2);
-
 
 -- Lists the location of a site for the focus of the test
 CREATE TABLE site ( 
@@ -119,10 +121,12 @@ CREATE TABLE test_spec (
   id serial,
   notes VARCHAR NOT NULL DEFAULT '0',
   activity_type VARCHAR(5) NOT NULL DEFAULT '0' CHECK (activity_type in ('0','TRIAL','EVENT')),   --cline
-  test_type VARCHAR(20) NOT NULL DEFAULT '0' CHECK (test_type in ('0','nursery','breeding','field-planting','field-trial','propagation')),   --cline
+  test_type VARCHAR(20) NOT NULL DEFAULT '0' CHECK (test_type in ('0','nursery','breeding','propagation','archive-planting','family-trial','clonal-trial','gpft')),   --cline
+  -- stock_type: Unknown, Not-Apply, Dormant-Cuttings, MiniStools, SEedLings, BarerootStock= 1-0, 1-1, 1-2  
+  stock_type CHAR(6) NOT NULL DEFAULT 'U' CHECK (stock_type in ('U','NA','MIX','WHIP','WASP','DC','MS','SEL','1-0','1-1','1-2')),   --cline
+  stock_length_cm NUMERIC NOT NULL DEFAULT '-1',  --cline
+  stock_collar_dia_mm NUMERIC NOT NULL DEFAULT '-1',  --cline
   research_hypothesis VARCHAR NOT NULL DEFAULT '0',  --cline
-  null_hypothesis VARCHAR NOT NULL DEFAULT '0',  --cline
-  reject_null_hypothesis CHAR DEFAULT '0' CHECK (reject_null_hypothesis in ('Y','N','0')), --  eg Yes, No  --cline
   web_protocol VARCHAR NOT NULL DEFAULT '0',  --cline
   web_url VARCHAR NOT NULL DEFAULT '0',  
   web_photos VARCHAR NOT NULL DEFAULT '0',  
@@ -132,42 +136,96 @@ CREATE TABLE test_spec (
   CONSTRAINT test_spec_pk PRIMARY KEY (id)
 );
 
-
 CREATE TABLE test_detail ( 
   --test_detail Table    tline 
   test_detail_key VARCHAR(50) NOT NULL DEFAULT '0',  -- Not unique, since it really represents a clone or familiy ID... 
   id serial,
   notes VARCHAR NOT NULL DEFAULT '0',
   notes2 VARCHAR NOT NULL DEFAULT '0',
+  notes3 VARCHAR NOT NULL DEFAULT '0',
+  planted_order numeric NOT NULL DEFAULT '-1',  --cline
+  -- selection_type: U=unknown, P=Primary/elite, S=Secondary/archive, T=Tertiary/Parent, F=Family, R=Retest, D=Discard
+  selection_type CHAR NOT NULL DEFAULT 'U' CHECK (selection_type in ('U','P','S','T','F','R','D')),   --cline
   start_quantity numeric NOT NULL DEFAULT '-1',  --cline
   end_quantity numeric NOT NULL DEFAULT '-1',  --cline
   this_start_date DATE NOT NULL DEFAULT '1111-11-11',  -- Some entries could have a later start date  --cline
   score_date DATE NOT NULL DEFAULT '1111-11-11',  --cline
-  -- stock_type: Unknown, Dormant-Cuttings, Ortet Dormant Cuttings, Root Shoots, SEed, SEedLings, BarerootStock= 1-0, 1-1, 1-2  
-  stock_type CHAR(4) NOT NULL DEFAULT 'U' CHECK (stock_type in ('U','ASP','SASP','WASP','SCP','DC','ODC','RS','SE','SEL','1-0','1-1','1-2')),   --cline
+  -- stock_type: Unknown, Dormant-Cuttings, Ortet DC, Family DC, MiniStools, Root Shoots, RooTLing, SEedLings, BarerootStock= 1-0, 1-1  
+  stock_type CHAR(6) NOT NULL DEFAULT 'U' CHECK (stock_type in ('U','ASP','SASP','WASP','DC','ODC','FDC','MS','RS','RTL','SEL','1-0','1-1')),   --cline
   stock_length_cm NUMERIC NOT NULL DEFAULT '-1',  --cline
   stock_dia_mm NUMERIC NOT NULL DEFAULT '-1',  --cline
-  nbr_of_stems INTEGER NOT NULL DEFAULT '-1',  --cline
   is_plus_ynu CHAR DEFAULT '0' CHECK (is_plus_ynu in ('Y','N','U','0')), --  eg Yes, No, Unknown  --cline
   collar_median_dia_mm  NUMERIC NOT NULL DEFAULT '-1',  --cline
-  dbh_circ_cm NUMERIC NOT NULL DEFAULT '-1',  --cline
+  collar_1_1_median_dia  NUMERIC NOT NULL DEFAULT '-1',  --cline
+  stool_collar_median_dia_mm  NUMERIC NOT NULL DEFAULT '-1',  --cline
+  field_cuttings_ft NUMERIC NOT NULL DEFAULT '-1',  --cline
   height_cm NUMERIC NOT NULL DEFAULT '-1',  --cline
-  bias_3_3 NUMERIC NOT NULL DEFAULT '-4' CHECK (bias_3_3 < 4 AND bias_3_3 > -5), --cline Note that default is -4...  
+  -- leaf_score description: -1 = Not scored. 1= Over 50% of crown affected by leaf issues, major defoliation, 
+  -- 2= About 25% of crown affected by leaf issues and defoliation. 3= Leaves moderately affected with minor defoliation,
+  -- 4= A few leaf issues, no defoliation,
+  -- 5= No leaf issues.
   leaf_score INTEGER NOT NULL DEFAULT '-1' CHECK (leaf_score < 6),  --cline 
-  canker_score INTEGER NOT NULL DEFAULT '-1' CHECK (canker_score < 6),  --cline 
-  swasp_score INTEGER NOT NULL DEFAULT '-1' CHECK (swasp_score < 6),  --cline
-  id_plant INTEGER NOT NULL,  --cline
-  id_family INTEGER NOT NULL,  --cline
   id_test_spec INTEGER NOT NULL,  --cline
   row_nbr NUMERIC NOT NULL DEFAULT '-1',   --cline
   column_nbr NUMERIC NOT NULL DEFAULT '-1',   --cline
   replication_nbr INTEGER NOT NULL DEFAULT '-1',   --cline
   plot_nbr INTEGER NOT NULL DEFAULT '-1',  --cline
   block_nbr INTEGER NOT NULL DEFAULT '-1',   --cline
-  CONSTRAINT test_detail_id_family_fk FOREIGN KEY(id_plant) REFERENCES plant(id), 
-  CONSTRAINT test_detail_id_plant_fk FOREIGN KEY(id_family) REFERENCES family(id), 
   CONSTRAINT test_detail_id_test_spec_fk FOREIGN KEY(id_test_spec) REFERENCES test_spec(id),
   CONSTRAINT test_detail_pk PRIMARY KEY (id)
+);
+
+
+CREATE TABLE field_trial ( 
+  --field_trial Table    tline 
+  field_trial_key VARCHAR(50) NOT NULL DEFAULT '0',  -- Not unique, since it can hold many copies of the same clones.
+  id serial,
+  notes VARCHAR NOT NULL DEFAULT '0',
+  notes2 VARCHAR NOT NULL DEFAULT '0',
+  notes3 VARCHAR NOT NULL DEFAULT '0',
+  planted_order numeric NOT NULL DEFAULT '-1', 
+  live_quantity numeric NOT NULL DEFAULT '-1',  --cline
+  is_plus_ynu CHAR DEFAULT '0' CHECK (is_plus_ynu in ('Y','N','U','0')), --  eg Yes, No, Unknown  --cline
+  live_dbh_cm NUMERIC NOT NULL DEFAULT '-1',  --cline
+  live_height_cm NUMERIC NOT NULL DEFAULT '-1',  --cline 
+  -- leaf_score description: -1 = Not scored. 1= Over 50% of crown affected by leaf issues, major defoliation, 
+  -- 2= About 25% of crown affected by leaf issues and defoliation. 3= Leaves moderately affected with minor defoliation,
+  -- 4= A few leaf issues, no defoliation,
+  -- 5= No leaf issues.
+  leaf_score INTEGER NOT NULL DEFAULT '-1' CHECK (leaf_score < 6),  --cline 
+  canker_score INTEGER NOT NULL DEFAULT '-1' CHECK (canker_score < 6),  --cline 
+  -- tree_spacing_ft: Unknown,NA,MIX,4x4,4x6,8x7,8x8,8x10,9x9
+  tree_spacing_ft CHAR(4) NOT NULL DEFAULT 'U' CHECK (tree_spacing_ft in ('U','NA','MIX','4x4','4x6','8x7','8x8','9x9','8x10')),   --cline
+  row_nbr NUMERIC NOT NULL DEFAULT '-1',   --cline
+  column_nbr NUMERIC NOT NULL DEFAULT '-1',   --cline
+  replication_nbr INTEGER NOT NULL DEFAULT '-1',   --cline
+  plot_nbr INTEGER NOT NULL DEFAULT '-1',  --cline
+  block_nbr INTEGER NOT NULL DEFAULT '-1',   --cline
+  id_test_spec INTEGER NOT NULL,  --cline
+  id_site INTEGER NOT NULL,  --cline
+  CONSTRAINT field_trial_id_site_fk FOREIGN KEY(id_site) REFERENCES site(id),
+  CONSTRAINT field_trial_id_test_spec_fk FOREIGN KEY(id_test_spec) REFERENCES test_spec(id),
+  CONSTRAINT field_trial_pk PRIMARY KEY (id)
+);
+
+
+CREATE TABLE split_wood_tests ( 
+  -- split_wood_tests Table    tline 
+  swt_key VARCHAR(50) NOT NULL DEFAULT '0',  -- Not unique, since it can hold many copies of the same clones.
+  id serial,
+  notes VARCHAR NOT NULL DEFAULT '0',
+  notes2 VARCHAR NOT NULL DEFAULT '0',
+  cutting_order numeric NOT NULL DEFAULT '-1', 
+  stem_dia_small_end_mm numeric NOT NULL DEFAULT '-1',  --cline
+  length_of_split_in numeric NOT NULL DEFAULT '-1',  --cline
+  grain_pull_force_lb numeric NOT NULL DEFAULT '-1',  --cline
+  --undulation_level: -1=Unknown, 0=None (A502), 1=Low (AGRR1 light,inconsistent), 2=Med (25r61 heavier), 3=High (25r23 significant)
+  undulation_level INTEGER NOT NULL DEFAULT '-1', CHECK (undulation_level < 4),  --cline 
+  gpf_test_set CHAR(1) NOT NULL DEFAULT 'N' CHECK (gpf_test_set in ('Y','N')), --cline 
+  replication_nbr INTEGER NOT NULL DEFAULT '-1',   --cline
+  id_test_spec INTEGER NOT NULL,  --cline
+  CONSTRAINT grain_pull_split_wood_tests_id_test_spec_fk FOREIGN KEY(id_test_spec) REFERENCES test_spec(id),
+  CONSTRAINT split_wood_tests_pk PRIMARY KEY (id)
 );
 
 
@@ -191,20 +249,39 @@ CREATE TABLE journal (
 );
 
 
+CREATE TABLE u07m_2013 ( 
+  -- u07m_2013 Table  tline 
+  id serial,
+  dbh NUMERIC NOT NULL,
+  dbh_rank INTEGER NOT NULL, 
+  name VARCHAR NOT NULL, 
+  area_index NUMERIC NOT NULL, 
+  sum_dbh_ratio2_cd NUMERIC NOT NULL,
+  sdbh_x_cavg NUMERIC NOT NULL, 
+  CONSTRAINT u07m_2013_pk PRIMARY KEY (id)
+);
+
 insert into site (site_key, id, notes, location_code) VALUES ('TBD',1,'To Be Determined','TBD');
 insert into site (site_key, id, notes, location_code) VALUES ('NA',2,'Does Not Apply','NA');
 
 insert into test_spec (test_spec_key, id, notes, id_site) VALUES ('TBD',1,'To Be Determined',1);
 insert into test_spec (test_spec_key, id, notes, id_site) VALUES ('NA',2,'Does Not Apply',2);
 
-insert into test_detail (test_detail_key, id, notes, notes2, id_plant, id_family, id_test_spec) VALUES ('TBD',-1,'Dummy record used for id_prev_test_detail null values',1,1,2,2);
-insert into test_detail (test_detail_key, id, notes, notes2, id_plant, id_family, id_test_spec) VALUES ('TBD',1,'To Be Determined',1,1,2,2);
-insert into test_detail (test_detail_key, id, notes, notes2, id_plant, id_family, id_test_spec) VALUES ('NA',2,'Does Not Apply',2,2,2,2);
+insert into test_detail (test_detail_key, id, notes, notes2, id_test_spec) VALUES ('TBD',-1,'Dummy record used for id_prev_test_detail null values',1,2);
+insert into test_detail (test_detail_key, id, notes, notes2, id_test_spec) VALUES ('TBD',1,'To Be Determined',1,2);
+insert into test_detail (test_detail_key, id, notes, notes2, id_test_spec) VALUES ('NA',2,'Does Not Apply',2,2);
+
+insert into field_trial (field_trial_key, id, notes, notes2, id_test_spec, id_site) VALUES ('TBD',-1,'Dummy record used for id_prev_test_detail null values',1,2,2);
+insert into field_trial (field_trial_key, id, notes, notes2, id_test_spec, id_site) VALUES ('TBD',1,'To Be Determined',1,2,2);
+insert into field_trial (field_trial_key, id, notes, notes2, id_test_spec, id_site) VALUES ('NA',2,'Does Not Apply',2,2,2);
+
+insert into split_wood_tests (swt_key, id, notes, notes2, id_test_spec) VALUES ('TBD',1,'To Be Determined',1,2);
+insert into split_wood_tests (swt_key, id, notes, notes2, id_test_spec) VALUES ('NA',2,'Does Not Apply',2,2);
 
 insert into journal (journal_key, id, notes, id_plant, id_family, id_test_spec, id_site) VALUES ('TBD',1,'To Be Determined',2,2,2,2);
 insert into journal (journal_key, id, notes, id_plant, id_family, id_test_spec, id_site) VALUES ('NA',2,'Does Not Apply',2,2,2,2);
 
 -- Command line code below to list the significant tables/columns for reporting:
--- tline - describes lines with table information - cline- describes lines with column information
+---- tline - describes lines with table information - cline- describes lines with column information
 -- egrep '(tline|cline)'  r4st-Load-AllTables.sql|awk '{print "The", $1 " column describes ", "|",$1,"|", $0}'|sed 's/--cline//g'
 

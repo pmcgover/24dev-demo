@@ -109,13 +109,6 @@ done
 echo
 rm ../csv/TMP.txt
 
-
-echo "Check for undesireable characters in the CSV files..."
-chkBadChars=$(grep -R '"' ../csv/*)
-if [[ -n $chkBadChars ]]; then
-  echo "ERROR: Found double quotes in the CSV files! Please remove them..."
-fi   
-
 echo "The r4st database process is: DONE"
 psql --version
 

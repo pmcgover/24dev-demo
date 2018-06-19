@@ -1,7 +1,12 @@
 site_key|id|location_code|name_long|notes|address|loc_lat|loc_long|elevation_ft|aspen_site_index|usda_soil_texture|drainage_class_usda|mean_annual_precip_in|mean_annual_temp_f|frost_free_period_days|depth_to_water_table_in|usda_map_url|web_url|web_photos|contact
-River1-Nursery|3|RIVN|0|MBP|0|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
-Curve-Nursery|4|CRVN|0|MBP|0|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
-Dist-Nursery|5|DISN|0|MBP|0|0|0|900|0|sand|ED|34|48|170|1000|0|0|0|0
-River-Indoor|6|RIVI|0|MBP|0|0|0|900|0|0|U|-1|-1|-1|-1|0|0|0|0
-ROW-NE|7|RNE|0|MBP|0|0|0|900|0|0|WD|0|0|0|-1|0|0|0|0
-MFCTR|8|MF|0|MFUPTIC|0|0|0|0|0|0|U|-1|-1|-1|-1|0|0|0|0
+Bell-Nursery|3|BELLN|0|Pat McGovern's main nursery site|Grand Rapids, MI|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+C-Nursery|4|CN|0|Temp 1 McGovern Nursery site|Grand Rapids, MI|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+D-Nursery|5|DN|0|Temp 2 McGovern nursery site|Grand Rapids, MI|0|0|900|0|sand|ED|34|48|170|1000|0|0|0|0
+Bell-Indoor|6|BELLI|0|Pat McGovern's Indoor Garden site|Grand Rapids, MI|0|0|900|0|0|U|-1|-1|-1|-1|0|0|0|0
+RNE|7|RNE|0|Pat McGovern's RNE site.   Started P. alba 1992.|LP West Michigan|0|0|900|0|0|WD|0|0|0|-1|0|0|0|0
+MB-Escanabaa|8|MF|0|MB Escanaba site|UP Michigan|0|0|0|0|0|U|-1|-1|-1|-1|0|0|0|0
+PostNE-West|9|PNEW|0|Post NE – Planting starts on West edge|LP West Michigan|0|0|0|0|0|WD|-1|-1|-1|-1|0|0|0|0
+CSNE|10|CSNE|0|Pat McGovern's CSNE site.   Started P. alba 1992.|LP West Michigan|0|0|0|0|clay|PD|-1|-1|-1|-1|0|0|0|0
+Arthur-Nursery|11|ARTH|0|Pat McGovern's nursery site|Grand Rapids, MI|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+Rlnder|12|RL1|0|Rlnder|RL, WI|0|0|0|0|0|U|0|0|0|0|0|0|0|0
+Wyrdj5|13|WY1|0|Wyrdj5|Escanaba, MI|0|0|0|0|0|U|0|0|0|0|0|0|0|0

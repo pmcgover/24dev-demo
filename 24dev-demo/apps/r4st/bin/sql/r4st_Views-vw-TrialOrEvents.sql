@@ -1,11 +1,12 @@
+-------------
 --- NOTE this needs to be optimized for the new test_detail columns....
-
+-------------
+/* Comment out until determined to have value
 CREATE VIEW vw_trials AS 
 select
 tsp.test_spec_key,
 tsp.id test_spec_id,
 tsp.research_hypothesis,
-tsp.reject_null_hypothesis,
 tsp.activity_type,
 s.site_key,
 s.notes site_notes,
@@ -21,7 +22,6 @@ trunc((td.end_quantity / td.start_quantity),3) as survival_rate,
 td.stock_type,
 td.stock_length_cm,
 td.stock_dia_mm,
-td.dbh_circ_cm,
 p.plant_key,
 p.id plant_id,
 f.family_key,
@@ -43,4 +43,24 @@ AND td.id_plant = p.id
 AND td.id_family = f.id
 AND tsp.activity_type = 'TRIAL'
 ORDER BY tsp.test_spec_key, td.this_start_date;
+*/ ---------------
+
+
+
+CREATE VIEW vw_u07m_2013 AS 
+select 
+name,
+COUNT(CASE WHEN dbh > 0 THEN dbh END) as count_live_trees, 
+round(avg(dbh_rank),2) as avg_dbh_Rank,
+round(avg(area_index),2) as avg_area_index,
+round(avg(sum_dbh_ratio2_cd),2) as avg_dbh_ratio2_cd,
+round(avg(sdbh_x_cavg),2) as avg_sdbh_x_cavg, 
+round(stddev(dbh_rank),2) as stdev_dbh_Rank,
+round(stddev(area_index),2) as stdev_area_index,
+round(stddev(sum_dbh_ratio2_cd),2) as stev_dbh_ratio2_cd,
+round(stddev(sdbh_x_cavg),2) as stdev_sdbh_x_cavg 
+from u07m_2013
+group by name
+ORDER BY avg(sdbh_x_cavg) DESC; 
+
 

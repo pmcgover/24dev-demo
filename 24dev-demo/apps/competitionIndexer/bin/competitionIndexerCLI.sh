@@ -400,3 +400,8 @@ DROP VIEW if exists vw_ci3 CASCADE;
 commit;
 SQL
 
+echo
+echo "Done!  The output file is located at: "
+echo "$outFileName"
+echo
+

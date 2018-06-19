@@ -13,10 +13,10 @@ id~table_name~table_description
  is_plus           | character(1)          | not null default 'U'::bpchar
  is_root           | character varying     | not null default '0'::character varying
  seeds_in_storage  | numeric               | not null default '-1'::integer
- ploidy_n          | integer               | not null default '-1'::integer
  seed_germ_percent | numeric               | not null default '-1'::numeric
  seed_germ_date    | date                  | not null default '1111-11-11'::date
  cross_date        | date                  | not null default '1111-11-11'::date
+ project_phase     | numeric               | not null default '-1'::numeric
  id_taxa           | integer               | not null
  web_photos        | character varying     | not null default '0'::character varying
  web_url           | character varying     | not null default '0'::character varying
@@ -32,9 +32,43 @@ Foreign-key constraints:
 Referenced by:
     TABLE journal CONSTRAINT journal_id_plant_fk FOREIGN KEY (id_family) REFERENCES family(id)
     TABLE plant CONSTRAINT plant_id_family_fk FOREIGN KEY (id_family) REFERENCES family(id)
-    TABLE test_detail CONSTRAINT test_detail_id_plant_fk FOREIGN KEY (id_family) REFERENCES family(id)
 
-#################  Table Nbr: 2 ######  Table Name: journal ##############################################
+#################  Table Nbr: 2 ######  Table Name: field_trial ##############################################
+                                     Table public.field_trial
+     Column      |         Type          |                        Modifiers                         
+-----------------+-----------------------+----------------------------------------------------------
+ field_trial_key | character varying(50) | not null default '0'::character varying
+ id              | integer               | not null default nextval('field_trial_id_seq'::regclass)
+ notes           | character varying     | not null default '0'::character varying
+ notes2          | character varying     | not null default '0'::character varying
+ notes3          | character varying     | not null default '0'::character varying
+ planted_order   | numeric               | not null default '-1'::numeric
+ live_quantity   | numeric               | not null default '-1'::numeric
+ is_plus_ynu     | character(1)          | default '0'::bpchar
+ live_dbh_cm     | numeric               | not null default '-1'::numeric
+ live_height_cm  | numeric               | not null default '-1'::numeric
+ leaf_score      | integer               | not null default '-1'::integer
+ canker_score    | integer               | not null default '-1'::integer
+ tree_spacing_ft | character(4)          | not null default 'U'::bpchar
+ row_nbr         | numeric               | not null default '-1'::numeric
+ column_nbr      | numeric               | not null default '-1'::numeric
+ replication_nbr | integer               | not null default '-1'::integer
+ plot_nbr        | integer               | not null default '-1'::integer
+ block_nbr       | integer               | not null default '-1'::integer
+ id_test_spec    | integer               | not null
+ id_site         | integer               | not null
+Indexes:
+    field_trial_pk PRIMARY KEY, btree (id)
+Check constraints:
+    field_trial_canker_score_check CHECK (canker_score < 6)
+    field_trial_is_plus_ynu_check CHECK (is_plus_ynu = ANY (ARRAY['Y'::bpchar, 'N'::bpchar, 'U'::bpchar, '0'::bpchar]))
+    field_trial_leaf_score_check CHECK (leaf_score < 6)
+    field_trial_tree_spacing_ft_check CHECK (tree_spacing_ft = ANY (ARRAY['U'::bpchar, 'NA'::bpchar, 'MIX'::bpchar, '4x4'::bpchar, '4x6'::bpchar, '8x7'::bpchar, '8x8'::bpchar, '9x9'::bpchar, '8x10'::bpchar]))
+Foreign-key constraints:
+    field_trial_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
+    field_trial_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
+
+#################  Table Nbr: 3 ######  Table Name: journal ##############################################
                                    Table public.journal
     Column    |         Type          |                      Modifiers                       
 --------------+-----------------------+------------------------------------------------------
@@ -56,7 +90,7 @@ Foreign-key constraints:
     journal_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
     journal_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
 
-#################  Table Nbr: 3 ######  Table Name: pedigree ##############################################
+#################  Table Nbr: 4 ######  Table Name: pedigree ##############################################
                                  Table public.pedigree
     Column    |       Type        |                       Modifiers                       
 --------------+-------------------+-------------------------------------------------------
@@ -66,7 +100,7 @@ Foreign-key constraints:
 Indexes:
     pedigree_path_key UNIQUE CONSTRAINT, btree (path)
 
-#################  Table Nbr: 4 ######  Table Name: plant ##############################################
+#################  Table Nbr: 5 ######  Table Name: plant ##############################################
                                          Table public.plant
           Column          |         Type          |                     Modifiers                      
 --------------------------+-----------------------+----------------------------------------------------
@@ -85,8 +119,9 @@ Indexes:
  is_cultivar              | character(1)          | not null default 'U'::bpchar
  is_variety               | character(1)          | not null default 'U'::bpchar
  is_from_wild             | character(1)          | not null default 'U'::bpchar
- ploidy_n                 | integer               | not null default 0
+ ploidy_n                 | integer               | not null default '-1'::integer
  date_aquired             | date                  | not null default '1111-11-11'::date
+ alba_class               | character varying(3)  | not null default 'U'::character varying
  id_taxa                  | integer               | not null
  id_family                | integer               | not null
  web_photos               | character varying     | not null default '0'::character varying
@@ -95,6 +130,7 @@ Indexes:
     plant_pk PRIMARY KEY, btree (id)
     plant_plant_key_key UNIQUE CONSTRAINT, btree (plant_key)
 Check constraints:
+    plant_alba_class_check CHECK (alba_class::text = ANY (ARRAY['U'::character varying, 'A'::character varying, 'AH'::character varying, 'ASH'::character varying, 'ASA'::character varying, 'ASO'::character varying, 'H'::character varying, 'C'::character varying]::text[]))
     plant_form_fnmwu_check CHECK (form_fnmwu = ANY (ARRAY['U'::bpchar, 'F'::bpchar, 'N'::bpchar, 'M'::bpchar, 'W'::bpchar]))
     plant_is_cultivar_check CHECK (is_cultivar = ANY (ARRAY['N'::bpchar, 'Y'::bpchar, 'U'::bpchar]))
     plant_is_from_wild_check CHECK (is_from_wild = ANY (ARRAY['N'::bpchar, 'Y'::bpchar, 'U'::bpchar]))
@@ -106,9 +142,8 @@ Foreign-key constraints:
     plant_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES taxa(id)
 Referenced by:
     TABLE journal CONSTRAINT journal_id_family_fk FOREIGN KEY (id_plant) REFERENCES plant(id)
-    TABLE test_detail CONSTRAINT test_detail_id_family_fk FOREIGN KEY (id_plant) REFERENCES plant(id)
 
-#################  Table Nbr: 5 ######  Table Name: site ##############################################
+#################  Table Nbr: 6 ######  Table Name: site ##############################################
                                          Table public.site
          Column          |         Type          |                     Modifiers                     
 -------------------------+-----------------------+---------------------------------------------------
@@ -139,10 +174,35 @@ Indexes:
 Check constraints:
     site_drainage_class_usda_check CHECK (drainage_class_usda::text = ANY (ARRAY['U'::character varying, 'VPD'::character varying, 'PD'::character varying, 'SPD'::character varying, 'MWD'::character varying, 'WD'::character varying, 'SED'::character varying, 'ED'::character varying]::text[]))
 Referenced by:
+    TABLE field_trial CONSTRAINT field_trial_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
     TABLE journal CONSTRAINT journal_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
     TABLE test_spec CONSTRAINT test_spec_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
 
-#################  Table Nbr: 6 ######  Table Name: taxa ##############################################
+#################  Table Nbr: 7 ######  Table Name: split_wood_tests ##############################################
+                                        Table public.split_wood_tests
+        Column         |         Type          |                           Modifiers                           
+-----------------------+-----------------------+---------------------------------------------------------------
+ swt_key               | character varying(50) | not null default '0'::character varying
+ id                    | integer               | not null default nextval('split_wood_tests_id_seq'::regclass)
+ notes                 | character varying     | not null default '0'::character varying
+ notes2                | character varying     | not null default '0'::character varying
+ cutting_order         | numeric               | not null default '-1'::numeric
+ stem_dia_small_end_mm | numeric               | not null default '-1'::numeric
+ length_of_split_in    | numeric               | not null default '-1'::numeric
+ grain_pull_force_lb   | numeric               | not null default '-1'::numeric
+ undulation_level      | integer               | not null default '-1'::integer
+ gpf_test_set          | character(1)          | not null default 'N'::bpchar
+ replication_nbr       | integer               | not null default '-1'::integer
+ id_test_spec          | integer               | not null
+Indexes:
+    split_wood_tests_pk PRIMARY KEY, btree (id)
+Check constraints:
+    split_wood_tests_gpf_test_set_check CHECK (gpf_test_set = ANY (ARRAY['Y'::bpchar, 'N'::bpchar]))
+    split_wood_tests_undulation_level_check CHECK (undulation_level < 4)
+Foreign-key constraints:
+    grain_pull_split_wood_tests_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
+
+#################  Table Nbr: 8 ######  Table Name: taxa ##############################################
                                     Table public.taxa
      Column     |         Type          |                     Modifiers                     
 ----------------+-----------------------+---------------------------------------------------
@@ -167,79 +227,91 @@ Referenced by:
     TABLE family CONSTRAINT family_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES taxa(id)
     TABLE plant CONSTRAINT plant_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES taxa(id)
 
-#################  Table Nbr: 7 ######  Table Name: test_detail ##############################################
-                                       Table public.test_detail
-        Column        |         Type          |                        Modifiers                         
-----------------------+-----------------------+----------------------------------------------------------
- test_detail_key      | character varying(50) | not null default '0'::character varying
- id                   | integer               | not null default nextval('test_detail_id_seq'::regclass)
- notes                | character varying     | not null default '0'::character varying
- notes2               | character varying     | not null default '0'::character varying
- start_quantity       | numeric               | not null default '-1'::numeric
- end_quantity         | numeric               | not null default '-1'::numeric
- this_start_date      | date                  | not null default '1111-11-11'::date
- score_date           | date                  | not null default '1111-11-11'::date
- stock_type           | character(4)          | not null default 'U'::bpchar
- stock_length_cm      | numeric               | not null default '-1'::numeric
- stock_dia_mm         | numeric               | not null default '-1'::numeric
- nbr_of_stems         | integer               | not null default '-1'::integer
- is_plus_ynu          | character(1)          | default '0'::bpchar
- collar_median_dia_mm | numeric               | not null default '-1'::numeric
- dbh_circ_cm          | numeric               | not null default '-1'::numeric
- height_cm            | numeric               | not null default '-1'::numeric
- bias_3_3             | numeric               | not null default '-4'::numeric
- leaf_score           | integer               | not null default '-1'::integer
- canker_score         | integer               | not null default '-1'::integer
- swasp_score          | integer               | not null default '-1'::integer
- id_plant             | integer               | not null
- id_family            | integer               | not null
- id_test_spec         | integer               | not null
- row_nbr              | numeric               | not null default '-1'::numeric
- column_nbr           | numeric               | not null default '-1'::numeric
- replication_nbr      | integer               | not null default '-1'::integer
- plot_nbr             | integer               | not null default '-1'::integer
- block_nbr            | integer               | not null default '-1'::integer
+#################  Table Nbr: 9 ######  Table Name: test_detail ##############################################
+                                          Table public.test_detail
+           Column           |         Type          |                        Modifiers                         
+----------------------------+-----------------------+----------------------------------------------------------
+ test_detail_key            | character varying(50) | not null default '0'::character varying
+ id                         | integer               | not null default nextval('test_detail_id_seq'::regclass)
+ notes                      | character varying     | not null default '0'::character varying
+ notes2                     | character varying     | not null default '0'::character varying
+ notes3                     | character varying     | not null default '0'::character varying
+ planted_order              | numeric               | not null default '-1'::numeric
+ selection_type             | character(1)          | not null default 'U'::bpchar
+ start_quantity             | numeric               | not null default '-1'::numeric
+ end_quantity               | numeric               | not null default '-1'::numeric
+ this_start_date            | date                  | not null default '1111-11-11'::date
+ score_date                 | date                  | not null default '1111-11-11'::date
+ stock_type                 | character(6)          | not null default 'U'::bpchar
+ stock_length_cm            | numeric               | not null default '-1'::numeric
+ stock_dia_mm               | numeric               | not null default '-1'::numeric
+ is_plus_ynu                | character(1)          | default '0'::bpchar
+ collar_median_dia_mm       | numeric               | not null default '-1'::numeric
+ collar_1_1_median_dia      | numeric               | not null default '-1'::numeric
+ stool_collar_median_dia_mm | numeric               | not null default '-1'::numeric
+ field_cuttings_ft          | numeric               | not null default '-1'::numeric
+ height_cm                  | numeric               | not null default '-1'::numeric
+ leaf_score                 | integer               | not null default '-1'::integer
+ id_test_spec               | integer               | not null
+ row_nbr                    | numeric               | not null default '-1'::numeric
+ column_nbr                 | numeric               | not null default '-1'::numeric
+ replication_nbr            | integer               | not null default '-1'::integer
+ plot_nbr                   | integer               | not null default '-1'::integer
+ block_nbr                  | integer               | not null default '-1'::integer
 Indexes:
     test_detail_pk PRIMARY KEY, btree (id)
 Check constraints:
-    test_detail_bias_3_3_check CHECK (bias_3_3 < 4::numeric AND bias_3_3 > '-5'::integer::numeric)
-    test_detail_canker_score_check CHECK (canker_score < 6)
     test_detail_is_plus_ynu_check CHECK (is_plus_ynu = ANY (ARRAY['Y'::bpchar, 'N'::bpchar, 'U'::bpchar, '0'::bpchar]))
     test_detail_leaf_score_check CHECK (leaf_score < 6)
-    test_detail_stock_type_check CHECK (stock_type = ANY (ARRAY['U'::bpchar, 'ASP'::bpchar, 'SASP'::bpchar, 'WASP'::bpchar, 'SCP'::bpchar, 'DC'::bpchar, 'ODC'::bpchar, 'RS'::bpchar, 'SE'::bpchar, 'SEL'::bpchar, '1-0'::bpchar, '1-1'::bpchar, '1-2'::bpchar]))
-    test_detail_swasp_score_check CHECK (swasp_score < 6)
+    test_detail_selection_type_check CHECK (selection_type = ANY (ARRAY['U'::bpchar, 'P'::bpchar, 'S'::bpchar, 'T'::bpchar, 'F'::bpchar, 'R'::bpchar, 'D'::bpchar]))
+    test_detail_stock_type_check CHECK (stock_type = ANY (ARRAY['U'::bpchar, 'ASP'::bpchar, 'SASP'::bpchar, 'WASP'::bpchar, 'DC'::bpchar, 'ODC'::bpchar, 'FDC'::bpchar, 'MS'::bpchar, 'RS'::bpchar, 'RTL'::bpchar, 'SEL'::bpchar, '1-0'::bpchar, '1-1'::bpchar]))
 Foreign-key constraints:
-    test_detail_id_family_fk FOREIGN KEY (id_plant) REFERENCES plant(id)
-    test_detail_id_plant_fk FOREIGN KEY (id_family) REFERENCES family(id)
     test_detail_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
 
-#################  Table Nbr: 8 ######  Table Name: test_spec ##############################################
-                                        Table public.test_spec
-         Column         |         Type          |                       Modifiers                        
-------------------------+-----------------------+--------------------------------------------------------
- test_spec_key          | character varying(50) | not null
- id                     | integer               | not null default nextval('test_spec_id_seq'::regclass)
- notes                  | character varying     | not null default '0'::character varying
- activity_type          | character varying(5)  | not null default '0'::character varying
- test_type              | character varying(20) | not null default '0'::character varying
- research_hypothesis    | character varying     | not null default '0'::character varying
- null_hypothesis        | character varying     | not null default '0'::character varying
- reject_null_hypothesis | character(1)          | default '0'::bpchar
- web_protocol           | character varying     | not null default '0'::character varying
- web_url                | character varying     | not null default '0'::character varying
- web_photos             | character varying     | not null default '0'::character varying
- test_start_date        | date                  | not null default '1111-11-11'::date
- id_site                | integer               | not null
+#################  Table Nbr: 10 ######  Table Name: test_spec ##############################################
+                                       Table public.test_spec
+       Column        |         Type          |                       Modifiers                        
+---------------------+-----------------------+--------------------------------------------------------
+ test_spec_key       | character varying(50) | not null
+ id                  | integer               | not null default nextval('test_spec_id_seq'::regclass)
+ notes               | character varying     | not null default '0'::character varying
+ activity_type       | character varying(5)  | not null default '0'::character varying
+ test_type           | character varying(20) | not null default '0'::character varying
+ stock_type          | character(6)          | not null default 'U'::bpchar
+ stock_length_cm     | numeric               | not null default '-1'::numeric
+ stock_collar_dia_mm | numeric               | not null default '-1'::numeric
+ research_hypothesis | character varying     | not null default '0'::character varying
+ web_protocol        | character varying     | not null default '0'::character varying
+ web_url             | character varying     | not null default '0'::character varying
+ web_photos          | character varying     | not null default '0'::character varying
+ test_start_date     | date                  | not null default '1111-11-11'::date
+ id_site             | integer               | not null
 Indexes:
     test_spec_pk PRIMARY KEY, btree (id)
     test_spec_test_spec_key_key UNIQUE CONSTRAINT, btree (test_spec_key)
 Check constraints:
     test_spec_activity_type_check CHECK (activity_type::text = ANY (ARRAY['0'::character varying, 'TRIAL'::character varying, 'EVENT'::character varying]::text[]))
-    test_spec_reject_null_hypothesis_check CHECK (reject_null_hypothesis = ANY (ARRAY['Y'::bpchar, 'N'::bpchar, '0'::bpchar]))
-    test_spec_test_type_check CHECK (test_type::text = ANY (ARRAY['0'::character varying, 'nursery'::character varying, 'breeding'::character varying, 'field-planting'::character varying, 'field-trial'::character varying, 'propagation'::character varying]::text[]))
+    test_spec_stock_type_check CHECK (stock_type = ANY (ARRAY['U'::bpchar, 'NA'::bpchar, 'MIX'::bpchar, 'WHIP'::bpchar, 'WASP'::bpchar, 'DC'::bpchar, 'MS'::bpchar, 'SEL'::bpchar, '1-0'::bpchar, '1-1'::bpchar, '1-2'::bpchar]))
+    test_spec_test_type_check CHECK (test_type::text = ANY (ARRAY['0'::character varying, 'nursery'::character varying, 'breeding'::character varying, 'propagation'::character varying, 'archive-planting'::character varying, 'family-trial'::character varying, 'clonal-trial'::character varying, 'gpft'::character varying]::text[]))
 Foreign-key constraints:
     test_spec_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id)
 Referenced by:
+    TABLE field_trial CONSTRAINT field_trial_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
+    TABLE split_wood_tests CONSTRAINT grain_pull_split_wood_tests_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
     TABLE journal CONSTRAINT journal_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
     TABLE test_detail CONSTRAINT test_detail_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id)
+
+#################  Table Nbr: 11 ######  Table Name: u07m_2013 ##############################################
+                                    Table public.u07m_2013
+      Column       |       Type        |                       Modifiers                        
+-------------------+-------------------+--------------------------------------------------------
+ id                | integer           | not null default nextval('u07m_2013_id_seq'::regclass)
+ dbh               | numeric           | not null
+ dbh_rank          | integer           | not null
+ name              | character varying | not null
+ area_index        | numeric           | not null
+ sum_dbh_ratio2_cd | numeric           | not null
+ sdbh_x_cavg       | numeric           | not null
+Indexes:
+    u07m_2013_pk PRIMARY KEY, btree (id)
 
