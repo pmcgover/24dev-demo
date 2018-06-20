@@ -17,7 +17,7 @@ The Competition Indexer program is available via the [24devdemo](https://github.
 * The program requires a comma separated input file (CSV)
 * The input CSV file should not have any blank spaces.
 * Command Line Usage: competitionIndexerCLI.sh -f ../input/<inputFileName.csv>
-⋅⋅* Example: ./competitionIndexerCLI.sh -f ../input/az7m-6yrStacks-Input.csv 
+    * Example: ./competitionIndexerCLI.sh -f ../input/az7m-6yrStacks-Input.csv 
 
 
 ### Program Input Requirements 
@@ -25,19 +25,19 @@ The Competition Indexer program is available via the [24devdemo](https://github.
 * Required Input CSV Fields: 
 * Input.csv file fields: id,setid,long_ft,short_ft,row,col,block,dbh,year,site,name,optCol1,optCol2,...] 
 * The first input CSV fields must include:  id,setid,long_ft,short_ft,row,col,block,dbh,year,site,name 
-⋅⋅* You can add other optional columns that will be installed as text fields 
+    * You can add other optional columns that will be installed as text fields 
 * Required column descriptions below:
-⋅⋅* id (unique incremented row id) integers only
-⋅⋅* setid (set ID for the given data set)
-⋅⋅* long_ft (longest tree spacing in feet)
-⋅⋅* short_ft (shortest tree spacing in feet)
-⋅⋅* row (row number)
-⋅⋅* col (column number)
-⋅⋅* block (block number)
-⋅⋅* dbh (tree DBH)
-⋅⋅* year (4 digit year)
-⋅⋅* site (site name)
-⋅⋅* name (clone or variety name)
+    * id (unique incremented row id) integers only
+    * setid (set ID for the given data set)
+    * long_ft (longest tree spacing in feet)
+    * short_ft (shortest tree spacing in feet)
+    * row (row number)
+    * col (column number)
+    * block (block number)
+    * dbh (tree DBH)
+    * year (4 digit year)
+    * site (site name)
+    * name (clone or variety name)
 * View sample Input files: Sample input files and the logical file path are located under: [Competition Indexer input files](https://github.com/pmcgover/24dev-demo/tree/master/24dev-demo/apps/competitionIndexer/input).
 
 ### Optional Inputs
@@ -46,22 +46,22 @@ The Competition Indexer program is available via the [24devdemo](https://github.
 * Multiple Trial Sets: Users can add multiple trial data sets with each set having its unique Set ID.  For example, a user could input data with 10 different sites and each site having 4 years of trial data for a total of 40 trial sets.
 * Regression Test Process:  The program uses a regression process that tests various Use Cases and is executed after program changes.
 * Program Terms: 
-⋅⋅* The tree of interest is called the subject tree or: "sub" or "s".
-⋅⋅* The neighbor trees are called competitors or: "c".
-⋅⋅* Referencing the competitors relative from the subject is via 8 diirectional positions or: N NE E SE S SW W NW.
+    * The tree of interest is called the subject tree or: "sub" or "s".
+    * The neighbor trees are called competitors or: "c".
+    * Referencing the competitors relative from the subject is via 8 diirectional positions or: N NE E SE S SW W NW.
 
 ## Results
 
 The CI program output results are generated after running the [competitionIndexerCLI.sh](https://github.com/pmcgover/24dev-demo/blob/master/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh) shell script.  Relevant output details are listed below: 
 * Notable Output CSV file result fields:
-⋅⋅* line_index: The sum of competition tree line lengths.  Derived from Brodie's "Sum Line Length" indice.
-⋅⋅* area_index: The area of CI line endpoints.  Derived from Brodie's "Area" indice and was top rated.
-⋅⋅* dbh_count: Count of live competition trees (maximum 8, minimum 0).
-⋅⋅* Sum_DBH_Ratio1_sd: The sum of DBH ratio.  Derived from Brodie's "Sum DBH Ratio" indice.
-⋅⋅* BA_ratio: Basal Area ratio.  Derived from Brodie's "BA Ratio" indice.
-⋅⋅* Sum_BA_ratio: Basal Area ratio.  Derived from Brodie's "Sum BA Ratio" indice.
-⋅⋅* Other fields were developed by Bender and McGovern for descriptive and experimental purposes.
-⋅⋅* View sample Output files: Sample output files and the logical file path are located under: [Competition Indexer output files](https://github.com/pmcgover/24dev-demo/tree/master/24dev-demo/apps/competitionIndexer/output).
+    * line_index: The sum of competition tree line lengths.  Derived from Brodie's "Sum Line Length" indice.
+    * area_index: The area of CI line endpoints.  Derived from Brodie's "Area" indice and was top rated.
+    * dbh_count: Count of live competition trees (maximum 8, minimum 0).
+    * Sum_DBH_Ratio1_sd: The sum of DBH ratio.  Derived from Brodie's "Sum DBH Ratio" indice.
+    * BA_ratio: Basal Area ratio.  Derived from Brodie's "BA Ratio" indice.
+    * Sum_BA_ratio: Basal Area ratio.  Derived from Brodie's "Sum BA Ratio" indice.
+    * Other fields were developed by Bender and McGovern for descriptive and experimental purposes.
+    * View sample Output files: Sample output files and the logical file path are located under: [Competition Indexer output files](https://github.com/pmcgover/24dev-demo/tree/master/24dev-demo/apps/competitionIndexer/output).
 
 ## Discussion
 
