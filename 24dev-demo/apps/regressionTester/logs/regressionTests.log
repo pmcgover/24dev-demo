@@ -2,12 +2,12 @@
 
 #################################################
 STARTING the application, r4st regression Test 0 with test input details below:
-r4st|r4st-loader|r4st-wrapper.sh|r4p.dump.sql
+r4st|r4st-loader|r4st-wrapper.sh|r4st-loader.log
 #################################################
 Application Name= r4st
 Test Name= r4st-loader
 Command= r4st-wrapper.sh
-Output File Name= r4p.dump.sql
+Output File Name= r4st-loader.log
 
 Display the system platform details via the command: uname -a
 Linux osgeolive 4.8.0-36-generic #36~16.04.1-Ubuntu SMP Sun Feb 5 09:39:41 UTC 2017 i686 i686 i686 GNU/Linux
@@ -19,18 +19,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/bin/r4st-wrapper.sh
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/bin/r4st-wrapper.sh
 #######################
 Running regression test: nbr: 0, TestApp=r4st, TestName=r4st-loader...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -41,14 +41,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-2985903357 786611 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/output/r4p.dump.sql
-2985903357 786611 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/output/goodtests/r4p.dump.sql
+3885352956 28460 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/output/r4st-loader.log
+3885352956 28460 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/output/goodtests/r4st-loader.log
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The r4st output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180619_0006.log
+The r4st output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 2224 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180619_0006.log
+-rw-rw-r-- 1 user user 2304 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -56,7 +56,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 668 Nov  8  2016 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/r4st/docs/README-r4st.md
+-rwxr-xr-x 1 user user 1364 Jun 22 18:56 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/r4st/docs/README-r4st.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -92,18 +92,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv
 #######################
 Running regression test: nbr: 1, TestApp=competitionIndexer, TestName=az7m-1yrDataSet-Input...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -114,14 +114,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-78576487 42321 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-1yrDataSet-Input.csv
-78576487 42321 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-1yrDataSet-Input.csv
+78576487 42321 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-1yrDataSet-Input.csv
+78576487 42321 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-1yrDataSet-Input.csv
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180619_0006.log
+The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 8033 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180619_0006.log
+-rw-rw-r-- 1 user user 8029 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-1.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -129,7 +129,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 5955 Jun 18 23:05 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
+-rwxr-xr-x 1 user user 5907 Jun 20 06:19 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -165,18 +165,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input.csv
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input.csv
 #######################
 Running regression test: nbr: 2, TestApp=competitionIndexer, TestName=az7m-6yrStacks-Input...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -187,14 +187,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-2548947814 251945 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input.csv
-2548947814 251945 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-6yrStacks-Input.csv
+2548947814 251945 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input.csv
+2548947814 251945 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-6yrStacks-Input.csv
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180619_0006.log
+The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 8031 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180619_0006.log
+-rw-rw-r-- 1 user user 8027 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-2.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -202,7 +202,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 5955 Jun 18 23:05 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
+-rwxr-xr-x 1 user user 5907 Jun 20 06:19 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -238,18 +238,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input-ExtraCols-Input.csv
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input-ExtraCols-Input.csv
 #######################
 Running regression test: nbr: 3, TestApp=competitionIndexer, TestName=az7m-6yrStacks-Input-ExtraCols-Input...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -260,14 +260,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-4096557515 263930 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
-4096557515 263930 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
+4096557515 263930 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
+4096557515 263930 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/output/goodtests/Output-az7m-6yrStacks-Input-ExtraCols-Input.csv
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180619_0006.log
+The competitionIndexer output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 9230 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180619_0006.log
+-rw-rw-r-- 1 user user 9226 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-3.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -275,7 +275,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 5955 Jun 18 23:05 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
+-rwxr-xr-x 1 user user 5907 Jun 20 06:19 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/competitionIndexer/docs/README-competitionIndexer.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -311,18 +311,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin/basicGraph.r
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin/basicGraph.r
 #######################
 Running regression test: nbr: 4, TestApp=RScripts, TestName=HelloWorld...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -333,14 +333,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-2405468881 8543 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/basicGraph.png
-2405468881 8543 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/goodtests/basicGraph.png
+2405468881 8543 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/basicGraph.png
+2405468881 8543 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/goodtests/basicGraph.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180619_0006.log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 318 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180619_0006.log
+-rw-rw-r-- 1 user user 318 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-4.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -348,7 +348,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
+-rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -384,18 +384,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
 #######################
 Running regression test: nbr: 5, TestApp=RScripts, TestName=top10-2014-clones-AngledXaxis...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -406,14 +406,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-1082347141 30548 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/top10-2014-clones-AngledXaxis.png
-1082347141 30548 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/goodtests/top10-2014-clones-AngledXaxis.png
+1082347141 30548 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/top10-2014-clones-AngledXaxis.png
+1082347141 30548 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/goodtests/top10-2014-clones-AngledXaxis.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180619_0006.log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 290 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180619_0006.log
+-rw-rw-r-- 1 user user 290 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-5.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -421,7 +421,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
+-rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...
@@ -457,18 +457,18 @@ Description:	Ubuntu 16.04.2 LTS
 Release:	16.04
 Codename:	xenial
 
-The logfile will be located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180619_0006,log
+The logfile will be located at: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180622_2351,log
 
-Change to the sourced script directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin...
-The current directory is: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin
+Change to the sourced script directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin...
+The current directory is: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin
 
-The executed command will be: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
+The executed command will be: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
 #######################
 Running regression test: nbr: 6, TestApp=RScripts, TestName=top10-2014-clones-StraightXaxis...
 The post COMMAND exit status is: 0
 Display the command array exit status 0 
 
-Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/bin...
+Change back to the regressionTester working directory: /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/regressionTester/bin...
 Validate that the output files are availalble...
 
 The Applicaiton output and good test files are available...
@@ -479,14 +479,14 @@ Using cksum command to compare the output file to the known good test file...
 Compare the application and good test cksum command details below (cksum, file size, output files:
 The output chksum is the same as the good test file.
 Display the application and good test file cksum file outputs below...
-730017327 48577 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/top10_vw_nursery_cuttings_2014.png
-730017327 48577 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/output/goodtests/top10_vw_nursery_cuttings_2014.png
+730017327 48577 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/top10_vw_nursery_cuttings_2014.png
+730017327 48577 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/output/goodtests/top10_vw_nursery_cuttings_2014.png
 
 The output file cksumStatus test exit value is: 0
 Display the command array exit status 0 
-The RScripts output log file is located at /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180619_0006.log
+The RScripts output log file is located at /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180622_2351.log
 Output log file ls details...
--rw-rw-r-- 1 user user 319 Jun 19 00:06 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180619_0006.log
+-rw-rw-r-- 1 user user 319 Jun 22 23:51 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-6.20180622_2351.log
 
 Grep the log file for ERROR or FATAL strings and warn if any found...
 The output file cntErrors test exit value is: 0
@@ -494,7 +494,7 @@ Display the command array exit status 0
 
 Verify that each application has a README-<appName>.md file...
 The  application has a README-<appName>.md file. File listing below:
--rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
+-rwxr-xr-x 1 user user 190 Nov  8  2016 /home/user/Desktop/24dev-demo-1.0.2/24dev-demo/apps/RScripts/docs/README-RScripts.md
 Display the command array exit status 0
 
 Process, display and report the REGCHECK array values to validate all tests...

@@ -56,6 +56,9 @@ echo
 
 echo "Run the primary r4st database processes..."
 ./r4st-loader.sh  > ../logs/r4st-loader.log 2>&1 
+echo "Also copy the log file to the output directory for Regression test comparisons..."
+cp ../logs/r4st-loader.log ../output
+
 
 chkdberr=$(egrep -i 'error|fatal|hint' ${APPS}/r4st/logs/r4st-loader.log)
 if [[ -n $chkdberr ]]; then

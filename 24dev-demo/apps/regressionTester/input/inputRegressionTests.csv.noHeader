@@ -1,4 +1,4 @@
-r4st|r4st-loader|r4st-wrapper.sh|r4p.dump.sql
+r4st|r4st-loader|r4st-wrapper.sh|r4st-loader.log
 competitionIndexer|az7m-1yrDataSet-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv|Output-az7m-1yrDataSet-Input.csv
 competitionIndexer|az7m-6yrStacks-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input.csv|Output-az7m-6yrStacks-Input.csv
 competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|competitionIndexerCLI.sh -f ../../competitionIndexer/input/az7m-6yrStacks-Input-ExtraCols-Input.csv|Output-az7m-6yrStacks-Input-ExtraCols-Input.csv

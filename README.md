@@ -47,6 +47,7 @@ view the custom 24dev-demo commands.
 * Note that each application has a similar folder structure for programs (bin), input/ouput files, logs, docs, etc. 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
+* First run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) to verify programs and initiate the database.  
 * If you encounter regression test issues, first check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log)
 * View the summary test results via the [Project-Sumary.md](Project-Summary.md). 
 
@@ -62,12 +63,17 @@ view the custom 24dev-demo commands.
    Modified <appName>, Added <appName> Copyright 2016 Mary Carol Doe
 ```
 * Install, run and test your applications on a live OSGeo DVD, flash drive or virtual machine. 
-* Run the install script to clean up the 24dev file system.  Retain the last [backup tar file](24dev-demo/backup).  
+* Run the install script to clean up the 24dev file system.  Perhaps retain the last [backup tar file](24dev-demo/backup).  
 * Optionally include a verification screenshot of your 24dev program and github account. 
 * Copy/push your changes to your local github repository or see: [Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
-* Add your new changes to your git repo: *git add -A*
-* Commit your changes: git commit -m 'Updated the ABC application'
-* Push your changes to the remote repository: *git push origin*
-* Create tags and releases to mark important change sets and push them to github: *git tag v.N.N.N*; git push --tags origin  
+* Below are commands to commit your changes:
+    * Navigate to your local git working directory.
+    * Add your new changes: *git add -A*
+    * Commit your changes:  git commit -m 'Updated the ABC application'
+    * Push your changes to the remote repository: *git push origin*
+    * Create tags and releases to mark important change sets and push them to github: *git tag v.N.N.N*; git push --tags origin  
 * Rinse and Repeat: Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 * Update your resume with a link to your github 24dev repository. 
+
+
+

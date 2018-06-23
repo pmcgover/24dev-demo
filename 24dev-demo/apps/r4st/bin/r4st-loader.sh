@@ -2,7 +2,6 @@
 # File: r4st-loader.sh
 # Usage: Execute r4st-wraper.sh which calls this script, creates a log file and displays errors to stdout.
 
-echo "Starting script on:" $(date)
 echo
 echo BASE=$(pwd|cut -d"/" -f-6)
 echo BASE=$BASE
