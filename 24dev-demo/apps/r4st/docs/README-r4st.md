@@ -8,4 +8,4 @@ Usage:
 * It is recommended to first run the regression test process to initialize and verify the database. 
 * To execute and re-load the database, execute the command: $APPS/r4st/bin/r4st-wrapper.sh
 * You can browse the local r4st database tables and views at: http://localhost/r4stdb/dbkiss.php
-* For more details about this process and the online version see: (Using the r4st database)[https://sites.google.com/site/open4st/faq/what-is-the-open4st-database] 
+* For more details about this process and the online version see: [Using the r4st database](https://sites.google.com/site/open4st/faq/what-is-the-open4st-database) 
