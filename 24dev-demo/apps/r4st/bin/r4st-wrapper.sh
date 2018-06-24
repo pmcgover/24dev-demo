@@ -56,8 +56,6 @@ echo
 
 echo "Run the primary r4st database processes..."
 ./r4st-loader.sh  > ../logs/r4st-loader.log 2>&1 
-echo "Also copy the log file to the output directory for Regression test comparisons..."
-cp ../logs/r4st-loader.log ../output
 
 
 chkdberr=$(egrep -i 'error|fatal|hint' ${APPS}/r4st/logs/r4st-loader.log)
@@ -71,4 +69,8 @@ echo
 grep DONE  ${APPS}/r4st/logs/r4st-loader.log
 chkerr "$?" "1" "The r4st database process and log file did not complete"
 echo "You can view the r4st PRD datbase at: http://localhost/r4stdb/dbkiss.php" 
+
+echo "Extract the last 4 lines of the log file to capture the DONE text for the Regression test comparisons..."
+cp ../logs/r4st-loader.log ../output
+tail -4 ../logs/r4st-loader.log > ../output/verifyDone-r4st-loader.log
 

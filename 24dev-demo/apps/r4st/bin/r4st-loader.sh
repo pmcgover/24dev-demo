@@ -108,8 +108,8 @@ done
 echo
 rm ../csv/TMP.txt
 
-echo "The r4st database process is: DONE"
 psql --version
+echo "The r4st database process is: DONE"
 
 echo
 echo "You can view the r4st PRD database at: http://localhost/r4stdb/dbkiss.php"
