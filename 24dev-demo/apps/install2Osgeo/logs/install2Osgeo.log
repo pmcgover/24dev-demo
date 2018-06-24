@@ -1,7 +1,7 @@
-Starting script on: Mon Jun 18 23:31:03 UTC 2018
+Starting script on: Sun Jun 24 13:07:48 UTC 2018
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.0.6/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -49,7 +49,7 @@ Codename:	xenial
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-0.9.8.2 addon to OSGeo.
+This script will install the 24dev-demo-1.0.6 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
@@ -60,21 +60,28 @@ Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Jun 18 23:31 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jun 24 13:07 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/regressionTester/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/RScripts/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/r4st/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs
 
 List and Remove any previous screenshot files...
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
+Renaming /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/backup/screen.png file to: 24dev-screenshot_osgeolive_20180624-1307.png
+total 964
+-rwxr-xr-x 1 user user     82 Jun 24 00:24 FYI.txt
+-rwxr-xr-x 1 user user 982354 Jun 24 13:05 screen.png
+Posting the new screenshot file name to the Project-Summary.md...
 Remove previous backup tar file...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/backup...
 
 Check and install the screengrab program to take screenshots...
 Desired=Unknown/Install/Remove/Purge/Hold
@@ -84,8 +91,8 @@ Desired=Unknown/Install/Remove/Purge/Hold
 +++-==============-===============-============-==========================================
 ii  screengrab     1.95+20160128-1 i386         Crossplatform tool for getting screenshots
 
-Success! Your 24dev-demo-0.9.8.2 system has been installed.
+Success! Your 24dev-demo-1.0.6 system has been installed.
 Consider testing your programs with the regressionTester application
 
-The installation log files are located at: /home/user/Desktop/24dev-demo-0.9.8.2/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
+The installation log files are located at: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
 
