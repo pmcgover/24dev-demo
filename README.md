@@ -64,7 +64,7 @@ view the custom 24dev-demo commands.
 ```
 * Install, run and test your applications on a live OSGeo DVD, flash drive or virtual machine. 
 * Run the install script to clean up the 24dev file system.  Perhaps retain the last [backup tar file](24dev-demo/backup).  
-* Optionally include a verification screenshot of your 24dev program and github account. 
+* Optionally include a verification screenshot of your 24dev program and github account. See [README-install2Osgeo.md](24dev-demo/apps/install2Osgeo/docs/README-install2Osgeo.md) 
 * Copy/push your changes to your local github repository or see: [Working with remote git repositories](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) 
 * Below are commands to commit your changes:
     * Navigate to your local git working directory.
@@ -74,6 +74,4 @@ view the custom 24dev-demo commands.
     * Create tags and releases to mark important change sets and push them to github: *git tag v.N.N.N*; git push --tags origin  
 * Rinse and Repeat: Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 * Update your resume with a link to your github 24dev repository. 
-
-
 
