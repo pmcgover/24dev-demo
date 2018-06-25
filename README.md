@@ -45,11 +45,11 @@ tar file and install on a USB flash drive.
 view the custom 24dev-demo commands.
 * Enter the "apps" alias and browse through the available applications. 
 * Note that each application has a similar folder structure for programs (bin), input/ouput files, logs, docs, etc. 
+* First run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) to verify programs and initiate the database.  
+    * If you encounter regression test issues, check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log)
+    * View the summary regression test results via the [Project-Sumary.md](Project-Summary.md). 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
-* First run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) to verify programs and initiate the database.  
-* If you encounter regression test issues, first check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log)
-* View the summary test results via the [Project-Sumary.md](Project-Summary.md). 
 
 ## Create your own 24dev Software Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
