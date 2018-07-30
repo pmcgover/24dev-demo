@@ -73,7 +73,7 @@ alias ll='ls -ltra'
 alias sql='cd ${APPS}/r4st/sql'
 alias csv='cd ${APPS}/r4st/csv'
 alias rr='cd ${APPS}/r4st/bin'
-alias rrr='cd ${APPS}/r4st/bin;./r4st-wraper.sh '
+alias rrr='cd ${APPS}/r4st/bin;./r4st-wrapper.sh '
 alias rlog='cd ${APPS}/r4st/logs'
 alias RSC='cd ${APPS}/RScripts/'
 alias ins='cd ${APPS}/install2Osgeo/bin'
@@ -82,6 +82,9 @@ alias base='cd ${BASE}'
 alias apps='cd ${APPS}'
 alias bac='cd ${BASE}/backup'
 alias bak='cd ${BASE}/backup'
+alias mycsv='csvtool readable '  #For view mode append with: view - 
+alias mymd='retext '  #For editing markdown files 
+alias mysg='screengrab '  #For capturing screenshots
 
 #Vi settings: command line is vi style,
 set -o vi
@@ -152,9 +155,33 @@ dpkg-query -l screengrab
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The screengrab program is not installed, lets add it..."
-  sudo apt install screengrab
+  sudo apt-get install screengrab
   # Sleep for a bit to allow the above program to install.
   sleep 5
+  dpkg-query -l screengrab || echo "WARNING - The screengrab app did not install"
+fi
+echo
+echo "Check and install csvtool to take view CSV files..." 
+dpkg-query -l csvtool 
+checkStatus=$(echo $?)
+if [[ $checkStatus -ne 0 ]]; then
+  echo "The csvtool  program is not installed, lets add it..."
+  sudo apt-get install csvtool 
+  # Sleep for a bit to allow the above program to install.
+  sleep 5
+  dpkg-query -l csvtool || echo "WARNING - The csvtool app did not install"
+fi
+echo
+echo "Check and install the retext program to edit and view Markdown (.md) files..." 
+dpkg-query -l csvtool 
+checkStatus=$(echo $?)
+if [[ $checkStatus -ne 0 ]]; then
+  echo "The csvtool  program is not installed, lets add it..."
+  sudo apt-get install retext
+  sudo apt-get install python3-docutils python3-markdown
+  # Sleep for a bit to allow the above program to install.
+  sleep 5
+  dpkg-query -l retext || echo "WARNING - The retext app did not install"
 fi
 
 echo
