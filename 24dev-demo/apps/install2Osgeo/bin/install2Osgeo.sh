@@ -155,7 +155,7 @@ dpkg-query -l screengrab
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The screengrab program is not installed, lets add it..."
-  sudo apt-get install screengrab
+  sudo apt-get install -y screengrab
   # Sleep for a bit to allow the above program to install.
   sleep 5
   dpkg-query -l screengrab || echo "WARNING - The screengrab app did not install"
@@ -166,19 +166,19 @@ dpkg-query -l csvtool
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The csvtool  program is not installed, lets add it..."
-  sudo apt-get install csvtool 
+  sudo apt-get install -y csvtool 
   # Sleep for a bit to allow the above program to install.
   sleep 5
   dpkg-query -l csvtool || echo "WARNING - The csvtool app did not install"
 fi
 echo
 echo "Check and install the retext program to edit and view Markdown (.md) files..." 
-dpkg-query -l csvtool 
+dpkg-query -l retext 
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
-  echo "The csvtool  program is not installed, lets add it..."
-  sudo apt-get install retext
-  sudo apt-get install python3-docutils python3-markdown
+  echo "The retext  program is not installed, lets add it..."
+  sudo apt-get install -y retext
+  sudo apt-get install -y python3-docutils python3-markdown
   # Sleep for a bit to allow the above program to install.
   sleep 5
   dpkg-query -l retext || echo "WARNING - The retext app did not install"

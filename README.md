@@ -11,6 +11,7 @@ Community and the Open Source developer.
 ## 24dev High Level Use Cases
 The 24dev process involves 3 [Use Case Actors](https://en.wikipedia.org/wiki/Actor_(UML)): student, teacher and 
 employer. The list below describes how the 24dev system should interact with these users:
+
 * As a student, I would like to learn marketable [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) skills which can be accessed online by teachers and potential employers.
 * As a teacher, I would like my students to learn marketable [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) skills and showcase them on github.
 * As an employer, I would like to hire [CS](https://en.wikipedia.org/wiki/Computer_science) or [IT](https://en.wikipedia.org/wiki/Information_technology) employees with an impressive online portfolio where I can view code, documentation and test drive applications.
@@ -48,8 +49,9 @@ view the custom 24dev-demo commands.
 * First run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) to verify programs and initiate the database.  
     * If you encounter regression test issues, check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log)
     * View the summary regression test results via the [Project-Sumary.md](Project-Summary.md). 
-* Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
+* Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. View and update your .md files with the "retext" program.
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
+* View .csv files with the csvtool application via the alias "mycsv <fileName.csv\>"
 
 ## Create your own 24dev Software Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
