@@ -51,7 +51,7 @@ view the custom 24dev-demo commands.
     * View the summary regression test results via the [Project-Sumary.md](Project-Summary.md). 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. View and update your .md files with the "retext" program.
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
-* View .csv files with the csvtool application via the alias "mycsv <fileName.csv\>"
+* View .csv files with the csvtool application via the alias "mycsv <fileName.csv\> |view -"
 
 ## Create your own 24dev Software Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
