@@ -18,7 +18,7 @@ employer. The list below describes how the 24dev system should interact with the
 
 ## 24Dev Features
 * Users can install 24dev applications to a live OSGeo DVD, flash drive or virtual machine by 
-running one administrative installation script.
+running one administrative installation script.  
 * Users can re-run the install script to update profiles, and accept different 24dev-* programs.  
 The install script also creates a backup and purges application log files. 
 * Users can test their programs with the [regressionTester](24dev-demo/apps/regressionTester) application 
@@ -28,32 +28,33 @@ and have statistics and Pass/Fail results published to the: [Project-Sumary.md](
 * Users can optionally include a verification screenshot of their 24dev program and github account. 
 * Users are encouraged to create their own customized releases via github renamed as: 24dev-[myForkName]. 
 
-## Installing 24dev-demo to an OSGeo Live DVD system
+## Installing 24dev-demo to an OSGeo-Live system
+* Boot your computer with the [OSGeo Live DVD](https://live.osgeo.org/en/download.html). Or see [OSGeo-Live Quick Start](https://live.osgeo.org/en/index.html) for other options.
 * Download the latest version of the [24dev-demo release](https://github.com/pmcgover/24dev-demo/releases) 
-tar file and install on a USB flash drive.
-* Boot your computer with the [OSGeo Live DVD](https://live.osgeo.org/en/download.html). 
+tar file.
 * Copy the tar file to the OSGeo Desktop.
 * Right click on the tar file and select "Extact Here".
 * Navigate into the extracted folder, open a terminal window there and run the following commands:
 ```
    chmod -R 755 *; cd 24dev-demo; ./install.sh
 ```
-* The above command sets up the environment and runs the installation script. 
-* This 24dev program is documented online at: https://github.com/pmcgover/24dev-demo  
+* The above command sets up the environment and runs the installation script, which requires an Internet connection to install external programs.
+* The 24dev program is documented online at: https://github.com/pmcgover/24dev-demo  
 
 ## Using 24dev-demo on OSGeo
 * Install the 24dev application on OSGeo, open a new terminal window and type "alias" to 
 view the custom 24dev-demo commands.
 * Enter the "apps" alias and browse through the available applications. 
 * Note that each application has a similar folder structure for programs (bin), input/ouput files, logs, docs, etc. 
-* First run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) to verify programs and initiate the database.  
-    * If you encounter regression test issues, check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log)
-    * View the summary regression test results via the [Project-Sumary.md](Project-Summary.md). 
-* Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. View and update your .md files with the "retext" program.
+* Run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) via the "runrt" alias to verify programs and initiate the database.  
+    * If you encounter regression test issues, check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log) via the "rtlog" alias.
+    * View the summary regression test results named [Project-Sumary.md](Project-Summary.md) via the "mdps" alias. 
+* Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
+* Update and preview your ".md" markdown files with the "retext" program.  Use the "mdrme" alias to view/update your main project README.md file.
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
 * View .csv files with the csvtool application via the alias "mycsv <fileName.csv\> |view -"
 
-## Create your own 24dev Software Digital Portfolio 
+## Creating your own 24dev Software Digital Portfolio 
 * Learn about git and github: [Github Help](https://help.github.com) 
 * Open a free github account: [Github Account Signup](https://help.github.com/articles/signing-up-for-a-new-github-account)
 * Fork the [24dev-demo repository](https://github.com/pmcgover/24dev-demo) then clone to your computer: [Fork A Repo](https://help.github.com/articles/fork-a-repo)
