@@ -1,12 +1,7 @@
 # 24dev-demo Software Digital Portfolio
 An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio via github.com.
 
-This software is intended to provide users with an smart way to develop, test drive and
-share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) 
-project and the open source community. Developers, students and prospective employers will 
-benefit by viewing the code and project summary on github and verify the user's applications 
-on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the Open Source 
-Community and the Open Source developer. 
+This software should provide users with an open source ecosystem to develop, test drive and share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) project.  Developers, students and prospective employers will benefit by viewing the user's project code and summary on [Github](https://github.com) then verifing the applications on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the open source Community and the Open Source developer. Minimal prerequisites include familiarity with the Linux operating system and Bash Shell scripting. 
 
 ## 24dev High Level Use Cases
 The 24dev process involves 3 [Use Case Actors](https://en.wikipedia.org/wiki/Actor_(UML)): student, teacher and 
@@ -38,7 +33,7 @@ tar file.
 ```
    chmod -R 755 *; cd 24dev-demo; ./install.sh
 ```
-* The above command sets up the environment and runs the installation script, which requires an Internet connection to install external programs.
+* The above command sets up the environment and runs the installation script which requires an Internet connection to install external programs.
 * The 24dev program is documented online at: https://github.com/pmcgover/24dev-demo  
 
 ## Using 24dev-demo on OSGeo
@@ -46,11 +41,12 @@ tar file.
 view the custom 24dev-demo commands.
 * Enter the "apps" alias and browse through the available applications. 
 * Note that each application has a similar folder structure for programs (bin), input/ouput files, logs, docs, etc. 
+* Update and preview your ".md" markdown files with the "retext" program. 
+* Use the "mdrme" alias to view/update your main project README.md file.
 * Run the [regresson test process](24dev-demo/apps/regressionTester/bin/regressionTester.sh) via the "runrt" alias to verify programs and initiate the database.  
     * If you encounter regression test issues, check the [regression log file](24dev-demo/apps/regressionTester/logs/regressionTests.log) via the "rtlog" alias.
     * View the summary regression test results named [Project-Sumary.md](Project-Summary.md) via the "mdps" alias. 
 * Navigate to the desired apps **doc** folder and view the related docs/README-\<appName\>.md file. 
-* Update and preview your ".md" markdown files with the "retext" program.  Use the "mdrme" alias to view/update your main project README.md file.
 * Navigate to the desired apps **bin** folder and execute the program per the documentation. 
 * View .csv files with the csvtool application via the alias "mycsv <fileName.csv\> |view -"
 
