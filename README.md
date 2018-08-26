@@ -1,7 +1,7 @@
 # 24dev-demo Software Digital Portfolio
 An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio via github.com.
 
-This software should provide users with an open source ecosystem to develop, test drive and share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) project.  Developers, students and prospective employers will benefit by viewing the user's project code and summary on [Github](https://github.com) then verifing the applications on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the open source Community and the Open Source developer. Minimal prerequisites include familiarity with the Linux operating system and Bash Shell scripting. 
+This software is intended to provide users with an open source ecosystem to develop, test drive and share applications alongside the Linux [OSGeo Live](https://live.osgeo.org/en/index.html) project.  Developers, students and prospective employers will benefit by viewing the user's project code and summary on [Github](https://github.com) then verifing the applications on OSGeo.  The "24dev" name is a play on words for: "Two For DEVelopment", via the open source community and developer. Minimal prerequisites include familiarity with the Linux operating system and Bash Shell scripting. 
 
 ## 24dev High Level Use Cases
 The 24dev process involves 3 [Use Case Actors](https://en.wikipedia.org/wiki/Actor_(UML)): student, teacher and 
