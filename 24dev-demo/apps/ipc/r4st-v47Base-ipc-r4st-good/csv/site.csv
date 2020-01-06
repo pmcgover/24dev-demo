@@ -1,0 +1,16 @@
+site_key|id|location_code|name_long|notes|address|loc_lat|loc_long|elevation_ft|aspen_site_index|usda_soil_texture|drainage_class_usda|mean_annual_precip_in|mean_annual_temp_f|frost_free_period_days|depth_to_water_table_in|usda_map_url|web_url|web_photos|contact
+Bell-Nursery4|3|BELLN|0|Pat McGovern's nursery site|Grand Rapids|0|0|900|0|sand|WD|34|48|170|1000|http://pmcgovern.us/files/myf/USDA-Soil-Report-4218-BellAve.pdf|0|0|0
+Costa-Nursery3|4|COSTN|0|Ryan McGovern’s Nursery site|Grand Rapids|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+Dykema-Nursery2|5|DYKEN|0|Dykema nursery site|Grand Rapids|0|0|900|0|sand|ED|34|48|170|1000|0|0|0|0
+Bell-Indoor|6|BELLI|0|Pat McGovern's Indoor Garden site|Grand Rapids|0|0|900|0|0|U|-1|-1|-1|-1|0|0|0|0
+Rockford-NE1|7|RNE1|0|Pat McGovern's Rockford NE site.   Started P. alba 1992.|0|0|0|900|0|0|WD|0|0|0|-1|0|0|0|0
+MB-Escanaba1|8|MF1|0|MB Escanaba site|0|0|0|0|0|0|U|-1|-1|-1|-1|0|0|0|0
+PostNE-West1|9|PNEW1|0|Post NE – Planting starts on West edge|0|0|0|0|0|0|WD|-1|-1|-1|-1|0|0|0|0
+CSNE1|10|CSNE1|0|Cedar Springs NE site.|0|0|0|0|0|clay|PD|-1|-1|-1|-1|0|0|0|0
+Arthur-Nursery1|11|ARTH|0|Pat McGovern's nursery site|Grand Rapids|0|0|900|0|sand|WD|34|48|170|1000|0|0|0|0
+Rhinelander1|12|RL1|0|Rhinelander, WI|RL, WI|0|0|0|0|0|U|0|0|0|0|0|0|0|0
+Wyrdj5-1|13|WY1|0|Wyrdj5 - 2017 Tree shelter Demo planting (23 trees)|Escanaba, MI|0|0|0|0|0|U|0|0|0|0|0|0|0|0
+Wyrdj5-2|14|WY2|0|"Wyrdj5 - 2018 clonal field trial - 12"" dormant cuttings (216 trees)"|Escanaba, MI|0|0|0|0|0|U|0|0|0|0|0|0|0|0
+PU2|15|PU2|0|PU2 field trial 2017|0|0|0|0|0|0|U|0|0|0|0|0|0|0|0
+PostSE1|16|PSEN1|0|Post SE – Planting starts North West corner, South of Post Dr.|Belmont, MI|0|0|0|0|0|WD|-1|-1|-1|-1|0|0|0|0
+PostSE2|17|PSEN2|0|Post SE – Planting located South of PostSE1 (16), South of Post Dr.|Belmont, MI|0|0|0|0|0|WD|-1|-1|-1|-1|0|0|0|0

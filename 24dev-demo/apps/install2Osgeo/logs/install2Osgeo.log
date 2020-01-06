@@ -1,4 +1,4 @@
-Starting script on: Sun Jun 24 13:07:48 UTC 2018
+Starting script on: Sat Jan 4 21:53:16 EET 2020
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
 BASE=/home/user/Desktop/24dev-demo-1.0.6/24dev-demo
@@ -39,13 +39,13 @@ An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio vi
 
 
 Display the system platform details via the command: uname -a
-Linux osgeolive 4.8.0-36-generic #36~16.04.1-Ubuntu SMP Sun Feb 5 09:39:41 UTC 2017 i686 i686 i686 GNU/Linux
+Linux osgeolive 5.0.0-23-generic #24~18.04.1-Ubuntu SMP Mon Jul 29 16:12:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 
 Display the Linux distribution release details via the command: lsb_release -a
 Distributor ID:	Ubuntu
-Description:	Ubuntu 16.04.2 LTS
-Release:	16.04
-Codename:	xenial
+Description:	Ubuntu 18.04.3 LTS
+Release:	18.04
+Codename:	bionic
 
 Make sure all files are executable...
 
@@ -60,25 +60,29 @@ Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Jun 24 13:07 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jan  4 21:53 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
 Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200104_2124.log'
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-3.20200104_2124.log'
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200104_2124.log'
 Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/logs
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/logs/ipc-loader.TestID-1.20200104_2001.log'
 Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/r4st/logs
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20200104_2001.log'
 Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/regressionTester/logs
 Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200104_2124.log'
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200104_2124.log'
+removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200104_2124.log'
 
 List and Remove any previous screenshot files...
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
-Renaming /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/backup/screen.png file to: 24dev-screenshot_osgeolive_20180624-1307.png
-total 964
--rwxr-xr-x 1 user user     82 Jun 24 00:24 FYI.txt
--rwxr-xr-x 1 user user 982354 Jun 24 13:05 screen.png
-Posting the new screenshot file name to the Project-Summary.md...
 Remove previous backup tar file...
 
 Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/backup...
@@ -87,9 +91,9 @@ Check and install the screengrab program to take screenshots...
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name           Version         Architecture Description
-+++-==============-===============-============-==========================================
-ii  screengrab     1.95+20160128-1 i386         Crossplatform tool for getting screenshots
+||/ Name           Version      Architecture Description
++++-==============-============-============-==========================================
+ii  screengrab     1.97-2       amd64        Crossplatform tool for getting screenshots
 
 Success! Your 24dev-demo-1.0.6 system has been installed.
 Consider testing your programs with the regressionTester application

@@ -34,7 +34,7 @@ lsb_release -a
 echo
 
 echo "Make sure all files are executable..." 
-chmod -R 755 ${BASE}
+echo user | sudo -S chmod -R 755 ${BASE}
 chkerr "$?" "1" "The following command failed: chmod -R 755 ${BASE}" 
 echo
 
@@ -70,27 +70,24 @@ alias mv='mv '
 alias rm='rm '
 alias l='ls -ltr' 
 alias ll='ls -ltra'
-alias cdsql='cd ${APPS}/r4st/sql'
-alias cdcsv='cd ${APPS}/r4st/csv'
-alias cdrr='cd ${APPS}/r4st/bin'
-alias runrr='cd ${APPS}/r4st/bin;./r4st-wrapper.sh '
-alias cdrlog='cd ${APPS}/r4st/logs'
-alias cdrs='cd ${APPS}/RScripts/'
-alias cdinsbin='cd ${APPS}/install2Osgeo/bin'
-alias runins='cd ${APPS}/install2Osgeo/bin;./install2Osgeo.sh'
-alias cdrtbin='cd ${APPS}/regressionTester/bin'
-alias cdrtlog='cd ${APPS}/regressionTester/logs'
+alias sql='cd ${APPS}/r4st/sql'
+alias csv='cd ${APPS}/r4st/csv'
+alias rr='cd ${APPS}/r4st/bin'
+alias rrr='cd ${APPS}/r4st/bin;./r4st-wrapper.sh '
+alias rlog='cd ${APPS}/r4st/logs'
+alias RSC='cd ${APPS}/RScripts/'
+alias ins='cd ${APPS}/install2Osgeo/bin'
+alias igo='cd ${APPS}/install2Osgeo/bin;./install2Osgeo.sh'
+alias reg='cd ${APPS}/regressionTester/bin'
+alias regr='cd ${APPS}/regressionTester/bin;./regressionTester.sh'
 alias runrt='cd ${APPS}/regressionTester/bin;./regressionTester.sh'
-alias mdps='retext  ${MYDEV_NAME_PATH}/Project-Summary.md'
-alias mdrme='retext ${MYDEV_NAME_PATH}/README.md'
-alias cdbase='cd ${BASE}'
-alias cdapps='cd ${APPS}'
-alias cddev='cd ${MYDEV_NAME_PATH}' 
-alias cdbac='cd ${BASE}/backup'
-alias cdbak='cd ${BASE}/backup'
-alias mycsv='csvtool readable '  #For view mode append with: view - 
-alias mymd='retext '  #For editing markdown files 
-alias mysg='screengrab '  #For capturing screenshots
+alias rtlog='cd ${APPS}/regressionTester/logs'
+alias base='cd ${BASE}'
+alias apps='cd ${APPS}'
+alias bac='cd ${BASE}/backup'
+alias bak='cd ${BASE}/backup'
+alias ipc='cd ${APPS}/ipc/bin;./ipc-wrapper.sh '
+alias ilog='cd ${APPS}/ipc/logs'
 
 #Vi settings: command line is vi style,
 set -o vi
@@ -147,13 +144,25 @@ if [[ -r $BASE/backup/screen.png ]]; then
   fi
 fi
 
-echo "Remove previous backup tar file..."
-rm -f $BASE/backup/*.tar 
+echo "Remove previous backup tar files..."
+rm -f $BASE/backup/*.tar.gz 
+rm -f /var/tmp/${MYDEV_NAME}*.tar.gz
 echo
 
 echo "Create a backup tar file, stored under ${BASE}/backup..."
-tar -cpf ${BASE}/backup/${MYDEV_NAME}.${datestamp}.tar -C ~/Desktop ${MYDEV_NAME} 
+#tar -cpf ${BASE}/backup/${MYDEV_NAME}.${datestamp}.tar -C ~/Desktop ${MYDEV_NAME} 
+tar -czpf /var/tmp/${MYDEV_NAME}.${datestamp}.tar.gz -C ~/Desktop ${MYDEV_NAME} 
+mv /var/tmp/${MYDEV_NAME}*.tar.gz  ${BASE}/backup/.
 chkerr "$?" "1" "The backup tar file process failed..."
+
+echo "Remove previous backup zip file..."
+rm -f $BASE/backup/*.zip
+echo
+
+#echo "Create a backup zip file, stored under ${BASE}/backup..."
+#zip -r /var/tmp/${MYDEV_NAME}.${datestamp}.zip  ${MYDEV_NAME_PATH} 
+#chkerr "$?" "1" "The backup zip file process failed..."
+
 
 echo
 echo "Check and install the screengrab program to take screenshots..." 
@@ -161,33 +170,20 @@ dpkg-query -l screengrab
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The screengrab program is not installed, lets add it..."
-  sudo apt-get install -y screengrab
+  echo user | sudo -S apt install screengrab
   # Sleep for a bit to allow the above program to install.
   sleep 5
-  dpkg-query -l screengrab || echo "WARNING - The screengrab app did not install"
 fi
+
 echo
-echo "Check and install csvtool to take view CSV files..." 
-dpkg-query -l csvtool 
-checkStatus=$(echo $?)
-if [[ $checkStatus -ne 0 ]]; then
-  echo "The csvtool  program is not installed, lets add it..."
-  sudo apt-get install -y csvtool 
-  # Sleep for a bit to allow the above program to install.
-  sleep 5
-  dpkg-query -l csvtool || echo "WARNING - The csvtool app did not install"
-fi
-echo
-echo "Check and install the retext program to edit and view Markdown (.md) files..." 
+echo "Check and install the retext program to edit markdown files..." 
 dpkg-query -l retext 
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
-  echo "The retext  program is not installed, lets add it..."
-  sudo apt-get install -y retext
-  sudo apt-get install -y python3-docutils python3-markdown
+  echo "The retext program is not installed, lets add it..."
+  echo user | sudo -S apt install retext 
   # Sleep for a bit to allow the above program to install.
   sleep 5
-  dpkg-query -l retext || echo "WARNING - The retext app did not install"
 fi
 
 echo

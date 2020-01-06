@@ -1,0 +1,1 @@
+\copy ptst_pedigree(pedigree_key,path) from '../csv/PTST/ptst_pedigree.csv' delimiter '|' CSV HEADER

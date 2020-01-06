@@ -1,0 +1,278 @@
+
+BASE=/home/user/Desktop/24dev-demo-1.0.6/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.0.6/24dev-demo
+
+This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
+Source the 24dev profile to set variables and display license/program details...
+Edit the <BASE>/.24devShared.profile file to display 24dev global variables
+
+
+Display the associated MIT License file:
+The MIT License (MIT)
+
+Copyright (c) 2015 Patrick Noel McGovern
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Display the associated README.md file header:
+# 24dev-demo Software Digital Portfolio
+An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio via github.com.
+
+
+
+Usage: ipc-loader.sh  
+This program will execute the pgsql commands to create and load ipc plant database objects 
+
+INFO: Drop the ipc database objects...
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_pedigree" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_family" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  table "ipc_salix_species" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_all_parents" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "original_minus_epithet_key_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_all_ipc_salix_epithet_species_family" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_basic_ipc_salix_epithet_species_family" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_basic_with_new_2019_test_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_basic_count_summary" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_ipc_salix_family_with_parent_keys" does not exist, skipping
+DROP VIEW
+
+INFO: Load the ipc database Tables...
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:3: NOTICE:  table "ipc_salix_species" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:4: NOTICE:  table "ipc_salix_family" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+
+INFO: Load the ipc database Views...
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+
+INFO: Load the ipc database tables from the file list...
+\copy ipc_original_salix_epithet from '../csv/ipc_original_salix_epithet.csv' delimiter ',' CSV HEADER 
+COPY 968
+\copy ipc_salix_epithet from '../csv/ipc_salix_epithet.csv' delimiter ',' CSV HEADER
+COPY 988
+\copy ipc_salix_family from '../csv/ipc_salix_family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+COPY 105
+\copy ipc_salix_species from '../csv/ipc_salix_species.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 93
+
+INFO: Run SQL updates...
+UPDATE 99
+ALTER TABLE
+
+INFO: Create pedigree csv file from the recursive SQL and load into the pedigree table:
+\copy ipc_pedigree(pedigree_key,path) from '../csv/ipc_pedigree.csv' delimiter '|' CSV HEADER
+COPY 11
+
+Create a new version of the ipc_DropAll-Objects.sql file...
+
+###########################
+Start ipcr database to create a read-only database instance via logging in with the ro user...
+###########################
+
+Create a dump of the master ipct database, then load it into an existing but empty ipcr database... 
+
+INFO: Drop all existing tables and views from the ipcr database...
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_pedigree" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_family" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  table "ipc_salix_species" does not exist, skipping
+DROP TABLE
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_all_parents" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "original_minus_epithet_key_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_all_ipc_salix_epithet_species_family" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_basic_ipc_salix_epithet_species_family" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_basic_with_new_2019_test_data" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_basic_count_summary" does not exist, skipping
+DROP VIEW
+psql:/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_ipc_salix_family_with_parent_keys" does not exist, skipping
+DROP VIEW
+
+Load the ipct data into the ipcr database... 
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+CREATE EXTENSION
+COMMENT
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+COPY 968
+COPY 11
+COPY 988
+COPY 105
+COPY 93
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+     11
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+
+
+Update the ipcr database to be read only (select priveleges)...
+#### End Make GrantSelect file #######################
+Load the read only select privs into the ipcr database... 
+DROP ROLE
+CREATE ROLE
+GRANT
+
+
+Create a dump of the read only ipcr database that could be used for export to another instance...
+
+
+You can view the ipc database at: http://localhost/ipc/dbkiss.php
+Login to the ipct database via the username: user and password: user
+Login to the ipcr database via the username: ro and password: user
+psql (PostgreSQL) 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
+The ipc database process is: DONE

@@ -1,0 +1,41 @@
+taxa_key|id|notes|species|species_hybrid|common_name|binomial_name|kingdom|family|genus|web_photos|web_url
+A|3|Native to Europe, naturalized in some areas of USA.|P. alba Linnaeus|0|White Poplar|0|Plantae|Salicaceae|Populus|0|http://en.wikipedia.org/wiki/Populus_alba
+GT|4|Occurs naturally, susceptible to BLD|0|P. grandidentata x P. tremuloides|A.k.a P. xbarnesii|P. x smithii Boivin|Plantae|Salicaceae|Populus|0|0
+TG|5|Occurs naturally, susceptible to BLD|0|P. tremuloides x P. grandidentata|A.k.a P. xbarnesii|P. x smithii Boivin|Plantae|Salicaceae|Populus|0|0
+AG|6|Occurs where P. alba females are present.|0|P. alba x P. grandidentata|AG or R|P. x rouleauiana Bovin|Plantae|Salicaceae|Populus|0|0
+GA|7|Not common in the wild since most P. albas are females and P. grandidentata seed has more exacting requirements.|0|P. grandidentata x P. alba|GA or R|P. x rouleauiana Bovin|Plantae|Salicaceae|Populus|0|0
+AT|8|Not as common in the wild as AG|0|P. alba x P. tremuloides|0|P. x heimburgeri Boivin|Plantae|Salicaceae|Populus|0|0
+AE|9|A valuable cross - used by itself or with CAGs|0|P. alba x P. tremula|gray poplar|P. x canescens Smith|Plantae|Salicaceae|Populus|0|0
+G|10|Native to NE USA.|P. grandidentata Michaux|0|Big Tooth aspen|0|Plantae|Salicaceae|Populus|0|http://en.wikipedia.org/wiki/Populus_grandidentata
+T|11|Native to Northern North America|P. tremuloides Michaux|0|Small Tooth aspen|0|Plantae|Salicaceae|Populus|0|http://en.wikipedia.org/wiki/Populus_tremuloides
+E|12|Native to Europe|P. tremula Linnaeus|0|European Aspen|0|Plantae|Salicaceae|Populus|0|http://en.wikipedia.org/wiki/Populus_tremula
+CAG|13|Deprecated – See B|0|(P. alba x P. grandidentata) x P. canescens|CAG or B|0|Plantae|Salicaceae|Populus|0|0
+BW|14|Describes an open pollinated (Wind) CAG cross.  They may have potential for interesting recombinations.|0|(P. canescens x (P. alba x P. grandidentata)) x OP (Wind)|CAGW or BW|0|Plantae|Salicaceae|Populus|0|0
+B|15|Alternate name for CAG crosses for brevity.  A double hybrid cross pioneered by the Canadians and known for diversity with some good rooting individuals despite poor rooting parents.|0|(P. x rouleauiana x P. canescens)|CAG or B|0|Plantae|Salicaceae|Populus|0|0
+R|16|Alternate name for AG/GA crosses (P. xrouleauiana) for brevity.|0|P. alba x P. grandidentata (and reciprocal)|AG or GA or R|P. x rouleauiana Bovin|Plantae|Salicaceae|Populus|0|0
+S|17|Alternate name for the TG/GT smithii (P. xsmithii Boivin) crosses for brevity |0|P. tremuloides x P. grandidentata (and reciprocal)|TG or GT|P. x smithii Boivin|Plantae|Salicaceae|Populus|0|0
+W|18|W stands for Wind pollinated. Therefore the exact male parent is unknown.|Wind Pollinated|0|Open Pollinated|NA|NA|NA|NA|0|0
+AB|19|Describes a P alba x CAG back cross. They may have potential for interesting recombinations.|0|P. alba x (P. canescens x (P. alba x P. Grandidentata))|AB|NA|NA|NA|NA|0|0
+BA|20|Describes a CAG x P alba back cross. They may have potential for interesting recombinations.|0|(P. canescens x (P. alba x P. Grandidentata)) x P. Alba|BA|NA|NA|NA|NA|0|0
+GB|21|Describes a G x CAG back cross. They may have potential for interesting recombinations.|0|P. grandidentata x (P. canescens x (P. alba x P. Grandidentata))|GB|NA|NA|NA|NA|0|0
+BG|22|Describes a B x CAG back cross. They may have potential for interesting recombinations.|0|(P. canescens x (P. alba x P. Grandidentata)) x P. Grandidentata|BG|NA|NA|NA|NA|0|0
+EG|23|E x G|0|P. tremula x P. grandidentata |EG|NA|Plantae|Salicaceae|Populus|0|0
+GE|24|G x E. Interesting cross.  Some trees having nice form.|0|P. grandidentata x P. Tremula|GE|NA|Plantae|Salicaceae|Populus|0|0
+EA|25|E x A|0|P. tremula x P. alba|gray poplar|P. xcanescens Smith|Plantae|Salicaceae|Populus|0|0
+AR|26|A x R|0|P. alba x P. Xrouleauiana|NA|NA|Plantae|Salicaceae|Populus|0|0
+RA|27|R x A|0|P. x rouleauiana x P. Alba|NA|NA|Plantae|Salicaceae|Populus|0|0
+RG|28|R x G|0|P. x rouleauiana x P. Grandidentata|NA|NA|Plantae|Salicaceae|Populus|0|0
+AC|29|A x C|0|P. alba x P. canescens|NA|NA|Plantae|Salicaceae|Populus|0|0
+RC|30|R x C|0|P. x rouleauiana x P. Canescens|NA|NA|Plantae|Salicaceae|Populus|0|0
+RE|31|R x E|0|P. x rouleauiana x P. Tremula|NA|NA|Plantae|Salicaceae|Populus|0|0
+TE|32|T x E|0|P. tremuloides x P. tremula|TE|P. * wettsteinii |Plantae|Salicaceae|Populus|0|0
+AW|33|A x W|0|P. alba x OP (Wind)|NA|NA|Plantae|Salicaceae|Populus|0|0
+GW|34|G x W|0|P. grandidentata x OP (Wind)|NA|NA|Plantae|Salicaceae|Populus|0|0
+RR|35|R x R|0|P. x rouleauiana x P. X rouleauiana|NA|NA|Plantae|Salicaceae|Populus|0|0
+BC|36|B x C|0|(P. x rouleauiana x P. canescens) x P. canescens|NA|NA|Plantae|Salicaceae|Populus|0|0
+BR|37|B x R|0|(P. x rouleauiana x P. canescens) x P. X rouleauiana|NA|NA|Plantae|Salicaceae|Populus|0|0
+RB|38|R x B|0|P. x rouleauiana x (P. xrouleauiana x P. canescens)|NA|NA|Plantae|Salicaceae|Populus|0|0
+BAR|39|B x (A x R)|0|(P. xrouleauiana x P. canescens) x P. X rouleauiana |NA|NA|Plantae|Salicaceae|Populus|0|0
+ARW|40|(A x R) x W|0|(P. alba x P. X rouleauiana) x OP (Wind)|NA|NA|Plantae|Salicaceae|Populus|0|0
+BT|41|B x T|0|(P. alba x P. X rouleauiana) x P. Tremuloides|NA|NA|Plantae|Salicaceae|Populus|0|0
+ARA|42|(A x R) x A|0|(P. alba x P. X rouleauiana) x P. Alba|NA|NA|Plantae|Salicaceae|Populus|0|0

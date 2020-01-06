@@ -1,0 +1,1 @@
+\copy ipc_pedigree(pedigree_key,path) from '../csv/TST/ipc_pedigree.csv' delimiter '|' CSV HEADER

@@ -272,7 +272,6 @@ datestamp=$(date +%F\ %r)
 cat <<-EOF > $ProjectSummaryFile 
 # $MYDEV_NAME Project Summary 
 Welcome to Patrick McGovern's $MYDEV_NAME Software Digital Portfolio. Created on $datestamp with the following details:
-
 * Total number of applications: $appCount
 * Total regression test run time in seconds: $totalRunTime 
 * Total regression test runs: $cnt  

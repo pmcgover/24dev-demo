@@ -58,7 +58,7 @@ echo "Run the primary r4st database processes..."
 ./r4st-loader.sh  > ../logs/r4st-loader.log 2>&1 
 
 
-chkdberr=$(egrep -i 'error|fatal|hint' ${APPS}/r4st/logs/r4st-loader.log)
+chkdberr=$(egrep -i 'error|fatal|hint|No such file or directory' ${APPS}/r4st/logs/r4st-loader.log)
 if [[ -n $chkdberr ]]; then
    echo "FAILURE: Database load Errors found in ${APPS}/r4st/logs/r4st-loader.log" 
    echo "Fix the errors and re-run this process. Exiting now..."

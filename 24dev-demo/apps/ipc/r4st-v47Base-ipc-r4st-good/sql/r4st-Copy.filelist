@@ -1,0 +1,13 @@
+-- Start Plant tables:
+\copy taxa from '../csv/taxa.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy family from '../csv/family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy plant from '../csv/plant.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+-- Start Test Tables:
+\copy site from '../csv/site.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy test_spec from '../csv/test_spec.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy test_detail from '../csv/test_detail.csv' delimiter '|' CSV HEADER
+--\copy test_detail from '../csv/test_detail.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy field_trial from '../csv/field_trial.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy split_wood_tests from '../csv/split_wood_tests.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy journal from '../csv/journal.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy u07m_2013 from '../csv/u07m_2013.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER

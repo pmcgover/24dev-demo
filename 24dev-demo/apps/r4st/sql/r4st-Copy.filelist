@@ -1,0 +1,9 @@
+-- Start Plant tables:
+\copy taxa from '../csv/taxa.csv' delimiter '|' CSV HEADER
+\copy family from '../csv/family.csv' delimiter '|' CSV HEADER
+\copy plant from '../csv/plant.csv' delimiter '|' CSV HEADER
+-- Start Test Tables:
+\copy site from '../csv/site.csv' delimiter '|' CSV HEADER
+\copy test_spec from '../csv/test_spec.csv' delimiter '|' CSV HEADER
+\copy test_detail from '../csv/test_detail.csv' delimiter '|' CSV HEADER
+\copy journal from '../csv/journal.csv' delimiter '|' CSV HEADER

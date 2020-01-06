@@ -1,0 +1,1 @@
+\copy pedigree(pedigree_key,path) from '../csv/TST/r4st-TST-pedigree.csv' delimiter '|' CSV HEADER

@@ -484,11 +484,17 @@ SET
 SET
 SET
 SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
 SET
 SET
 CREATE EXTENSION
 COMMENT
-SET
 SET
 SET
 CREATE TABLE
@@ -636,71 +642,71 @@ ALTER TABLE
 ALTER TABLE
 ALTER TABLE
 COPY 238
- setval 
---------
-      1
-(1 row)
-
 COPY 1157
- setval 
---------
-      1
-(1 row)
-
 COPY 57
- setval 
---------
-      1
-(1 row)
-
 COPY 250
- setval 
---------
-    250
-(1 row)
-
 COPY 334
- setval 
---------
-      1
-(1 row)
-
 COPY 13
- setval 
---------
-      1
-(1 row)
-
 COPY 243
- setval 
---------
-      1
-(1 row)
-
 COPY 42
- setval 
---------
-      1
-(1 row)
-
 COPY 3015
- setval 
---------
-      1
-(1 row)
-
 COPY 48
- setval 
---------
-      1
-(1 row)
-
 COPY 252
  setval 
 --------
       1
 (1 row)
 
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+    250
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
 ALTER TABLE
 ALTER TABLE
 ALTER TABLE
@@ -730,10 +736,6 @@ ALTER TABLE
 ALTER TABLE
 ALTER TABLE
 ALTER TABLE
-REVOKE
-REVOKE
-GRANT
-GRANT
 
 
 
@@ -742,7 +744,7 @@ Create a new version of the r4st_DropAll-Objects.sql file...
 
 Extract all table description data via pgsql and load into a text file
 
-psql (PostgreSQL) 9.5.7
+psql (PostgreSQL) 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 The r4st database process is: DONE
 
 You can view the r4st PRD database at: http://localhost/r4stdb/dbkiss.php

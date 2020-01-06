@@ -1,0 +1,4 @@
+\copy ipc_original_salix_epithet from '../csv/ipc_original_salix_epithet.csv' delimiter ',' CSV HEADER 
+\copy ipc_salix_epithet from '../csv/ipc_salix_epithet.csv' delimiter ',' CSV HEADER
+\copy ipc_salix_family from '../csv/ipc_salix_family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+\copy ipc_salix_species from '../csv/ipc_salix_species.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER

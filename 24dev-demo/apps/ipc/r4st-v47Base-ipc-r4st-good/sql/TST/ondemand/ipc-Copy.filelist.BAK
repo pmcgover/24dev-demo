@@ -1,0 +1,8 @@
+\copy ipc_species_family from '../csv/TST/ipc_species_family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+\copy ipc_unique_species from '../csv/TST/ipc_unique_species.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+\copy ipc_unique_families from '../csv/TST/ipc_unique_families.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+\copy ipc_original_salix_epithet from '../csv/TST/ipc_original_salix_epithet.csv' delimiter ',' CSV HEADER 
+\copy ipc_salix_epithet from '../csv/TST/ipc_salix_epithet.csv' delimiter ',' CSV HEADER
+\copy ipc_salix_family from '../csv/TST/ipc_salix_family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER 
+\copy ipc_salix_species from '../csv/TST/ipc_salix_species.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy ipc_pedigree(pedigree_key,path) from '../csv/TST/ipc_pedigree.csv' delimiter '|' CSV HEADER

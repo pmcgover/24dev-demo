@@ -2,14 +2,17 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.7
--- Dumped by pg_dump version 9.5.7
+-- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -27,8 +30,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -37,7 +38,7 @@ SET default_with_oids = false;
 -- Name: family; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE family (
+CREATE TABLE public.family (
     family_key character varying(20),
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -61,13 +62,13 @@ CREATE TABLE family (
 );
 
 
-ALTER TABLE family OWNER TO "user";
+ALTER TABLE public.family OWNER TO "user";
 
 --
 -- Name: plant; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE plant (
+CREATE TABLE public.plant (
     plant_key character varying(20),
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -100,13 +101,13 @@ CREATE TABLE plant (
 );
 
 
-ALTER TABLE plant OWNER TO "user";
+ALTER TABLE public.plant OWNER TO "user";
 
 --
 -- Name: taxa; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE taxa (
+CREATE TABLE public.taxa (
     taxa_key character varying(20),
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -123,13 +124,13 @@ CREATE TABLE taxa (
 );
 
 
-ALTER TABLE taxa OWNER TO "user";
+ALTER TABLE public.taxa OWNER TO "user";
 
 --
 -- Name: avw_family; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_family AS
+CREATE VIEW public.avw_family AS
  SELECT f.family_key,
     f.id,
     f.notes,
@@ -147,46 +148,46 @@ CREATE VIEW avw_family AS
     t.taxa_key,
     f.web_photos,
     f.web_url
-   FROM family f,
-    taxa t,
-    plant p1,
-    plant p2
+   FROM public.family f,
+    public.taxa t,
+    public.plant p1,
+    public.plant p2
   WHERE ((f.id_taxa = t.id) AND (f.female_plant_id = p1.id) AND (f.male_plant_id = p2.id));
 
 
-ALTER TABLE avw_family OWNER TO "user";
+ALTER TABLE public.avw_family OWNER TO "user";
 
 --
 -- Name: avw_family_phase_seed_germ_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_family_phase_seed_germ_summary AS
+CREATE VIEW public.avw_family_phase_seed_germ_summary AS
  SELECT f.project_phase,
     count(f.*) AS number_of_families_per_project_phase,
     count(DISTINCT f.female_parent) AS count_unique_female_parents,
     count(DISTINCT f.male_parent) AS count_unique_male_parents,
     count(DISTINCT f.taxa_key) AS count_unique_taxa_species,
     trunc(avg(f.seed_germ_percent), 2) AS avg_seed_germ_percent
-   FROM avw_family f
+   FROM public.avw_family f
   WHERE (f.seed_germ_percent > ('-1'::integer)::numeric)
   GROUP BY f.project_phase
   ORDER BY f.project_phase;
 
 
-ALTER TABLE avw_family_phase_seed_germ_summary OWNER TO "user";
+ALTER TABLE public.avw_family_phase_seed_germ_summary OWNER TO "user";
 
 --
 -- Name: avw_family_phase_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_family_phase_summary AS
+CREATE VIEW public.avw_family_phase_summary AS
  SELECT f.project_phase,
     count(f.*) AS number_of_families_per_project_phase,
     count(DISTINCT f.female_parent) AS count_unique_female_parents,
     count(DISTINCT f.male_parent) AS count_unique_male_parents,
     count(DISTINCT f.taxa_key) AS count_unique_taxa_species,
     sum(pt.is_plus_family) AS sum_of_plus_trees
-   FROM avw_family f,
+   FROM public.avw_family f,
     ( SELECT avw_family.family_key,
             avw_family.id,
                 CASE
@@ -194,19 +195,19 @@ CREATE VIEW avw_family_phase_summary AS
                     WHEN (avw_family.is_plus = 'N'::bpchar) THEN 0
                     ELSE 0
                 END AS is_plus_family
-           FROM avw_family) pt
+           FROM public.avw_family) pt
   WHERE ((f.project_phase <> ('-1'::integer)::numeric) AND ((f.family_key)::text = (pt.family_key)::text) AND (f.id = pt.id))
   GROUP BY f.project_phase
   ORDER BY f.project_phase;
 
 
-ALTER TABLE avw_family_phase_summary OWNER TO "user";
+ALTER TABLE public.avw_family_phase_summary OWNER TO "user";
 
 --
 -- Name: field_trial; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE field_trial (
+CREATE TABLE public.field_trial (
     field_trial_key character varying(50) DEFAULT '0'::character varying NOT NULL,
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -234,13 +235,13 @@ CREATE TABLE field_trial (
 );
 
 
-ALTER TABLE field_trial OWNER TO "user";
+ALTER TABLE public.field_trial OWNER TO "user";
 
 --
 -- Name: site; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE site (
+CREATE TABLE public.site (
     site_key character varying(50) NOT NULL,
     id integer NOT NULL,
     location_code character varying(5) NOT NULL,
@@ -265,13 +266,13 @@ CREATE TABLE site (
 );
 
 
-ALTER TABLE site OWNER TO "user";
+ALTER TABLE public.site OWNER TO "user";
 
 --
 -- Name: test_spec; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE test_spec (
+CREATE TABLE public.test_spec (
     test_spec_key character varying(50) NOT NULL,
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -292,13 +293,13 @@ CREATE TABLE test_spec (
 );
 
 
-ALTER TABLE test_spec OWNER TO "user";
+ALTER TABLE public.test_spec OWNER TO "user";
 
 --
 -- Name: avw_field_trial; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_field_trial AS
+CREATE VIEW public.avw_field_trial AS
  SELECT ft.field_trial_key,
     ft.id,
     ft.notes,
@@ -325,19 +326,19 @@ CREATE VIEW avw_field_trial AS
     s.site_key,
     ft.id_test_spec,
     ft.id_site
-   FROM field_trial ft,
-    test_spec ts,
-    site s
+   FROM public.field_trial ft,
+    public.test_spec ts,
+    public.site s
   WHERE ((ft.id_test_spec = ts.id) AND (ft.id_site = s.id));
 
 
-ALTER TABLE avw_field_trial OWNER TO "user";
+ALTER TABLE public.avw_field_trial OWNER TO "user";
 
 --
 -- Name: split_wood_tests; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE split_wood_tests (
+CREATE TABLE public.split_wood_tests (
     swt_key character varying(50) DEFAULT '0'::character varying NOT NULL,
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -355,13 +356,13 @@ CREATE TABLE split_wood_tests (
 );
 
 
-ALTER TABLE split_wood_tests OWNER TO "user";
+ALTER TABLE public.split_wood_tests OWNER TO "user";
 
 --
 -- Name: avw_gpf_split_wood_tests; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_gpf_split_wood_tests AS
+CREATE VIEW public.avw_gpf_split_wood_tests AS
  SELECT s.swt_key,
     s.id,
     s.notes,
@@ -375,18 +376,18 @@ CREATE VIEW avw_gpf_split_wood_tests AS
     s.replication_nbr,
     s.id_test_spec,
     ts.test_spec_key
-   FROM split_wood_tests s,
-    test_spec ts
+   FROM public.split_wood_tests s,
+    public.test_spec ts
   WHERE ((s.id_test_spec = ts.id) AND (s.gpf_test_set = 'Y'::bpchar));
 
 
-ALTER TABLE avw_gpf_split_wood_tests OWNER TO "user";
+ALTER TABLE public.avw_gpf_split_wood_tests OWNER TO "user";
 
 --
 -- Name: journal; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE journal (
+CREATE TABLE public.journal (
     journal_key character varying(50) DEFAULT '0'::character varying NOT NULL,
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -400,13 +401,13 @@ CREATE TABLE journal (
 );
 
 
-ALTER TABLE journal OWNER TO "user";
+ALTER TABLE public.journal OWNER TO "user";
 
 --
 -- Name: avw_journal; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_journal AS
+CREATE VIEW public.avw_journal AS
  SELECT j.journal_key,
     j.id,
     j.notes,
@@ -417,21 +418,21 @@ CREATE VIEW avw_journal AS
     s.site_key,
     j.date,
     j.web_url
-   FROM journal j,
-    site s,
-    plant p,
-    family f,
-    test_spec ts
+   FROM public.journal j,
+    public.site s,
+    public.plant p,
+    public.family f,
+    public.test_spec ts
   WHERE ((j.id_test_spec = ts.id) AND (j.id_site = s.id) AND (j.id_plant = p.id) AND (j.id_family = f.id));
 
 
-ALTER TABLE avw_journal OWNER TO "user";
+ALTER TABLE public.avw_journal OWNER TO "user";
 
 --
 -- Name: avw_plant; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_plant AS
+CREATE VIEW public.avw_plant AS
  SELECT p.plant_key,
     p.id,
     p.notes,
@@ -454,20 +455,20 @@ CREATE VIEW avw_plant AS
     f.family_key,
     p.web_photos,
     p.web_url
-   FROM plant p,
-    taxa t,
-    family f
+   FROM public.plant p,
+    public.taxa t,
+    public.family f
   WHERE ((p.id_taxa = t.id) AND (p.id_family = f.id))
   ORDER BY p.id;
 
 
-ALTER TABLE avw_plant OWNER TO "user";
+ALTER TABLE public.avw_plant OWNER TO "user";
 
 --
 -- Name: avw_site; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_site AS
+CREATE VIEW public.avw_site AS
  SELECT site.site_key,
     site.id,
     site.location_code,
@@ -488,17 +489,17 @@ CREATE VIEW avw_site AS
     site.web_url,
     site.web_photos,
     site.contact
-   FROM site
+   FROM public.site
   ORDER BY site.id;
 
 
-ALTER TABLE avw_site OWNER TO "user";
+ALTER TABLE public.avw_site OWNER TO "user";
 
 --
 -- Name: avw_taxa; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_taxa AS
+CREATE VIEW public.avw_taxa AS
  SELECT taxa.taxa_key,
     taxa.id,
     taxa.notes,
@@ -511,17 +512,17 @@ CREATE VIEW avw_taxa AS
     taxa.genus,
     taxa.web_photos,
     taxa.web_url
-   FROM taxa
+   FROM public.taxa
   ORDER BY taxa.id;
 
 
-ALTER TABLE avw_taxa OWNER TO "user";
+ALTER TABLE public.avw_taxa OWNER TO "user";
 
 --
 -- Name: test_detail; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE test_detail (
+CREATE TABLE public.test_detail (
     test_detail_key character varying(50) DEFAULT '0'::character varying NOT NULL,
     id integer NOT NULL,
     notes character varying DEFAULT '0'::character varying NOT NULL,
@@ -556,13 +557,13 @@ CREATE TABLE test_detail (
 );
 
 
-ALTER TABLE test_detail OWNER TO "user";
+ALTER TABLE public.test_detail OWNER TO "user";
 
 --
 -- Name: avw_test_detail; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_test_detail AS
+CREATE VIEW public.avw_test_detail AS
  SELECT td.test_detail_key,
     td.id,
     td.notes,
@@ -589,18 +590,18 @@ CREATE VIEW avw_test_detail AS
     td.replication_nbr,
     td.plot_nbr,
     td.block_nbr
-   FROM test_detail td,
-    test_spec ts
+   FROM public.test_detail td,
+    public.test_spec ts
   WHERE (td.id_test_spec = ts.id);
 
 
-ALTER TABLE avw_test_detail OWNER TO "user";
+ALTER TABLE public.avw_test_detail OWNER TO "user";
 
 --
 -- Name: avw_test_spec; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avw_test_spec AS
+CREATE VIEW public.avw_test_spec AS
  SELECT ts.test_spec_key,
     ts.id,
     ts.notes,
@@ -615,18 +616,18 @@ CREATE VIEW avw_test_spec AS
     ts.web_photos,
     ts.test_start_date,
     s.site_key
-   FROM test_spec ts,
-    site s
+   FROM public.test_spec ts,
+    public.site s
   WHERE (ts.id_site = s.id);
 
 
-ALTER TABLE avw_test_spec OWNER TO "user";
+ALTER TABLE public.avw_test_spec OWNER TO "user";
 
 --
 -- Name: avx_female_parent_germination_rates; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avx_female_parent_germination_rates AS
+CREATE VIEW public.avx_female_parent_germination_rates AS
  SELECT f.female_parent,
     count(f.female_parent) AS count_of_this_female,
     trunc(avg(f.seed_germ_percent), 2) AS avg_seed_germ_percent_females,
@@ -635,25 +636,25 @@ CREATE VIEW avx_female_parent_germination_rates AS
     p.alba_class,
     min(p.is_plus) AS is_plus,
     min(p.is_from_wild) AS is_from_wild
-   FROM avw_family f,
+   FROM public.avw_family f,
     ( SELECT plant.plant_key,
             plant.alba_class,
             plant.is_plus,
             plant.is_from_wild
-           FROM plant
+           FROM public.plant
           WHERE (plant.id <> ALL (ARRAY[1, 2]))) p
   WHERE ((f.seed_germ_percent > ('-1'::integer)::numeric) AND ((f.female_parent)::text = (p.plant_key)::text) AND (f.id <> ALL (ARRAY[1, 2])))
   GROUP BY f.female_parent, p.alba_class
   ORDER BY (trunc(avg(f.seed_germ_percent), 2)) DESC;
 
 
-ALTER TABLE avx_female_parent_germination_rates OWNER TO "user";
+ALTER TABLE public.avx_female_parent_germination_rates OWNER TO "user";
 
 --
 -- Name: avx_female_parent_germination_rate_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avx_female_parent_germination_rate_summary AS
+CREATE VIEW public.avx_female_parent_germination_rate_summary AS
  SELECT avx_female_parent_germination_rates.alba_class AS alba_class_female,
         CASE
             WHEN ((avx_female_parent_germination_rates.alba_class)::text = 'U'::text) THEN 'Unknown, like Unknown female parentage'::text
@@ -671,18 +672,18 @@ CREATE VIEW avx_female_parent_germination_rate_summary AS
     trunc(avg(avx_female_parent_germination_rates.avg_seed_germ_percent_females), 2) AS avg_seed_germ_female_parents,
     max(avx_female_parent_germination_rates.max_seed_germ_percent_females) AS max_germ_female_parents,
     min(avx_female_parent_germination_rates.min_seed_germ_percent_females) AS min_germ_female_parents
-   FROM avx_female_parent_germination_rates
+   FROM public.avx_female_parent_germination_rates
   GROUP BY avx_female_parent_germination_rates.alba_class
   ORDER BY (trunc(avg(avx_female_parent_germination_rates.avg_seed_germ_percent_females), 2)) DESC;
 
 
-ALTER TABLE avx_female_parent_germination_rate_summary OWNER TO "user";
+ALTER TABLE public.avx_female_parent_germination_rate_summary OWNER TO "user";
 
 --
 -- Name: avx_male_parent_germination_rates; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avx_male_parent_germination_rates AS
+CREATE VIEW public.avx_male_parent_germination_rates AS
  SELECT f.male_parent,
     count(f.male_parent) AS count_of_this_male,
     trunc(avg(f.seed_germ_percent), 2) AS avg_seed_germ_percent_males,
@@ -691,25 +692,25 @@ CREATE VIEW avx_male_parent_germination_rates AS
     p.alba_class,
     min(p.is_plus) AS is_plus,
     min(p.is_from_wild) AS is_from_wild
-   FROM avw_family f,
+   FROM public.avw_family f,
     ( SELECT plant.plant_key,
             plant.alba_class,
             plant.is_plus,
             plant.is_from_wild
-           FROM plant
+           FROM public.plant
           WHERE (plant.id <> ALL (ARRAY[1, 2]))) p
   WHERE ((f.seed_germ_percent > ('-1'::integer)::numeric) AND ((f.male_parent)::text = (p.plant_key)::text) AND (f.id <> ALL (ARRAY[1, 2])))
   GROUP BY f.male_parent, p.alba_class
   ORDER BY (trunc(avg(f.seed_germ_percent), 2)) DESC;
 
 
-ALTER TABLE avx_male_parent_germination_rates OWNER TO "user";
+ALTER TABLE public.avx_male_parent_germination_rates OWNER TO "user";
 
 --
 -- Name: avx_male_parent_germination_rate_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW avx_male_parent_germination_rate_summary AS
+CREATE VIEW public.avx_male_parent_germination_rate_summary AS
  SELECT avx_male_parent_germination_rates.alba_class AS alba_class_male,
         CASE
             WHEN ((avx_male_parent_germination_rates.alba_class)::text = 'U'::text) THEN 'Unknown, like Open Pollinated or Undetermined'::text
@@ -727,18 +728,19 @@ CREATE VIEW avx_male_parent_germination_rate_summary AS
     trunc(avg(avx_male_parent_germination_rates.avg_seed_germ_percent_males), 2) AS avg_seed_germ_male_parents,
     max(avx_male_parent_germination_rates.max_seed_germ_percent_males) AS max_germ_male_parents,
     min(avx_male_parent_germination_rates.min_seed_germ_percent_males) AS min_germ_male_parents
-   FROM avx_male_parent_germination_rates
+   FROM public.avx_male_parent_germination_rates
   GROUP BY avx_male_parent_germination_rates.alba_class
   ORDER BY (trunc(avg(avx_male_parent_germination_rates.avg_seed_germ_percent_males), 2)) DESC;
 
 
-ALTER TABLE avx_male_parent_germination_rate_summary OWNER TO "user";
+ALTER TABLE public.avx_male_parent_germination_rate_summary OWNER TO "user";
 
 --
 -- Name: family_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE family_id_seq
+CREATE SEQUENCE public.family_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -746,20 +748,21 @@ CREATE SEQUENCE family_id_seq
     CACHE 1;
 
 
-ALTER TABLE family_id_seq OWNER TO "user";
+ALTER TABLE public.family_id_seq OWNER TO "user";
 
 --
 -- Name: family_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE family_id_seq OWNED BY family.id;
+ALTER SEQUENCE public.family_id_seq OWNED BY public.family.id;
 
 
 --
 -- Name: field_trial_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE field_trial_id_seq
+CREATE SEQUENCE public.field_trial_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -767,20 +770,20 @@ CREATE SEQUENCE field_trial_id_seq
     CACHE 1;
 
 
-ALTER TABLE field_trial_id_seq OWNER TO "user";
+ALTER TABLE public.field_trial_id_seq OWNER TO "user";
 
 --
 -- Name: field_trial_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE field_trial_id_seq OWNED BY field_trial.id;
+ALTER SEQUENCE public.field_trial_id_seq OWNED BY public.field_trial.id;
 
 
 --
 -- Name: gpf1_split_wood_tests_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW gpf1_split_wood_tests_summary AS
+CREATE VIEW public.gpf1_split_wood_tests_summary AS
  SELECT avw_gpf_split_wood_tests.swt_key,
     count(avw_gpf_split_wood_tests.replication_nbr) AS count_of_replications,
     min(avw_gpf_split_wood_tests.stem_dia_small_end_mm) AS min_stem_dia_small_end_mm,
@@ -794,18 +797,18 @@ CREATE VIEW gpf1_split_wood_tests_summary AS
     trunc(avg(avw_gpf_split_wood_tests.undulation_level), 2) AS avg_undulation_level,
     max(avw_gpf_split_wood_tests.undulation_level) AS max_undulation_level,
     trunc((avg(avw_gpf_split_wood_tests.stem_dia_small_end_mm) / avg(avw_gpf_split_wood_tests.grain_pull_force_lb)), 2) AS diameter_per_pound
-   FROM avw_gpf_split_wood_tests
+   FROM public.avw_gpf_split_wood_tests
   GROUP BY avw_gpf_split_wood_tests.swt_key, avw_gpf_split_wood_tests.replication_nbr
   ORDER BY avw_gpf_split_wood_tests.swt_key, avw_gpf_split_wood_tests.replication_nbr;
 
 
-ALTER TABLE gpf1_split_wood_tests_summary OWNER TO "user";
+ALTER TABLE public.gpf1_split_wood_tests_summary OWNER TO "user";
 
 --
 -- Name: gpf2_split_wood_tests_undulation; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW gpf2_split_wood_tests_undulation AS
+CREATE VIEW public.gpf2_split_wood_tests_undulation AS
  SELECT count(gpf1_split_wood_tests_summary.swt_key) AS count_of_undulation_samples,
     count(DISTINCT gpf1_split_wood_tests_summary.swt_key) AS count_of_undulation_clones,
     trunc(avg(gpf1_split_wood_tests_summary.avg_stem_dia_small_end_mm), 2) AS avg_stem_dia_small_end_mm,
@@ -814,18 +817,19 @@ CREATE VIEW gpf2_split_wood_tests_undulation AS
     trunc(avg(gpf1_split_wood_tests_summary.sample_stdev_grain_pull_force_lb), 2) AS avg_sample_stdev_grain_pull_force_lb,
     trunc(avg(gpf1_split_wood_tests_summary.diameter_per_pound), 2) AS diameter_per_pound,
     trunc(avg(gpf1_split_wood_tests_summary.avg_undulation_level), 2) AS avg_undulation_level
-   FROM gpf1_split_wood_tests_summary
+   FROM public.gpf1_split_wood_tests_summary
   GROUP BY gpf1_split_wood_tests_summary.avg_undulation_level
   ORDER BY (trunc(avg(gpf1_split_wood_tests_summary.avg_undulation_level), 2)) DESC;
 
 
-ALTER TABLE gpf2_split_wood_tests_undulation OWNER TO "user";
+ALTER TABLE public.gpf2_split_wood_tests_undulation OWNER TO "user";
 
 --
 -- Name: journal_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE journal_id_seq
+CREATE SEQUENCE public.journal_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -833,33 +837,34 @@ CREATE SEQUENCE journal_id_seq
     CACHE 1;
 
 
-ALTER TABLE journal_id_seq OWNER TO "user";
+ALTER TABLE public.journal_id_seq OWNER TO "user";
 
 --
 -- Name: journal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE journal_id_seq OWNED BY journal.id;
+ALTER SEQUENCE public.journal_id_seq OWNED BY public.journal.id;
 
 
 --
 -- Name: pedigree; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE pedigree (
+CREATE TABLE public.pedigree (
     id integer NOT NULL,
     pedigree_key character varying NOT NULL,
     path character varying NOT NULL
 );
 
 
-ALTER TABLE pedigree OWNER TO "user";
+ALTER TABLE public.pedigree OWNER TO "user";
 
 --
 -- Name: pedigree_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE pedigree_id_seq
+CREATE SEQUENCE public.pedigree_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -867,20 +872,21 @@ CREATE SEQUENCE pedigree_id_seq
     CACHE 1;
 
 
-ALTER TABLE pedigree_id_seq OWNER TO "user";
+ALTER TABLE public.pedigree_id_seq OWNER TO "user";
 
 --
 -- Name: pedigree_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE pedigree_id_seq OWNED BY pedigree.id;
+ALTER SEQUENCE public.pedigree_id_seq OWNED BY public.pedigree.id;
 
 
 --
 -- Name: plant_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE plant_id_seq
+CREATE SEQUENCE public.plant_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -888,20 +894,21 @@ CREATE SEQUENCE plant_id_seq
     CACHE 1;
 
 
-ALTER TABLE plant_id_seq OWNER TO "user";
+ALTER TABLE public.plant_id_seq OWNER TO "user";
 
 --
 -- Name: plant_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE plant_id_seq OWNED BY plant.id;
+ALTER SEQUENCE public.plant_id_seq OWNED BY public.plant.id;
 
 
 --
 -- Name: site_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE site_id_seq
+CREATE SEQUENCE public.site_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -909,20 +916,21 @@ CREATE SEQUENCE site_id_seq
     CACHE 1;
 
 
-ALTER TABLE site_id_seq OWNER TO "user";
+ALTER TABLE public.site_id_seq OWNER TO "user";
 
 --
 -- Name: site_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE site_id_seq OWNED BY site.id;
+ALTER SEQUENCE public.site_id_seq OWNED BY public.site.id;
 
 
 --
 -- Name: split_wood_tests_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE split_wood_tests_id_seq
+CREATE SEQUENCE public.split_wood_tests_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -930,20 +938,21 @@ CREATE SEQUENCE split_wood_tests_id_seq
     CACHE 1;
 
 
-ALTER TABLE split_wood_tests_id_seq OWNER TO "user";
+ALTER TABLE public.split_wood_tests_id_seq OWNER TO "user";
 
 --
 -- Name: split_wood_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE split_wood_tests_id_seq OWNED BY split_wood_tests.id;
+ALTER SEQUENCE public.split_wood_tests_id_seq OWNED BY public.split_wood_tests.id;
 
 
 --
 -- Name: taxa_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE taxa_id_seq
+CREATE SEQUENCE public.taxa_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -951,20 +960,21 @@ CREATE SEQUENCE taxa_id_seq
     CACHE 1;
 
 
-ALTER TABLE taxa_id_seq OWNER TO "user";
+ALTER TABLE public.taxa_id_seq OWNER TO "user";
 
 --
 -- Name: taxa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE taxa_id_seq OWNED BY taxa.id;
+ALTER SEQUENCE public.taxa_id_seq OWNED BY public.taxa.id;
 
 
 --
 -- Name: test_detail_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE test_detail_id_seq
+CREATE SEQUENCE public.test_detail_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -972,20 +982,21 @@ CREATE SEQUENCE test_detail_id_seq
     CACHE 1;
 
 
-ALTER TABLE test_detail_id_seq OWNER TO "user";
+ALTER TABLE public.test_detail_id_seq OWNER TO "user";
 
 --
 -- Name: test_detail_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE test_detail_id_seq OWNED BY test_detail.id;
+ALTER SEQUENCE public.test_detail_id_seq OWNED BY public.test_detail.id;
 
 
 --
 -- Name: test_spec_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE test_spec_id_seq
+CREATE SEQUENCE public.test_spec_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -993,20 +1004,20 @@ CREATE SEQUENCE test_spec_id_seq
     CACHE 1;
 
 
-ALTER TABLE test_spec_id_seq OWNER TO "user";
+ALTER TABLE public.test_spec_id_seq OWNER TO "user";
 
 --
 -- Name: test_spec_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE test_spec_id_seq OWNED BY test_spec.id;
+ALTER SEQUENCE public.test_spec_id_seq OWNED BY public.test_spec.id;
 
 
 --
 -- Name: u07m_2013; Type: TABLE; Schema: public; Owner: user
 --
 
-CREATE TABLE u07m_2013 (
+CREATE TABLE public.u07m_2013 (
     id integer NOT NULL,
     dbh numeric NOT NULL,
     dbh_rank integer NOT NULL,
@@ -1017,13 +1028,14 @@ CREATE TABLE u07m_2013 (
 );
 
 
-ALTER TABLE u07m_2013 OWNER TO "user";
+ALTER TABLE public.u07m_2013 OWNER TO "user";
 
 --
 -- Name: u07m_2013_id_seq; Type: SEQUENCE; Schema: public; Owner: user
 --
 
-CREATE SEQUENCE u07m_2013_id_seq
+CREATE SEQUENCE public.u07m_2013_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1031,20 +1043,20 @@ CREATE SEQUENCE u07m_2013_id_seq
     CACHE 1;
 
 
-ALTER TABLE u07m_2013_id_seq OWNER TO "user";
+ALTER TABLE public.u07m_2013_id_seq OWNER TO "user";
 
 --
 -- Name: u07m_2013_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
 --
 
-ALTER SEQUENCE u07m_2013_id_seq OWNED BY u07m_2013.id;
+ALTER SEQUENCE public.u07m_2013_id_seq OWNED BY public.u07m_2013.id;
 
 
 --
 -- Name: v1_field_trial_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW v1_field_trial_summary AS
+CREATE VIEW public.v1_field_trial_summary AS
  SELECT ft.field_trial_key,
     ft.test_spec_key,
     ft.site_key,
@@ -1057,7 +1069,7 @@ CREATE VIEW v1_field_trial_summary AS
     trunc(avg(ft.live_dbh_cm), 2) AS avg_dbh_cm,
     trunc(avg(ft.leaf_score), 2) AS avg_leaf_score,
     trunc(((((sum(pt.is_plus_tree))::numeric * 0.3) + (avg(ft.live_dbh_cm) * 0.5)) + (avg(ft.leaf_score) * 0.2)), 2) AS sum_plus_dbh_leafscore
-   FROM avw_field_trial ft,
+   FROM public.avw_field_trial ft,
     ( SELECT field_trial.field_trial_key,
             field_trial.id,
                 CASE
@@ -1065,19 +1077,19 @@ CREATE VIEW v1_field_trial_summary AS
                     WHEN (field_trial.is_plus_ynu = 'N'::bpchar) THEN '-1'::integer
                     ELSE 0
                 END AS is_plus_tree
-           FROM field_trial) pt
+           FROM public.field_trial) pt
   WHERE (((ft.field_trial_key)::text = (pt.field_trial_key)::text) AND (ft.id = pt.id))
   GROUP BY ft.field_trial_key, ft.test_spec_key, ft.site_key, ft.replication_nbr, ft.block_nbr, ft.id_test_spec, ft.id_site
   ORDER BY (trunc(((((sum(pt.is_plus_tree))::numeric * 0.3) + (avg(ft.live_dbh_cm) * 0.5)) + (avg(ft.leaf_score) * 0.2)), 2)) DESC;
 
 
-ALTER TABLE v1_field_trial_summary OWNER TO "user";
+ALTER TABLE public.v1_field_trial_summary OWNER TO "user";
 
 --
 -- Name: v2_field_trial_2016_planting; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW v2_field_trial_2016_planting AS
+CREATE VIEW public.v2_field_trial_2016_planting AS
  SELECT v1_field_trial_summary.field_trial_key,
     v1_field_trial_summary.sum_live_quantity,
     v1_field_trial_summary.sum_plus_trees,
@@ -1087,18 +1099,18 @@ CREATE VIEW v2_field_trial_2016_planting AS
     dense_rank() OVER (ORDER BY v1_field_trial_summary.sum_plus_dbh_leafscore DESC) AS ranked_score_16,
     v1_field_trial_summary.replication_nbr,
     v1_field_trial_summary.test_spec_key
-   FROM v1_field_trial_summary
+   FROM public.v1_field_trial_summary
   WHERE (((v1_field_trial_summary.test_spec_key)::text = '2017-PostNE-West-Measured'::text) AND (v1_field_trial_summary.block_nbr = 1))
   ORDER BY v1_field_trial_summary.sum_plus_dbh_leafscore DESC;
 
 
-ALTER TABLE v2_field_trial_2016_planting OWNER TO "user";
+ALTER TABLE public.v2_field_trial_2016_planting OWNER TO "user";
 
 --
 -- Name: v3_field_trial_2017_planting; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW v3_field_trial_2017_planting AS
+CREATE VIEW public.v3_field_trial_2017_planting AS
  SELECT v1_field_trial_summary.field_trial_key,
     v1_field_trial_summary.sum_live_quantity,
     v1_field_trial_summary.sum_plus_trees,
@@ -1108,18 +1120,18 @@ CREATE VIEW v3_field_trial_2017_planting AS
     dense_rank() OVER (ORDER BY v1_field_trial_summary.sum_plus_dbh_leafscore DESC) AS ranked_score_17,
     v1_field_trial_summary.replication_nbr,
     v1_field_trial_summary.test_spec_key
-   FROM v1_field_trial_summary
+   FROM public.v1_field_trial_summary
   WHERE (((v1_field_trial_summary.test_spec_key)::text = '2017-PostNE-West-Measured'::text) AND (v1_field_trial_summary.block_nbr = 2))
   ORDER BY v1_field_trial_summary.sum_plus_dbh_leafscore DESC;
 
 
-ALTER TABLE v3_field_trial_2017_planting OWNER TO "user";
+ALTER TABLE public.v3_field_trial_2017_planting OWNER TO "user";
 
 --
 -- Name: v4_field_trial_ranked_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW v4_field_trial_ranked_summary AS
+CREATE VIEW public.v4_field_trial_ranked_summary AS
  SELECT v1_field_trial_summary.field_trial_key,
     v1_field_trial_summary.sum_live_quantity,
     v1_field_trial_summary.sum_plus_trees,
@@ -1134,17 +1146,17 @@ CREATE VIEW v4_field_trial_ranked_summary AS
     v1_field_trial_summary.replication_nbr,
     v1_field_trial_summary.block_nbr,
     v1_field_trial_summary.test_spec_key
-   FROM v1_field_trial_summary
+   FROM public.v1_field_trial_summary
   ORDER BY v1_field_trial_summary.sum_plus_dbh_leafscore DESC;
 
 
-ALTER TABLE v4_field_trial_ranked_summary OWNER TO "user";
+ALTER TABLE public.v4_field_trial_ranked_summary OWNER TO "user";
 
 --
 -- Name: v5_field_trial_tree_shelter_2017; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW v5_field_trial_tree_shelter_2017 AS
+CREATE VIEW public.v5_field_trial_tree_shelter_2017 AS
  SELECT ft.field_trial_key,
     ft.id,
     ft.notes,
@@ -1171,19 +1183,19 @@ CREATE VIEW v5_field_trial_tree_shelter_2017 AS
     s.site_key,
     ft.id_test_spec,
     ft.id_site
-   FROM field_trial ft,
-    test_spec ts,
-    site s
+   FROM public.field_trial ft,
+    public.test_spec ts,
+    public.site s
   WHERE ((ft.id_test_spec = ts.id) AND (ft.id_site = s.id) AND (ft.id_site = ANY (ARRAY[12, 13])));
 
 
-ALTER TABLE v5_field_trial_tree_shelter_2017 OWNER TO "user";
+ALTER TABLE public.v5_field_trial_tree_shelter_2017 OWNER TO "user";
 
 --
 -- Name: va1_master_test_detail; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW va1_master_test_detail AS
+CREATE VIEW public.va1_master_test_detail AS
  SELECT td.test_detail_key,
     td.id,
     td.notes,
@@ -1216,19 +1228,19 @@ CREATE VIEW va1_master_test_detail AS
     td.replication_nbr,
     td.plot_nbr,
     date_part('isoyear'::text, td.this_start_date) AS year
-   FROM test_detail td,
-    test_spec ts
+   FROM public.test_detail td,
+    public.test_spec ts
   WHERE ((lower((td.notes)::text) !~~ lower('%willow%'::text)) AND (td.id_test_spec = ts.id))
   ORDER BY (trunc((td.end_quantity / td.start_quantity), 2) * td.collar_median_dia_mm) DESC;
 
 
-ALTER TABLE va1_master_test_detail OWNER TO "user";
+ALTER TABLE public.va1_master_test_detail OWNER TO "user";
 
 --
 -- Name: va2_nursery_stocktype_test_detail; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW va2_nursery_stocktype_test_detail AS
+CREATE VIEW public.va2_nursery_stocktype_test_detail AS
  SELECT va1_master_test_detail.test_detail_key,
     va1_master_test_detail.stock_type,
     count(va1_master_test_detail.replication_nbr) AS nbr_of_replications,
@@ -1252,22 +1264,22 @@ CREATE VIEW va2_nursery_stocktype_test_detail AS
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + (sum(va1_master_test_detail.is_plus_tree))::numeric) AS vigorsurvival_plus_plustrees,
     (trunc(avg(va1_master_test_detail.stool_vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS stoolvs_plus_fcuttings,
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS vigorsurvival_plus_fcuttings
-   FROM va1_master_test_detail
+   FROM public.va1_master_test_detail
   WHERE ((va1_master_test_detail.test_type)::text = 'nursery'::text)
   GROUP BY va1_master_test_detail.test_detail_key, va1_master_test_detail.stock_type
   ORDER BY (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) DESC;
 
 
-ALTER TABLE va2_nursery_stocktype_test_detail OWNER TO "user";
+ALTER TABLE public.va2_nursery_stocktype_test_detail OWNER TO "user";
 
 --
 -- Name: va2_all_nursery_rankings; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW va2_all_nursery_rankings AS
+CREATE VIEW public.va2_all_nursery_rankings AS
  SELECT v1.test_detail_key,
     (((max(v2.ms_rank) || max(v2.dc_rank)) || max(v2.dc_reps)) || max(v2.dc_srate)) AS all_ms_dc_rankings
-   FROM va2_nursery_stocktype_test_detail v1,
+   FROM public.va2_nursery_stocktype_test_detail v1,
     ( SELECT va2_nursery_stocktype_test_detail.test_detail_key,
             va2_nursery_stocktype_test_detail.stock_type,
             ((va2_nursery_stocktype_test_detail.test_detail_key)::text ||
@@ -1287,19 +1299,19 @@ CREATE VIEW va2_all_nursery_rankings AS
                     WHEN (va2_nursery_stocktype_test_detail.stock_type = 'DC'::bpchar) THEN ('_dcsrate='::text || trunc(va2_nursery_stocktype_test_detail.avg_survival_rate, 2))
                     ELSE NULL::text
                 END AS dc_srate
-           FROM va2_nursery_stocktype_test_detail) v2
+           FROM public.va2_nursery_stocktype_test_detail) v2
   WHERE (((v1.test_detail_key)::text = (v2.test_detail_key)::text) AND (v1.stock_type = v2.stock_type))
   GROUP BY v1.test_detail_key
   ORDER BY v1.test_detail_key;
 
 
-ALTER TABLE va2_all_nursery_rankings OWNER TO "user";
+ALTER TABLE public.va2_all_nursery_rankings OWNER TO "user";
 
 --
 -- Name: va3_nursery_summary_test_detail; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW va3_nursery_summary_test_detail AS
+CREATE VIEW public.va3_nursery_summary_test_detail AS
  SELECT va1_master_test_detail.test_detail_key,
     count(va1_master_test_detail.replication_nbr) AS nbr_of_replications,
     count(DISTINCT va1_master_test_detail.stock_type) AS nbr_of_stock_types,
@@ -1322,19 +1334,19 @@ CREATE VIEW va3_nursery_summary_test_detail AS
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + (sum(va1_master_test_detail.is_plus_tree))::numeric) AS vigorsurvival_plus_plustrees,
     (trunc(avg(va1_master_test_detail.stool_vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS stoolvs_plus_fcuttings,
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS vigorsurvival_plus_fcuttings
-   FROM va1_master_test_detail
+   FROM public.va1_master_test_detail
   WHERE ((va1_master_test_detail.test_type)::text = 'nursery'::text)
   GROUP BY va1_master_test_detail.test_detail_key
   ORDER BY (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) DESC;
 
 
-ALTER TABLE va3_nursery_summary_test_detail OWNER TO "user";
+ALTER TABLE public.va3_nursery_summary_test_detail OWNER TO "user";
 
 --
 -- Name: va4_nursery_dormant_cutting_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW va4_nursery_dormant_cutting_summary AS
+CREATE VIEW public.va4_nursery_dormant_cutting_summary AS
  SELECT va1_master_test_detail.test_detail_key,
     va1_master_test_detail.stock_type,
     count(va1_master_test_detail.replication_nbr) AS nbr_of_replications,
@@ -1355,19 +1367,19 @@ CREATE VIEW va4_nursery_dormant_cutting_summary AS
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + (sum(va1_master_test_detail.is_plus_tree))::numeric) AS vigorsurvival_plus_plustrees,
     (trunc(avg(va1_master_test_detail.stool_vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS stoolvs_plus_fcuttings,
     (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) AS vigorsurvival_plus_fcuttings
-   FROM va1_master_test_detail
+   FROM public.va1_master_test_detail
   WHERE (((va1_master_test_detail.test_type)::text = 'nursery'::text) AND (va1_master_test_detail.stock_type = ANY (ARRAY['DC'::bpchar, 'FDC'::bpchar, 'ODC'::bpchar])))
   GROUP BY va1_master_test_detail.test_detail_key, va1_master_test_detail.stock_type
   ORDER BY (trunc(avg(va1_master_test_detail.vigor_survival), 2) + trunc(avg(va1_master_test_detail.field_cuttings_ft), 2)) DESC;
 
 
-ALTER TABLE va4_nursery_dormant_cutting_summary OWNER TO "user";
+ALTER TABLE public.va4_nursery_dormant_cutting_summary OWNER TO "user";
 
 --
 -- Name: vw_2004_nursery_seedling_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2004_nursery_seedling_summary AS
+CREATE VIEW public.vw_2004_nursery_seedling_summary AS
  SELECT avw_test_detail.test_detail_key,
     min((avw_test_detail.notes)::text) AS min_notes,
     count(avw_test_detail.test_detail_key) AS count_test_detail_key,
@@ -1382,19 +1394,19 @@ CREATE VIEW vw_2004_nursery_seedling_summary AS
     trunc(((sum(avw_test_detail.end_quantity) / sum(avw_test_detail.start_quantity)) * avg(NULLIF(avw_test_detail.stock_dia_mm, (0)::numeric))), 2) AS avg_diameter_times_survivalrate,
     min(avw_test_detail.replication_nbr) AS min_rep_nbr,
     min(avw_test_detail.stock_type) AS min_stock_type
-   FROM avw_test_detail
+   FROM public.avw_test_detail
   WHERE ((avw_test_detail.test_spec_key)::text = '2004-bell-nursery-hgt-dia-meas'::text)
   GROUP BY avw_test_detail.test_detail_key
   ORDER BY (trunc(((sum(avw_test_detail.end_quantity) / sum(avw_test_detail.start_quantity)) * avg(NULLIF(avw_test_detail.height_cm, (0)::numeric))), 2)) DESC;
 
 
-ALTER TABLE vw_2004_nursery_seedling_summary OWNER TO "user";
+ALTER TABLE public.vw_2004_nursery_seedling_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_1_nursery; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_1_nursery AS
+CREATE VIEW public.vw_2017_1_nursery AS
  SELECT td.test_detail_key,
     td.id,
     td.notes,
@@ -1422,19 +1434,19 @@ CREATE VIEW vw_2017_1_nursery AS
     td.column_nbr,
     td.replication_nbr,
     td.block_nbr
-   FROM test_detail td,
-    test_spec ts
+   FROM public.test_detail td,
+    public.test_spec ts
   WHERE ((td.id_test_spec = ts.id) AND ((ts.test_spec_key)::text = '2017-bell-nursery'::text))
   ORDER BY (trunc((td.end_quantity / td.start_quantity), 2) * td.collar_median_dia_mm) DESC;
 
 
-ALTER TABLE vw_2017_1_nursery OWNER TO "user";
+ALTER TABLE public.vw_2017_1_nursery OWNER TO "user";
 
 --
 -- Name: vw_2017_2_nursery_key_stock_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_2_nursery_key_stock_summary AS
+CREATE VIEW public.vw_2017_2_nursery_key_stock_summary AS
  SELECT DISTINCT vw_2017_1_nursery.test_detail_key,
     vw_2017_1_nursery.stock_type,
     min(vw_2017_1_nursery.id) AS id_order,
@@ -1462,18 +1474,18 @@ CREATE VIEW vw_2017_2_nursery_key_stock_summary AS
     trunc(avg(vw_2017_1_nursery.stool_collar_median_dia_mm), 2) AS avg_stool_collar_mm,
     trunc((avg(vw_2017_1_nursery.stool_vigor_survival) + (avg(vw_2017_1_nursery.field_cuttings_ft) * ((count(vw_2017_1_nursery.replication_nbr))::numeric * 0.1))), 2) AS stools_cut_fcut_reps,
     trunc((avg(vw_2017_1_nursery.vigor_survival) + (avg(vw_2017_1_nursery.field_cuttings_ft) * ((count(vw_2017_1_nursery.replication_nbr))::numeric * 0.1))), 2) AS cut_fcut_reps
-   FROM vw_2017_1_nursery
+   FROM public.vw_2017_1_nursery
   GROUP BY vw_2017_1_nursery.test_detail_key, vw_2017_1_nursery.stock_type
   ORDER BY (trunc((avg(vw_2017_1_nursery.vigor_survival) + (avg(vw_2017_1_nursery.field_cuttings_ft) * ((count(vw_2017_1_nursery.replication_nbr))::numeric * 0.1))), 2)) DESC;
 
 
-ALTER TABLE vw_2017_2_nursery_key_stock_summary OWNER TO "user";
+ALTER TABLE public.vw_2017_2_nursery_key_stock_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_3_nursery_stock_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_3_nursery_stock_summary AS
+CREATE VIEW public.vw_2017_3_nursery_stock_summary AS
  SELECT vw_2017_2_nursery_key_stock_summary.stock_type,
     count(vw_2017_2_nursery_key_stock_summary.stock_type) AS stock_type_count,
     sum(vw_2017_2_nursery_key_stock_summary.sum_of_start_qty) AS planted_trees,
@@ -1493,18 +1505,18 @@ CREATE VIEW vw_2017_3_nursery_stock_summary AS
             WHEN (trunc(avg(vw_2017_2_nursery_key_stock_summary.avg_stool_collar_mm), 2) > (0)::numeric) THEN trunc(avg(vw_2017_2_nursery_key_stock_summary.avg_stool_collar_mm), 2)
             ELSE NULL::numeric
         END AS avg_stool_collar_median_dia_mm
-   FROM vw_2017_2_nursery_key_stock_summary
+   FROM public.vw_2017_2_nursery_key_stock_summary
   GROUP BY vw_2017_2_nursery_key_stock_summary.stock_type
   ORDER BY (count(vw_2017_2_nursery_key_stock_summary.stock_type)) DESC;
 
 
-ALTER TABLE vw_2017_3_nursery_stock_summary OWNER TO "user";
+ALTER TABLE public.vw_2017_3_nursery_stock_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_4_nursery_action_stock_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_4_nursery_action_stock_summary AS
+CREATE VIEW public.vw_2017_4_nursery_action_stock_summary AS
  SELECT vw_2017_2_nursery_key_stock_summary.selection_type,
     vw_2017_2_nursery_key_stock_summary.stock_type,
     count(vw_2017_2_nursery_key_stock_summary.stock_type) AS stock_type_count,
@@ -1525,18 +1537,18 @@ CREATE VIEW vw_2017_4_nursery_action_stock_summary AS
             WHEN (trunc(avg(vw_2017_2_nursery_key_stock_summary.avg_collar_median_dia_mm), 2) > (0)::numeric) THEN trunc(avg(vw_2017_2_nursery_key_stock_summary.avg_collar_median_dia_mm), 2)
             ELSE NULL::numeric
         END AS avg_1_0_collar_median_dia_mm
-   FROM vw_2017_2_nursery_key_stock_summary
+   FROM public.vw_2017_2_nursery_key_stock_summary
   GROUP BY vw_2017_2_nursery_key_stock_summary.selection_type, vw_2017_2_nursery_key_stock_summary.stock_type
   ORDER BY vw_2017_2_nursery_key_stock_summary.selection_type DESC;
 
 
-ALTER TABLE vw_2017_4_nursery_action_stock_summary OWNER TO "user";
+ALTER TABLE public.vw_2017_4_nursery_action_stock_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_5_nursery_field_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_5_nursery_field_summary AS
+CREATE VIEW public.vw_2017_5_nursery_field_summary AS
  SELECT ss.test_detail_key,
     ss.stock_type,
     ss.id_order,
@@ -1575,30 +1587,30 @@ CREATE VIEW vw_2017_5_nursery_field_summary AS
             ELSE '-1'::bigint
         END) || '_reps='::text) || ss.nbr_of_replications) || '_srate='::text) || trunc(ss.avg_survival_rate, 2)) AS ms_dc_rankings_2017,
     ((((nr.all_ms_dc_rankings || '_archived='::text) || ft.archived_trees) || '_field_score='::text) || fts.sum_score) AS all_ms_dc_archived_score
-   FROM (((vw_2017_2_nursery_key_stock_summary ss
+   FROM (((public.vw_2017_2_nursery_key_stock_summary ss
      LEFT JOIN ( SELECT avw_field_trial.field_trial_key,
             sum(avw_field_trial.live_quantity) AS archived_trees
-           FROM avw_field_trial
+           FROM public.avw_field_trial
           WHERE (avw_field_trial.id_test_spec = 30)
           GROUP BY avw_field_trial.field_trial_key) ft ON (((ss.test_detail_key)::text = (ft.field_trial_key)::text)))
      LEFT JOIN ( SELECT va2_all_nursery_rankings.test_detail_key,
             va2_all_nursery_rankings.all_ms_dc_rankings
-           FROM va2_all_nursery_rankings) nr ON (((ss.test_detail_key)::text = (nr.test_detail_key)::text)))
+           FROM public.va2_all_nursery_rankings) nr ON (((ss.test_detail_key)::text = (nr.test_detail_key)::text)))
      LEFT JOIN ( SELECT v1_field_trial_summary.field_trial_key,
             sum(v1_field_trial_summary.sum_plus_dbh_leafscore) AS sum_score
-           FROM v1_field_trial_summary
+           FROM public.v1_field_trial_summary
           WHERE (v1_field_trial_summary.id_test_spec = 30)
           GROUP BY v1_field_trial_summary.field_trial_key) fts ON (((ss.test_detail_key)::text = (fts.field_trial_key)::text)))
   ORDER BY ss.cut_fcut_reps DESC;
 
 
-ALTER TABLE vw_2017_5_nursery_field_summary OWNER TO "user";
+ALTER TABLE public.vw_2017_5_nursery_field_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_6_nursery_summary_by_rep_nbr; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_6_nursery_summary_by_rep_nbr AS
+CREATE VIEW public.vw_2017_6_nursery_summary_by_rep_nbr AS
  SELECT min((a.test_detail_key)::text) AS min_test_detail,
     b.notes,
     a.replication_nbr,
@@ -1616,23 +1628,23 @@ CREATE VIEW vw_2017_6_nursery_summary_by_rep_nbr AS
     trunc(avg(a.stool_vigor_survival), 2) AS avg_stool_vigor_survival,
     sum(a.is_plus_tree) AS sum_of_plus_trees,
     sum(a.field_cuttings_ft) AS sum_of_field_cuttings_ft
-   FROM va1_master_test_detail a,
+   FROM public.va1_master_test_detail a,
     ( SELECT va1_master_test_detail.replication_nbr,
             va1_master_test_detail.notes
-           FROM va1_master_test_detail
+           FROM public.va1_master_test_detail
           WHERE ((va1_master_test_detail.year = '2017'::double precision) AND ((va1_master_test_detail.test_type)::text = 'nursery'::text) AND (va1_master_test_detail.plot_nbr > 0))) b
   WHERE ((a.year = '2017'::double precision) AND ((a.test_type)::text = 'nursery'::text) AND (a.replication_nbr = b.replication_nbr))
   GROUP BY a.replication_nbr, b.notes
   ORDER BY a.replication_nbr;
 
 
-ALTER TABLE vw_2017_6_nursery_summary_by_rep_nbr OWNER TO "user";
+ALTER TABLE public.vw_2017_6_nursery_summary_by_rep_nbr OWNER TO "user";
 
 --
 -- Name: vw_2017_7_stock; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_7_stock AS
+CREATE VIEW public.vw_2017_7_stock AS
  SELECT vw_2017_5_nursery_field_summary.test_detail_key,
     vw_2017_5_nursery_field_summary.rank_class,
     vw_2017_5_nursery_field_summary.selection_type,
@@ -1644,17 +1656,17 @@ CREATE VIEW vw_2017_7_stock AS
     vw_2017_5_nursery_field_summary.avg_stock_dia_mm,
     vw_2017_5_nursery_field_summary.archived_trees,
     vw_2017_5_nursery_field_summary.dc_rank
-   FROM vw_2017_5_nursery_field_summary
+   FROM public.vw_2017_5_nursery_field_summary
   ORDER BY vw_2017_5_nursery_field_summary.dc_rank;
 
 
-ALTER TABLE vw_2017_7_stock OWNER TO "user";
+ALTER TABLE public.vw_2017_7_stock OWNER TO "user";
 
 --
 -- Name: vw_2017_8_stock_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_8_stock_summary AS
+CREATE VIEW public.vw_2017_8_stock_summary AS
  SELECT vw_2017_7_stock.selection_type,
     count(vw_2017_7_stock.test_detail_key) AS count_of_selection_types,
     trunc(avg(vw_2017_7_stock.nbr_of_replications), 2) AS avg_replications,
@@ -1664,18 +1676,18 @@ CREATE VIEW vw_2017_8_stock_summary AS
     trunc(avg(vw_2017_7_stock.avg_stock_dia_mm), 2) AS avg_stock_dia_mm,
     trunc(sum(vw_2017_7_stock.sum_of_plus_trees), 0) AS sum_of_plus_trees,
     sum(vw_2017_7_stock.archived_trees) AS sum_of_archived_trees
-   FROM vw_2017_7_stock
+   FROM public.vw_2017_7_stock
   GROUP BY vw_2017_7_stock.selection_type
   ORDER BY (trunc(avg(vw_2017_7_stock.avg_survival_rate), 2)) DESC;
 
 
-ALTER TABLE vw_2017_8_stock_summary OWNER TO "user";
+ALTER TABLE public.vw_2017_8_stock_summary OWNER TO "user";
 
 --
 -- Name: vw_2017_9_te_law_test; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_2017_9_te_law_test AS
+CREATE VIEW public.vw_2017_9_te_law_test AS
  SELECT td.test_detail_key,
     td.id,
     td.notes,
@@ -1700,19 +1712,19 @@ CREATE VIEW vw_2017_9_te_law_test AS
     td.column_nbr,
     td.replication_nbr,
     td.block_nbr
-   FROM test_detail td,
-    test_spec ts
+   FROM public.test_detail td,
+    public.test_spec ts
   WHERE ((td.id_test_spec = ts.id) AND ((ts.test_spec_key)::text = '2017-bell-nursery'::text) AND ((td.test_detail_key)::text ~~ 'te%'::text))
   ORDER BY (trunc((td.end_quantity / td.start_quantity), 2) * td.field_cuttings_ft) DESC;
 
 
-ALTER TABLE vw_2017_9_te_law_test OWNER TO "user";
+ALTER TABLE public.vw_2017_9_te_law_test OWNER TO "user";
 
 --
 -- Name: vw_u07m_2013; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vw_u07m_2013 AS
+CREATE VIEW public.vw_u07m_2013 AS
  SELECT u07m_2013.name,
     count(
         CASE
@@ -1727,18 +1739,18 @@ CREATE VIEW vw_u07m_2013 AS
     round(stddev(u07m_2013.area_index), 2) AS stdev_area_index,
     round(stddev(u07m_2013.sum_dbh_ratio2_cd), 2) AS stev_dbh_ratio2_cd,
     round(stddev(u07m_2013.sdbh_x_cavg), 2) AS stdev_sdbh_x_cavg
-   FROM u07m_2013
+   FROM public.u07m_2013
   GROUP BY u07m_2013.name
   ORDER BY (avg(u07m_2013.sdbh_x_cavg)) DESC;
 
 
-ALTER TABLE vw_u07m_2013 OWNER TO "user";
+ALTER TABLE public.vw_u07m_2013 OWNER TO "user";
 
 --
 -- Name: vwa_2017_10_te_law_test_summary; Type: VIEW; Schema: public; Owner: user
 --
 
-CREATE VIEW vwa_2017_10_te_law_test_summary AS
+CREATE VIEW public.vwa_2017_10_te_law_test_summary AS
  SELECT min((vw_2017_9_te_law_test.test_detail_key)::text) AS min_test_detail_key,
     min((vw_2017_9_te_law_test.notes)::text) AS test_description,
     trunc(avg(vw_2017_9_te_law_test.stock_length_cm), 1) AS avg_planted_stock_length_cm,
@@ -1752,95 +1764,95 @@ CREATE VIEW vwa_2017_10_te_law_test_summary AS
     trunc(avg(vw_2017_9_te_law_test.stool_vigor_survival), 1) AS avg_stool_vigor_survival,
     trunc(avg(vw_2017_9_te_law_test.onefoot_cuttings_survival), 1) AS avg_onefoot_cuttings_survival,
     sum(vw_2017_9_te_law_test.is_plus_tree) AS sum_is_plus_tree
-   FROM vw_2017_9_te_law_test
+   FROM public.vw_2017_9_te_law_test
   GROUP BY vw_2017_9_te_law_test.block_nbr
   ORDER BY (trunc(avg(vw_2017_9_te_law_test.onefoot_cuttings_survival), 1)) DESC;
 
 
-ALTER TABLE vwa_2017_10_te_law_test_summary OWNER TO "user";
+ALTER TABLE public.vwa_2017_10_te_law_test_summary OWNER TO "user";
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: family id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY family ALTER COLUMN id SET DEFAULT nextval('family_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY field_trial ALTER COLUMN id SET DEFAULT nextval('field_trial_id_seq'::regclass);
+ALTER TABLE ONLY public.family ALTER COLUMN id SET DEFAULT nextval('public.family_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: field_trial id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY journal ALTER COLUMN id SET DEFAULT nextval('journal_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY pedigree ALTER COLUMN id SET DEFAULT nextval('pedigree_id_seq'::regclass);
+ALTER TABLE ONLY public.field_trial ALTER COLUMN id SET DEFAULT nextval('public.field_trial_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: journal id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY plant ALTER COLUMN id SET DEFAULT nextval('plant_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY site ALTER COLUMN id SET DEFAULT nextval('site_id_seq'::regclass);
+ALTER TABLE ONLY public.journal ALTER COLUMN id SET DEFAULT nextval('public.journal_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: pedigree id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY split_wood_tests ALTER COLUMN id SET DEFAULT nextval('split_wood_tests_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY taxa ALTER COLUMN id SET DEFAULT nextval('taxa_id_seq'::regclass);
+ALTER TABLE ONLY public.pedigree ALTER COLUMN id SET DEFAULT nextval('public.pedigree_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: plant id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY test_detail ALTER COLUMN id SET DEFAULT nextval('test_detail_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY test_spec ALTER COLUMN id SET DEFAULT nextval('test_spec_id_seq'::regclass);
+ALTER TABLE ONLY public.plant ALTER COLUMN id SET DEFAULT nextval('public.plant_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: user
+-- Name: site id; Type: DEFAULT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY u07m_2013 ALTER COLUMN id SET DEFAULT nextval('u07m_2013_id_seq'::regclass);
+ALTER TABLE ONLY public.site ALTER COLUMN id SET DEFAULT nextval('public.site_id_seq'::regclass);
+
+
+--
+-- Name: split_wood_tests id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.split_wood_tests ALTER COLUMN id SET DEFAULT nextval('public.split_wood_tests_id_seq'::regclass);
+
+
+--
+-- Name: taxa id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.taxa ALTER COLUMN id SET DEFAULT nextval('public.taxa_id_seq'::regclass);
+
+
+--
+-- Name: test_detail id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.test_detail ALTER COLUMN id SET DEFAULT nextval('public.test_detail_id_seq'::regclass);
+
+
+--
+-- Name: test_spec id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.test_spec ALTER COLUMN id SET DEFAULT nextval('public.test_spec_id_seq'::regclass);
+
+
+--
+-- Name: u07m_2013 id; Type: DEFAULT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.u07m_2013 ALTER COLUMN id SET DEFAULT nextval('public.u07m_2013_id_seq'::regclass);
 
 
 --
 -- Data for Name: family; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY family (family_key, id, notes, female_plant_id, male_plant_id, seed_notes, form_fnmwu, is_plus, is_root, seeds_in_storage, seed_germ_percent, seed_germ_date, cross_date, project_phase, id_taxa, web_photos, web_url) FROM stdin;
+COPY public.family (family_key, id, notes, female_plant_id, male_plant_id, seed_notes, form_fnmwu, is_plus, is_root, seeds_in_storage, seed_germ_percent, seed_germ_date, cross_date, project_phase, id_taxa, web_photos, web_url) FROM stdin;
 TBD	1	To Be Determined	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 17XGA04	33	Female is sibling to GG101.  Male is sibling to AA4101. Reciprocal is 18xAG04.	48	35	0	U	U	0	0	0.35	2004-04-23	2004-04-01	2	7	0	0
@@ -1869,7 +1881,6 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 91XAA10	154	Fair flower set, poorest for this female.  Priority set at seed harvest is High, since progeny may have vigorous individuals with fair form, durability but poor rooting.	138	19	0	U	U	0	0	0.43	2010-06-02	2010-04-01	3	3	0	0
 98XAA10	155	Priority set at seed harvest set at High since progeny may have vigorous, good rooting individuals with fair form and durability. 	141	144	0	U	U	0	0	0.34	2010-06-02	2010-04-01	3	3	0	0
 101XAA10	156	Priority set at seed harvest set at High since progeny may have vigorous, durable individuals but with poor form and rooting. 	141	19	0	U	U	0	0	0.07	2010-06-02	2010-04-01	3	3	0	0
-9XTG93	149	0	149	60	0	U	U	Y	0	-1	1111-11-11	1993-04-01	1.2	5	0	0
 99XAA10	157	Priority set at seed harvest set at Medium, since progeny may have fair formed, vigorous and rooting individuals 	141	35	0	U	U	0	0	0.5	2010-06-02	2010-04-01	3	3	0	0
 100XAA10	158	Pollinated 6 flowers from top to bottom with the minimal pollen collected from 2 male catkins (4 produced seed).  Planted a 1/2 flat on 4/11 as the branch died early and flowers started rotting.  About 1/3 of the seed was small. Priority set at seed harvest set at High since progeny may have vigorous, good rooting individuals with fair form and durability.   Expect rooting to be better than 98xA4 family.	141	143	0	U	Y	0	0	0.28	2010-06-02	2010-04-01	3	3	0	0
 97XAA10	159	Set priority at seed harvest to High since progeny may have vigorous, well formed and durable individuals but with poor rooting.	142	19	0	U	U	0	0	0.53	2010-06-02	2010-04-01	3	3	0	0
@@ -1891,6 +1902,7 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 5XGW	177	Collected Wind pollinated branches - After pollination and fully ripe on 5/24/13.  The area had lots of male bigtooths.	203	163	Best bigtooth germination - perhaps related to the full seedset of the catkins (lots of males in the area).	U	U	0	2000	0.9	2013-06-01	2013-05-24	3	34	0	0
 2XRR	178	While most progeny seedlings have intermediate alba/aspen stem/leaf traits, a significant portion have more aspen traits. This seedlot had 63% germination, the smallest of all 2013 crosses.	199	61	Seedlings had a 48/100 useable count - ranking sixth out of the 6 crosses.  They started very slow!	U	U	0	500	0.63	2013-05-10	2013-04-28	3	35	0	0
 22XAR	179	Both parents are vigorous and well formed. Most progeny seedlings have intermediate leaf shapes. Seedlings had leaf spots at Rakers.	204	61	Seedlings had a 61/100 useable count - ranking fith out of the 6 crosses.	U	U	0	500	0.77	2013-05-10	2013-05-07	3	26	0	0
+2XEA91	218	Poor seed, failed	72	7	0	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	25	0	0
 105XAA	182	Progeny seedlings have alba leaf traits.  	204	19	Seedlings had a 65/100 useable count - ranking third out of the 6 crosses.	U	Y	0	500	0.7	2013-05-10	2013-05-07	3	3	0	0
 106XAA	183	Parents: 83AA565 x NFA, Progeny expectations: VDRF, Priority: High. 83AA565 may have VRF, and flowered at 5yrs.	205	19	Fair	U	U	0	1000	0.33	2014-06-02	2014-05-12	4	3	0	0
 107XAA	184	Parents: 30AA5MF x 80AA3MF, Progeny expectations: VDRF, Priority: H.  The female flowers were small and weak - bad branches?	141	182	Good. 2014 batch had small green seeds.	U	U	0	400	0.61	2014-06-02	2014-05-12	4	3	0	0
@@ -1910,9 +1922,6 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 1XARG	208	The female is a vigorous performer at CSSE and Minnesota at age 11. The GG12 male is a well formed, highly figured wild P. Grandidentata ~40 year old tree near SE Grand Rapids. This cross should help show how fertile the AAG backcross is to native bigtooth. Progeny is expected to be highly variable with poor seed viability and some clones may have figured wood.  Progeny Expectations=G	43	220	The fertilized aag2002 flowers were sparce but appeared healthy with healthy/full ovaries. Started fertilized flowers at 1/2 inch.	U	U	0	200	0.05	2016-05-16	2016-04-18	4	28	https://drive.google.com/open?id=0B7-SwoTVeWFaV2lsbXdkQkVRN0U	0
 2XARW	209	The female is a vigorous performer at CSSE and Minnesota at age 11 and the male is the Wind. The open pollinated branches were harvested on 4/19 after the catkins were fertilized. This cross should help show how fertile the AAG backcross is to native area native aspens and other plantation aspens at the CSSE site. Progeny is expected to be highly variable with poor seed viability.  Progeny Expectations=None	43	163	The fertilized aag2002 flowers were very sparce (more than 1xARG) with much less ovaries. Seven 4-5 foot branches were harvested and the catkins were thinned down to about 40 before seed was harvested. About 200 seeds were collected on 5/4/16	U	U	0	200	0.06	2016-05-16	2016-05-03	4	40	https://drive.google.com/open?id=0B7-SwoTVeWFaV2lsbXdkQkVRN0U	0
 6XGG	210	The female is a vigorous performing bigtooth 1xGG ortet at RNE at age 24 and used in many crosses. The GG12 male is a well formed, highly figured wild P. Grandidentata ~40 year old tree near SE Grand Rapids. This GG cross may produce highly figured native selections. Perhaps the progeny could be mated with other figured GG selections having different figure to produce a variety of different figure patterns.  Progeny Expectations=FG	48	220	The fertilized gg102 flowers were dense and appeared healthy/full ovaries. Started fertilizing flowers at 1/2 inch long, noted a range of receptivity both on each flower and on the branches. Best time to start fertilizing may be when flower is 1 inch long.	U	Y	0	2000	0.44	2016-05-16	2016-04-17	4	10	https://drive.google.com/open?id=0B7-SwoTVeWFaV2lsbXdkQkVRN0U	0
-2XAC91	217	All seed failed.	9	64	Seed failed	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	29	0	0
-24XAA91	216	Poor seed, likely failed.	22	23	0	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	3	0	0
-19XAA91	215	Pollen from Korea via Dr. Eui Rae Noh of Suwon South Korea from albas originating from Italy. One seedling was produced.	9	315	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	3	0	0
 24XR	211	The female is a vigorous performer at CSSE at age 11. The GG12 male is a well formed, highly figured wild P. Grandidentata ~40 year old tree near SE Grand Rapids.  Progeny Expectations=VFG. No seedlings survived at Rakers.	221	220	The fertilized 82aa4 flowers were somewhat sparce but weak with weak/small ovaries. Perhaps flowers were fertilzed too early (@ 1/2 inch) but should be ~1 inch. About 45 seeds were produced from this cross.	U	U	0	0	0.01	2016-04-19	2016-04-19	4	16	https://drive.google.com/open?id=0B7-SwoTVeWFaV2lsbXdkQkVRN0U	0
 25XR	212	The female is a vigorous, well formed ortet at CSSE at age 11, perhaps the best 83x on that site. The GG12 male is a well formed, highly figured wild P. Grandidentata ~40 year old tree near SE Grand Rapids. This AG cross may produce vigorous, good rooting figured aspen selections, which could also make better rooting progeny when mated with a P. Canescens (eg. C173). It is the highest priority 2016 cross.  Progeny Expectations=VDRFG	162	220	The fertilized 83aa301 flowers were dense and appeared healthy/full ovaries. Started fertilizing flowers at 1/2 inch.	U	Y	0	2000	0.84	2016-04-17	2016-04-17	4	16	https://drive.google.com/open?id=0B7-SwoTVeWFaV2lsbXdkQkVRN0U	0
 3XAAE07	239	The male is Grober and is for Purdue only.  Sent about 20,250 seeds of questionable germination to Dr.Rick Meilan and Youran Fan on 4/15/2007.  	11	332	Questionable germination results due to using MiracleGro peat moss that has fertilizer and kills the meristem.  Estimated germination to be 30% as that was the highest test result and previous crosses were 45%.	U	U	Y	0	0.3	2007-04-16	2007-04-15	2	9	0	0
@@ -1936,7 +1945,9 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 6XGA91	221	very poor seed, not planted	51	6	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	7	0	http://pmcgovern.us/r4stdb/dbkiss.php
 5XGA91	220	very poor seed, not planted	51	7	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	7	0	0
 2XGG91	219	0	51	317	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	10	0	0
-2XEA91	218	Poor seed, failed	72	7	0	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	25	0	0
+2XAC91	217	All seed failed.	9	64	Seed failed	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	29	0	0
+24XAA91	216	Poor seed, likely failed.	22	23	0	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	3	0	0
+19XAA91	215	Pollen from Korea via Dr. Eui Rae Noh of Suwon South Korea from albas originating from Italy. One seedling was produced.	9	315	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	3	0	0
 18XAA91	214	Poor seed.	9	314	Poor seed.	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	6	0	0
 10XAGA91	213	Poor seed, failed cross.	56	21	Poor seed, failed cross.	U	U	Y	0	0	1111-11-11	1991-04-01	1.2	27	0	0
 7XBT	205	Parents: CAG204 x ST11, Progeny Expectations: VDRF, Priority: Med.  Compare to BG families.	66	209	good	U	U	Y	200	0.88	2014-06-02	2014-05-12	4	41	0	0
@@ -1955,6 +1966,7 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 86XAA10	167	Priority set at seed harvest set at High since progeny may have vigorous, individuals with fair form, rooting and durability.	11	19	0	U	U	Y	0	0.78	2010-06-02	2010-04-01	3	3	0	0
 2XAAE06	151	The male is Grober and is for Purdue only.  Summary from: Ran on 5/17/06: 3052 seedlings grown at Purdue after 25 days.  The germination ratio should be 44.67%.  	11	332	0	U	U	Y	0	0.45	2005-05-17	2006-04-01	2	9	0	0
 1XAAE05	150	The male is Grober and is for Purdue only. 	11	332	Probably had the same seed germination as 2XAAE06 but did not confirm.	U	U	Y	0	-1	1111-11-11	2005-04-01	2	9	0	0
+9XTG93	149	0	149	60	0	U	U	Y	0	-1	1111-11-11	1993-04-01	1.2	5	0	0
 9XAGA91	148	0	57	7	0	U	U	Y	0	-1	1111-11-11	1991-04-01	1.2	27	0	0
 9XAG91	147	22 trees planted at RNE (well drained, fertile site) in 1992.  These are biased trees since 2 nearby rows are dead?  Trees show variation for vigor, form and annual BLD infection.  Scored the 21 surviving trees for BLD (0-3 0=none, 3=high).   One tree (#3 from South) did not have any BLD in 4 scored years: 2002, 2004, 2005, 2009. However this tree scored a 1 in 1996. Noted 2 zero BLD 9xAG91 trees in 2002, 4 zero BLD trees in 2009.	30	50	0	U	Y	Y	0	-1	1111-11-11	1991-04-01	1.2	6	0	0
 9XAA90	146	Ranked #2 at MSU Escanaba at age 10 (6.3 dia)	9	5	0	U	Y	Y	0	-1	1111-11-11	1990-04-01	1.1	3	0	0
@@ -2083,17 +2095,10 @@ NA	2	Does Not Apply	1	1	0	U	U	0	-1	-1	1111-11-11	1111-11-11	-1	2	0	0
 
 
 --
--- Name: family_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('family_id_seq', 1, false);
-
-
---
 -- Data for Name: field_trial; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY field_trial (field_trial_key, id, notes, notes2, notes3, planted_order, live_quantity, is_plus_ynu, live_dbh_cm, live_height_cm, leaf_score, canker_score, tree_spacing_ft, row_nbr, column_nbr, replication_nbr, plot_nbr, block_nbr, id_test_spec, id_site) FROM stdin;
+COPY public.field_trial (field_trial_key, id, notes, notes2, notes3, planted_order, live_quantity, is_plus_ynu, live_dbh_cm, live_height_cm, leaf_score, canker_score, tree_spacing_ft, row_nbr, column_nbr, replication_nbr, plot_nbr, block_nbr, id_test_spec, id_site) FROM stdin;
 TBD	-1	Dummy record used for id_prev_test_detail null values	1	0	-1	-1	0	-1	-1	-1	-1	U   	-1	-1	-1	-1	-1	2	2
 TBD	1	To Be Determined	1	0	-1	-1	0	-1	-1	-1	-1	U   	-1	-1	-1	-1	-1	2	2
 NA	2	Does Not Apply	2	0	-1	-1	0	-1	-1	-1	-1	U   	-1	-1	-1	-1	-1	2	2
@@ -2150,7 +2155,6 @@ c173	50	Planted with JRM (1.25/gallon)	0	0	-1	1	U	1	-1	-1	-1	4x6 	1	47	-1	1	1	25
 101aa11	54	Planted with JRM (1.25/gallon), Whip with 1 inch roots	Thin later	0	-1	1	U	1	-1	-1	-1	4x6 	1	51	-1	1	1	25	9
 101aa11	55	Planted with JRM (1.25/gallon), Whip with 1 inch roots	0	0	-1	1	U	1	-1	-1	-1	4x6 	1	52	-1	1	1	25	9
 101aa11	56	Planted with JRM (1.25/gallon), Whip with 1 inch roots	Thin later	0	-1	1	U	1	-1	-1	-1	4x6 	1	53	-1	1	1	25	9
-98aa11	287	0	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	60	-1	44	2	27	9
 105aa3	57	Planted with JRM (1.25/gallon), Whip with 1 inch roots	0	0	-1	1	U	1	-1	-1	-1	4x6 	1	54	-1	1	1	25	9
 16ab7	58	Planted with JRM (1.25/gallon), Whip with 1 inch roots	0	0	-1	1	U	1	-1	-1	-1	4x6 	1	55	-1	1	1	25	9
 105aa5	59	Planted with JRM (1.25/gallon), Whip with 1 inch roots	0	0	-1	1	U	1	-1	-1	-1	4x6 	1	56	-1	1	1	25	9
@@ -2312,6 +2316,7 @@ cag204	214	Planted with JRM (1.25/gallon)	2017 get whips	0	-1	1	U	2	-1	-1	-1	4x6
 2b21	215	Planted with JRM (1.25/gallon)	0	0	-1	1	U	1.5	-1	-1	-1	4x6 	2	44	-1	2	1	26	9
 2b21	216	Planted with JRM (1.25/gallon)	Thin later	0	-1	1	U	1.2	-1	-1	-1	4x6 	2	45	-1	2	1	26	9
 2b6	217	Planted with JRM (1.25/gallon), Whip with 1 inch roots	2017 get whips	0	-1	1	U	1.3	-1	-1	-1	4x6 	2	46	-1	2	1	26	9
+101aa11	280	0	Thin later	0	-1	1	U	1.8	-1	-1	-1	4x6 	1	53	-1	37	1	27	9
 2b6	218	Planted with JRM (1.25/gallon), Whip with 1 inch roots	2017 get whips, thin later	0	-1	1	U	1.1	-1	-1	-1	4x6 	2	47	-1	2	1	26	9
 2b6	219	Planted with JRM (1.25/gallon), Whip with 1 inch roots	2017 get whips	0	-1	1	U	1	-1	-1	-1	4x6 	2	48	-1	2	1	26	9
 2b25	220	whip - 1 inch roots	0	0	-1	1	U	1.3	-1	-1	-1	4x6 	2	49	-1	2	1	26	9
@@ -2374,13 +2379,13 @@ c173	274	0	2017 get whips	0	-1	1	U	2.3	-1	-1	-1	4x6 	1	47	-1	35	1	27	9
 98aa11	277	0	Thin later	0	-1	1	U	1.6	-1	-1	-1	4x6 	1	50	-1	36	1	27	9
 101aa11	278	0	Thin later	0	-1	1	U	2.2	-1	-1	-1	4x6 	1	51	-1	37	1	27	9
 101aa11	279	0	0	0	-1	1	U	1.7	-1	-1	-1	4x6 	1	52	-1	37	1	27	9
-101aa11	280	0	Thin later	0	-1	1	U	1.8	-1	-1	-1	4x6 	1	53	-1	37	1	27	9
 105aa3	281	0	0	0	-1	1	U	1.7	-1	-1	-1	4x6 	1	54	-1	38	1	27	9
 16ab7	282	0	0	0	-1	1	U	2.1	-1	-1	-1	4x6 	1	55	-1	39	1	27	9
 105aa5	283	0	0	0	-1	1	U	1.6	-1	-1	-1	4x6 	1	56	-1	40	1	27	9
 4gw11	284	Start 2017 row 1 secondary planting	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	57	-1	41	2	27	9
 zoss	285	0	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	58	-1	42	2	27	9
 2b66	286	0	0	0	-1	1	U	0.8	-1	-1	-1	8x10	1	59	-1	43	2	27	9
+98aa11	287	0	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	60	-1	44	2	27	9
 14b16	288	0	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	61	-1	45	2	27	9
 14b16	289	0	0	0	-1	1	U	-1	-1	-1	-1	8x10	1	62	-1	45	2	27	9
 15b5	290	0	0	0	-1	1	U	0.9	-1	-1	-1	8x10	1	63	-1	46	2	27	9
@@ -2501,6 +2506,7 @@ cag204	394	0	Woven textile with 2 halves, plastic staples	0	-1	1	U	-1	-1	-1	-1	8
 3bc1	405	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	17	-1	7	2	27	9
 3bc1	406	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	18	-1	7	2	27	9
 2b3	407	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	19	-1	8	2	27	9
+83xaa04	515	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	3	3	-1	1	1	29	10
 2b3	408	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	20	-1	8	2	27	9
 2b25	409	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	21	-1	9	2	27	9
 2b25	410	0	One folded piece woven textile with ss staples	0	-1	1	U	-1	-1	-1	-1	8x10	3	22	-1	9	2	27	9
@@ -2608,7 +2614,6 @@ crandon	511	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	2	9	-1	1	1	29	10
 autumnolive	512	0	0	0	-1	1	U	12.1	-1	4	-1	8x8 	2	10	-1	1	1	29	10
 83xaa04	513	0	0	0	-1	1	U	13.7	-1	4	-1	8x8 	3	1	-1	1	1	29	10
 83xaa04	514	Possible BLD?	0	0	-1	1	U	17	-1	3	-1	8x8 	3	2	-1	1	1	29	10
-83xaa04	515	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	3	3	-1	1	1	29	10
 83xaa04	516	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	3	4	-1	1	1	29	10
 83xaa04	517	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	3	5	-1	1	1	29	10
 83xaa04	518	0	0	0	-1	0	U	0	-1	-1	-1	8x8 	3	6	-1	1	1	29	10
@@ -3255,17 +3260,10 @@ c173	1151	0	0	0	-1	1	U	0.8	-1	-1	-1	8x8 	6	11	5	28	3	52	9
 
 
 --
--- Name: field_trial_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('field_trial_id_seq', 1, false);
-
-
---
 -- Data for Name: journal; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY journal (journal_key, id, notes, author, id_plant, id_family, id_test_spec, id_site, date, web_url) FROM stdin;
+COPY public.journal (journal_key, id, notes, author, id_plant, id_family, id_test_spec, id_site, date, web_url) FROM stdin;
 TBD	1	To Be Determined	0	2	2	2	2	1111-11-11	0
 NA	2	Does Not Apply	0	2	2	2	2	1111-11-11	0
 2010-Bell-Nursery-update	3	The 2010 Phase 3 Breeding Project was successful.  There were 19 P. alba crosses produced resulting in over 5,000 seedlings that were grown by Patrick McGovern and Brad Bender.  There are about 40 selections that will be carried forward into the 2012 season for further evaluation.  There is an estimated 34,000 plus seeds remaining from the Phase 3 crosses.  The 83xAA04 family continues to show good rooting performance.  Thirteen ASP/SASP shoot rooting tests were performed, resulting in 4 selections that will be compared to the parent family 100xAA10 for hardwood cutting rooting performance. Seven 6 foot plus alba whips were planted in the nursery to evaluate this process.  All survived and more tests are planned for 2012. Two well stocked 288 cell flats were planted as is to evaluate whole flat planting as an early selection technique.  The results were interesting with the high survival rate and 17 selections.	pmcgovern	1	1	1	1	2010-12-16	0
@@ -3286,7 +3284,6 @@ RevisedExternalPlant-IDs	15	The current plant naming standard for external selec
 2012-bell-nursery	18	In general only a few and the tallest albas have NOT set bud.  We had a hard frost this morning 10/8/12 - hard enough to kill the garden...  	pmcgovern	2	2	14	2	2012-10-08	0
 2012-field	19	RNE - 6th 9xAG91 tree from south edge is nice well formed male and should be crossed with C173 - it often scored light BLD.  CSSE - Lots of flowers on CAG177, AE42, TA10 some, POST - Triploid TE male has flowers., 	pmcgovern	2	2	2	2	2012-10-08	0
 2012-bell-nursery	20	Lifted the last of the Bell Nursery trees - It took about 1 week.\tHeeled them into 3 rows, first is all alba/aspens from 6 cuttings, second is 2xCAG12 seedlings in 3 groups (5 most vigorous, 30 for WASP, rest for wasp tips).\tThird row is 1xCAGw.  	pmcgovern	2	2	14	2	2012-11-23	0
-2013-bell-nursery	40	7/20/13: 1CAGW01 Rooting observations. I planted 7 replications of this clone in the 2013 nursery with 10 - 6 cuttings with diameters ranging from 14 to 3 mm. I just scored these 7 replications for survival of cuttings 10mm or greater. There was 83% survival from 33 total 6 cuttings that were 10 mm or greater in diameter. This compares to 60% (26/43) survival in my nursery for DN34 5 cuttings greater than 13mm.  Ideally I should have planted cuttings 10mm or greater.	pmcgovern	1	1	1	1	2013-07-20	0
 2012-Bell-Nursery-Results	21	The 2012 Bell Nursery consisted of over 94 clones and over 2000 6" cuttings planted in 10 count sets of 1 to 3 replications.  Sixteen clones have been selected representing 10 different families. A VigorSurvival metric was used as the primary selection model. It consisted ofmultiplying the survival rate by the median diameter (mm) from each cloneset. The speculation is that this model may select clones that root welland grow more vigorously in the first year of a field planting.  The top 13 selections had a rooting average of 84% via 24 replications with atotal of 240 6" dormant cuttings.  Thirteen clones had at least 2 yearsof propagation testing.  Three clones are from the 1xCAGW family (CAG204 xOpen Pollinated) and have P. grandidentata and P. tremula characteristics.There were 150+ seedlings grown from the family 2xCAG12 (AG15 x C173).The parents of this cross have performed well in Michigan's UpperPeninsula.  The 2013-02-02-B WASP Test Observations: A 16 day WASP testof the 16 2012 aspen selections.  It compared each clone's dormant 4" tip cutting rooting potential with test parameters: no-soak and 4, 4" tip cuttings/clone using the WASP protocol.  The average rooting was 89% which compares to 79% average rooting for the 16 2012 nursery selections.  Nine of the 16 clones rooted 100%, however only 1 of the 9 rooted via ASP shoot after 11 days.  The 2013-02-02-C 2xCAG12 WASP Test Observations:  A16 day WASP test of 2xCAG12 aspen ortet cuttings to compare tip rootingresults with a potential rooting percent metric. The average tray(1 clone/tray) rooting was 65%. The average tray score was 20.05 (maxis 60). The CAG204 control may have been compromised but it rooted 25%and scored at 13. I replanted the best 9 clones and may ramp 5 of themfor a potential 2014 test.  There were 33 test ortets 24% (8/33) and8 ortets that had a perfect score of 60. I expect perhaps 4 of these perfect rooters to show good rooting in the 2013 nursery and perhapsa few that had low scores as well.	pmcgovern	1	1	1	1	2013-04-10	0
 WASP-2013-A	22	A 2013 WASP rooting test involving 93AA12 that rooted 60% (24/40) in 2012 and 15AG4MF (aka AG15) that did not root at all.   It was interesting to note how poor the water soak tests performed, but it could be chance since there were only 2 reps and one rep had small diameter cuttings or that the 24hr soak was just too long.  I certainly need to decrease the number of treatments and increase the number of reps.  The willow soak treatment was interesting and might be worth another look but I am sticking to no pre-soaks for my upcoming ramp ups.  I guess it was not too surprising that 100% of the 93AA12 cuttings of at least 7mm dia rooted, but it is a bit surprising to see that all 4 of the 93AA12 tips (2-3mm dia) also rooted.  Clone 93AA12 rooted 60% (24/40) in 2012 nursery, and it rooted 88% in this test (avg of both No Soak tests).  If this type of difference is real (repeatable over time), then perhaps these WASP test stats could have more value in selecting good rooting clones than field rooting results that are subject to more variation.	pmcgovern	193	2	18	6	2013-02-01	https://docs.google.com/spreadsheet/ccc?key=0Ar-SwoTVeWFadEFfYW11X21iamFKX0tKNHRsWWlrR3c#gid=13
 2013-breeding-observations	23	2013 Breeding update: On 2/23/13 - Collected AE42 and CAG177 male branches, all from CSSE.  Started forcing CAG177 branches.  On 3/16/13 - Collected AGRR1 male branches and the new female 15xAG91 selection, 15AG11, both from RNE.  Also collected 2 branch sets of CAG204 and A502.  Collected all AE42 pollen on 3/18/13.  The AGRR1 branches were taken from a 14" trunk.  Flowers were somewhat sparse and observed that most were male but 2 branches may have female buds.	pmcgovern	2	2	19	6	2013-03-19	https://docs.google.com/spreadsheet/ccc?key=0Ar-SwoTVeWFadDhTNGtibW51amt0Z1JHYmw5SGdjRXc#gid=3
@@ -3306,6 +3303,7 @@ ASP-2013-D	24	3/26/13: The 2xCAG12 WASP to ASP cuttings failed.  Ortets #26 and 
 2013-breeding-observations	37	5/23/13: I thinned out the bigtooth aspen seedlings.  There is a huge difference in family performance (see pics).  The actual germination is poor - maybe 25% for the best lot, then perhaps 15% and 5%.  I need to investigate if a good portion of the poor viability is actually empty seed embryos - that were never fertilized.	pmcgovern	1	1	1	1	2013-05-23	0
 2013-bell-nursery	38	5/26/13:  Observed that one of the two Zoss hybrid trees did not grow yet.  I lifted the tree, did not see any issues and cut it up for root shoot propagation.	pmcgovern	1	1	1	1	2013-05-26	0
 2013-breeding-observations	39	5/30/13: P. grandidentata seed germination estimates at Bell indoors:  2xGW	pmcgovern	1	1	1	1	2013-05-30	0
+2013-bell-nursery	40	7/20/13: 1CAGW01 Rooting observations. I planted 7 replications of this clone in the 2013 nursery with 10 - 6 cuttings with diameters ranging from 14 to 3 mm. I just scored these 7 replications for survival of cuttings 10mm or greater. There was 83% survival from 33 total 6 cuttings that were 10 mm or greater in diameter. This compares to 60% (26/43) survival in my nursery for DN34 5 cuttings greater than 13mm.  Ideally I should have planted cuttings 10mm or greater.	pmcgovern	1	1	1	1	2013-07-20	0
 2013-bell-nursery	41	8/21/13: Bud set observations: All DN34 set bud.  Six of the seven 2xcag12 mini-stool clones set bud.  More than half of the 2xcag12 ramet cuttings (clones 1-30) have set but with some family differences (eg. Taller #14 has not set bud).  	pmcgovern	1	1	1	1	2013-07-21	0
 2013-field	42	8/22/13: 5-3Dot-Lot site: All trees have set bud.  The all look pretty good, but 2 had flopped over due to planting them too tall for the dbh.  	pmcgovern	1	1	1	1	2013-07-22	0
 2013-bell-nursery	43	9/21/13: Most seedlings are now set or appear to be setting bud). 	pmcgovern	1	1	1	1	2013-09-21	0
@@ -3327,17 +3325,10 @@ UseBackticksInDoubles	57	The backtick character must be used as doubles in the s
 
 
 --
--- Name: journal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('journal_id_seq', 1, false);
-
-
---
 -- Data for Name: pedigree; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY pedigree (id, pedigree_key, path) FROM stdin;
+COPY public.pedigree (id, pedigree_key, path) FROM stdin;
 1	 100XAA10   	 >F1 30XAA91=(PCA2 x A57) >F2 100XAA10=(30AA5MF x 83AA1MF)
 2	 100XAA10   	 >F1 41XAA91=(A10 x A73) >F2 83XAA04=(A502 x AA4102) >F3 100XAA10=(30AA5MF x 83AA1MF)
 3	 101XAA10   	 >F1 30XAA91=(PCA2 x A57) >F2 101XAA10=(30AA5MF x NORTHFOX)
@@ -3592,17 +3583,10 @@ COPY pedigree (id, pedigree_key, path) FROM stdin;
 
 
 --
--- Name: pedigree_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('pedigree_id_seq', 250, true);
-
-
---
 -- Data for Name: plant; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY plant (plant_key, id, notes, sex_mfbu, published_botanical_name, common_name, alternate_name, aquired_from, female_external_parent, male_external_parent, form_fnmwu, is_plus, is_cultivar, is_variety, is_from_wild, ploidy_n, date_aquired, alba_class, id_taxa, id_family, web_photos, web_url) FROM stdin;
+COPY public.plant (plant_key, id, notes, sex_mfbu, published_botanical_name, common_name, alternate_name, aquired_from, female_external_parent, male_external_parent, form_fnmwu, is_plus, is_cultivar, is_variety, is_from_wild, ploidy_n, date_aquired, alba_class, id_taxa, id_family, web_photos, web_url) FROM stdin;
 TBD	1	To Be Determined	U	0	0	0	0	0	0	U	U	U	U	U	-1	1111-11-11	U	2	2	0	0
 NA	2	Does Not Apply	U	0	0	0	0	0	0	U	U	U	U	U	-1	1111-11-11	U	2	2	0	0
 A73	3	AKA, Bolleana.  A fastigate tree that is somewhat short lived in Michigan.  Sheds pollen fast. Rooted 44% (23/52) in 1995 with Hormex 30 IBA (likely using 8 inch cuttings).	M	Populus alba 'Pyramidalis' 	Bolleana	0	Kalamazoo, MI	0	0	F	Y	Y	Y	U	2	1991-01-01	A	3	2	0	TBD
@@ -3648,7 +3632,6 @@ AAG2001	42	Vigorous tree growing on a good site at RNE.  One of 15 ortets plante
 AAG2002	43	Vigorous 3 bole tree growing on a somewhat poorly drained site.  Tallest tree on this site.  Very large leaves.  Produced 1 surviving seedling in 2004.  Stigmas have some red. 28 circumference on 12/26/03.  Observed on 8/16/09 that this single 4yr clone at CSSE was doing very well, about 5 dbh. same as best 82xAA04 tree.  Should monitor for bld.  Two planted at UofMN averaged 17cm dbh in 10 yrs.  	F	0	0	0	Sand Lake/US131 Interchange Michigan	0	0	M	Y	N	N	N	2	2004-01-01	AH	1	56	0	TBD
 AA901	44	Vigorous tree with fairly good form. Has a slight East lean.  Flowering: Sparse, heavy bracts, can't see stigmas, fertilize at 1/2 flower length.  33 circ, 10.5 diameter on 12/26/03.  Rooting: 2004=0%	F	0	0	0	Ortet located @ RNE/US 131 	0	0	M	N	N	N	N	2	2004-01-01	A	3	146	0	TBD
 CLONE5	45	Huge, vigorous well formed small tooth aspen. Can make good quality seed. 	F	0	0	0	DNR MTIC	0	0	M	Y	Y	N	N	2	2004-01-01	ASA	1	2	0	TBD
-11AB11	232	11ab11#rankms=13_rankdc=114_reps=1_srate=0.2_class=AH	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
 AA2301	46	Huge, vigorous poorly formed tree. 2 sides biased. Collected root/shoots in 2004.  37 circ, 11.8 diameter on 12/26/03.  Rooting: 2004=0%	F	0	0	0	PMG's site @ RNE/US 131	0	0	M	N	N	N	N	2	2004-01-01	A	3	60	0	TBD
 AA3001	47	One of 3 trees planted at SLSE.  This is the most vigorous.  Diameter was 10.8 on 12/26/03.Has poor form.  BLD: 2003=1, 2004=0. Flowering: must fertilize early, at 1/2 Rooting: 2004=10% (4/40) 	F	0	0	0	Sand Lake/US131 Interchange Michigan	0	0	M	N	N	N	N	2	2004-01-01	A	3	76	0	TBD
 GG102	48	A nice full sib GxG selection from the East edge of the MBP RNE planting.  Note that the parents BT044 x BT016 ranked third and first in the MSU, Greg Reighard 1982 P. Smithii test. 	F	0	0	0	PMG's site @ RNE/US 131	0	0	M	N	N	N	N	2	2004-01-01	ASA	10	49	0	TBD
@@ -3674,7 +3657,7 @@ ST071	67	A selection by PMG that tried to collect MSU's 7439-0071 tremuloides se
 ST072	68	0	M	0	0	0	3 miles N of st071. N side of research station., 200' from m27.	0	0	M	N	N	N	N	2	1991-01-01	ASA	11	2	0	TBD
 ST2	69	Did not hold seed well.	F	0	0	0	Located west of st071.	0	0	M	N	N	N	N	2	1990-01-01	ASA	11	2	0	TBD
 ST3	70	Wild P. Smithi. 10 trees in clone. About 12 in dia.  Gets BLD and dies back like AG's.  It is planted at SLNE and is as vigorous as Prince alba.  Poor alba like form and is bisexual.  The leaves do not resemble the TG's made by MSU, however, they do have some tomentose on leaf undersides and on the tips of the buds.  Should check its ploidy level as leaves are dark green with a similar texture to TA10. 14.6 diameter on 12/26/03.	B	0	0	0	SE Grand Rapids, MI. S of 52nd, W of Eastern.  	0	0	M	N	N	N	N	2	1990-01-01	ASA	5	2	0	TBD
-83AA1	106	#9:  Selected during PIP2 Root test.  Best of PIP2. Had 2 dead shoots, tallest=25mm, Smallest dia=4, Rooting: 2005=2/3 66%	U	0	0	0	Ortet selected in 2005 PIP3 test	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
+107AA3	229	107aa3#rankms=33_rankdc=61_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
 EE102	71	All of the 1xee91 tremula have died from an unknown die back disease.  This was one of the last survivors Took these roots from the parent tree on 5/26/03.  very vigorous tree, great form.  This was the 9th tree from the North stake at RNE.  Planted 5 at CSSE in 2005 of which 2 survived.   	F	0	0	0	RNE US131	e138	e120	M	N	N	N	N	2	2003-01-01	ASO	12	44	0	TBD
 E138	72	Canada obtained this clone from Hubenow, Moravia in 1963. 	F	0	0	0	Maple, Ontario	0	0	M	N	Y	N	N	2	1991-01-01	ASO	12	2	0	TBD
 E120	73	Canada obtained this clone from East Germany. It is a fairly clean looking tree. Produced a lot of pollen.	M	0	0	0	Maple, Ontario	0	0	M	N	Y	N	N	2	1991-01-01	ASO	12	2	0	TBD
@@ -3710,6 +3693,7 @@ R28C74	78	 Obtained root material on 4/24/04: Likely a male (no catkins).  A nic
 77AA4	103	Selected after 2yr. Root test. OK growth. .  Rooting: 2003=100% (Yellow), 2004=100% 10/10	U	0	0	0	Ortet selected in 2004 nursery	0	0	M	N	N	N	N	-1	2004-01-01	A	3	130	0	TBD
 77AA5	104	Selected after 2yr. Root test. Nice, 4-5'  growth. .  Rooting: 2003=100% (Yellow), 2004=100% 10/10	U	0	0	0	Ortet selected in 2004 nursery	0	0	M	N	N	N	N	-1	2004-01-01	A	3	130	0	TBD
 77AA6	105	Selected after 2yr. Root test. OK growth, branchy.  Rooting: 2003=100% (Yellow), 2004=100% 10/10	U	0	0	0	Ortet selected in 2004 nursery	0	0	M	N	N	N	N	-1	2004-01-01	A	3	130	0	TBD
+83AA1	106	#9:  Selected during PIP2 Root test.  Best of PIP2. Had 2 dead shoots, tallest=25mm, Smallest dia=4, Rooting: 2005=2/3 66%	U	0	0	0	Ortet selected in 2005 PIP3 test	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
 83AA2	107	#24: Selected during PIP3 root test. Weighted score=29, basic score=50.  Best of PIP3 test! Rooting: 2005=4/6 66%	U	0	0	0	Ortet selected in 2005 PIP3 test	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
 83AA3	108	#29: Selected during PIP3 root test. Weighted score=24, basic score=33.  Heavy bottom rooting. Rooting: 3/6 50%	U	0	0	0	Ortet selected in 2005 PIP3 test	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
 83AA4	109	#30: Selected during PIP3 root test. Weighted score=25, basic score=27.  Rooting: 3/6 50%	U	0	0	0	Ortet selected in 2005 PIP3 test	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
@@ -3728,6 +3712,7 @@ T0602	118	Vigorous clone growing on good, weedy site.  Some of the ripe aspen ov
 62AA01	122	Observed 8/31/09: Found one really nice tree at RNE (2009). Quite vigorous, reasonable form.  10/05/09 site observations: 50 circumference at 4' high. Slight sweep in bole. 2 leaves observed to have BLD on lower branch, otherwise very healthy...  Side branches are 2-3 best of the 93 bunch...  Nearby DN34 are 32, 34, and 44 circumference.  The 44 tree is a border tree on West side.	M	0	0	0	RNE - West of AA4102, 3rd row from west edge.	0	0	M	N	N	N	N	-1	2009-01-01	A	3	114	0	TBD
 76AA214	123	Grown at Bell in 2008 and Ryan's nursery in 2009 (6/10)	U	0	0	0	Ortet selected in 2009 nursery	0	0	M	N	N	N	N	-1	2004-01-01	A	3	129	0	TBD
 76AA217	124	Grown at Bell in 2008 and Ryan's nursery in 2009 (12/20). May be best 76aa clone.	U	0	0	0	Ortet selected in 2009 nursery	0	0	M	N	N	N	N	-1	2004-01-01	A	3	129	0	TBD
+A69	198	It was considered a good rooter, but I did not observe good rooting results in my tests.  One tree at RNE.	F	0	0	0	Apparently a wild selection from Brampton, Ontario in 1952.	0	0	W	N	Y	N	Y	-1	1989-01-01	A	3	2	TBD	TBD
 83AA189	125	This is a PIP tested clone.  It maps to record D6.189.83x and had a score of 112.5 which was the highest 2010 PIP score.   Brad Bender used it in his rooting tests	U	0	0	0	Ortet selected in 2010 @ Bell Nursery	0	0	M	Y	N	N	N	-1	2005-01-01	A	3	140	0	TBD
 83AA202	126	Not associated with 2009 PIP-202 test...	U	0	0	0	Ortet selected in 2009 @ Bell Nursery	0	0	M	N	N	N	N	-1	2009-01-01	A	3	140	0	TBD
 83AA203	127	Dark green leaves - Bugs like leaves...  The PIP-09-T5 test had incredible callus cluster roots at cutting base. 5/6 rooted 2009.	U	0	0	0	Ortet selected in 2009 @ Ryans Nursery	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
@@ -3749,8 +3734,6 @@ T0602	118	Vigorous clone growing on good, weedy site.  Some of the ripe aspen ov
 83AA1MF	143	A fairly nice tree.  It had 2 male catkins in 2010 that were used in Phase 3 crosses to sire about 450 seeds of 1 cross (100xAA10).  Pollinated 6 flowers from top to bottom with the minimal pollen.  Planted a 1/2 flat on 4/11 as the branch died early and flowers started rotting.  About 1/3 of the seed was small. Crude PIP testing done with the flowering branch material suggest that this may be a good rooter with 100% PIP rooting of tips, and some shoots > 20mm. 	M	0	0	83AA-7m-3-17	MSU's Escanaba UPTIC U07m site. Tree location is row/column 3-17	0	0	M	Y	N	N	N	-1	2010-01-01	A	3	140	0	TBD
 83AA2MF	144	A fairly nice tree, good form with one side facing a no-tree family.  It had 13 male catkins in 2010 that were used in Phase 3 crosses to sire about 1600 seeds of 2 crosses (98xAA10  & 104xAA10). Crude PIP testing done with the flowering branch material suggest that this may be a fair rooter with 82% PIP rooting of tips, but NO shoots > 20mm.	M	0	0	83AA-7m-7-4	MSU's Escanaba UPTIC U07m site. Tree location is row/column 7-4	0	0	M	Y	N	N	N	-1	2010-01-01	A	3	140	0	TBD
 83AA166	145	This is a PIP tested clone.  It maps to record D4.166.83x and had a score of 70.5 which is mediocre.  It was 11/11 in 2010 Bell nursery and was noted for its early and vigorous start.  It is used in ASP tests...	U	0	0	0	Ortet selected in 2010 @ Bell Nursery	0	0	M	N	N	N	N	-1	2005-01-01	A	3	140	0	TBD
-83AA10MF	171	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-63	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
-83AA11MF	172	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-72	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 87AA101	146	This is one of 3 seedlings from 3 different families that have variegated leaves.  These F2 families are 87xAA10, 90xAA10 and 94xAA10.  They all share a common F1 parent cross of 40xAA91 (A10 x A57), but 2 come from different 40xAA91 females. Andy David suggested that I follow them over time to see 1) if the varigation disappears as the season progresses 2) whether or not leaves are varigated next year.  Value not only as markers but potentially as horticultural examples.  That may be more valuable in the long run.  See email title: Found 3 variegated albas.  	U	0	0	0	Ortet selected in 2010 @ Woodard Nursery	0	0	M	N	N	N	N	-1	2010-01-01	A	3	164	0	TBD
 90AA101	147	This is one of 3 seedlings from 3 different families that have variegated leaves.  These F2 families are 87xAA10, 90xAA10 and 94xAA10.  They all share a common F1 parent cross of 40xAA91 (A10 x A57), but 2 come from different 40xAA91 females. Andy David suggested that I follow them over time to see 1) if the varigation disappears as the season progresses 2) whether or not leaves are varigated next year.  Value not only as markers but potentially as horticultural examples.  That may be more valuable in the long run.  See email title: Found 3 variegated albas.	U	0	0	0	Ortet selected in 2010 @ Woodard Nursery	0	0	M	N	N	N	N	-1	2010-01-01	A	3	165	0	TBD
 94AA101	148	This is one of 3 seedlings from 3 different families that have variegated leaves.  These F2 families are 87xAA10, 90xAA10 and 94xAA10.  They all share a common F1 parent cross of 40xAA91 (A10 x A57), but 2 come from different 40xAA91 females. Andy David suggested that I follow them over time to see 1) if the varigation disappears as the season progresses 2) whether or not leaves are varigated next year.  Value not only as markers but potentially as horticultural examples.  That may be more valuable in the long run.  See email title: Found 3 variegated albas.	U	0	0	0	Ortet selected in 2010 @ Woodard Nursery	0	0	M	N	N	N	N	-1	2010-01-01	A	3	161	0	TBD
@@ -3775,7 +3758,10 @@ WIND	163	A generic place holder for all wind or open pollinated males.	M	0	Wind 
 83AA6MF	167	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-75	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 83AA7MF	168	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-74	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 83AA8MF	169	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-65	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
+106AA8	228	106aa8~rankms=-1_rankdc=2_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
 83AA9MF	170	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-68	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
+83AA10MF	171	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-63	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
+83AA11MF	172	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-72	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 83AA12MF	173	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-71	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 83AA13MF	174	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-67	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
 83AA14MF	175	Originally from TRC stool beds and planted at U08as alba clonal trial.	U	0	0	83AA-MSU-73	TRC selection from 2009 sowing of the remaining 4 batches of this seed.  523 seedlings survived on 5/26.	0	0	U	U	N	N	N	-1	2010-05-14	U	3	140	0	TBD
@@ -3801,9 +3787,7 @@ T202	180	A wild P. tremuloides located on East side of M37 about ? mile South of
 97AA11	195	2012 Bell Nursery selection via .76 Avg Vigor Survival rate and 85% via 6 cutting survival rate.	U	0	0	0	2012 McGovern Bell Ave Nursery	0	0	U	N	N	N	N	-1	2012-11-04	A	3	159	TBD	TBD
 98AA11	196	98aa11~rankms=25.5_rankdc=5.3_dcreps=21_dcsrate=0.76_archived=8_field_score=6.09	M	0	0	0	2012 McGovern Bell Ave Nursery	0	0	U	N	N	N	N	-1	2012-11-04	A	3	155	TBD	TBD
 97AA12	197	2012 Bell Nursery selection via ..65 Avg Vigor Survival rate and 70% via 6 cutting survival rate.	U	0	0	0	2012 McGovern Bell Ave Nursery	0	0	U	N	N	N	N	-1	2012-11-04	A	3	159	TBD	TBD
-A69	198	It was considered a good rooter, but I did not observe good rooting results in my tests.  One tree at RNE.	F	0	0	0	Apparently a wild selection from Brampton, Ontario in 1952.	0	0	W	N	Y	N	Y	-1	1989-01-01	A	3	2	TBD	TBD
 9AG103	199	Poorly formed and with below average vigor.  Selected because it was the only accessable female from 9xAG family in 2013.  Tree was cut at 4' and coppiced over 12'.	F	0	0	0	1991 McGovern breeding project	0	0	W	N	N	N	N	-1	1991-01-01	H	6	147	https://plus.google.com/u/0/photos/102384333186727094185/albums/5905173436984028769?authkey=CPqZopa__5y87AE	TBD
-11AB10	231	11ab10&rankms=28.8_rankdc=23.2_dcreps=3_dcsrate=0.77_archived=2_field_score=2.50	U	0	0	0	Phase 4 MBP	0	0	U	Y	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
 9AG105	200	Well formed, bisexual and above average vigor.  Selected for future breeding (2014).  Predominately Male in 2014.	B	0	0	0	1991 McGovern breeding project	0	0	W	Y	N	N	N	-1	1991-01-01	H	6	147	https://plus.google.com/u/0/photos/102384333186727094185/albums/5905173436984028769?authkey=CPqZopa__5y87AE	TBD
 GG1	201	Well formed bigtooth used for open pollinated study. 	F	0	0	G1	2013 McGovern Breeding project	0	0	W	N	N	N	Y	-1	2013-05-04	ASA	10	175	0	TBD
 GG2	202	Urban bigtooth used for open pollinated study. 	F	0	0	G2	2013 McGovern Breeding project	0	0	W	N	N	N	Y	-1	2013-05-04	ASA	10	176	0	TBD
@@ -3832,9 +3816,9 @@ GG12	220	A nice, wild P. Grandidentata ~40 year old tree near SE Grand Rapids.  
 106AA1	225	106aa1#rankms=6_rankdc=48_reps=2_srate=0.9_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
 106AA3	226	106aa3#rankms=24_rankdc=101_reps=2_srate=0.5_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
 106AA7	227	106aa7~rankms=-1_rankdc=2_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
-106AA8	228	106aa8~rankms=-1_rankdc=2_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
-107AA3	229	107aa3#rankms=33_rankdc=61_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
 107AA7	230	107aa7#rankms=23_rankdc=42_reps=1_srate=1.0_class=A	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	A	3	2	TBD	TBD
+11AB10	231	11ab10&rankms=28.8_rankdc=23.2_dcreps=3_dcsrate=0.77_archived=2_field_score=2.50	U	0	0	0	Phase 4 MBP	0	0	U	Y	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
+11AB11	232	11ab11#rankms=13_rankdc=114_reps=1_srate=0.2_class=AH	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
 11AB22	233	11ab22&rankms=28.5_rankdc=22.2_dcreps=3_dcsrate=0.79_archived=2_field_score=2.75	U	0	0	0	Phase 4 MBP	0	0	U	Y	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
 11AB3	234	11ab3#rankms=25_rankdc=77_reps=2_srate=0.7_class=AH	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	AH	19	2	TBD	TBD
 13GB6	235	13gb6#rankms=40_rankdc=111_reps=2_srate=0.2_class=ASH	U	0	0	0	Phase 4 MBP	0	0	U	U	N	N	N	-1	2016-11-04	ASH	21	2	TBD	TBD
@@ -3941,17 +3925,10 @@ SEITSMABT	334	Female is a bigtooth from Jerry Seitsmas Orchard (Knapp/8 in GR,MI
 
 
 --
--- Name: plant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('plant_id_seq', 1, false);
-
-
---
 -- Data for Name: site; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY site (site_key, id, location_code, name_long, notes, address, loc_lat, loc_long, elevation_ft, aspen_site_index, usda_soil_texture, drainage_class_usda, mean_annual_precip_in, mean_annual_temp_f, frost_free_period_days, depth_to_water_table_in, usda_map_url, web_url, web_photos, contact) FROM stdin;
+COPY public.site (site_key, id, location_code, name_long, notes, address, loc_lat, loc_long, elevation_ft, aspen_site_index, usda_soil_texture, drainage_class_usda, mean_annual_precip_in, mean_annual_temp_f, frost_free_period_days, depth_to_water_table_in, usda_map_url, web_url, web_photos, contact) FROM stdin;
 TBD	1	TBD	0	To Be Determined	0	0	0	0	0	0	U	0	0	0	0	0	0	0	0
 NA	2	NA	0	Does Not Apply	0	0	0	0	0	0	U	0	0	0	0	0	0	0	0
 Bell-Nursery	3	BELLN	0	Pat McGovern's main nursery site	Grand Rapids, MI	0	0	900	0	sand	WD	34	48	170	1000	0	0	0	0
@@ -3969,17 +3946,10 @@ Wyrdj5	13	WY1	0	Wyrdj5	Escanaba, MI	0	0	0	0	0	U	0	0	0	0	0	0	0	0
 
 
 --
--- Name: site_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('site_id_seq', 1, false);
-
-
---
 -- Data for Name: split_wood_tests; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY split_wood_tests (swt_key, id, notes, notes2, cutting_order, stem_dia_small_end_mm, length_of_split_in, grain_pull_force_lb, undulation_level, gpf_test_set, replication_nbr, id_test_spec) FROM stdin;
+COPY public.split_wood_tests (swt_key, id, notes, notes2, cutting_order, stem_dia_small_end_mm, length_of_split_in, grain_pull_force_lb, undulation_level, gpf_test_set, replication_nbr, id_test_spec) FROM stdin;
 TBD	1	To Be Determined	1	-1	-1	-1	-1	-1	N	-1	2
 NA	2	Does Not Apply	2	-1	-1	-1	-1	-1	N	-1	2
 2b29	3	0	08-27-17-gpft-2b29-Bell	1	14	3	13.3	-1	N	1	42
@@ -4227,17 +4197,10 @@ a502	243	0	0	9	12.6	3	8.9	0	Y	1	51
 
 
 --
--- Name: split_wood_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('split_wood_tests_id_seq', 1, false);
-
-
---
 -- Data for Name: taxa; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY taxa (taxa_key, id, notes, species, species_hybrid, common_name, binomial_name, kingdom, family, genus, web_photos, web_url) FROM stdin;
+COPY public.taxa (taxa_key, id, notes, species, species_hybrid, common_name, binomial_name, kingdom, family, genus, web_photos, web_url) FROM stdin;
 TBD	1	To Be Determined	0	NA	0	0	0	0	0	0	0
 NA	2	Does Not Apply - See Taxa table for separate hybrid taxa definitions.	NA	0	0	0	0	0	0	0	0
 A	3	Native to Europe, naturalized in some areas of USA.	P. alba Linnaeus	0	White Poplar	0	Plantae	Salicaceae	Populus	0	http://en.wikipedia.org/wiki/Populus_alba
@@ -4284,17 +4247,10 @@ ARA	42	(A x R) x A	0	(P. alba x P. X rouleauiana) x P. Alba	NA	NA	Plantae	Salica
 
 
 --
--- Name: taxa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('taxa_id_seq', 1, false);
-
-
---
 -- Data for Name: test_detail; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY test_detail (test_detail_key, id, notes, notes2, notes3, planted_order, selection_type, start_quantity, end_quantity, this_start_date, score_date, stock_type, stock_length_cm, stock_dia_mm, is_plus_ynu, collar_median_dia_mm, collar_1_1_median_dia, stool_collar_median_dia_mm, field_cuttings_ft, height_cm, leaf_score, id_test_spec, row_nbr, column_nbr, replication_nbr, plot_nbr, block_nbr) FROM stdin;
+COPY public.test_detail (test_detail_key, id, notes, notes2, notes3, planted_order, selection_type, start_quantity, end_quantity, this_start_date, score_date, stock_type, stock_length_cm, stock_dia_mm, is_plus_ynu, collar_median_dia_mm, collar_1_1_median_dia, stool_collar_median_dia_mm, field_cuttings_ft, height_cm, leaf_score, id_test_spec, row_nbr, column_nbr, replication_nbr, plot_nbr, block_nbr) FROM stdin;
 TBD	-1	Dummy record used for id_prev_test_detail null values	1	0	-1	U	-1	-1	1111-11-11	1111-11-11	U     	-1	-1	0	-1	-1	-1	-1	-1	-1	2	-1	-1	-1	-1	-1
 TBD	1	To Be Determined	1	0	-1	U	-1	-1	1111-11-11	1111-11-11	U     	-1	-1	0	-1	-1	-1	-1	-1	-1	2	-1	-1	-1	-1	-1
 NA	2	Does Not Apply	2	0	-1	U	-1	-1	1111-11-11	1111-11-11	U     	-1	-1	0	-1	-1	-1	-1	-1	-1	2	-1	-1	-1	-1	-1
@@ -4325,6 +4281,7 @@ aa2101	26	2/1/18 late entry: Selected in nursery for vigor in 1992. Flowered @ a
 aa4101	27	2/1/18 late entry: Excellent form and vigor. Some BLD. Seems to have aspen branching features. 37" circ, 11.8" diameter on 12/26/04. BLD score: 8/28/01=1 Rooting: 2004=0% (0/40)	0	0	0	U	40	0	2004-04-01	2004-11-01	DC    	10	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
 aa4102	28	2/1/18 late entry: Excellent form and vigor. Form is better than aa4101. Seems to have aspen branching features. 37" circ, 11.8" diameter on 12/26/04. BLD score: 8/28/01=0 Rooting: 2004=10% (4/40)	0	0	0	U	40	4	2004-04-01	2004-11-01	DC    	10	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
 dn34	29	2/1/18 late entry: Used as a control clone. Has a reputation for good, stable performance even on dry sites. Rooting 6" cuttings: 2004=86% (153/178).	0	0	0	U	178	153	2004-04-01	2004-11-01	DC    	15	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
+83aa103	313	0	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	U	-1	-1	-1	-1	198.1	-1	7	-1	2	-1	-1	-1
 aa3201	30	2/1/18 late entry: A vigorous tree, fair to poor form. Rooting: 2004=0% (0/20)	0	0	0	U	20	0	2004-04-01	2004-11-01	DC    	10	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
 aa901	31	2/1/18 late entry, P2 parent, estimated 20 cuttings.: Vigorous tree with fairly good form. Has a slight East lean. Flowering: Sparse, heavy bracts, can't see stigmas, fertilize at 1/2" flower length. 33" circ, 10.5" diameter on 12/26/03. Rooting: 2004=0%.	0	0	0	U	20	0	2004-04-01	2004-11-01	DC    	10	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
 aa2301	32	2/1/18 late entry, P2 parent, estimated 20 cuttings: Huge, vigorous poorly formed tree. 2 sides biased. Collected root/shoots in 2004. 37" circ, 11.8" diameter on 12/26/03. Rooting: 2004=0%	0	0	0	U	20	0	2004-04-01	2004-11-01	DC    	10	-1	U	-1	-1	-1	-1	-1	-1	37	-1	-1	-1	-1	-1
@@ -4393,8 +4350,8 @@ aa3001	33	2/1/18 late entry, P2 parent: One of 3 trees planted at SLSE. This is 
 81xaa04	95	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	35	U	1	1	2004-06-01	2004-11-21	SEL   	-1	10	U	-1	-1	-1	-1	115	-1	39	-1	13	2	-1	-1
 81xaa04	96	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	36	U	1	1	2004-06-01	2004-11-21	SEL   	-1	6	U	-1	-1	-1	-1	95	-1	39	-1	14	2	-1	-1
 81xaa04	97	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	37	U	1	1	2004-06-01	2004-11-21	SEL   	-1	3	U	-1	-1	-1	-1	40	-1	39	-1	15	2	-1	-1
-81xaa04	98	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	38	U	1	1	2004-06-01	2004-11-21	SEL   	-1	5	U	-1	-1	-1	-1	60	-1	39	-1	16	2	-1	-1
 83aa101	314	0	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	U	-1	-1	-1	-1	251.5	-1	7	-1	2	-1	-1	-1
+81xaa04	98	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	38	U	1	1	2004-06-01	2004-11-21	SEL   	-1	5	U	-1	-1	-1	-1	60	-1	39	-1	16	2	-1	-1
 81xaa04	99	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	39	U	1	1	2004-06-01	2004-11-21	SEL   	-1	6	U	-1	-1	-1	-1	95	-1	39	-1	17	2	-1	-1
 81xaa04	100	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	40	U	1	1	2004-06-01	2004-11-21	SEL   	-1	7	U	-1	-1	-1	-1	85	-1	39	-1	18	2	-1	-1
 81xaa04	101	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	41	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	19	2	-1	-1
@@ -4466,8 +4423,8 @@ aa3001	33	2/1/18 late entry, P2 parent: One of 3 trees planted at SLSE. This is 
 18xag04	167	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	107	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	19	5	-1	-1
 18xag04	168	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	108	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	20	5	-1	-1
 18xag04	169	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	109	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	21	5	-1	-1
-18xag04	170	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	110	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	22	5	-1	-1
 83aa203	315	0	0	0	0	U	6	6	2010-03-25	2010-11-01	1-1   	10	-1	U	-1	-1	-1	-1	223.5	-1	7	-1	2	-1	-1	-1
+18xag04	170	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	110	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	22	5	-1	-1
 80xaa04	171	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	111	U	1	1	2004-06-01	2004-11-21	SEL   	-1	8	U	-1	-1	-1	-1	100	-1	39	-1	1	6	1	-1
 80xaa04	172	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	112	U	1	1	2004-06-01	2004-11-21	SEL   	-1	3	U	-1	-1	-1	-1	50	-1	39	-1	2	6	-1	-1
 80xaa04	173	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	113	U	1	1	2004-06-01	2004-11-21	SEL   	-1	10	U	-1	-1	-1	-1	120	-1	39	-1	3	6	-1	-1
@@ -4502,8 +4459,8 @@ aa3001	33	2/1/18 late entry, P2 parent: One of 3 trees planted at SLSE. This is 
 2xt4e04	202	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	142	U	1	1	2004-06-01	2004-11-21	SEL   	-1	2	U	-1	-1	-1	-1	40	-1	39	-1	10	7	-1	-1
 2xt4e04	203	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	143	U	1	1	2004-06-01	2004-11-21	SEL   	-1	4	U	-1	-1	-1	-1	65	-1	39	-1	11	7	-1	-1
 2xt4e04	204	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	144	U	1	1	2004-06-01	2004-11-21	SEL   	-1	6	U	-1	-1	-1	-1	80	-1	39	-1	12	7	-1	-1
-2xt4e04	205	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	145	U	1	1	2004-06-01	2004-11-21	SEL   	-1	3	U	-1	-1	-1	-1	45	-1	39	-1	13	7	-1	-1
 83aa203	316	Whip Planting - 63 Whip, grew 76 planted 2' deep	0	0	0	U	1	1	2010-03-25	2010-11-01	DC    	160	-1	U	-1	-1	-1	-1	193	-1	7	-1	2	-1	-1	-1
+2xt4e04	205	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	145	U	1	1	2004-06-01	2004-11-21	SEL   	-1	3	U	-1	-1	-1	-1	45	-1	39	-1	13	7	-1	-1
 2xt4e04	206	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	146	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	14	7	-1	-1
 2xt4e04	207	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	147	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	15	7	-1	-1
 2xt4e04	208	A 22 tree sample of 2004 P2 family seedlings with height/diameter measurements.	0	0	148	U	1	0	2004-06-01	2004-11-21	SEL   	-1	0	U	-1	-1	-1	-1	0	-1	39	-1	16	7	-1	-1
@@ -4611,7 +4568,6 @@ pip-190	308	tag marked 83aa190 but not in DB	0	0	0	U	1	1	2010-03-25	2010-11-01	1
 83aa106	310	Has Knotty Poplar trait real strong, need to propagate more	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	Y	-1	-1	-1	-1	302.3	-1	7	-1	2	-1	-1	-1
 83aa105	311	0	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	U	-1	-1	-1	-1	170.2	-1	7	-1	2	-1	-1	-1
 83aa104	312	Had #1 dia in 2009, 3 boles totaled 311 hgt.	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	Y	-1	-1	-1	-1	388.6	-1	7	-1	2	-1	-1	-1
-83aa103	313	0	0	0	0	U	1	1	2010-03-25	2010-11-01	1-0   	10	-1	U	-1	-1	-1	-1	198.1	-1	7	-1	2	-1	-1	-1
 76aa217	317	Whip Planting - 72 Whip, grew 48 planted 2' deep	0	0	0	U	1	1	2010-03-25	2010-11-01	DC    	183	-1	U	-1	-1	-1	-1	121.9	-1	7	-1	2	-1	-1	-1
 83aa214	318	Whip Planting - 100 Whip, grew 37 planted 2' deep	0	0	0	U	1	1	2010-03-25	2010-11-01	DC    	254	-1	U	-1	-1	-1	-1	94	-1	7	-1	2	-1	-1	-1
 83aa206	319	Whip Planting - 87 Whip, grew 40 planted 2' deep	0	0	0	U	1	1	2010-03-25	2010-11-01	DC    	221	-1	U	-1	-1	-1	-1	101.6	-1	7	-1	2	-1	-1	-1
@@ -5119,7 +5075,6 @@ zoss	742	0	0	0	0	U	7	2	2011-04-17	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13
 98xaa10	822	0	0	0	0	U	6	6	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	68	-1	-1	-1
 100aa01	823	Cuttings from selected SASP 2010 1-0 stock. 	0	0	0	U	19	13	2011-04-25	2011-09-01	DC    	-1	8	Y	-1	-1	-1	-1	-1	-1	13	-1	1	-1	-1	-1
 100aa01	824	Cuttings from selected SASP 2010 1-0 stock. Why North row 100%	0	0	0	U	19	19	2011-04-25	2011-09-01	DC    	-1	8	N	-1	-1	-1	-1	-1	-1	13	-1	2	-1	-1	-1
-101xaa10	873	end row	0	0	0	U	5	4	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	51	-1	-1	-1
 100aa02	825	Cuttings from selected SASP 2010 1-0 stock. 	0	0	0	U	13	11	2011-04-25	2011-09-01	DC    	-1	8	Y	-1	-1	-1	-1	-1	-1	13	-1	3	-1	-1	-1
 100aa02	826	Cuttings from selected SASP 2010 1-0 stock. Why North row 100%	0	0	0	U	11	11	2011-04-25	2011-09-01	DC    	-1	8	N	-1	-1	-1	-1	-1	-1	13	-1	4	-1	-1	-1
 100aa03	827	Cuttings from selected SASP 2010 1-0 stock. Best of 4 clones?	0	0	0	U	13	8	2011-04-25	2011-09-01	DC    	-1	8	Y	-1	-1	-1	-1	-1	-1	13	-1	5	-1	-1	-1
@@ -5168,6 +5123,7 @@ zoss	742	0	0	0	0	U	7	2	2011-04-17	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13
 101xaa10	870	0	0	0	0	U	5	5	2011-04-25	2011-09-01	DC    	-1	4	Y	-1	-1	-1	-1	-1	-1	13	-1	48	-1	-1	-1
 101xaa10	871	0	0	0	0	U	6	4	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	49	-1	-1	-1
 101xaa10	872	0	0	0	0	U	4	4	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	50	-1	-1	-1
+101xaa10	873	end row	0	0	0	U	5	4	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	51	-1	-1	-1
 101xaa10	874	begin row	0	0	0	U	6	5	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	52	-1	-1	-1
 101xaa10	875	0	0	0	0	U	4	2	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	53	-1	-1	-1
 101xaa10	876	0	0	0	0	U	6	4	2011-04-25	2011-09-01	DC    	-1	-1	N	-1	-1	-1	-1	-1	-1	13	-1	54	-1	-1	-1
@@ -5869,6 +5825,7 @@ zoss	1558	From root cutting, figured?	183	183	0	U	6	6	2013-07-01	2013-09-21	RS  
 14xb	1586	Start 2.5 inch spacing.  ZZ>3mm notes2=TallestHeightCm mostly lobed leaves.	142	0	0	U	43	43	2014-06-28	2014-09-14	SEL   	6	7	U	6	-1	-1	-1	113	4	22	14	1	10	-1	-1
 14xb	1587	ZZ>3mm	0	0	0	U	43	43	2014-06-28	2014-09-14	SEL   	6	7	U	5	-1	-1	-1	-1	-1	22	15	1	10	-1	-1
 15xb	1588	ZZ>3mm	0	0	0	U	7	6	2014-06-28	2014-09-14	SEL   	6	3	U	6	-1	-1	-1	-1	-1	22	10	11	10	-1	-1
+2b2	1638	0	0	0	0	U	10	5	2014-04-20	2014-09-14	DC    	15	7	U	7	-1	-1	-1	-1	-1	22	6	6	6	-1	-1
 15xb	1589	Has tallest tree at 15 mm with a 9 mm collar dia. best family collar=11mm ZZ>3mm notes2=TallestHeightCm Intermediate leaves with variable margins. 	156	0	0	U	23	19	2014-06-28	2014-09-14	SEL   	6	7	Y	7	-1	-1	-1	128	3	22	11	4	10	-1	-1
 16xab	1590	ZZ>3mm notes2=TallestHeightCm Lobed leaves.	122	0	0	U	20	20	2014-06-28	2014-09-14	SEL   	6	7	U	5	-1	-1	-1	85	4	22	16	2	10	-1	-1
 16xab	1591	ZZ>3mm	0	0	0	U	20	20	2014-06-28	2014-09-14	SEL   	6	7	U	5	-1	-1	-1	-1	-1	22	17	2	10	-1	-1
@@ -5916,7 +5873,6 @@ zoss	1558	From root cutting, figured?	183	183	0	U	6	6	2013-07-01	2013-09-21	RS  
 2b17	1635	0	0	0	0	U	10	6	2014-04-20	2014-09-14	DC    	15	7	U	6	-1	-1	-1	-1	-1	22	7	19	7	-1	-1
 2b19	1636	0	0	0	0	U	10	7	2014-04-20	2014-09-14	DC    	15	5	U	5	-1	-1	-1	-1	-1	22	4	15	5	-1	-1
 2b19	1637	ZZ>3mm	0	0	0	U	10	4	2014-04-20	2014-09-14	DC    	15	7	U	7	-1	-1	-1	-1	-1	22	7	18	7	-1	-1
-2b2	1638	0	0	0	0	U	10	5	2014-04-20	2014-09-14	DC    	15	7	U	7	-1	-1	-1	-1	-1	22	6	6	6	-1	-1
 2b2	1639	0	0	0	0	U	10	3	2014-04-20	2014-09-14	DC    	15	5	U	3	-1	-1	-1	-1	-1	22	6	20	7	-1	-1
 2b21	1640	ZZ=2.5mm, Nice!	0	0	0	U	10	10	2014-04-20	2014-09-14	DC    	15	10	Y	10	-1	-1	-1	170	-1	22	2	4	2	-1	-1
 2b21	1641	ZZ=2mm	0	0	0	U	10	8	2014-04-20	2014-09-14	DC    	15	10	U	10	-1	-1	-1	-1	-1	22	3	4	2	-1	-1
@@ -6130,7 +6086,6 @@ zoss	1789	rep 6	0	0	0	U	10	1	2014-04-20	2014-09-14	1-0   	30	7	U	3	-1	-1	-1	-1	-
 11ab7	1859	0	318	0	318	U	6	4	2015-05-08	2015-09-15	ODC   	-1	6	U	6	19	19	-1	-1	-1	23	15	10	6	-1	-1
 11ab8	1860	0	322	0	322	U	6	3	2015-05-08	2015-09-15	ODC   	-1	5	U	7	13	13	-1	-1	-1	23	15	14	6	-1	-1
 11ab9	1861	0	306	0	306	U	6	4	2015-05-08	2015-09-15	MS    	-1	4	U	5	9	9	-1	-1	-1	23	14	12	6	-1	-1
-22bg7	2007	0	195	22bg7 2rep	195	U	5	2	2015-05-08	2015-09-15	MS    	-1	4	U	7	21	21	-1	-1	-1	23	9	2	5	-1	-1
 11xab	1862	8 inch stem ortets ODC	428	11xab 12rep	428	U	22	20	2015-05-08	2015-09-15	ODC   	-1	5	U	7	14	14	-1	-1	-1	23	24	9	8	-1	-1
 11xab	1863	8 inch stem ortets ODC	437	0	437	U	26	23	2015-05-08	2015-09-15	ODC   	-1	5	U	9	24	24	-1	-1	-1	23	25	9	8	-1	-1
 13gb1	1864	0	292	0	292	U	6	0	2015-05-08	2015-09-15	MS    	-1	6	U	0	15	15	-1	-1	-1	23	13	15	6	-1	-1
@@ -6276,6 +6231,7 @@ zoss	1789	rep 6	0	0	0	U	10	1	2014-04-20	2014-09-14	1-0   	30	7	U	3	-1	-1	-1	-1	-
 22bg4	2004	0	197	0	197	U	6	1	2015-05-08	2015-09-15	MS    	-1	5	U	10	23	23	-1	-1	-1	23	9	4	5	-1	-1
 22bg5	2005	Very Nice! 11 foot tall	169	22bg5-97-18_1_MS 3rep	169	U	6	6	2015-05-08	2015-09-15	MS    	-1	4	Y	5	22	22	-1	-1	-1	23	8	4	5	-1	-1
 22bg6	2006	0	168	0	168	U	5	1	2015-05-08	2015-09-15	MS    	-1	4	U	4	8	8	-1	-1	-1	23	8	3	5	-1	-1
+22bg7	2007	0	195	22bg7 2rep	195	U	5	2	2015-05-08	2015-09-15	MS    	-1	4	U	7	21	21	-1	-1	-1	23	9	2	5	-1	-1
 22bg8	2008	ok, retry	171	22bg8-229-180_1_MS 2rep	171	U	6	3	2015-05-08	2015-09-15	MS    	-1	5	Y	4	17	17	-1	-1	-1	23	8	6	5	-1	-1
 22bg9	2009	0	166	0	166	U	5	2	2015-05-08	2015-09-15	MS    	-1	4	U	4	11	11	-1	-1	-1	23	8	1	5	-1	-1
 22xbg	2010	8 inch stem ortets ODC	439	22xbg 19rep	439	U	25	23	2015-05-08	2015-09-15	ODC   	-1	4	U	5	17	17	-1	-1	-1	23	26	2	8	-1	-1
@@ -6623,6 +6579,7 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 14b15	2353	0	0	0	111	U	3	3	2016-04-15	2016-09-11	MS    	25	10	U	-1	13	13	9	-1	-1	24	4	11	4	-1	-1
 14b15	2354	0	0	0	177	U	5	2	2016-04-15	2016-09-11	DC    	20	10	U	10	-1	-1	1	-1	-1	24	6	6	1	-1	-1
 14b16	2355	propagates well	4,0,1,2,3	14b16#rankms=7_rankdc=72_reps=2_srate=1.0_class=H	107	U	2	2	2016-04-15	2016-09-11	MS    	25	12	Y	-1	22	22	15	-1	-1	24	4	7	4	-1	-1
+15b12	2397	0	0	0	92	U	3	3	2016-04-15	2016-09-11	MS    	25	12	U	-1	6	6	0	-1	-1	24	3	26	4	-1	-1
 14b16	2356	propagates well	4,0,1,2,3	14b16#rankms=7_rankdc=72_reps=2_srate=1.0_class=H	173	U	5	5	2016-04-15	2016-09-11	DC    	20	8	U	6	-1	-1	4	-1	-1	24	6	4	1	-1	-1
 14b16	2357	propagates well	4,0,1,2,3	14b16#rankms=7_rankdc=72_reps=2_srate=1.0_class=H	209	U	5	5	2016-04-15	2016-09-11	DC    	20	8	Y	6	-1	-1	6	-1	-1	24	7	7	1	-1	-1
 14b17	2358	0	4,0,1,1,0	14b17#rankms=45_rankdc=77_reps=2_srate=0.6_class=H	108	U	3	3	2016-04-15	2016-09-11	MS    	25	12	Y	-1	15	15	19	-1	-1	24	4	8	4	-1	-1
@@ -6664,7 +6621,6 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 15b11	2394	0	4,0,1,0,0	15b11#rankms=51_rankdc=85_reps=2_srate=0.5_class=H	102	U	3	3	2016-04-15	2016-09-11	MS    	25	12	U	-1	15	15	14	-1	-1	24	4	2	4	-1	-1
 15b11	2395	0	4,0,1,0,0	15b11#rankms=51_rankdc=85_reps=2_srate=0.5_class=H	216	U	5	3	2016-04-15	2016-09-11	DC    	20	12	U	5	-1	-1	0	-1	-1	24	8	3	1	-1	-1
 15b11	2396	0	4,0,1,0,0	15b11#rankms=51_rankdc=85_reps=2_srate=0.5_class=H	230	U	5	2	2016-04-15	2016-09-11	DC    	20	14	U	15	-1	-1	6	-1	-1	24	8	17	1	-1	-1
-15b12	2397	0	0	0	92	U	3	3	2016-04-15	2016-09-11	MS    	25	12	U	-1	6	6	0	-1	-1	24	3	26	4	-1	-1
 15b12	2398	0	0	0	419	U	5	4	2016-04-15	2016-09-11	DC    	20	10	U	5	-1	-1	0	-1	-1	24	16	16	1	-1	-1
 15b14	2399	small diameter stools	4,0,1,0,0	15b14#rankms=156_rankdc=129_reps=1_srate=0.0_class=H	146	U	2	2	2016-04-15	2016-09-11	MS    	25	15	U	-1	9	9	9	-1	-1	24	5	16	4	-1	-1
 15b14	2400	1st DC	4,0,1,0,0	15b14#rankms=156_rankdc=129_reps=1_srate=0.0_class=H	167	U	5	0	2016-04-15	2016-09-11	MS    	25	10	U	0	-1	-1	0	-1	-1	24	6	1	1	-1	-1
@@ -6737,7 +6693,6 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 18bg8	2467	0	0	0	330	U	5	1	2016-04-15	2016-09-11	DC    	20	8	U	4	-1	-1	0	-1	-1	24	12	17	1	-1	-1
 18bg9	2468	0	0	0	44	U	3	3	2016-04-15	2016-09-11	MS    	25	8	U	-1	3	3	0	-1	-1	24	2	7	4	-1	-1
 18bg9	2469	0	0	0	346	U	5	3	2016-04-15	2016-09-11	DC    	20	8	U	6	-1	-1	0	-1	-1	24	13	10	1	-1	-1
-22bg10	2513	0	0	0	258	U	5	3	2016-04-15	2016-09-11	DC    	20	13	U	7	-1	-1	0	-1	-1	24	9	17	1	-1	-1
 18xbg	2470	3=10cuttings nice leaves	4,0,0,0,0	18xbg?0_0_0_0_class=ASH	499	U	7	6	2016-04-15	2016-09-11	FDC   	20	8	U	11	-1	-1	10	-1	-1	24	20	5	3	-1	-1
 18xbg	2471	0	4,0,0,0,0	18xbg?0_0_0_0_class=ASH	517	U	7	5	2016-04-15	2016-09-11	FDC   	20	10	U	7	-1	-1	8	-1	-1	24	21	4	3	-1	-1
 19gb1	2472	nice - nice leaves	0,0,1,0,0	19gb1#rankms=62_rankdc=105_reps=2_srate=0.3_class=ASH	120	U	2	2	2016-04-15	2016-09-11	MS    	25	12	U	-1	15	15	4	-1	-1	24	4	20	4	-1	-1
@@ -6760,6 +6715,7 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 1bw6	2489	edge biased - AG type	14,8,2,2,6	1bw6~rankms=13_rankdc=39_reps=3_srate=1.0_class=H	176	U	4	4	2016-04-15	2016-09-11	MS    	25	10	Y	-1	20	20	23	-1	-1	24	6	5	4	-1	-1
 1bw6	2490	ag type	14,8,2,2,6	1bw6~rankms=13_rankdc=39_reps=3_srate=1.0_class=H	269	U	5	5	2016-04-15	2016-09-11	DC    	20	11	Y	9	-1	-1	5	-1	-1	24	10	2	1	-1	-1
 1bw6	2491	0	14,8,2,2,6	1bw6~rankms=13_rankdc=39_reps=3_srate=1.0_class=H	293	U	5	5	2016-04-15	2016-09-11	DC    	20	10	Y	11	-1	-1	6	-1	-1	24	11	3	1	-1	-1
+8bg10	2696	0	0	0	267	U	4	2	2016-04-15	2016-09-11	DC    	20	12	U	5	-1	-1	0	-1	-1	24	9	26	1	-1	-1
 1bw6	2492	0	14,8,2,2,6	1bw6~rankms=13_rankdc=39_reps=3_srate=1.0_class=H	465	U	5	5	2016-04-15	2016-09-11	DC    	20	9	U	8	-1	-1	1	-1	-1	24	18	18	1	-1	-1
 1xarg	2493	S-N rows.Rakers seedlngs 6/18/16 (mixed with few 24x) 	0	0	534	U	4	4	2016-04-15	2016-09-11	SEL   	15	2	U	6	-1	-1	1	-1	-1	24	26	1	6	-1	-1
 1xarg	2494	S-N rows.Rakers seedlngs 6/18/16 (mixed with few 24x) 	0	0	536	U	5	3	2016-04-15	2016-09-11	SEL   	15	2	U	7	-1	-1	0	-1	-1	24	27	1	6	-1	-1
@@ -6781,6 +6737,7 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 22bg1	2510	End of Rep 1 DC materials	0	22bg1~rankms=112_rankdc=57_reps=3_srate=0.8_class=ASH	494	U	5	5	2016-04-15	2016-09-11	DC    	20	8	U	7	-1	-1	0	-1	-1	24	20	3	1	-1	-1
 22bg10	2511	0	0	0	104	U	3	3	2016-04-15	2016-09-11	MS    	25	14	U	-1	5	5	0	-1	-1	24	4	4	4	-1	-1
 22bg10	2512	0	0	0	225	U	5	2	2016-04-15	2016-09-11	DC    	20	12	U	10	-1	-1	1	-1	-1	24	8	12	1	-1	-1
+22bg10	2513	0	0	0	258	U	5	3	2016-04-15	2016-09-11	DC    	20	13	U	7	-1	-1	0	-1	-1	24	9	17	1	-1	-1
 22bg11	2514	0	0	0	94	U	2	2	2016-04-15	2016-09-11	MS    	25	12	U	-1	7	7	0	-1	-1	24	3	28	4	-1	-1
 22bg11	2515	0	0	0	406	U	5	2	2016-04-15	2016-09-11	DC    	20	12	U	9	-1	-1	0	-1	-1	24	16	3	1	-1	-1
 22bg13	2516	0	0	0	150	U	2	2	2016-04-15	2016-09-11	MS    	25	15	U	-1	15	15	6	-1	-1	24	5	20	4	-1	-1
@@ -6823,7 +6780,6 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 23ba5	2553	0	4,8,1,1,0	23ba5#rankms=60_rankdc=49_reps=1_srate=1.0_class=AH	14	U	2	2	2016-04-15	2016-09-11	MS    	25	12	U	-1	15	15	5	-1	-1	24	1	14	4	-1	-1
 23ba5	2554	0	4,8,1,1,0	23ba5#rankms=60_rankdc=49_reps=1_srate=1.0_class=AH	298	U	5	5	2016-04-15	2016-09-11	DC    	20	13	U	9	-1	-1	5	-1	-1	24	11	8	1	-1	-1
 23xba	2555	0	9,0,0,0,0	23xba?0_0_0_0_class=AH	5	U	3	3	2016-04-15	2016-09-11	FDC   	20	8	U	-1	9	9	3	-1	-1	24	1	5	4	-1	-1
-2b50	2596	0	0	0	311	U	5	4	2016-04-15	2016-09-11	DC    	20	12	U	6	-1	-1	4	-1	-1	24	11	21	1	-1	-1
 23xba	2556	nice - 1=9cuttings curly, retained 7	9,0,0,0,0	23xba?0_0_0_0_class=AH	497	U	4	4	2016-04-15	2016-09-11	FDC   	20	11	U	9	-1	-1	9	-1	-1	24	20	3	3	-1	-1
 23xba	2557	0	9,0,0,0,0	23xba?0_0_0_0_class=AH	506	U	12	10	2016-04-15	2016-09-11	FDC   	20	9	U	8	-1	-1	5	-1	-1	24	20	10	3	-1	-1
 23xba	2558	0	9,0,0,0,0	23xba?0_0_0_0_class=AH	522	U	13	10	2016-04-15	2016-09-11	FDC   	20	9	Y	11	-1	-1	30	-1	-1	24	21	9	3	-1	-1
@@ -6864,6 +6820,7 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 2b4	2593	Was mislabeled as 2b24	14,8,2,5,2	2b4#rankms=50_rankdc=31_reps=3_srate=0.8_class=H	474	U	5	3	2016-04-15	2016-09-11	DC    	20	12	U	12	-1	-1	9	-1	-1	24	19	6	1	-1	-1
 2b4	2594	0	14,8,2,5,2	2b4#rankms=50_rankdc=31_reps=3_srate=0.8_class=H	483	U	5	4	2016-04-15	2016-09-11	DC    	20	11	U	6	-1	-1	5	-1	-1	24	19	15	1	-1	-1
 2b50	2595	0	0	0	156	U	2	2	2016-04-15	2016-09-11	MS    	25	12	U	-1	15	15	6	-1	-1	24	5	26	4	-1	-1
+2b50	2596	0	0	0	311	U	5	4	2016-04-15	2016-09-11	DC    	20	12	U	6	-1	-1	4	-1	-1	24	11	21	1	-1	-1
 2b52	2597	nice	14,8,2,3,0	2b52~rankms=20_rankdc=15_reps=2_srate=1.0_class=H	87	U	3	3	2016-04-15	2016-09-11	MS    	25	12	Y	-1	19	19	22	-1	-1	24	3	21	4	-1	-1
 2b52	2598	0	14,8,2,3,0	2b52~rankms=20_rankdc=15_reps=2_srate=1.0_class=H	416	U	5	5	2016-04-15	2016-09-11	DC    	20	12	Y	14	-1	-1	18	-1	-1	24	16	13	1	-1	-1
 2b52	2599	0	14,8,2,3,0	2b52~rankms=20_rankdc=15_reps=2_srate=1.0_class=H	440	U	5	5	2016-04-15	2016-09-11	DC    	20	9	U	10	-1	-1	5	-1	-1	24	17	15	1	-1	-1
@@ -6963,7 +6920,6 @@ zoss	2242	8 inch cutting Nice retry	165	zoss~71-62	165	U	17	8	2015-05-08	2015-09
 89aa1	2693	0	0	89aa1#rankms=83_rankdc=84_reps=1_srate=0.4_class=A	239	U	5	2	2016-04-15	2016-09-11	DC    	20	10	U	12	-1	-1	4	-1	-1	24	8	26	1	-1	-1
 8bg10	2694	0	0	0	59	U	2	2	2016-04-15	2016-09-11	MS    	25	13	U	-1	13	13	5	-1	-1	24	2	22	4	-1	-1
 8bg10	2695	0	0	0	263	U	5	1	2016-04-15	2016-09-11	DC    	20	13	U	7	-1	-1	0	-1	-1	24	9	22	1	-1	-1
-8bg10	2696	0	0	0	267	U	4	2	2016-04-15	2016-09-11	DC    	20	12	U	5	-1	-1	0	-1	-1	24	9	26	1	-1	-1
 8bg2	2697	0	14,4,2,0,0	8bg2~rankms=155_rankdc=60_reps=2_srate=0.9_class=ASH	72	U	2	2	2016-04-15	2016-09-11	MS    	25	13	U	-1	6	6	0	-1	-1	24	3	6	4	-1	-1
 8bg2	2698	0	14,4,2,0,0	8bg2~rankms=155_rankdc=60_reps=2_srate=0.9_class=ASH	238	U	5	5	2016-04-15	2016-09-11	DC    	20	10	U	9	-1	-1	9	-1	-1	24	8	25	1	-1	-1
 8bg2	2699	0	14,4,2,0,0	8bg2~rankms=155_rankdc=60_reps=2_srate=0.9_class=ASH	370	U	5	4	2016-04-15	2016-09-11	DC    	20	12	U	7	-1	-1	0	-1	-1	24	14	11	1	-1	-1
@@ -7314,17 +7270,10 @@ zoss	3026	0	zoss~rankms= -1_rankdc= 55_reps=1_srate=0.75	zoss@rankms=17.7_rankdc
 
 
 --
--- Name: test_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('test_detail_id_seq', 1, false);
-
-
---
 -- Data for Name: test_spec; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY test_spec (test_spec_key, id, notes, activity_type, test_type, stock_type, stock_length_cm, stock_collar_dia_mm, research_hypothesis, web_protocol, web_url, web_photos, test_start_date, id_site) FROM stdin;
+COPY public.test_spec (test_spec_key, id, notes, activity_type, test_type, stock_type, stock_length_cm, stock_collar_dia_mm, research_hypothesis, web_protocol, web_url, web_photos, test_start_date, id_site) FROM stdin;
 TBD	1	To Be Determined	0	0	U     	-1	-1	0	0	0	0	1111-11-11	1
 NA	2	Does Not Apply	0	0	U     	-1	-1	0	0	0	0	1111-11-11	2
 2008-bell-nursery	3	2008-bell-nursery results	EVENT	nursery	MIX   	-1	-1	The control clones indicate that the nursery results are consistent.	0	0	0	2008-04-04	3
@@ -7377,17 +7326,10 @@ WASP-2013-A	18	A 2013 WASP rooting test involving 93AA12 that rooted 60% (24/40)
 
 
 --
--- Name: test_spec_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
---
-
-SELECT pg_catalog.setval('test_spec_id_seq', 1, false);
-
-
---
 -- Data for Name: u07m_2013; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY u07m_2013 (id, dbh, dbh_rank, name, area_index, sum_dbh_ratio2_cd, sdbh_x_cavg) FROM stdin;
+COPY public.u07m_2013 (id, dbh, dbh_rank, name, area_index, sum_dbh_ratio2_cd, sdbh_x_cavg) FROM stdin;
 1	5.6	131	17XGA24	221.36	3.17	13.58
 2	3.2	186	17XGA04	122.51	2.28	14.48
 3	8	44	17XGA04	200.73	9.59	23.4
@@ -7644,252 +7586,312 @@ COPY u07m_2013 (id, dbh, dbh_rank, name, area_index, sum_dbh_ratio2_cd, sdbh_x_c
 
 
 --
+-- Name: family_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.family_id_seq', 1, false);
+
+
+--
+-- Name: field_trial_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.field_trial_id_seq', 1, false);
+
+
+--
+-- Name: journal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.journal_id_seq', 1, false);
+
+
+--
+-- Name: pedigree_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.pedigree_id_seq', 250, true);
+
+
+--
+-- Name: plant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.plant_id_seq', 1, false);
+
+
+--
+-- Name: site_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.site_id_seq', 1, false);
+
+
+--
+-- Name: split_wood_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.split_wood_tests_id_seq', 1, false);
+
+
+--
+-- Name: taxa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.taxa_id_seq', 1, false);
+
+
+--
+-- Name: test_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.test_detail_id_seq', 1, false);
+
+
+--
+-- Name: test_spec_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
+--
+
+SELECT pg_catalog.setval('public.test_spec_id_seq', 1, false);
+
+
+--
 -- Name: u07m_2013_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
 --
 
-SELECT pg_catalog.setval('u07m_2013_id_seq', 1, false);
+SELECT pg_catalog.setval('public.u07m_2013_id_seq', 1, false);
 
 
 --
--- Name: family_family_key_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: family family_family_key_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY family
+ALTER TABLE ONLY public.family
     ADD CONSTRAINT family_family_key_key UNIQUE (family_key);
 
 
 --
--- Name: family_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: family family_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY family
+ALTER TABLE ONLY public.family
     ADD CONSTRAINT family_pk PRIMARY KEY (id);
 
 
 --
--- Name: field_trial_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: field_trial field_trial_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY field_trial
+ALTER TABLE ONLY public.field_trial
     ADD CONSTRAINT field_trial_pk PRIMARY KEY (id);
 
 
 --
--- Name: journal_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: journal journal_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY journal
+ALTER TABLE ONLY public.journal
     ADD CONSTRAINT journal_pk PRIMARY KEY (id);
 
 
 --
--- Name: pedigree_path_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: pedigree pedigree_path_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY pedigree
+ALTER TABLE ONLY public.pedigree
     ADD CONSTRAINT pedigree_path_key UNIQUE (path);
 
 
 --
--- Name: plant_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: plant plant_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY plant
+ALTER TABLE ONLY public.plant
     ADD CONSTRAINT plant_pk PRIMARY KEY (id);
 
 
 --
--- Name: plant_plant_key_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: plant plant_plant_key_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY plant
+ALTER TABLE ONLY public.plant
     ADD CONSTRAINT plant_plant_key_key UNIQUE (plant_key);
 
 
 --
--- Name: site_location_code_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: site site_location_code_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY site
+ALTER TABLE ONLY public.site
     ADD CONSTRAINT site_location_code_key UNIQUE (location_code);
 
 
 --
--- Name: site_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: site site_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY site
+ALTER TABLE ONLY public.site
     ADD CONSTRAINT site_pk PRIMARY KEY (id);
 
 
 --
--- Name: site_site_key_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: site site_site_key_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY site
+ALTER TABLE ONLY public.site
     ADD CONSTRAINT site_site_key_key UNIQUE (site_key);
 
 
 --
--- Name: split_wood_tests_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: split_wood_tests split_wood_tests_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY split_wood_tests
+ALTER TABLE ONLY public.split_wood_tests
     ADD CONSTRAINT split_wood_tests_pk PRIMARY KEY (id);
 
 
 --
--- Name: taxa_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: taxa taxa_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY taxa
+ALTER TABLE ONLY public.taxa
     ADD CONSTRAINT taxa_pk PRIMARY KEY (id);
 
 
 --
--- Name: taxa_taxa_key_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: taxa taxa_taxa_key_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY taxa
+ALTER TABLE ONLY public.taxa
     ADD CONSTRAINT taxa_taxa_key_key UNIQUE (taxa_key);
 
 
 --
--- Name: test_detail_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: test_detail test_detail_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY test_detail
+ALTER TABLE ONLY public.test_detail
     ADD CONSTRAINT test_detail_pk PRIMARY KEY (id);
 
 
 --
--- Name: test_spec_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: test_spec test_spec_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY test_spec
+ALTER TABLE ONLY public.test_spec
     ADD CONSTRAINT test_spec_pk PRIMARY KEY (id);
 
 
 --
--- Name: test_spec_test_spec_key_key; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: test_spec test_spec_test_spec_key_key; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY test_spec
+ALTER TABLE ONLY public.test_spec
     ADD CONSTRAINT test_spec_test_spec_key_key UNIQUE (test_spec_key);
 
 
 --
--- Name: u07m_2013_pk; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: u07m_2013 u07m_2013_pk; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY u07m_2013
+ALTER TABLE ONLY public.u07m_2013
     ADD CONSTRAINT u07m_2013_pk PRIMARY KEY (id);
 
 
 --
--- Name: family_id_taxa_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: family family_id_taxa_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY family
-    ADD CONSTRAINT family_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES taxa(id);
-
-
---
--- Name: field_trial_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY field_trial
-    ADD CONSTRAINT field_trial_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id);
+ALTER TABLE ONLY public.family
+    ADD CONSTRAINT family_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES public.taxa(id);
 
 
 --
--- Name: field_trial_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: field_trial field_trial_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY field_trial
-    ADD CONSTRAINT field_trial_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id);
-
-
---
--- Name: grain_pull_split_wood_tests_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY split_wood_tests
-    ADD CONSTRAINT grain_pull_split_wood_tests_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id);
+ALTER TABLE ONLY public.field_trial
+    ADD CONSTRAINT field_trial_id_site_fk FOREIGN KEY (id_site) REFERENCES public.site(id);
 
 
 --
--- Name: journal_id_family_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: field_trial field_trial_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY journal
-    ADD CONSTRAINT journal_id_family_fk FOREIGN KEY (id_plant) REFERENCES plant(id);
-
-
---
--- Name: journal_id_plant_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY journal
-    ADD CONSTRAINT journal_id_plant_fk FOREIGN KEY (id_family) REFERENCES family(id);
+ALTER TABLE ONLY public.field_trial
+    ADD CONSTRAINT field_trial_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES public.test_spec(id);
 
 
 --
--- Name: journal_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: split_wood_tests grain_pull_split_wood_tests_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY journal
-    ADD CONSTRAINT journal_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id);
-
-
---
--- Name: journal_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY journal
-    ADD CONSTRAINT journal_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id);
+ALTER TABLE ONLY public.split_wood_tests
+    ADD CONSTRAINT grain_pull_split_wood_tests_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES public.test_spec(id);
 
 
 --
--- Name: plant_id_family_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: journal journal_id_family_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY plant
-    ADD CONSTRAINT plant_id_family_fk FOREIGN KEY (id_family) REFERENCES family(id);
-
-
---
--- Name: plant_id_taxa_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY plant
-    ADD CONSTRAINT plant_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES taxa(id);
+ALTER TABLE ONLY public.journal
+    ADD CONSTRAINT journal_id_family_fk FOREIGN KEY (id_plant) REFERENCES public.plant(id);
 
 
 --
--- Name: test_detail_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+-- Name: journal journal_id_plant_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-ALTER TABLE ONLY test_detail
-    ADD CONSTRAINT test_detail_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES test_spec(id);
-
-
---
--- Name: test_spec_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
---
-
-ALTER TABLE ONLY test_spec
-    ADD CONSTRAINT test_spec_id_site_fk FOREIGN KEY (id_site) REFERENCES site(id);
+ALTER TABLE ONLY public.journal
+    ADD CONSTRAINT journal_id_plant_fk FOREIGN KEY (id_family) REFERENCES public.family(id);
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: postgres
+-- Name: journal journal_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
+ALTER TABLE ONLY public.journal
+    ADD CONSTRAINT journal_id_site_fk FOREIGN KEY (id_site) REFERENCES public.site(id);
+
+
+--
+-- Name: journal journal_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.journal
+    ADD CONSTRAINT journal_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES public.test_spec(id);
+
+
+--
+-- Name: plant plant_id_family_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.plant
+    ADD CONSTRAINT plant_id_family_fk FOREIGN KEY (id_family) REFERENCES public.family(id);
+
+
+--
+-- Name: plant plant_id_taxa_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.plant
+    ADD CONSTRAINT plant_id_taxa_fk FOREIGN KEY (id_taxa) REFERENCES public.taxa(id);
+
+
+--
+-- Name: test_detail test_detail_id_test_spec_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.test_detail
+    ADD CONSTRAINT test_detail_id_test_spec_fk FOREIGN KEY (id_test_spec) REFERENCES public.test_spec(id);
+
+
+--
+-- Name: test_spec test_spec_id_site_fk; Type: FK CONSTRAINT; Schema: public; Owner: user
+--
+
+ALTER TABLE ONLY public.test_spec
+    ADD CONSTRAINT test_spec_id_site_fk FOREIGN KEY (id_site) REFERENCES public.site(id);
 
 
 --

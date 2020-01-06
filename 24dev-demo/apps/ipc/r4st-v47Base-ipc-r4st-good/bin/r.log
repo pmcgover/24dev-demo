@@ -1,0 +1,685 @@
+Backup the r4st folder....
+
+INFO: Drop all existing tables and views from the PRD database...
+psql:../sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 11 other objects
+DETAIL:  drop cascades to constraint plant_id_family_fk on table plant
+drop cascades to constraint journal_id_plant_fk on table journal
+drop cascades to view avw_plant
+drop cascades to view avw_family
+drop cascades to view avw_family_phase_seed_germ_summary
+drop cascades to view avx_female_parent_germination_rates
+drop cascades to view avx_female_parent_germination_rate_summary
+drop cascades to view avx_male_parent_germination_rates
+drop cascades to view avx_male_parent_germination_rate_summary
+drop cascades to view avw_family_phase_summary
+drop cascades to view avw_journal
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:2: NOTICE:  drop cascades to 12 other objects
+DETAIL:  drop cascades to view avw_field_trial
+drop cascades to view v1_field_trial_master_summary
+drop cascades to view v2_field_trial_test_spec_summary
+drop cascades to view v4_field_trial_test_spec_2019postne
+drop cascades to view v5_field_trial_stocktypes_2019_post_sites
+drop cascades to view v6_field_trial_stocktypes_2019_post_sites_summary
+drop cascades to view vw_2019_5_nursery_field_summary
+drop cascades to view vw_2019_7_stock
+drop cascades to view vw_2019_8_stock_summary
+drop cascades to view vw_2019_nursery_field_clone_summary
+drop cascades to view v3_field_trial_summary
+drop cascades to view v7_field_trial_ranked_summary
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
+drop cascades to view avw_site
+drop cascades to view avw_test_spec
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:8: NOTICE:  drop cascades to 7 other objects
+DETAIL:  drop cascades to view avw_gpf_split_wood_tests
+drop cascades to view gpf1_figured_wood_split_tests
+drop cascades to view gpf2_figured_wood_split_tests_summary
+drop cascades to view va4_nursery_dormant_cutting_summary
+drop cascades to view vw_2019_2_nursery_key_stock_summary
+drop cascades to view vw_2019_3_nursery_stock_summary
+drop cascades to view vw_2019_4_nursery_action_stock_summary
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:9: NOTICE:  drop cascades to view avw_taxa
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:10: NOTICE:  drop cascades to 8 other objects
+DETAIL:  drop cascades to view avw_test_detail
+drop cascades to view va1_master_test_detail
+drop cascades to view va2_nursery_stocktype_test_detail
+drop cascades to view va2_all_nursery_rankings
+drop cascades to view va3_nursery_summary_test_detail
+drop cascades to view vw_2019_6_nursery_summary_by_rep_nbr
+drop cascades to view vw_2019_1_nursery
+drop cascades to view vw_2019_field_plus_clones
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:12: NOTICE:  drop cascades to view vw_u07m_2013
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_family" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_family_phase_seed_germ_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_family_phase_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "avw_field_trial" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "avw_gpf_split_wood_tests" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "avw_journal" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "avw_plant" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:20: NOTICE:  view "avw_site" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:21: NOTICE:  view "avw_taxa" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:22: NOTICE:  view "avw_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:23: NOTICE:  view "avw_test_spec" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:24: NOTICE:  view "avx_female_parent_germination_rate_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:25: NOTICE:  view "avx_female_parent_germination_rates" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:26: NOTICE:  view "avx_male_parent_germination_rate_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:27: NOTICE:  view "avx_male_parent_germination_rates" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:28: NOTICE:  view "gpf1_figured_wood_split_tests" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:29: NOTICE:  view "gpf2_figured_wood_split_tests_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:30: NOTICE:  view "v1_field_trial_master_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:31: NOTICE:  view "v2_field_trial_test_spec_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:32: NOTICE:  view "v3_field_trial_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:33: NOTICE:  view "v4_field_trial_test_spec_2019postne" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:34: NOTICE:  view "v5_field_trial_stocktypes_2019_post_sites" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:35: NOTICE:  view "v6_field_trial_stocktypes_2019_post_sites_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:36: NOTICE:  view "v7_field_trial_ranked_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:37: NOTICE:  view "va1_master_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:38: NOTICE:  view "va2_all_nursery_rankings" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:39: NOTICE:  view "va2_nursery_stocktype_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:40: NOTICE:  view "va3_nursery_summary_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:41: NOTICE:  view "va4_nursery_dormant_cutting_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:42: NOTICE:  view "vw_2019_1_nursery" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:43: NOTICE:  view "vw_2019_2_nursery_key_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:44: NOTICE:  view "vw_2019_3_nursery_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:45: NOTICE:  view "vw_2019_4_nursery_action_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:46: NOTICE:  view "vw_2019_5_nursery_field_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:47: NOTICE:  view "vw_2019_6_nursery_summary_by_rep_nbr" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:48: NOTICE:  view "vw_2019_7_stock" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:49: NOTICE:  view "vw_2019_8_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:50: NOTICE:  view "vw_2019_field_plus_clones" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:51: NOTICE:  view "vw_2019_nursery_field_clone_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:52: NOTICE:  view "vw_u07m_2013" does not exist, skipping
+DROP VIEW
+
+
+INFO: Load the primary tables with the default initial inserts...
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+
+INFO: Load the primary data for the above tables...
+-- Start Plant tables:
+\copy taxa from '../csv/taxa.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 40
+\copy family from '../csv/family.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 236
+\copy plant from '../csv/plant.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 332
+-- Start Test Tables:
+\copy site from '../csv/site.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 15
+\copy test_spec from '../csv/test_spec.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 57
+\copy test_detail from '../csv/test_detail.csv' delimiter '|' CSV HEADER
+COPY 3547
+--\copy test_detail from '../csv/test_detail.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+\copy field_trial from '../csv/field_trial.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 2694
+\copy split_wood_tests from '../csv/split_wood_tests.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 339
+\copy journal from '../csv/journal.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 55
+\copy u07m_2013 from '../csv/u07m_2013.csv' delimiter '|' ESCAPE '\' QUOTE '`' CSV HEADER
+COPY 252
+
+
+INFO: Load updates for the above tables...
+UPDATE 168
+
+INFO: Create PRD pedigree csv file from the recursive SQL file and load into the pedigree table:
+\copy pedigree(pedigree_key,path) from '../csv/r4st-pedigree.csv' delimiter '|' CSV
+COPY 250
+
+
+INFO: Load the r4stdb AVW basic table VIEWS with foreign keys...
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+
+
+INFO: Load the r4stdb descriptive table VIEWS...
+CREATE VIEW
+
+
+Create a dump of the master PRD database, then load it into an existing but empty SIT database... 
+
+INFO: Drop all existing tables and views from the SIT database...
+psql:../sql/r4st_DropAll-Objects.sql:1: NOTICE:  drop cascades to 11 other objects
+DETAIL:  drop cascades to constraint journal_id_plant_fk on table journal
+drop cascades to constraint plant_id_family_fk on table plant
+drop cascades to view avw_family
+drop cascades to view avw_family_phase_seed_germ_summary
+drop cascades to view avx_female_parent_germination_rates
+drop cascades to view avx_female_parent_germination_rate_summary
+drop cascades to view avx_male_parent_germination_rates
+drop cascades to view avx_male_parent_germination_rate_summary
+drop cascades to view avw_family_phase_summary
+drop cascades to view avw_journal
+drop cascades to view avw_plant
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:2: NOTICE:  drop cascades to 12 other objects
+DETAIL:  drop cascades to view avw_field_trial
+drop cascades to view v1_field_trial_master_summary
+drop cascades to view v2_field_trial_test_spec_summary
+drop cascades to view v4_field_trial_test_spec_2019postne
+drop cascades to view v5_field_trial_stocktypes_2019_post_sites
+drop cascades to view v6_field_trial_stocktypes_2019_post_sites_summary
+drop cascades to view vw_2019_5_nursery_field_summary
+drop cascades to view vw_2019_7_stock
+drop cascades to view vw_2019_8_stock_summary
+drop cascades to view vw_2019_nursery_field_clone_summary
+drop cascades to view v3_field_trial_summary
+drop cascades to view v7_field_trial_ranked_summary
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:7: NOTICE:  drop cascades to 3 other objects
+DETAIL:  drop cascades to constraint test_spec_id_site_fk on table test_spec
+drop cascades to view avw_site
+drop cascades to view avw_test_spec
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:8: NOTICE:  drop cascades to 7 other objects
+DETAIL:  drop cascades to view avw_gpf_split_wood_tests
+drop cascades to view gpf1_figured_wood_split_tests
+drop cascades to view gpf2_figured_wood_split_tests_summary
+drop cascades to view va4_nursery_dormant_cutting_summary
+drop cascades to view vw_2019_2_nursery_key_stock_summary
+drop cascades to view vw_2019_3_nursery_stock_summary
+drop cascades to view vw_2019_4_nursery_action_stock_summary
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:9: NOTICE:  drop cascades to view avw_taxa
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:10: NOTICE:  drop cascades to 8 other objects
+DETAIL:  drop cascades to view avw_test_detail
+drop cascades to view va1_master_test_detail
+drop cascades to view va2_nursery_stocktype_test_detail
+drop cascades to view va2_all_nursery_rankings
+drop cascades to view va3_nursery_summary_test_detail
+drop cascades to view vw_2019_6_nursery_summary_by_rep_nbr
+drop cascades to view vw_2019_1_nursery
+drop cascades to view vw_2019_field_plus_clones
+DROP TABLE
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:12: NOTICE:  drop cascades to view vw_u07m_2013
+DROP TABLE
+psql:../sql/r4st_DropAll-Objects.sql:13: NOTICE:  view "avw_family" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:14: NOTICE:  view "avw_family_phase_seed_germ_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:15: NOTICE:  view "avw_family_phase_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:16: NOTICE:  view "avw_field_trial" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:17: NOTICE:  view "avw_gpf_split_wood_tests" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:18: NOTICE:  view "avw_journal" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:19: NOTICE:  view "avw_plant" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:20: NOTICE:  view "avw_site" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:21: NOTICE:  view "avw_taxa" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:22: NOTICE:  view "avw_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:23: NOTICE:  view "avw_test_spec" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:24: NOTICE:  view "avx_female_parent_germination_rate_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:25: NOTICE:  view "avx_female_parent_germination_rates" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:26: NOTICE:  view "avx_male_parent_germination_rate_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:27: NOTICE:  view "avx_male_parent_germination_rates" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:28: NOTICE:  view "gpf1_figured_wood_split_tests" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:29: NOTICE:  view "gpf2_figured_wood_split_tests_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:30: NOTICE:  view "v1_field_trial_master_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:31: NOTICE:  view "v2_field_trial_test_spec_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:32: NOTICE:  view "v3_field_trial_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:33: NOTICE:  view "v4_field_trial_test_spec_2019postne" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:34: NOTICE:  view "v5_field_trial_stocktypes_2019_post_sites" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:35: NOTICE:  view "v6_field_trial_stocktypes_2019_post_sites_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:36: NOTICE:  view "v7_field_trial_ranked_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:37: NOTICE:  view "va1_master_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:38: NOTICE:  view "va2_all_nursery_rankings" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:39: NOTICE:  view "va2_nursery_stocktype_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:40: NOTICE:  view "va3_nursery_summary_test_detail" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:41: NOTICE:  view "va4_nursery_dormant_cutting_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:42: NOTICE:  view "vw_2019_1_nursery" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:43: NOTICE:  view "vw_2019_2_nursery_key_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:44: NOTICE:  view "vw_2019_3_nursery_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:45: NOTICE:  view "vw_2019_4_nursery_action_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:46: NOTICE:  view "vw_2019_5_nursery_field_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:47: NOTICE:  view "vw_2019_6_nursery_summary_by_rep_nbr" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:48: NOTICE:  view "vw_2019_7_stock" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:49: NOTICE:  view "vw_2019_8_stock_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:50: NOTICE:  view "vw_2019_field_plus_clones" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:51: NOTICE:  view "vw_2019_nursery_field_clone_summary" does not exist, skipping
+DROP VIEW
+psql:../sql/r4st_DropAll-Objects.sql:52: NOTICE:  view "vw_u07m_2013" does not exist, skipping
+DROP VIEW
+
+Load the PRD data into the SIT database... 
+... Only works on an empty database so only run once - Need to add repeatability...
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+CREATE EXTENSION
+COMMENT
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+CREATE VIEW
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+COPY 238
+COPY 2697
+COPY 57
+COPY 250
+COPY 334
+COPY 17
+COPY 341
+COPY 42
+COPY 3550
+COPY 59
+COPY 252
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+    250
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      1
+(1 row)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+
+
+###########################
+Start SIT r4s database copy process...
+Make r4st_GrantSelect file with current table names....
+###########################
+#### End Make GrantSelect file #######################
+Load the SIT select privs into the SIT database... 
+DROP ROLE
+CREATE ROLE
+GRANT
+
+
+Create a dump of the master SIT database for export...
+
+
+Create a new version of the r4st_DropAll-Objects.sql file...
+
+
+Extract all table description data via pgsql and load into a text file
+
+DONE
+psql (PostgreSQL) 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
