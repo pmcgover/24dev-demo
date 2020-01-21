@@ -1,7 +1,7 @@
-Starting script on: Sat Jan 4 21:53:16 EET 2020
+Starting script on: Tue Jan 21 23:13:17 EET 2020
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-1.0.6/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.1.1/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -49,54 +49,76 @@ Codename:	bionic
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-1.0.6 addon to OSGeo.
+This script will install the 24dev-demo-1.1.1 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
 
 Checking if this install script previously updated the .bashrc profile...
-The .bashrc was previously updated...
+The .bashrc was NOT previously updated...
 Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Jan  4 21:53 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jan 21 23:13 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200104_2124.log'
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-3.20200104_2124.log'
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200104_2124.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/logs
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/ipc/logs/ipc-loader.TestID-1.20200104_2001.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/r4st/logs
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20200104_2001.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/regressionTester/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200104_2124.log'
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200104_2124.log'
-removed '/home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200104_2124.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/competitionIndexer/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/ipc/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/r4st/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/RScripts/logs
 
 List and Remove any previous screenshot files...
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
-Remove previous backup tar file...
+Remove previous backup tar files...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/backup...
+Remove previous backup zip file...
+
 
 Check and install the screengrab program to take screenshots...
-Desired=Unknown/Install/Remove/Purge/Hold
-| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
-|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name           Version      Architecture Description
-+++-==============-============-============-==========================================
-ii  screengrab     1.97-2       amd64        Crossplatform tool for getting screenshots
+The screengrab program is not installed, lets add it...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libfile-basedir-perl libfile-desktopentry-perl libfile-mimeinfo-perl
+  libipc-system-simple-perl libqt5xdg3 libqt5xdgiconloader3
+Recommended packages:
+  qttranslations5-l10n
+The following NEW packages will be installed:
+  libfile-basedir-perl libfile-desktopentry-perl libfile-mimeinfo-perl
+  libipc-system-simple-perl libqt5xdg3 libqt5xdgiconloader3 screengrab
+0 upgraded, 7 newly installed, 0 to remove and 283 not upgraded.
+Need to get 418 kB of archives.
+After this operation, 1,490 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Abort.
 
-Success! Your 24dev-demo-1.0.6 system has been installed.
+Check and install the retext program to edit markdown files...
+The retext program is not installed, lets add it...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  python3-enchant python3-markdown python3-markups
+Suggested packages:
+  python-markdown-doc
+Recommended packages:
+  python3-textile
+The following NEW packages will be installed:
+  python3-enchant python3-markdown python3-markups retext
+0 upgraded, 4 newly installed, 0 to remove and 283 not upgraded.
+Need to get 211 kB of archives.
+After this operation, 1,052 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Abort.
+
+Success! Your 24dev-demo-1.1.1 system has been installed.
 Consider testing your programs with the regressionTester application
 
-The installation log files are located at: /home/user/Desktop/24dev-demo-1.0.6/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
+The installation log files are located at: /home/user/Desktop/24dev-demo-1.1.1/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
 

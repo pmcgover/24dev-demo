@@ -68,7 +68,8 @@ fi
 echo
 grep DONE  ${APPS}/ipc/logs/ipc-loader.log
 chkerr "$?" "1" "The ipc database process and log file did not complete"
-echo "You can view the IPC database at: http://localhost/ipc/dbkiss.php" 
+echo "You can view the read only test IPC database at: http://localhost/ipc/ipcr.php" 
+echo "You can view the editable test IPC database at: http://localhost/ipc/ipct.php" 
 
 echo "Extract the last 3 lines of the log file to capture the DONE text for the Regression test comparisons..."
 tail -3 ../logs/ipc-loader.log > ../output/verifyDone-ipc-loader.log
