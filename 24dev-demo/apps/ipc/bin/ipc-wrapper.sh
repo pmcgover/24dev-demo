@@ -41,7 +41,7 @@ else
 fi 
 
 echo
-echo "Setup postgres database for ipc with 2 database environments..."
+echo "Setup postgres IDC Salix databases 2 database environments..."
 echo "  Database username/password credentials are: user/user"
 psql postgres -c  "CREATE DATABASE ipct" 2>/dev/null
 psql postgres -c  "CREATE DATABASE ipcr" 2>/dev/null

@@ -61,12 +61,6 @@ father_epithet_id INTEGER NOT NULL DEFAULT 1,
 is_root varCHAR NOT NULL DEFAULT '0',
 description_f VARCHAR NOT NULL DEFAULT 'N/A',
 year_bred VARCHAR NOT NULL DEFAULT 'N/A',
-female_parent_species VARCHAR NOT NULL DEFAULT 'N/A',
-female_parent_clone VARCHAR NOT NULL DEFAULT 'N/A',
-male_parent_species VARCHAR NOT NULL DEFAULT 'N/A',
-male_parent_clone VARCHAR NOT NULL DEFAULT 'N/A',
-f_web_url_1 VARCHAR NOT NULL DEFAULT 'N/A',
-f_web_url_2 VARCHAR NOT NULL DEFAULT 'N/A',
 CONSTRAINT ipc_salix_family_pk PRIMARY KEY (id_family)
 );
 
@@ -76,7 +70,8 @@ epithet_key VARCHAR NOT NULL UNIQUE,
 epithet VARCHAR NOT NULL DEFAULT 'N/A',
 alternate_name VARCHAR,
 trade_designations VARCHAR,
-species_id INTEGER NOT NULL,
+species VARCHAR NOT NULL,
+species_web_url VARCHAR NOT NULL DEFAULT 'N/A',
 etymology VARCHAR,
 sex VARCHAR, 
 reference_epithet VARCHAR,
@@ -98,17 +93,7 @@ name_status VARCHAR,
 name_status_note VARCHAR, 
 current_cultivation VARCHAR,
 checklist_record VARCHAR,
-contact_info VARCHAR,
 CONSTRAINT ipc_salix_epithet_pk PRIMARY KEY (id_epithet)
-);
-
-CREATE TABLE ipc_salix_species ( 
-id_species serial,
-species VARCHAR NOT NULL UNIQUE,
-description_s VARCHAR  NOT NULL DEFAULT 'N/A',
-s_web_url_1 VARCHAR NOT NULL DEFAULT 'N/A',
-s_web_url_2 VARCHAR NOT NULL DEFAULT 'N/A',
-CONSTRAINT ipc_salix_species_pk PRIMARY KEY (id_species)
 );
 
 CREATE TABLE ipc_pedigree ( 
