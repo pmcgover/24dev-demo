@@ -2,7 +2,7 @@
 # All scripts should first call this profile
 
 # Only Set Global variables here:  
-export BASE=/home/user/Desktop/24dev-demo-v.1.1.1/24dev-demo
+export BASE=/home/user/Desktop/24dev-demo-v.1.1.2/24dev-demo
 export APPS=${BASE}/apps
 # MYDEV_NAME is most likely the source github repo name: 
 export MYDEV_NAME_PATH=$(dirname $(echo ${BASE}))

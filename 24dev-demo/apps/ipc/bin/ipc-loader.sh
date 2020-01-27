@@ -48,7 +48,7 @@ echo  "INFO: Run SQL updates..."
 psql ipct -f $APPS/ipc/bin/sql/ipc-Updates.sql
 echo
 echo  "INFO: Create pedigree csv file from the recursive SQL and load into the pedigree table:"     
-psql ipct -F "|" -t -f $APPS/ipc/bin/sql/ipc-pedigree.sql|grep . > ../csv/ipc_pedigree.csv
+psql ipct -F "|" -t -f $APPS/ipc/bin/sql/ipc-salix-pedigree.sql|grep . > ../csv/ipc_salix_pedigree.csv
 psql ipct -f $APPS/ipc/bin/sql/ipc-Copy-PostLoad.filelist  -a
 
 echo 

@@ -1,32 +1,29 @@
-# 24dev-demo-v.1.1.1 Project Summary 
-Welcome to Patrick McGovern's 24dev-demo-v.1.1.1 Software Digital Portfolio. Created on 2020-01-22 02:50:23 AM with the following details:
+# 24dev-demo-v.1.1.2 Project Summary 
+Welcome to Patrick McGovern's 24dev-demo-v.1.1.2 Software Digital Portfolio. Created on 2020-01-27 01:19:27 AM with the following details:
 * Total number of applications: 7
-* Total regression test run time in seconds: 8 
+* Total regression test run time in seconds: 7 
 * Total regression test runs: 8  
 * Number of regression test checks: 5
-* Total Project Lines Of Code: 3947
+* Total Project Lines Of Code: 3419
 * Sorry, there were 1 regression test failures, please try again...
 * List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
-   *      2 .BAK
    *      5 .filelist
-   *      1 .ORIG-OLD
    *      3 .r
-   *      9 .sh
-   *      1 .sh-ORIGgood
+   *      7 .sh
    *     15 .sql
    *      2 .txt
 
 ## Regression Test Results 
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 
-0|r4st|r4st-loader|3|1855|Pass
-1|ipc|ipc-loader|2|1110|Pass
-2|competitionIndexer|az7m-1yrDataSet-Input|1|407|Pass
-3|competitionIndexer|az7m-6yrStacks-Input|0|407|Pass
+0|r4st|r4st-loader|2|1855|Pass
+1|ipc|ipc-loader|2|582|Pass
+2|competitionIndexer|az7m-1yrDataSet-Input|0|407|Pass
+3|competitionIndexer|az7m-6yrStacks-Input|1|407|Pass
 4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|1|407|Pass
-5|RScripts|HelloWorld|1|71|Fail
+5|RScripts|HelloWorld|0|71|Fail
 6|RScripts|top10-2014-clones-AngledXaxis|0|71|Fail
-7|RScripts|top10-2014-clones-StraightXaxis|0|71|Fail
+7|RScripts|top10-2014-clones-StraightXaxis|1|71|Fail
 
 ## Verification Details
 * Below are system verification details generated on the computer that ran this process. 
@@ -34,7 +31,7 @@ Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Cod
 
 Verification Name|Details  
  --- | --- 
-[date](https://en.wikipedia.org/wiki/System_time)|Wed Jan 22 02:50:23 EET 2020
+[date](https://en.wikipedia.org/wiki/System_time)|Mon Jan 27 01:19:27 EET 2020
 [uname -a](https://en.wikipedia.org/wiki/Uname)|Linux osgeolive 5.0.0-23-generic #24~18.04.1-Ubuntu SMP Mon Jul 29 16:12:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 [lsb_release -d](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/lsbrelease.html)|Description:	Ubuntu 18.04.3 LTS
 [hostname](https://en.wikipedia.org/wiki/Hostname)|osgeolive

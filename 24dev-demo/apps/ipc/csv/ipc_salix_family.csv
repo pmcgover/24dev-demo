@@ -95,12 +95,7 @@ id_family|family_key|mother|father|mother_epithet_id|father_epithet_id|is_root|d
 94|93XVM|S. viminalis L. ‘SV2’|S. miyabeana Seemen ‘SX64’|969|969|U|N/A|N/A
 95|94XVM|S. viminalis L. ‘SV2’|S. miyabeana Seemen ‘SX61’ × S. miyabeana ‘9970-037’|969|969|U|N/A|N/A
 96|95XVM|S. viminalis L. ‘SV7’|S. miyabeana Seemen ‘SX64’|969|969|U|N/A|N/A
-97|96X1AA|S. alba L.|S. alba L.|970|971|Y|Hypothetical, for Pedigree testing.  A root level Salix AxA family example.|N/A
-98|96X2AA|S. alba L.|S. alba L.|972|973|Y|Hypothetical, for Pedigree testing.  A root level Salix AxA family example.|N/A
-99|96X3AA|S. alba L.|S. alba L.|974|975|Y|Hypothetical, for Pedigree testing.  A root level Salix AxA family example.|N/A
-100|91X4AE|S. alba L.|S. euxina|976|979|N|Hypothetical, for Pedigree testing.  An F2 hybrid Salix family example.|N/A
-101|92X5AG|S. alba L.|S. gmelinii|977|980|N|Hypothetical, for Pedigree testing.  An F2 hybrid Salix family example.|N/A
-102|93X6AT|S. alba L.|S. triandra L.|978|981|N|Hypothetical, for Pedigree testing.  An F2 hybrid Salix family example.|N/A
-103|94X7AEAG|S. hybrid|S. hybrid|982|983|N|Hypothetical, for Pedigree testing.  An F3 double hybrid Salix family example.|N/A
-104|95X8AEAGAT|S. hybrid|S. hybrid|985|984|N|Hypothetical, for Pedigree testing.  An F3 tri-hybrid backcross Salix family example.|N/A
-105|96X9EG|S. euxina|S. gmelinii|988|980|Y|Hypothetical, for Pedigree testing.  A root level Salix family example.|N/A
+97|96X1AA|See: mother_epithet_key|See: father_epithet_key|970|971|Y|Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example.|N/A
+98|97X1TE|See: mother_epithet_key|See: father_epithet_key|972|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example.|N/A
+99|98X1AA-TE|See: mother_epithet_key|See: father_epithet_key|974|975|N|Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example.|N/A
+100|99X1AE|See: mother_epithet_key|See: father_epithet_key|970|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example that does not have parents with a related Family table record.|N/A

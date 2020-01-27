@@ -1,1 +1,1 @@
-\copy ipc_pedigree(pedigree_key,path) from '../csv/ipc_pedigree.csv' delimiter '|' CSV HEADER
+\copy ipc_salix_pedigree(pedigree_family_key,path) from '../csv/ipc_salix_pedigree.csv' delimiter '|' CSV HEADER

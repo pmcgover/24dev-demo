@@ -77,6 +77,7 @@ sex VARCHAR,
 reference_epithet VARCHAR,
 reference_breeders VARCHAR,
 reference_tests VARCHAR,
+end_use VARCHAR NOT NULL DEFAULT 'N/A' CHECK (end_use in ('N/A','baskets','biofuel','ornamental','environmental')),
 awards VARCHAR,
 source_type VARCHAR,
 year_selected VARCHAR,
@@ -96,10 +97,10 @@ checklist_record VARCHAR,
 CONSTRAINT ipc_salix_epithet_pk PRIMARY KEY (id_epithet)
 );
 
-CREATE TABLE ipc_pedigree ( 
+CREATE TABLE ipc_salix_pedigree ( 
 id serial,
 -- pedigreeTable tline
-pedigree_key VARCHAR NOT NULL,
+pedigree_family_key VARCHAR NOT NULL,
 path VARCHAR NOT NULL UNIQUE
 );
 

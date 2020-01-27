@@ -36,8 +36,8 @@ if [[ $dbErr -ne 0 ]]; then
 else
    echo "Postgres server should be active..."
    echo "Drop all databases to ensure a clean system..." 
-   psql postgres -c "DROP DATABASE IF EXISTS ipct" 2>/dev/null
-   psql postgres -c "DROP DATABASE IF EXISTS ipcr" 2>/dev/null
+   # psql postgres -c "DROP DATABASE IF EXISTS ipct" 2>/dev/null
+   # psql postgres -c "DROP DATABASE IF EXISTS ipcr" 2>/dev/null
 fi 
 
 echo
