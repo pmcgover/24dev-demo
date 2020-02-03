@@ -95,7 +95,8 @@ id_family|family_key|mother|father|mother_epithet_id|father_epithet_id|is_root|d
 94|93XVM|S. viminalis L. ‘SV2’|S. miyabeana Seemen ‘SX64’|969|969|U|N/A|N/A
 95|94XVM|S. viminalis L. ‘SV2’|S. miyabeana Seemen ‘SX61’ × S. miyabeana ‘9970-037’|969|969|U|N/A|N/A
 96|95XVM|S. viminalis L. ‘SV7’|S. miyabeana Seemen ‘SX64’|969|969|U|N/A|N/A
-97|96X1AA|See: mother_epithet_key|See: father_epithet_key|970|971|Y|Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example.|N/A
-98|97X1TE|See: mother_epithet_key|See: father_epithet_key|972|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example.|N/A
-99|98X1AA-TE|See: mother_epithet_key|See: father_epithet_key|974|975|N|Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example.|N/A
-100|99X1AE|See: mother_epithet_key|See: father_epithet_key|970|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example that does not have parents with a related Family table record.|N/A
+97|96X1AA|See: mother_epithet_key|See: father_epithet_key|970|971|Y|Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example via 2 root level parents.|N/A
+98|97X1TE|See: mother_epithet_key|See: father_epithet_key|972|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.|N/A
+99|98X1AA-TE|See: mother_epithet_key|See: father_epithet_key|974|975|N|Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example via 2 non-root level parents.|N/A
+100|99X1AE|See: mother_epithet_key|See: father_epithet_key|970|973|Y|Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.|N/A
+101|100X2A-TE|See: mother_epithet_key|See: father_epithet_key|970|975|Y|Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via root and non-root level parents.|N/A

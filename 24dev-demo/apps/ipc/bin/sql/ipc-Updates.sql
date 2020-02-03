@@ -1,3 +1,6 @@
+-- Rule A non-root level family has both non-root level parents, all others are root level families.
+-- TODO: Refactor to set Family is_root = Y for rows that have root OR non-root parents
+--       Then set is_root = N for rows that have both non-root level parents. 
 UPDATE ipc_salix_family SET is_root = 'Y' WHERE id_family IN
 (SELECT DISTINCT ON (f.id_family) f.id_family
 FROM ipc_salix_family f,

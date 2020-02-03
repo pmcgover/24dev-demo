@@ -2573,10 +2573,11 @@ COPY public.ipc_salix_epithet (id_epithet, epithet_key, epithet, alternate_name,
 
 COPY public.ipc_salix_family (id_family, family_key, mother, father, mother_epithet_id, father_epithet_id, is_root, description_f, year_bred) FROM stdin;
 1	N/A~N/A	N/A	N/A	969	969	U	N/A	N/A
-99	98X1AA-TE	See: mother_epithet_key	See: father_epithet_key	974	975	N	Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example.	N/A
-100	99X1AE	See: mother_epithet_key	See: father_epithet_key	970	973	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example that does not have parents with a related Family table record.	N/A
-98	97X1TE	See: mother_epithet_key	See: father_epithet_key	972	973	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example.	N/A
-97	96X1AA	See: mother_epithet_key	See: father_epithet_key	970	971	Y	Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example.	N/A
+99	98X1AA-TE	See: mother_epithet_key	See: father_epithet_key	974	975	N	Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example via 2 non-root level parents.	N/A
+101	100X2A-TE	See: mother_epithet_key	See: father_epithet_key	970	975	Y	Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via root and non-root level parents.	N/A
+100	99X1AE	See: mother_epithet_key	See: father_epithet_key	970	973	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.	N/A
+98	97X1TE	See: mother_epithet_key	See: father_epithet_key	972	973	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.	N/A
+97	96X1AA	See: mother_epithet_key	See: father_epithet_key	970	971	Y	Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example via 2 root level parents.	N/A
 96	95XVM	S. viminalis L. ‘SV7’	S. miyabeana Seemen ‘SX64’	969	969	Y	N/A	N/A
 95	94XVM	S. viminalis L. ‘SV2’	S. miyabeana Seemen ‘SX61’ × S. miyabeana ‘9970-037’	969	969	Y	N/A	N/A
 94	93XVM	S. viminalis L. ‘SV2’	S. miyabeana Seemen ‘SX64’	969	969	Y	N/A	N/A
@@ -2680,10 +2681,12 @@ COPY public.ipc_salix_family (id_family, family_key, mother, father, mother_epit
 --
 
 COPY public.ipc_salix_pedigree (id, pedigree_family_key, path) FROM stdin;
-1	 97X1TE     	 >F1 97X1TE=(3T~972 x 4E~973)
-2	 98X1AA-TE  	 >F1 96X1AA=(1A~970 x 2A~971) >F2 98X1AA-TE=(5AA~974 x 6TE~975)
-3	 98X1AA-TE  	 >F1 97X1TE=(3T~972 x 4E~973) >F2 98X1AA-TE=(5AA~974 x 6TE~975)
-4	 99X1AE     	 >F1 99X1AE=(1A~970 x 4E~973)
+1	 100X2A-TE  	 >F1 97X1TE=(3T~972 x 4E~973) >F2 100X2A-TE=(1A~970 x 6TE~975)
+2	 96X1AA     	 >F1 96X1AA=(1A~970 x 2A~971)
+3	 97X1TE     	 >F1 97X1TE=(3T~972 x 4E~973)
+4	 98X1AA-TE  	 >F1 96X1AA=(1A~970 x 2A~971) >F2 98X1AA-TE=(5AA~974 x 6TE~975)
+5	 98X1AA-TE  	 >F1 97X1TE=(3T~972 x 4E~973) >F2 98X1AA-TE=(5AA~974 x 6TE~975)
+6	 99X1AE     	 >F1 99X1AE=(1A~970 x 4E~973)
 \.
 
 
@@ -2712,7 +2715,7 @@ SELECT pg_catalog.setval('public.ipc_salix_family_id_family_seq', 1, false);
 -- Name: ipc_salix_pedigree_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
 --
 
-SELECT pg_catalog.setval('public.ipc_salix_pedigree_id_seq', 4, true);
+SELECT pg_catalog.setval('public.ipc_salix_pedigree_id_seq', 6, true);
 
 
 --
