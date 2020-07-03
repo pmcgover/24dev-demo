@@ -306,5 +306,6 @@ Verification Name|Details
 EOF
 
 echo
+echo "Reload the profile with the command, "source ~/.profile" or open a new terminal."
 echo "If you have failures - first check the Regression test logs at: ${logsRegTests}" 
 echo

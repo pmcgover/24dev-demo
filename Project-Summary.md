@@ -1,23 +1,26 @@
-# 24dev-demo-1.1.3 Project Summary 
-Welcome to Patrick McGovern's 24dev-demo-1.1.3 Software Digital Portfolio. Created on 2020-01-31 01:00:34 AM with the following details:
+# 24dev-demo-1.1.5 Project Summary 
+Welcome to Patrick McGovern's 24dev-demo-1.1.5 Software Digital Portfolio. Created on 2020-07-03 12:38:10 AM with the following details:
 * Total number of applications: 6
-* Total regression test run time in seconds: 8 
+* Total regression test run time in seconds: 7 
 * Total regression test runs: 8  
 * Number of regression test checks: 5
-* Total Project Lines Of Code: 3476
+* Total Project Lines Of Code: 4073
 * Sorry, there were 1 regression test failures, please try again...
 * List of [program file formats](https://en.wikipedia.org/wiki/List_of_file_formats) below: 
+   *      2 .BAK
+   *      1 .ORIG-OLD
    *      5 .filelist
    *      3 .r
-   *      7 .sh
+   *      9 .sh
+   *      1 .sh-ORIGgood
    *     16 .sql
    *      2 .txt
 
 ## Regression Test Results 
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
  --- | --- | --- | --- | --- | --- 
-0|r4st|r4st-loader|3|1855|Pass
-1|ipc|ipc-loader|2|639|Pass
+0|r4st|r4st-loader|2|1855|Pass
+1|ipc|ipc-loader|2|1203|Pass
 2|competitionIndexer|az7m-1yrDataSet-Input|1|407|Pass
 3|competitionIndexer|az7m-6yrStacks-Input|1|407|Pass
 4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|0|407|Pass
@@ -31,7 +34,7 @@ Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Cod
 
 Verification Name|Details  
  --- | --- 
-[date](https://en.wikipedia.org/wiki/System_time)|Fri Jan 31 01:00:35 UTC 2020
+[date](https://en.wikipedia.org/wiki/System_time)|Fri Jul  3 00:38:10 UTC 2020
 [uname -a](https://en.wikipedia.org/wiki/Uname)|Linux osgeolive 5.0.0-23-generic #24~18.04.1-Ubuntu SMP Mon Jul 29 16:12:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 [lsb_release -d](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/lsbrelease.html)|Description:	Ubuntu 18.04.3 LTS
 [hostname](https://en.wikipedia.org/wiki/Hostname)|osgeolive

@@ -86,6 +86,7 @@ alias base='cd ${BASE}'
 alias apps='cd ${APPS}'
 alias bac='cd ${BASE}/backup'
 alias bak='cd ${BASE}/backup'
+alias docs='find ${APPS}/*/docs|grep README'
 alias ipc='cd ${APPS}/ipc/bin;./ipc-wrapper.sh '
 alias ilog='cd ${APPS}/ipc/logs'
 
@@ -163,6 +164,10 @@ echo
 #zip -r /var/tmp/${MYDEV_NAME}.${datestamp}.zip  ${MYDEV_NAME_PATH} 
 #chkerr "$?" "1" "The backup zip file process failed..."
 
+echo 
+echo "Run apt-get update before installing programs..."
+sudo apt-get update
+echo
 
 echo
 echo "Check and install the screengrab program to take screenshots..." 
@@ -170,7 +175,7 @@ dpkg-query -l screengrab
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The screengrab program is not installed, lets add it..."
-  echo user | sudo -S apt install screengrab
+  echo user | sudo -S apt -y install screengrab
   # Sleep for a bit to allow the above program to install.
   sleep 5
 fi
@@ -181,14 +186,41 @@ dpkg-query -l retext
 checkStatus=$(echo $?)
 if [[ $checkStatus -ne 0 ]]; then
   echo "The retext program is not installed, lets add it..."
-  echo user | sudo -S apt install retext 
+  echo user | sudo -S apt -y install retext 
   # Sleep for a bit to allow the above program to install.
   sleep 5
 fi
 
 echo
+echo "Check and install the Simple Screen Recorder program to record computer screen sessions..." 
+dpkg-query -l simplescreenrecorder 
+checkStatus=$(echo $?)
+if [[ $checkStatus -ne 0 ]]; then
+  echo "The simplescreenrecorder program is not installed, lets add it..."
+  echo user | sudo -S apt -y install simplescreenrecorder 
+  # Sleep for a bit to allow the above program to install.
+  sleep 5
+fi
+
+echo 
+echo "Run apt-get update after installing programs..."
+sudo apt-get update
+echo
+
+#Reload the profile to reload the current shell: 
+source ~/.profile
+
+echo
+echo "Run the regressionTester application that will load/install/test the apps..."
+source ${APPS}/regressionTester/bin/regressionTester.sh
+
+
+echo
 echo "Success! Your $MYDEV_NAME system has been installed."
 echo "Consider testing your programs with the regressionTester application"
 echo
+echo "Reload the profile with the command, "source ~/.profile" or open a new terminal." 
 echo "The installation log files are located at: $APPS/install2Osgeo/logs/install2Osgeo.log "
-echo
+
+
+
