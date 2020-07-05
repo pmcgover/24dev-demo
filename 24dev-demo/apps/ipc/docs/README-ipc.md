@@ -4,7 +4,7 @@ The IPC database application provides online access to the IPC Salix project clo
 ## Usage
 * Review and install 24dev-demo to an OSGeo-Live system via: https://github.com/pmcgover/24dev-demo.
 * The install process will install, test, log and verify all applications with Pass or Fail output.
-* Opening a terminal shell and runing the alias command "ipc", will re-load the ipc database objects.
+* Opening a terminal shell and running the alias command "ipc", will re-load the ipc database objects.
 * You can browse and update the local ipct development database at: http://localhost/ipc/ipct.php
 * You can browse the local ipcr "read only" database at: http://localhost/ipc/ipcr.php
 

@@ -62,8 +62,8 @@ e.epithet_key,
 e.epithet,
 e.alternate_name,
 e.trade_designations,
-e.species,
-e.species_web_url,
+e.species_e,
+e.species_web_url_e,
 e.etymology,
 e.sex,
 e.reference_epithet,
@@ -99,6 +99,8 @@ f.mother,
 f.father,
 e1.epithet_key AS mother_epithet_key,
 e2.epithet_key AS father_epithet_key,
+f.species_f,
+f.species_web_url_f,
 f.is_root,
 f.description_f,
 f.year_bred
@@ -113,7 +115,7 @@ CREATE VIEW vw1_test_original_minus_epithet_key_data AS
 SELECT o.id_sorted, epithet_cleaned, o.species_cleaned, o.mother_cleaned,father_cleaned
 FROM ipc_original_salix_epithet o
 EXCEPT
-SELECT e.id_epithet, e.epithet, e.species,  f.mother, f.father
+SELECT e.id_epithet, e.epithet, e.species_e,  f.mother, f.father
 FROM ipc_salix_family f,
 ipc_salix_epithet e
 WHERE e.family_id = f.id_family;
@@ -135,12 +137,16 @@ ORDER BY e.id_epithet;
 
 
 CREATE VIEW vw4_checklist_epithet_family AS 
-SELECT e.* , f.*
+SELECT e.* , f.*,
+em.species_e AS mother_species_e,
+ef.species_e AS father_species_e
 FROM avw_ipc_salix_family f
 LEFT JOIN avw_ipc_salix_epithet e
 ON e.family_id = f.id_family
-where f.description_f like 'Hypothetical, for Pedigree testing%'
-order by e.id_epithet;
+LEFT JOIN avw_ipc_salix_epithet em ON f.mother_epithet_key = em.epithet_key
+LEFT JOIN avw_ipc_salix_epithet ef ON f.father_epithet_key = ef.epithet_key
+WHERE f.description_f LIKE 'Hypothetical, for Pedigree testing%'
+ORDER BY e.id_epithet;
 
 CREATE VIEW vw5_basic_count_summary AS
 SELECT
@@ -150,7 +156,8 @@ COUNT(id_epithet) - COUNT(DISTINCT(epithet)) duplicate_epithets,
 COUNT(DISTINCT(year_selected)) unique_years_selected,
 COUNT(DISTINCT(interspecific_hybrid)) unique_interspecific_hybrids,
 COUNT(DISTINCT(name_status)) unique_name_status,
-COUNT(DISTINCT(species)) unique_species,
+COUNT(DISTINCT(species_e)) unique_epithet_species,
+COUNT(DISTINCT(species_f)) unique_family_species,
 COUNT(DISTINCT(sex)) unique_sex,
 COUNT(DISTINCT(id_family)) unique_families,
 COUNT(DISTINCT(mother)) unique_mothers,

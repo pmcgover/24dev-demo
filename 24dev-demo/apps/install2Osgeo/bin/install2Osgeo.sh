@@ -87,6 +87,7 @@ alias apps='cd ${APPS}'
 alias bac='cd ${BASE}/backup'
 alias bak='cd ${BASE}/backup'
 alias docs='find ${APPS}/*/docs|grep README'
+alias logs='find ${APPS}/*/logs'
 alias ipc='cd ${APPS}/ipc/bin;./ipc-wrapper.sh '
 alias ilog='cd ${APPS}/ipc/logs'
 

@@ -1,12 +1,12 @@
 
-Starting script on: Fri Jul 3 00:38:07 UTC 2020
+Starting script on: Sun Jul 5 23:10:55 UTC 2020
 #######################################
 
-Input File Name= ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv
+Input File Name= ../../competitionIndexer/input/az7m-6yrStacks-Input.csv
 Check if the input CSV file has the minimal header line: 
 
 
-Display the first 10 lines of the input file: ../../competitionIndexer/input/az7m-1yrDataSet-Input.csv...
+Display the first 10 lines of the input file: ../../competitionIndexer/input/az7m-6yrStacks-Input.csv...
 id,setid,long_ft,short_ft,row,col,block,dbh,year,site,name
 1,1,9,9,1,1,1,5.6,2013,AZ7M,17XGA24
 2,1,9,9,2,1,1,3.2,2013,AZ7M,17XGA04
@@ -25,7 +25,7 @@ Extract any optional INFO header fields to append them the required T1 columns..
 FYI: There are no optional headers...
 
 Extract the basename of the input file...
-The Base input file name is: baseInputFileName=az7m-1yrDataSet-Input.csv
+The Base input file name is: baseInputFileName=az7m-6yrStacks-Input.csv
 DROP all tables and views...
 NOTICE:  table "ci1" does not exist, skipping
 DROP TABLE
@@ -57,7 +57,7 @@ Indexes:
     "ci1_pk" PRIMARY KEY, btree (id)
 
 Load the input CSV file into the CI1 table...
-COPY 252
+COPY 1512
 COMMIT
 
 Display first record of the CI1 Table...
@@ -104,11 +104,11 @@ Display first few records of the vw_ci3 view...
 COMMIT
 
 
-Write contents of the vw_ci3 view to output CSV file /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/output/Output-az7m-1yrDataSet-Input.csv
+Write contents of the vw_ci3 view to output CSV file /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input.csv
 
 
 Check if the OUTPUT file has the same number of rows ase the input file...
-getOutLineCount=253  getInputLineCount=253
+getOutLineCount=1513  getInputLineCount=1513
 
 We are finished so cleanup files/tables...
 DROP all tables and views...
@@ -123,5 +123,5 @@ DROP VIEW
 COMMIT
 
 Done!  The output file is located at: 
-/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/output/Output-az7m-1yrDataSet-Input.csv
+/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/output/Output-az7m-6yrStacks-Input.csv
 

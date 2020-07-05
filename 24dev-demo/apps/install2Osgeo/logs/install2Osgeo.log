@@ -1,7 +1,7 @@
-Starting script on: Thu Jul 2 22:53:07 UTC 2020
+Starting script on: Sun Jul 5 23:39:37 UTC 2020
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-1.1.5/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.1.8/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -49,227 +49,100 @@ Codename:	bionic
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-1.1.5 addon to OSGeo.
+This script will install the 24dev-demo-1.1.8 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
 
 Checking if this install script previously updated the .bashrc profile...
-The .bashrc was NOT previously updated...
+The .bashrc was previously updated...
 Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Jul  2 22:53 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jul  5 23:39 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/logs
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200702_2159.log'
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200702_2221.log'
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200702_2159.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/logs
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200702_2159.log'
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200702_2221.log'
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200702_2159.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/logs
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/logs/ipc-loader.TestID-1.20200702_2151.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/logs
-removed '/home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20200702_2151.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/logs
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200705_1117.log'
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200705_1117.log'
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200705_1117.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/logs
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200705_1117.log'
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-3.20200705_1117.log'
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200705_1117.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/logs
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/logs/ipc-loader.TestID-1.20200704_2359.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/logs
+removed '/home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20200704_2358.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/regressionTester/logs
 
 List and Remove any previous screenshot files...
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
 Remove previous backup tar files...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/backup...
 Remove previous backup zip file...
 
 
 Run apt-get update before installing programs...
 Ign:1 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic InRelease
 Hit:2 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic Release
-Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:4 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
 Get:5 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
-Hit:6 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
+Hit:6 http://archive.ubuntu.com/ubuntu bionic InRelease
 Get:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
-Get:8 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [774 kB]
-Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [1000 kB]
-Get:10 http://security.ubuntu.com/ubuntu bionic-security/main Translation-en [244 kB]
-Get:11 http://security.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [46.0 kB]
-Get:12 http://security.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [25.7 kB]
-Get:13 http://security.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [58.0 kB]
-Get:14 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [66.2 kB]
-Get:15 http://security.ubuntu.com/ubuntu bionic-security/restricted Translation-en [14.8 kB]
-Get:16 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [677 kB]
-Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main Translation-en [337 kB]
-Get:18 http://security.ubuntu.com/ubuntu bionic-security/universe Translation-en [224 kB]
-Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [294 kB]
-Get:20 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [49.1 kB]
-Get:21 http://security.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [18.6 kB]
-Get:22 http://security.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [107 kB]
-Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [81.9 kB]
-Get:24 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [157 kB]
-Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [74.5 kB]
-Get:26 http://archive.ubuntu.com/ubuntu bionic-updates/restricted Translation-en [16.8 kB]
-Get:27 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [1090 kB]
-Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/universe Translation-en [338 kB]
-Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [279 kB]
-Get:30 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [7904 B]
-Get:31 http://security.ubuntu.com/ubuntu bionic-security/multiverse Translation-en [2816 B]
-Get:32 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B]
-Get:33 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [213 kB]
-Get:34 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [462 kB]
-Get:35 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [11.5 kB]
-Get:36 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse Translation-en [4832 B]
-Get:37 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B]
-Fetched 6857 kB in 2s (3240 kB/s)
+Get:8 http://security.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [46.1 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [49.2 kB]
+Get:11 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B]
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [279 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B]
+Fetched 851 kB in 1s (621 kB/s)
 Reading package lists...
 
 
 Check and install the screengrab program to take screenshots...
-The screengrab program is not installed, lets add it...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  libfile-basedir-perl libfile-desktopentry-perl libfile-mimeinfo-perl
-  libipc-system-simple-perl libqt5xdg3 libqt5xdgiconloader3
-Recommended packages:
-  qttranslations5-l10n
-The following NEW packages will be installed:
-  libfile-basedir-perl libfile-desktopentry-perl libfile-mimeinfo-perl
-  libipc-system-simple-perl libqt5xdg3 libqt5xdgiconloader3 screengrab
-0 upgraded, 7 newly installed, 0 to remove and 411 not upgraded.
-Need to get 418 kB of archives.
-After this operation, 1490 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libipc-system-simple-perl all 1.25-4 [22.5 kB]
-Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfile-basedir-perl all 0.07-1 [16.9 kB]
-Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfile-desktopentry-perl all 0.22-1 [18.2 kB]
-Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfile-mimeinfo-perl all 0.28-1 [41.4 kB]
-Get:5 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libqt5xdgiconloader3 amd64 3.1.0-5build2 [27.9 kB]
-Get:6 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libqt5xdg3 amd64 3.1.0-5build2 [84.4 kB]
-Get:7 http://archive.ubuntu.com/ubuntu bionic/universe amd64 screengrab amd64 1.97-2 [206 kB]
-Fetched 418 kB in 1s (519 kB/s)
-Selecting previously unselected package libipc-system-simple-perl.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 248700 files and directories currently installed.)
-Preparing to unpack .../0-libipc-system-simple-perl_1.25-4_all.deb ...
-Unpacking libipc-system-simple-perl (1.25-4) ...
-Selecting previously unselected package libfile-basedir-perl.
-Preparing to unpack .../1-libfile-basedir-perl_0.07-1_all.deb ...
-Unpacking libfile-basedir-perl (0.07-1) ...
-Selecting previously unselected package libfile-desktopentry-perl.
-Preparing to unpack .../2-libfile-desktopentry-perl_0.22-1_all.deb ...
-Unpacking libfile-desktopentry-perl (0.22-1) ...
-Selecting previously unselected package libfile-mimeinfo-perl.
-Preparing to unpack .../3-libfile-mimeinfo-perl_0.28-1_all.deb ...
-Unpacking libfile-mimeinfo-perl (0.28-1) ...
-Selecting previously unselected package libqt5xdgiconloader3:amd64.
-Preparing to unpack .../4-libqt5xdgiconloader3_3.1.0-5build2_amd64.deb ...
-Unpacking libqt5xdgiconloader3:amd64 (3.1.0-5build2) ...
-Selecting previously unselected package libqt5xdg3:amd64.
-Preparing to unpack .../5-libqt5xdg3_3.1.0-5build2_amd64.deb ...
-Unpacking libqt5xdg3:amd64 (3.1.0-5build2) ...
-Selecting previously unselected package screengrab.
-Preparing to unpack .../6-screengrab_1.97-2_amd64.deb ...
-Unpacking screengrab (1.97-2) ...
-Processing triggers for mime-support (3.60ubuntu1) ...
-Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
-Setting up libipc-system-simple-perl (1.25-4) ...
-Setting up libfile-basedir-perl (0.07-1) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Setting up libfile-desktopentry-perl (0.22-1) ...
-Setting up libqt5xdgiconloader3:amd64 (3.1.0-5build2) ...
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-Setting up libfile-mimeinfo-perl (0.28-1) ...
-Processing triggers for hicolor-icon-theme (0.17-2) ...
-Setting up libqt5xdg3:amd64 (3.1.0-5build2) ...
-Setting up screengrab (1.97-2) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-==========================================
+ii  screengrab     1.97-2       amd64        Crossplatform tool for getting screenshots
 
 Check and install the retext program to edit markdown files...
-The retext program is not installed, lets add it...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  python3-enchant python3-markdown python3-markups
-Suggested packages:
-  python-markdown-doc
-Recommended packages:
-  python3-textile
-The following NEW packages will be installed:
-  python3-enchant python3-markdown python3-markups retext
-0 upgraded, 4 newly installed, 0 to remove and 411 not upgraded.
-Need to get 211 kB of archives.
-After this operation, 1052 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic/universe amd64 python3-enchant all 2.0.0-1 [43.2 kB]
-Get:2 http://archive.ubuntu.com/ubuntu bionic/universe amd64 python3-markdown all 2.6.9-1 [53.7 kB]
-Get:3 http://archive.ubuntu.com/ubuntu bionic/universe amd64 python3-markups all 2.0.1-1 [10.4 kB]
-Get:4 http://archive.ubuntu.com/ubuntu bionic/universe amd64 retext all 7.0.1-1 [103 kB]
-Fetched 211 kB in 1s (272 kB/s)
-Selecting previously unselected package python3-enchant.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 248786 files and directories currently installed.)
-Preparing to unpack .../python3-enchant_2.0.0-1_all.deb ...
-Unpacking python3-enchant (2.0.0-1) ...
-Selecting previously unselected package python3-markdown.
-Preparing to unpack .../python3-markdown_2.6.9-1_all.deb ...
-Unpacking python3-markdown (2.6.9-1) ...
-Selecting previously unselected package python3-markups.
-Preparing to unpack .../python3-markups_2.0.1-1_all.deb ...
-Unpacking python3-markups (2.0.1-1) ...
-Selecting previously unselected package retext.
-Preparing to unpack .../retext_7.0.1-1_all.deb ...
-Unpacking retext (7.0.1-1) ...
-Setting up python3-markdown (2.6.9-1) ...
-Processing triggers for mime-support (3.60ubuntu1) ...
-Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
-Setting up python3-enchant (2.0.0-1) ...
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-Setting up python3-markups (2.0.1-1) ...
-Processing triggers for hicolor-icon-theme (0.17-2) ...
-Setting up retext (7.0.1-1) ...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-====================================================
+ii  retext         7.0.1-1      all          Simple text editor for Markdown and reStructuredText
 
 Check and install the Simple Screen Recorder program to record computer screen sessions...
-The simplescreenrecorder program is not installed, lets add it...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  simplescreenrecorder
-0 upgraded, 1 newly installed, 0 to remove and 411 not upgraded.
-Need to get 1213 kB of archives.
-After this operation, 3132 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic/universe amd64 simplescreenrecorder amd64 0.3.8-3 [1213 kB]
-Fetched 1213 kB in 1s (1384 kB/s)
-Selecting previously unselected package simplescreenrecorder.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 248921 files and directories currently installed.)
-Preparing to unpack .../simplescreenrecorder_0.3.8-3_amd64.deb ...
-Unpacking simplescreenrecorder (0.3.8-3) ...
-Processing triggers for mime-support (3.60ubuntu1) ...
-Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-Processing triggers for hicolor-icon-theme (0.17-2) ...
-Setting up simplescreenrecorder (0.3.8-3) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                 Version      Architecture Description
++++-====================-============-============-===============================================
+ii  simplescreenrecorder 0.3.8-3      amd64        Feature-rich screen recorder for X11 and OpenGL
 
 Run apt-get update after installing programs...
 Ign:1 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic InRelease
 Hit:2 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic Release
 Hit:4 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:5 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:6 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
 Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
 Reading package lists...
 
 
 Run the regressionTester application that will load/install/test the apps...
-Starting script on: Thu Jul 2 22:53:51 UTC 2020
-BASE=/home/user/Desktop/24dev-demo-1.1.5/24dev-demo
+Starting script on: Sun Jul 5 23:39:43 UTC 2020
+BASE=/home/user/Desktop/24dev-demo-1.1.8/24dev-demo
 
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
@@ -311,48 +184,48 @@ Usage: regressionTester.sh
 This program will run the pre-loaded regression commands and test for successfull completion.
 
 Load and display App Lines Of Code (LOC) stats...
-totalAppLOC=4072
+totalAppLOC=4083
 
-    14 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/bin/basicGraph.r
-    33 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
-    24 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
-   407 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh
-   226 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/install2Osgeo/bin/install2Osgeo.sh
-    72 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/ipc-loader.sh-ORIGgood
-   105 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/ipc-loader.sh.BAK
-    73 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/ipc-wrapper.sh.BAK
-   115 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/r4st-loader.sh
-   124 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/r4st-loader.sh.ORIG-OLD
-    75 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/OLD/r4st-wrapper.sh
-   108 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/ipc-loader.sh
-    76 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/ipc-wrapper.sh
-     1 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-Copy-PostLoad.filelist
-     3 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-Copy.filelist
-    14 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql
-    20 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-GrantSelect-All-Tables.sql
-   106 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql
-   161 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-Load-Views.sql
-    23 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-Updates.sql
-    54 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-pedigree.sql
-    54 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-salix-pedigree.sql
-    19 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/ipc/bin/sql/ipc-tablelist.txt
-   115 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/r4st-loader.sh
-    75 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/r4st-wrapper.sh
-     1 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Copy.filelist
-    90 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql
-    53 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-pedigree.sql
-     1 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st-Copy-PostLoad.filelist
-    12 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st-Copy.filelist
-   287 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st-Load-AllTables.sql
-    53 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st-pedigree.sql
-    50 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql
-    56 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st_GrantSelect-All-Tables.sql
-    19 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st_Updates.sql
-   922 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st_Views-avw-baseTables.sql
-    66 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/r4st_Views-vw-TrialOrEvents.sql
-    55 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/r4st/bin/sql/tablelist.txt
-   310 /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/regressionTester/bin/regressionTester.sh
-  4072 total
+    24 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
+    33 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
+    14 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/RScripts/bin/basicGraph.r
+   407 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh
+   227 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/install2Osgeo/bin/install2Osgeo.sh
+   168 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-Load-Views.sql
+   108 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql
+    19 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-tablelist.txt
+    54 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-salix-pedigree.sql
+    54 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-pedigree.sql
+    23 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-Updates.sql
+    20 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-GrantSelect-All-Tables.sql
+    14 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql
+     3 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-Copy.filelist
+     1 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/sql/ipc-Copy-PostLoad.filelist
+    76 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/ipc-wrapper.sh
+   108 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/ipc-loader.sh
+    75 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/r4st-wrapper.sh
+   124 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/r4st-loader.sh.ORIG-OLD
+   115 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/r4st-loader.sh
+    73 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/ipc-wrapper.sh.BAK
+   105 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/ipc-loader.sh.BAK
+    72 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/ipc/bin/OLD/ipc-loader.sh-ORIGgood
+    55 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/tablelist.txt
+    66 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st_Views-vw-TrialOrEvents.sql
+   922 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st_Views-avw-baseTables.sql
+    19 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st_Updates.sql
+    56 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st_GrantSelect-All-Tables.sql
+    50 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql
+    53 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st-pedigree.sql
+   287 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st-Load-AllTables.sql
+    12 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st-Copy.filelist
+     1 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/r4st-Copy-PostLoad.filelist
+    53 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-pedigree.sql
+    90 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql
+     1 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Copy.filelist
+    75 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/r4st-wrapper.sh
+   115 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/r4st/bin/r4st-loader.sh
+   311 /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/regressionTester/bin/regressionTester.sh
+  4083 total
 Load and display program file name extensions...
    *      2 .BAK
    *      1 .ORIG-OLD
@@ -367,30 +240,31 @@ Sum of Exit values is: 1
 Sorry, there were 1 regression test failures, please try again...
 
 The 24dev regression test process has completed.
-The Regression test logs are located at: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/regressionTester/logs/regressionTests.log
-Regression summary .csv file at: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/regressionTester/output/regressionTestSummary.csv
+The Regression test logs are located at: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/regressionTester/logs/regressionTests.log
+Regression summary .csv file at: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/regressionTester/output/regressionTestSummary.csv
 Project Summary file at: 
 Checking log files for failed regression test runs...
 
 
 Display 24dev regression summary .csv file below:
 Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
-0|r4st|r4st-loader|3|1855|Pass
-1|ipc|ipc-loader|2|1203|Pass
+0|r4st|r4st-loader|2|1855|Pass
+1|ipc|ipc-loader|2|1212|Pass
 2|competitionIndexer|az7m-1yrDataSet-Input|1|407|Pass
 3|competitionIndexer|az7m-6yrStacks-Input|1|407|Pass
-4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|0|407|Pass
-5|RScripts|HelloWorld|1|71|Fail
+4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|1|407|Pass
+5|RScripts|HelloWorld|0|71|Fail
 6|RScripts|top10-2014-clones-AngledXaxis|0|71|Fail
 7|RScripts|top10-2014-clones-StraightXaxis|0|71|Fail
 
 Creating the 24dev Project-Summary.md file based on the above results...
 
-If you have failures - first check the Regression test logs at: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/regressionTester/logs/regressionTests.log
+Reload the profile with the command, source /home/user/.profile or open a new terminal.
+If you have failures - first check the Regression test logs at: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/regressionTester/logs/regressionTests.log
 
 
-Success! Your 24dev-demo-1.1.5 system has been installed.
+Success! Your 24dev-demo-1.1.8 system has been installed.
 Consider testing your programs with the regressionTester application
 
-The installation log files are located at: /home/user/Desktop/24dev-demo-1.1.5/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
-
+Reload the profile with the command, source /home/user/.profile or open a new terminal.
+The installation log files are located at: /home/user/Desktop/24dev-demo-1.1.8/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 
