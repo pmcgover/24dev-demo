@@ -462,9 +462,13 @@ CREATE VIEW public.vw2_all_ipc_salix_epithet_family AS
     f.species_web_url_f,
     f.is_root,
     f.description_f,
-    f.year_bred
-   FROM (public.avw_ipc_salix_family f
+    f.year_bred,
+    em.species_e AS mother_species_e,
+    ef.species_e AS father_species_e
+   FROM (((public.avw_ipc_salix_family f
      LEFT JOIN public.avw_ipc_salix_epithet e ON ((e.family_id = f.id_family)))
+     LEFT JOIN public.avw_ipc_salix_epithet em ON (((f.mother_epithet_key)::text = (em.epithet_key)::text)))
+     LEFT JOIN public.avw_ipc_salix_epithet ef ON (((f.father_epithet_key)::text = (ef.epithet_key)::text)))
   ORDER BY e.id_epithet;
 
 
@@ -517,55 +521,52 @@ ALTER TABLE public.vw3_checklist_root_level_epithet OWNER TO "user";
 --
 
 CREATE VIEW public.vw4_checklist_epithet_family AS
- SELECT e.id_epithet,
-    e.epithet_key,
-    e.epithet,
-    e.alternate_name,
-    e.trade_designations,
-    e.species_e,
-    e.species_web_url_e,
-    e.etymology,
-    e.sex,
-    e.reference_epithet,
-    e.reference_breeders,
-    e.reference_tests,
-    e.end_use,
-    e.awards,
-    e.source_type,
-    e.year_selected,
-    e.interspecific_hybrid,
-    e.family_id,
-    e.f_family_name,
-    e.origin_place,
-    e.description_e,
-    e.originator_breeder,
-    e.registrant,
-    e.keeper,
-    e.nominator_desc,
-    e.standard_herbarium,
-    e.name_status,
-    e.name_status_note,
-    e.current_cultivation,
-    e.checklist_record,
-    f.id_family,
-    f.family_key,
-    f.mother,
-    f.father,
-    f.mother_epithet_key,
-    f.father_epithet_key,
-    f.species_f,
-    f.species_web_url_f,
-    f.is_root,
-    f.description_f,
-    f.year_bred,
-    em.species_e AS mother_species_e,
-    ef.species_e AS father_species_e
-   FROM (((public.avw_ipc_salix_family f
-     LEFT JOIN public.avw_ipc_salix_epithet e ON ((e.family_id = f.id_family)))
-     LEFT JOIN public.avw_ipc_salix_epithet em ON (((f.mother_epithet_key)::text = (em.epithet_key)::text)))
-     LEFT JOIN public.avw_ipc_salix_epithet ef ON (((f.father_epithet_key)::text = (ef.epithet_key)::text)))
-  WHERE ((f.description_f)::text ~~ 'Hypothetical, for Pedigree testing%'::text)
-  ORDER BY e.id_epithet;
+ SELECT vw2_all_ipc_salix_epithet_family.id_epithet,
+    vw2_all_ipc_salix_epithet_family.epithet_key,
+    vw2_all_ipc_salix_epithet_family.epithet,
+    vw2_all_ipc_salix_epithet_family.alternate_name,
+    vw2_all_ipc_salix_epithet_family.trade_designations,
+    vw2_all_ipc_salix_epithet_family.species_e,
+    vw2_all_ipc_salix_epithet_family.species_web_url_e,
+    vw2_all_ipc_salix_epithet_family.etymology,
+    vw2_all_ipc_salix_epithet_family.sex,
+    vw2_all_ipc_salix_epithet_family.reference_epithet,
+    vw2_all_ipc_salix_epithet_family.reference_breeders,
+    vw2_all_ipc_salix_epithet_family.reference_tests,
+    vw2_all_ipc_salix_epithet_family.end_use,
+    vw2_all_ipc_salix_epithet_family.awards,
+    vw2_all_ipc_salix_epithet_family.source_type,
+    vw2_all_ipc_salix_epithet_family.year_selected,
+    vw2_all_ipc_salix_epithet_family.interspecific_hybrid,
+    vw2_all_ipc_salix_epithet_family.family_id,
+    vw2_all_ipc_salix_epithet_family.f_family_name,
+    vw2_all_ipc_salix_epithet_family.origin_place,
+    vw2_all_ipc_salix_epithet_family.description_e,
+    vw2_all_ipc_salix_epithet_family.originator_breeder,
+    vw2_all_ipc_salix_epithet_family.registrant,
+    vw2_all_ipc_salix_epithet_family.keeper,
+    vw2_all_ipc_salix_epithet_family.nominator_desc,
+    vw2_all_ipc_salix_epithet_family.standard_herbarium,
+    vw2_all_ipc_salix_epithet_family.name_status,
+    vw2_all_ipc_salix_epithet_family.name_status_note,
+    vw2_all_ipc_salix_epithet_family.current_cultivation,
+    vw2_all_ipc_salix_epithet_family.checklist_record,
+    vw2_all_ipc_salix_epithet_family.id_family,
+    vw2_all_ipc_salix_epithet_family.family_key,
+    vw2_all_ipc_salix_epithet_family.mother,
+    vw2_all_ipc_salix_epithet_family.father,
+    vw2_all_ipc_salix_epithet_family.mother_epithet_key,
+    vw2_all_ipc_salix_epithet_family.father_epithet_key,
+    vw2_all_ipc_salix_epithet_family.species_f,
+    vw2_all_ipc_salix_epithet_family.species_web_url_f,
+    vw2_all_ipc_salix_epithet_family.is_root,
+    vw2_all_ipc_salix_epithet_family.description_f,
+    vw2_all_ipc_salix_epithet_family.year_bred,
+    vw2_all_ipc_salix_epithet_family.mother_species_e,
+    vw2_all_ipc_salix_epithet_family.father_species_e
+   FROM public.vw2_all_ipc_salix_epithet_family
+  WHERE ((vw2_all_ipc_salix_epithet_family.description_f)::text ~~ 'Hypothetical, for Pedigree testing%'::text)
+  ORDER BY vw2_all_ipc_salix_epithet_family.id_family;
 
 
 ALTER TABLE public.vw4_checklist_epithet_family OWNER TO "user";
@@ -2794,98 +2795,98 @@ ALTER TABLE ONLY public.ipc_salix_epithet
 -- Name: TABLE ipc_original_salix_epithet; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.ipc_original_salix_epithet TO ipcr_ro;
+GRANT SELECT ON TABLE public.ipc_original_salix_epithet TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE ipc_salix_epithet; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.ipc_salix_epithet TO ipcr_ro;
+GRANT SELECT ON TABLE public.ipc_salix_epithet TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE ipc_salix_family; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.ipc_salix_family TO ipcr_ro;
+GRANT SELECT ON TABLE public.ipc_salix_family TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE associate_all_parents; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.associate_all_parents TO ipcr_ro;
+GRANT SELECT ON TABLE public.associate_all_parents TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE associate_orig_and_new_salix_tables; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.associate_orig_and_new_salix_tables TO ipcr_ro;
+GRANT SELECT ON TABLE public.associate_orig_and_new_salix_tables TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE associate_original_to_epithet_data; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.associate_original_to_epithet_data TO ipcr_ro;
+GRANT SELECT ON TABLE public.associate_original_to_epithet_data TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE avw_ipc_salix_epithet; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.avw_ipc_salix_epithet TO ipcr_ro;
+GRANT SELECT ON TABLE public.avw_ipc_salix_epithet TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE avw_ipc_salix_family; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.avw_ipc_salix_family TO ipcr_ro;
+GRANT SELECT ON TABLE public.avw_ipc_salix_family TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE ipc_salix_pedigree; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.ipc_salix_pedigree TO ipcr_ro;
+GRANT SELECT ON TABLE public.ipc_salix_pedigree TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE vw1_test_original_minus_epithet_key_data; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.vw1_test_original_minus_epithet_key_data TO ipcr_ro;
+GRANT SELECT ON TABLE public.vw1_test_original_minus_epithet_key_data TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE vw2_all_ipc_salix_epithet_family; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.vw2_all_ipc_salix_epithet_family TO ipcr_ro;
+GRANT SELECT ON TABLE public.vw2_all_ipc_salix_epithet_family TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE vw3_checklist_root_level_epithet; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.vw3_checklist_root_level_epithet TO ipcr_ro;
+GRANT SELECT ON TABLE public.vw3_checklist_root_level_epithet TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE vw4_checklist_epithet_family; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.vw4_checklist_epithet_family TO ipcr_ro;
+GRANT SELECT ON TABLE public.vw4_checklist_epithet_family TO pmcgover_ipcro;
 
 
 --
 -- Name: TABLE vw5_basic_count_summary; Type: ACL; Schema: public; Owner: user
 --
 
-GRANT SELECT ON TABLE public.vw5_basic_count_summary TO ipcr_ro;
+GRANT SELECT ON TABLE public.vw5_basic_count_summary TO pmcgover_ipcro;
 
 
 --

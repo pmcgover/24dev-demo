@@ -77,8 +77,8 @@ echo "Update the ipcr database to be read only (select priveleges)..."
 tableListFile="$APPS/ipc/bin/sql/ipc-tablelist.txt"
 ipcGrantSelectAllTables="$APPS/ipc/bin/sql/ipc-GrantSelect-All-Tables.sql"
 cat << EOF >    $tableListFile 
-DROP USER IF EXISTS pmcgover_ipcro;
-CREATE USER pmcgover_ipcro WITH PASSWORD 'user';
+DROP USER IF EXISTS ipcr_ro;
+CREATE USER ipcr_ro WITH PASSWORD 'user';
 
 -- Grant select privs for non-prd database access: 
 GRANT SELECT ON 
@@ -87,7 +87,7 @@ psql ipct -c "\dt" |grep table|cut -f2 -d"|"|awk '{print $1","}' >> $tableListFi
 psql ipct -c "\dv" |grep view|cut -f2 -d"|"|awk '{print $1","}'  >> $tableListFile 
 # Now replace last comma with text:
 sed '$ s/,//g' $tableListFile > $ipcGrantSelectAllTables
-echo "TO pmcgover_ipcro;" >> $ipcGrantSelectAllTables 
+echo "TO ipcr_ro;" >> $ipcGrantSelectAllTables 
 echo "#### End Make GrantSelect file #######################"
 
 echo "Load the read only select privs into the ipcr database... "

@@ -121,22 +121,6 @@ ipc_salix_epithet e
 WHERE e.family_id = f.id_family;
 
 CREATE VIEW vw2_all_ipc_salix_epithet_family AS 
-SELECT e.* , f.*
-FROM avw_ipc_salix_family f
-LEFT JOIN avw_ipc_salix_epithet e
-ON e.family_id = f.id_family
-order by e.id_epithet;
-
-
-CREATE VIEW vw3_checklist_root_level_epithet AS 
-SELECT *
-FROM avw_ipc_salix_epithet e
-WHERE e.description_e LIKE 'Hypothetical, for Pedigree testing%'
-AND family_id = 1
-ORDER BY e.id_epithet;
-
-
-CREATE VIEW vw4_checklist_epithet_family AS 
 SELECT e.* , f.*,
 em.species_e AS mother_species_e,
 ef.species_e AS father_species_e
@@ -145,8 +129,19 @@ LEFT JOIN avw_ipc_salix_epithet e
 ON e.family_id = f.id_family
 LEFT JOIN avw_ipc_salix_epithet em ON f.mother_epithet_key = em.epithet_key
 LEFT JOIN avw_ipc_salix_epithet ef ON f.father_epithet_key = ef.epithet_key
-WHERE f.description_f LIKE 'Hypothetical, for Pedigree testing%'
 ORDER BY e.id_epithet;
+
+CREATE VIEW vw3_checklist_root_level_epithet AS 
+SELECT *
+FROM avw_ipc_salix_epithet e
+WHERE e.description_e LIKE 'Hypothetical, for Pedigree testing%'
+AND family_id = 1
+ORDER BY e.id_epithet;
+
+CREATE VIEW vw4_checklist_epithet_family AS 
+select * from vw2_all_ipc_salix_epithet_family
+WHERE description_f LIKE 'Hypothetical, for Pedigree testing%'
+order by id_family;
 
 CREATE VIEW vw5_basic_count_summary AS
 SELECT

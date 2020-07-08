@@ -1,5 +1,5 @@
-DROP USER IF EXISTS ipcr_ro;
-CREATE USER ipcr_ro WITH PASSWORD 'user';
+DROP USER IF EXISTS pmcgover_ipcro;
+CREATE USER pmcgover_ipcro WITH PASSWORD 'user';
 
 -- Grant select privs for non-prd database access: 
 GRANT SELECT ON 

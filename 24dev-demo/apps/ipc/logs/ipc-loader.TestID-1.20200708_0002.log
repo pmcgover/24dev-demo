@@ -1,5 +1,5 @@
-Starting script on: Sun Jul 5 23:39:45 UTC 2020
-BASE=/home/user/Desktop/24dev-demo-1.1.8/24dev-demo
+Starting script on: Wed Jul 8 00:02:49 UTC 2020
+BASE=/home/user/Desktop/24dev-demo-1.1.9/24dev-demo
 
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
@@ -38,29 +38,7 @@ An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio vi
 
 
 Verify that the Postgres server is alive by creating a database, test against it, restart if needed...
-                          List of relations
- Schema |                   Name                   |   Type   | Owner 
---------+------------------------------------------+----------+-------
- public | associate_all_parents                    | view     | user
- public | associate_orig_and_new_salix_tables      | view     | user
- public | associate_original_to_epithet_data       | view     | user
- public | avw_ipc_salix_epithet                    | view     | user
- public | avw_ipc_salix_family                     | view     | user
- public | ipc_original_salix_epithet               | table    | user
- public | ipc_original_salix_epithet_id_sorted_seq | sequence | user
- public | ipc_salix_epithet                        | table    | user
- public | ipc_salix_epithet_id_epithet_seq         | sequence | user
- public | ipc_salix_family                         | table    | user
- public | ipc_salix_family_id_family_seq           | sequence | user
- public | ipc_salix_pedigree                       | table    | user
- public | ipc_salix_pedigree_id_seq                | sequence | user
- public | vw1_test_original_minus_epithet_key_data | view     | user
- public | vw2_all_ipc_salix_epithet_family         | view     | user
- public | vw3_checklist_root_level_epithet         | view     | user
- public | vw4_checklist_epithet_family             | view     | user
- public | vw5_basic_count_summary                  | view     | user
-(18 rows)
-
+CREATE DATABASE
 Postgres server should be active...
 Drop all databases to ensure a clean system...
 DROP DATABASE
@@ -72,7 +50,7 @@ CREATE DATABASE
 CREATE DATABASE
 
 Install the dbkiss database viewer application...
-drwxrwxrwx 2 root root    220 Jul  5 23:31 dbkiss_sql
+drwxrwxrwx 2 root root     60 Jul  8 00:02 dbkiss_sql
 
 Run the primary ipc database processes...
 

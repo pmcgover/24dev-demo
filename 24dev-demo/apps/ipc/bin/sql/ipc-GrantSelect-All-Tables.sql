@@ -1,5 +1,5 @@
-DROP USER IF EXISTS ipcr_ro;
-CREATE USER ipcr_ro WITH PASSWORD 'user';
+DROP USER IF EXISTS pmcgover_ipcro;
+CREATE USER pmcgover_ipcro WITH PASSWORD 'user';
 
 -- Grant select privs for non-prd database access: 
 GRANT SELECT ON 
@@ -17,4 +17,4 @@ vw2_all_ipc_salix_epithet_family,
 vw3_checklist_root_level_epithet,
 vw4_checklist_epithet_family,
 vw5_basic_count_summary
-TO ipcr_ro;
+TO pmcgover_ipcro;
