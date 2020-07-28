@@ -68,7 +68,7 @@ fi
 echo
 grep DONE  ${APPS}/r4st/logs/r4st-loader.log
 chkerr "$?" "1" "The r4st database process and log file did not complete"
-echo "You can view the r4st PRD datbase at: http://localhost/r4stdb/dbkiss.php" 
+echo "You can view the r4st PRD database locally at: http://localhost/r4stdb/r4p.php" 
 
 echo "Extract the last 3 lines of the log file to capture the DONE text for the Regression test comparisons..."
 tail -3 ../logs/r4st-loader.log > ../output/verifyDone-r4st-loader.log

@@ -1,7 +1,7 @@
-Starting script on: Wed Jul 8 01:03:35 UTC 2020
+Starting script on: Mon Jul 27 23:36:43 UTC 2020
 
 Update the 24dev profile with the base pathname, all scripts should source this profile...
-BASE=/home/user/Desktop/24dev-demo-1.1.9/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.1.11/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -49,7 +49,7 @@ Codename:	bionic
 
 Make sure all files are executable...
 
-This script will install the 24dev-demo-1.1.9 addon to OSGeo.
+This script will install the 24dev-demo-1.1.11 addon to OSGeo.
 Please test on an OSGeo Live DVD before installing to your system!
 
 Usage: ./install2Osgeo.sh  
@@ -60,27 +60,195 @@ Appending custom aliases to the .bashrc profile ...
 
 Now sourcing the updated .bashrc file...
 Enable vi syntax colors via the ~/.vimrc file ...
--rw-rw-r-- 1 user user 28 Jul  8 01:03 /home/user/.vimrc
+-rw-rw-r-- 1 user user 28 Jul 27 23:36 /home/user/.vimrc
 
 The .bashrc and .vimrc profiles were updated...
 
 Remove all but the 3 most recent application log files...
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/RScripts/logs
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200705_2339.log'
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200705_2310.log'
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200705_2339.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/competitionIndexer/logs
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200705_2310.log'
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200705_2339.log'
-removed '/home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-3.20200705_2310.log'
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/install2Osgeo/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/ipc/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/r4st/logs
-Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/apps/regressionTester/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/logs
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/logs/HelloWorld.TestID-5.20200715_0138.log'
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/logs/top10-2014-clones-AngledXaxis.TestID-6.20200715_0138.log'
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/logs/top10-2014-clones-StraightXaxis.TestID-7.20200715_0138.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/competitionIndexer/logs
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/competitionIndexer/logs/az7m-1yrDataSet-Input.TestID-2.20200715_0138.log'
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input.TestID-3.20200715_0138.log'
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/competitionIndexer/logs/az7m-6yrStacks-Input-ExtraCols-Input.TestID-4.20200715_0138.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/install2Osgeo/logs
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/logs
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/logs/ipc-loader.TestID-1.20200715_0137.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/logs
+removed '/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/logs/r4st-loader.TestID-0.20200715_0137.log'
+Remove all but the most recent files under: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/regressionTester/logs
 
 List and Remove any previous screenshot files...
 
 Rename the new screenshot screen.png file with hostid, datestamp and post to Project-Summary.md...
 Remove previous backup tar files...
 
-Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.1.9/24dev-demo/backup...
+Create a backup tar file, stored under /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/backup...
+Remove previous backup zip file...
+
+
+Run apt-get update before installing programs...
+Ign:1 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic InRelease
+Hit:2 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic Release
+Hit:4 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
+Hit:5 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:6 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+Reading package lists...
+
+
+Check and install the screengrab program to take screenshots...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-==========================================
+ii  screengrab     1.97-2       amd64        Crossplatform tool for getting screenshots
+
+Check and install the retext program to edit markdown files...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-====================================================
+ii  retext         7.0.1-1      all          Simple text editor for Markdown and reStructuredText
+
+Check and install the Simple Screen Recorder program to record computer screen sessions...
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                 Version      Architecture Description
++++-====================-============-============-===============================================
+ii  simplescreenrecorder 0.3.8-3      amd64        Feature-rich screen recorder for X11 and OpenGL
+
+Run apt-get update after installing programs...
+Ign:1 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic InRelease
+Hit:2 cdrom://OSGeoLive 13.0 - Release amd64 (20190805) bionic Release
+Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:5 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:6 http://ppa.launchpad.net/osgeolive/release-13.0/ubuntu bionic InRelease
+Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+Reading package lists...
+
+
+Run the regressionTester application that will load/install/test the apps...
+Starting script on: Mon Jul 27 23:36:47 UTC 2020
+BASE=/home/user/Desktop/24dev-demo-1.1.11/24dev-demo
+
+
+This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
+Source the 24dev profile to set variables and display license/program details...
+Edit the <BASE>/.24devShared.profile file to display 24dev global variables
+
+
+Display the associated MIT License file:
+The MIT License (MIT)
+
+Copyright (c) 2015 Patrick Noel McGovern
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Display the associated README.md file header:
+# 24dev-demo Software Digital Portfolio
+An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio via github.com.
+
+
+
+Usage: regressionTester.sh 
+This program will run the pre-loaded regression commands and test for successfull completion.
+
+Load and display App Lines Of Code (LOC) stats...
+totalAppLOC=3512
+
+    24 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/bin/top10-2014-clones-StraightXaxis.r
+    33 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/bin/top10-2014-clones-AngledXaxis.r
+    14 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/RScripts/bin/basicGraph.r
+   407 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/competitionIndexer/bin/competitionIndexerCLI.sh
+   227 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/install2Osgeo/bin/install2Osgeo.sh
+    19 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-tablelist.txt
+    54 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-salix-pedigree.sql
+    54 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-pedigree.sql
+    23 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Updates.sql
+   108 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql
+    20 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-GrantSelect-All-Tables.sql
+    14 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql
+     3 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Copy.filelist
+     1 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Copy-PostLoad.filelist
+   161 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Views.sql
+    76 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/ipc-wrapper.sh
+   108 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/ipc-loader.sh
+    55 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/tablelist.txt
+    66 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st_Views-vw-TrialOrEvents.sql
+   922 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st_Views-avw-baseTables.sql
+    19 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st_Updates.sql
+    56 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st_GrantSelect-All-Tables.sql
+    50 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st_DropAll-Objects.sql
+    53 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st-pedigree.sql
+   287 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st-Load-AllTables.sql
+    12 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st-Copy.filelist
+     1 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/r4st-Copy-PostLoad.filelist
+    53 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-pedigree.sql
+    90 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Load-AllTables.sql
+     1 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/sql/TST/r4st-TST-Copy.filelist
+    75 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/r4st-wrapper.sh
+   115 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/r4st/bin/r4st-loader.sh
+   311 /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/regressionTester/bin/regressionTester.sh
+  3512 total
+Load and display program file name extensions...
+   *      5 .filelist
+   *      3 .r
+   *      7 .sh
+   *     16 .sql
+   *      2 .txt
+Load input regression tests for each application...
+Sum of Exit values is: 1
+Sorry, there were 1 regression test failures, please try again...
+
+The 24dev regression test process has completed.
+The Regression test logs are located at: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/regressionTester/logs/regressionTests.log
+Regression summary .csv file at: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/regressionTester/output/regressionTestSummary.csv
+Project Summary file at: 
+Checking log files for failed regression test runs...
+
+
+Display 24dev regression summary .csv file below:
+Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Code|Pass or Fail
+0|r4st|r4st-loader|2|1855|Pass
+1|ipc|ipc-loader|2|641|Pass
+2|competitionIndexer|az7m-1yrDataSet-Input|1|407|Pass
+3|competitionIndexer|az7m-6yrStacks-Input|0|407|Pass
+4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|1|407|Pass
+5|RScripts|HelloWorld|0|71|Fail
+6|RScripts|top10-2014-clones-AngledXaxis|1|71|Fail
+7|RScripts|top10-2014-clones-StraightXaxis|0|71|Fail
+
+Creating the 24dev Project-Summary.md file based on the above results...
+
+Reload the profile with the command, source /home/user/.profile or open a new terminal.
+If you have failures - first check the Regression test logs at: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/regressionTester/logs/regressionTests.log
+
+
+Success! Your 24dev-demo-1.1.11 system has been installed.
+Consider testing your programs with the regressionTester application
+
+Reload the profile with the command, source /home/user/.profile or open a new terminal.
+The installation log files are located at: /home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/install2Osgeo/logs/install2Osgeo.log 

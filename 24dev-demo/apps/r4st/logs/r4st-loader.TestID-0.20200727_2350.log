@@ -1,5 +1,5 @@
-Starting script on: Wed Jul 8 00:02:46 UTC 2020
-BASE=/home/user/Desktop/24dev-demo-1.1.9/24dev-demo
+Starting script on: Mon Jul 27 23:50:25 UTC 2020
+BASE=/home/user/Desktop/24dev-demo-1.1.11/24dev-demo
 
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
@@ -38,20 +38,16 @@ An unofficial OSGeo addon to demonstrate and showcase your Software Portfolio vi
 
 
 Verify that the Postgres server is alive by creating a database, test against it, restart if needed...
-CREATE DATABASE
 Postgres server should be active...
 
 Setup postgres database for r4st with 4 environments...
   Database username/password credentials are: user/user
-CREATE DATABASE
-CREATE DATABASE
-CREATE DATABASE
 
 Install the dbkiss database viewer application...
-drwxrwxrwx 2 root root     60 Jul  8 00:02 dbkiss_sql
+drwxrwxrwx 2 root root     60 Jul 27 23:35 dbkiss_sql
 
 Run the primary r4st database processes...
 
 The r4st database process is: DONE
-You can view the r4st PRD datbase at: http://localhost/r4stdb/dbkiss.php
+You can view the r4st PRD database locally at: http://localhost/r4stdb/r4p.php
 Extract the last 3 lines of the log file to capture the DONE text for the Regression test comparisons...

@@ -277,7 +277,9 @@ CREATE VIEW public.avw_ipc_salix_family AS
     f.mother,
     f.father,
     e1.epithet_key AS mother_epithet_key,
+    e1.species_e AS mother_species_e,
     e2.epithet_key AS father_epithet_key,
+    e2.species_e AS father_species_e,
     f.species_f,
     f.species_web_url_f,
     f.is_root,
@@ -457,18 +459,16 @@ CREATE VIEW public.vw2_all_ipc_salix_epithet_family AS
     f.mother,
     f.father,
     f.mother_epithet_key,
+    f.mother_species_e,
     f.father_epithet_key,
+    f.father_species_e,
     f.species_f,
     f.species_web_url_f,
     f.is_root,
     f.description_f,
-    f.year_bred,
-    em.species_e AS mother_species_e,
-    ef.species_e AS father_species_e
-   FROM (((public.avw_ipc_salix_family f
+    f.year_bred
+   FROM (public.avw_ipc_salix_family f
      LEFT JOIN public.avw_ipc_salix_epithet e ON ((e.family_id = f.id_family)))
-     LEFT JOIN public.avw_ipc_salix_epithet em ON (((f.mother_epithet_key)::text = (em.epithet_key)::text)))
-     LEFT JOIN public.avw_ipc_salix_epithet ef ON (((f.father_epithet_key)::text = (ef.epithet_key)::text)))
   ORDER BY e.id_epithet;
 
 
@@ -556,14 +556,14 @@ CREATE VIEW public.vw4_checklist_epithet_family AS
     vw2_all_ipc_salix_epithet_family.mother,
     vw2_all_ipc_salix_epithet_family.father,
     vw2_all_ipc_salix_epithet_family.mother_epithet_key,
+    vw2_all_ipc_salix_epithet_family.mother_species_e,
     vw2_all_ipc_salix_epithet_family.father_epithet_key,
+    vw2_all_ipc_salix_epithet_family.father_species_e,
     vw2_all_ipc_salix_epithet_family.species_f,
     vw2_all_ipc_salix_epithet_family.species_web_url_f,
     vw2_all_ipc_salix_epithet_family.is_root,
     vw2_all_ipc_salix_epithet_family.description_f,
-    vw2_all_ipc_salix_epithet_family.year_bred,
-    vw2_all_ipc_salix_epithet_family.mother_species_e,
-    vw2_all_ipc_salix_epithet_family.father_species_e
+    vw2_all_ipc_salix_epithet_family.year_bred
    FROM public.vw2_all_ipc_salix_epithet_family
   WHERE ((vw2_all_ipc_salix_epithet_family.description_f)::text ~~ 'Hypothetical, for Pedigree testing%'::text)
   ORDER BY vw2_all_ipc_salix_epithet_family.id_family;
@@ -2571,14 +2571,14 @@ COPY public.ipc_salix_epithet (id_epithet, epithet_key, epithet, alternate_name,
 967	Zontik~967	Zontik	N/A	N/A	N/A	N/A	‘Zontik’ translates from Russian language as “Small Umbrella”.	N/A	Belyaeva et al., 1998	N/A	N/A	N/A	N/A	N/A	N/A	N/A	1	Russia	A cultivar 0.5–0.7 m tall, with a broad triangular crown. Branchlets thin, straight, yellow-olive, glabrous, and lustrous. Leaves thick, small, glabrous, light-green above with glaucous undersides, 40-50 mm long, and 8-10 mm wide. This clone differs from the species with its smaller size, umbrella-like crown, straight, short stems, and light-green leaves. It is ornamental in summer. This clone was introduced from Kirovsk, a town in Murmansk Oblast, Russia, by I.V. Belyaeva from the Botanic Gardens of the Ural Branch of the Russian Academy of Sciences, Yekaterinburg, Russia (Belyaeva et al., 1998). 	I.V. Belyaeva	N/A	N/A	Botanic Gardens of the Ural Branch of the Russian Academy of Sciences, Yekaterinburg	N/A	N/A	Standard: MHA; duplicate: SVER	Established	N/A	N/A	N/A
 968	Zwarre Driebast~968	Zwarre Driebast	N/A	N/A	S. triandra L.	N/A	N/A	male	Stott, 2001	N/A	N/A	N/A	N/A	N/A	N/A	N/A	1	N/A	A basket cultivar with very dark-brown, almost black stems (Stott, 2001). 	N/A	N/A	N/A	N/A	N/A	N/A	N/A	Established	‘Zwarre Driebast’ was the tentatively accepted name for a male cultivar in the 2018 RHS HD.	‘Zwarre Driebast’ most recently sold by one UK nursery in 2011 (2013 RHS PF).	N/A
 969	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	1	N/A	N/A – This is a placeholder for N/A (Not Available), empty or null like records.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-970	1A~970	1A	N/A	N/A	S. alba L.	http://www.theplantlist.org/tpl1.1/record/kew-5001521	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-971	2A~971	2A	N/A	N/A	S. alba L.	http://www.theplantlist.org/tpl1.1/record/kew-5001521	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-972	3T~972	3T	N/A	N/A	S. triandra L.	http://www.theplantlist.org/tpl1.1/record/kew-5002239	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-973	4E~973	4E	N/A	N/A	Salix euxina I.V.Belyaeva	http://www.theplantlist.org/tpl1.1/record/kew-5004714	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+970	1A~970	1A	N/A	N/A	S. alba L.	http://www.theplantlist.org/tpl1.1/record/kew-5001521	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+971	2A~971	2A	N/A	N/A	S. alba L.	http://www.theplantlist.org/tpl1.1/record/kew-5001521	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+972	3T~972	3T	N/A	N/A	S. triandra L.	http://www.theplantlist.org/tpl1.1/record/kew-5002239	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+973	4E~973	4E	N/A	N/A	Salix euxina I.V.Belyaeva	http://www.theplantlist.org/tpl1.1/record/kew-5004714	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing.  A root level Salix epithet example, since there is no related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
 974	5AA~974	5AA	N/A	N/A	S. alba L.	http://www.theplantlist.org/tpl1.1/record/kew-5001521	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	97	N/A	Hypothetical, for Pedigree testing.  A filial level Salix epithet example, since there is a related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
 975	6TE~975	6TE	N/A	N/A	N/A	http://www.theplantlist.org/tpl1.1/search?q=Salix	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	98	N/A	Hypothetical, for Pedigree testing.  A filial level Salix epithet example, since there is a related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
 976	7AA-TE-976	7AA-TE	N/A	N/A	N/A	http://www.theplantlist.org/tpl1.1/search?q=Salix	N/A	female	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	99	N/A	Hypothetical, for Pedigree testing.  A filial level Salix epithet example, since there is a related parent record in the Family table.	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-977	Schater 3~977	Schater 3	N/A	N/A	S. × pendulina f. pendulina (S. alba L. × S. babylonica L. × S. euxina I.V.Bel yaeva)	http://www.theplantlist.org/tpl1.1/search?q=Salix	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing. A root level Salix epithet example, since there is no related record in the Family table.  Patterned after the existing Salix clone, "Schater 2".	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+977	Schater 3~977	Schater 3	N/A	N/A	S. × pendulina f. pendulina (S. alba L. × S. babylonica L. × S. euxina I.V.Bel yaeva)	http://www.theplantlist.org/tpl1.1/search?q=Salix	N/A	male	N/A	N/A	N/A	biofuel	N/A	N/A	N/A	N/A	1	N/A	Hypothetical, for Pedigree testing. A root level Salix epithet example, since there is no related parent record in the Family table.  Patterned after the existing Salix clone, "Schater 2".	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A	N/A
 \.
 
 
@@ -2588,12 +2588,12 @@ COPY public.ipc_salix_epithet (id_epithet, epithet_key, epithet, alternate_name,
 
 COPY public.ipc_salix_family (id_family, family_key, mother, father, mother_epithet_id, father_epithet_id, species_f, species_web_url_f, is_root, description_f, year_bred) FROM stdin;
 1	N/A~N/A	N/A	N/A	969	969	N/A	N/A	U	N/A	N/A
-99	98X1AA-TE	See: mother_epithet_key	See: father_epithet_key	974	975	N/A	N/A	N	Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example via 2 non-root level parents.	N/A
-101	100X2A-TE	See: mother_epithet_key	See: father_epithet_key	970	975	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via root and non-root level parents.	N/A
-102	101XAE	See: mother_epithet_key	See: father_epithet_key	970	977	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via root and non-root level parents.	N/A
-100	99X1AE	See: mother_epithet_key	See: father_epithet_key	970	973	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.	N/A
-98	97X1TE	See: mother_epithet_key	See: father_epithet_key	972	973	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents.	N/A
-97	96X1AA	See: mother_epithet_key	See: father_epithet_key	970	971	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example via 2 root level parents.	N/A
+99	98X1AA-TE	See: mother_epithet_key	See: father_epithet_key	974	975	N/A	N/A	N	Hypothetical, for Pedigree testing.  A non-root level F2 hybrid Salix family example via 2 non-root level parents and with a related progeny record in the epithet table.	N/A
+101	100X2A-TE	See: mother_epithet_key	See: father_epithet_key	970	975	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via root and non-root level parents, without a related progeny record in the epithet table..	N/A
+102	101XAE	See: mother_epithet_key	See: father_epithet_key	970	977	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F2 hybrid Salix family example via 2 root level parents, without a related progeny record in the epithet table.	N/A
+100	99X1AE	See: mother_epithet_key	See: father_epithet_key	970	973	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents, without a related progeny record in the epithet table. 	N/A
+98	97X1TE	See: mother_epithet_key	See: father_epithet_key	972	973	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 hybrid Salix family example via 2 root level parents and with a related progeny record in the epithet table.	N/A
+97	96X1AA	See: mother_epithet_key	See: father_epithet_key	970	971	N/A	N/A	Y	Hypothetical, for Pedigree testing.  A root level F1 Salix AxA family example via 2 root level parents and with a related progeny record in the epithet table.	N/A
 96	95XVM	S. viminalis L. ‘SV7’	S. miyabeana Seemen ‘SX64’	969	969	N/A	N/A	Y	N/A	N/A
 95	94XVM	S. viminalis L. ‘SV2’	S. miyabeana Seemen ‘SX61’ × S. miyabeana ‘9970-037’	969	969	N/A	N/A	Y	N/A	N/A
 94	93XVM	S. viminalis L. ‘SV2’	S. miyabeana Seemen ‘SX64’	969	969	N/A	N/A	Y	N/A	N/A
@@ -2619,9 +2619,9 @@ COPY public.ipc_salix_family (id_family, family_key, mother, father, mother_epit
 74	73XSB	S. ‘SW 930887’	S. ‘Björn’	969	969	N/A	N/A	Y	N/A	N/A
 73	72XSJ	S. ‘SW 911096’	S. ‘Jorr’	969	969	N/A	N/A	Y	N/A	N/A
 72	71XSS	S. ‘SW 901321’	S. ‘SW 881031’	969	969	N/A	N/A	Y	N/A	N/A
-69	68XSB	S. ‘Sherwood’	S. ‘Björn’	969	969	N/A	N/A	Y	N/A	N/A
 71	70XSS	S. ‘SW 901321’	S. ‘SW 881128’	969	969	N/A	N/A	Y	N/A	N/A
 70	69XSL	S. suchowensis W.C. Cheng ex G.H. Zhu	S. leucopithecia Kimura	969	969	N/A	N/A	Y	N/A	N/A
+69	68XSB	S. ‘Sherwood’	S. ‘Björn’	969	969	N/A	N/A	Y	N/A	N/A
 68	67XSO	S. schwerinii E.L.Wolf ‘L 79069’	S. ‘Orm’	969	969	N/A	N/A	Y	N/A	N/A
 67	66XSU	S. schwerinii E.L.Wolf	unknown	969	969	N/A	N/A	Y	N/A	N/A
 66	65XSS	S. schwerinii E.L.Wolf	S. schwerinii E.L.Wolf ´ S. udensis Trautv. & C. Meyer	969	969	N/A	N/A	Y	N/A	N/A
