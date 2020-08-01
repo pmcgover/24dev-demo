@@ -1,5 +1,5 @@
-# 24dev-demo-1.1.11 Project Summary 
-Welcome to Patrick McGovern's 24dev-demo-1.1.11 Software Digital Portfolio. Created on 2020-07-27 11:50:32 PM with the following details:
+# 24dev-demo-1.1.12 Project Summary 
+Welcome to Patrick McGovern's 24dev-demo-1.1.12 Software Digital Portfolio. Created on 2020-08-01 12:10:16 AM with the following details:
 * Total number of applications: 6
 * Total regression test run time in seconds: 7 
 * Total regression test runs: 8  
@@ -20,8 +20,8 @@ Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Cod
 1|ipc|ipc-loader|2|641|Pass
 2|competitionIndexer|az7m-1yrDataSet-Input|1|407|Pass
 3|competitionIndexer|az7m-6yrStacks-Input|1|407|Pass
-4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|0|407|Pass
-5|RScripts|HelloWorld|1|71|Fail
+4|competitionIndexer|az7m-6yrStacks-Input-ExtraCols-Input|1|407|Pass
+5|RScripts|HelloWorld|0|71|Fail
 6|RScripts|top10-2014-clones-AngledXaxis|0|71|Fail
 7|RScripts|top10-2014-clones-StraightXaxis|0|71|Fail
 
@@ -31,7 +31,7 @@ Regression Test Nbr|Application Name|Test Name|Run Time Seconds|App Lines Of Cod
 
 Verification Name|Details  
  --- | --- 
-[date](https://en.wikipedia.org/wiki/System_time)|Mon Jul 27 23:50:32 UTC 2020
+[date](https://en.wikipedia.org/wiki/System_time)|Sat Aug  1 00:10:16 UTC 2020
 [uname -a](https://en.wikipedia.org/wiki/Uname)|Linux osgeolive 5.0.0-23-generic #24~18.04.1-Ubuntu SMP Mon Jul 29 16:12:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 [lsb_release -d](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/lsbrelease.html)|Description:	Ubuntu 18.04.3 LTS
 [hostname](https://en.wikipedia.org/wiki/Hostname)|osgeolive

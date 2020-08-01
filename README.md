@@ -75,3 +75,5 @@ and have statistics and Pass/Fail results published to the: [Project-Sumary.md](
 * Rinse and Repeat: Navigate to your github remote repository, download the most recent tagged release and deploy/test on OSGeo. 
 * Update your resume with a link to your github 24dev repository. 
 
+## Additional Resources
+* Screencast demonstrating the IPC Salix database process: [IPC Salix Database POC - Flash Drive Installation and Creating Checklists](https://youtu.be/9nTnQYbhxSA).

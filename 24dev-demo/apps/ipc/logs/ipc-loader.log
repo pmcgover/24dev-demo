@@ -1,6 +1,6 @@
 
-BASE=/home/user/Desktop/24dev-demo-1.1.11/24dev-demo
-BASE=/home/user/Desktop/24dev-demo-1.1.11/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.1.12/24dev-demo
+BASE=/home/user/Desktop/24dev-demo-1.1.12/24dev-demo
 
 This program is copyrighted under the MIT license.  See: https://github.com/pmcgover/24dev-demo/blob/master/LICENSE
 Source the 24dev profile to set variables and display license/program details...
@@ -41,43 +41,43 @@ Usage: ipc-loader.sh
 This program will execute the pgsql commands to create and load ipc plant database objects 
 
 INFO: Drop the ipc database objects...
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_family" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_pedigree" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_pedigree" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  view "associate_all_parents" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  view "associate_all_parents" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "avw_ipc_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "avw_ipc_salix_epithet" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "avw_ipc_salix_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "avw_ipc_salix_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_test_original_minus_epithet_key_data" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_test_original_minus_epithet_key_data" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_all_ipc_salix_epithet_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_all_ipc_salix_epithet_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_checklist_root_level_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_checklist_root_level_epithet" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_checklist_epithet_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_checklist_epithet_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_basic_count_summary" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_basic_count_summary" does not exist, skipping
 DROP VIEW
 
 INFO: Load the ipc database Tables...
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:3: NOTICE:  table "ipc_salix_species" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:3: NOTICE:  table "ipc_salix_species" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:4: NOTICE:  table "ipc_salix_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-Load-Tables.sql:4: NOTICE:  table "ipc_salix_family" does not exist, skipping
 DROP TABLE
 CREATE TABLE
 CREATE TABLE
@@ -121,33 +121,33 @@ Start ipcr database to create a read-only database instance via logging in with 
 Create a dump of the master ipct database, then load it into an existing but empty ipcr database... 
 
 INFO: Drop all existing tables and views from the ipcr database...
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:1: NOTICE:  table "ipc_original_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:2: NOTICE:  table "ipc_salix_epithet" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:3: NOTICE:  table "ipc_salix_family" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_pedigree" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:4: NOTICE:  table "ipc_salix_pedigree" does not exist, skipping
 DROP TABLE
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  view "associate_all_parents" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:5: NOTICE:  view "associate_all_parents" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:6: NOTICE:  view "associate_orig_and_new_salix_tables" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:7: NOTICE:  view "associate_original_to_epithet_data" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "avw_ipc_salix_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:8: NOTICE:  view "avw_ipc_salix_epithet" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "avw_ipc_salix_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:9: NOTICE:  view "avw_ipc_salix_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_test_original_minus_epithet_key_data" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:10: NOTICE:  view "vw1_test_original_minus_epithet_key_data" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_all_ipc_salix_epithet_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:11: NOTICE:  view "vw2_all_ipc_salix_epithet_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_checklist_root_level_epithet" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:12: NOTICE:  view "vw3_checklist_root_level_epithet" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_checklist_epithet_family" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:13: NOTICE:  view "vw4_checklist_epithet_family" does not exist, skipping
 DROP VIEW
-psql:/home/user/Desktop/24dev-demo-1.1.11/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_basic_count_summary" does not exist, skipping
+psql:/home/user/Desktop/24dev-demo-1.1.12/24dev-demo/apps/ipc/bin/sql/ipc-DropAll-Objects.sql:14: NOTICE:  view "vw5_basic_count_summary" does not exist, skipping
 DROP VIEW
 
 Load the ipct data into the ipcr database... 

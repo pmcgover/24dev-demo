@@ -8,8 +8,7 @@ The IPC database application provides online access to the IPC Salix project clo
 * You can browse and update the local ipct development database at: http://localhost/ipc/ipct.php
 * You can browse the local ipcr "read only" database at: http://localhost/ipc/ipcr.php
 
-## Create new ipct database records
-* TBD - Screen recording that demonstrates the IPC process.
-* TBD - Link to the 2020 IPC Salix POC paper.
+## Additional Resources
+* Screencast demonstrating the IPC Salix database process: [IPC Salix Database POC - Flash Drive Installation and Creating Checklists](https://youtu.be/9nTnQYbhxSA).
 
  
